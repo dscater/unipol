@@ -1,0 +1,139 @@
+:root {
+    --bg1: #aac13f;
+    --bg2: #67722d;
+    --bg3: #4a5123;
+    --bg4: #84865b;
+    --bg5: #b6b6b6;
+    --bg6: #c59a15;
+    --bg7: #e4ab00;
+    --bg2t: #66722dd2;
+    --bg3t: rgba(75, 82, 35, 0.9);
+    --bgDark: rgb(22, 21, 21);
+    --bgDarkGray: rgb(31, 31, 31);
+}
+
+/* GENERAL */
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+.bg-principal {
+    background-color: var(--bg3);
+    color: white;
+}
+
+.bg-secundario {
+    background-color: var(--bg7);
+}
+
+.content-wrapper {
+    background-color: var(--bg5);
+}
+
+.text-principal {
+    color: var(--bg3);
+}
+
+.text-principal:hover {
+    color: var(--bg3);
+}
+
+.content-wrapper h1,
+.content-wrapper h2,
+.content-wrapper h3,
+.content-wrapper h4,
+.content-wrapper h5 {
+    color: var(--bg3);
+}
+
+.content-wrapper .breadcrumb {
+    padding: 5px;
+    background-color: var(--bg3);
+}
+
+.content-wrapper .breadcrumb li.breadcrumb-item a {
+    color: var(--bg5);
+}
+
+.content-wrapper .breadcrumb li.active a {
+    color: var(--bg1);
+}
+
+.content-wrapper .breadcrumb li {
+    color: white;
+}
+
+.loading {
+    z-index: -1;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg3t);
+    transition: 0.3s;
+    opacity: 0.3;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loading.show {
+    opacity: 1;
+    z-index: 9999;
+}
+
+label.required::after {
+    font-family: "Epunda_Slab";
+    font-weight: 400;
+    content: " (*)";
+    color: red;
+}
+
+/* MODAL */
+.modal-open .modal.show {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* BOTON */
+.btn-principal {
+    color: white;
+    background-color: var(--bg6);
+    font-weight: 800;
+}
+
+.btn-principal:hover {
+    background-color: var(--bg7);
+    color: white;
+}
+
+.btn-success {
+    background-color: #218838;
+}
+
+.btn-error {
+    background-color: #c82333;
+}
+
+/* SIDEBAR */
+.main-sidebar {
+    background-color: var(--bgDarkGray);
+    font-size: 0.9em;
+}
+
+.nav-header.bg-principal {
+    background-color: var(--bgDark);
+    color: white;
+}
+.sidebar-dark-success .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-success .nav-sidebar > .nav-item > .nav-link.active {
+    border-radius: 0;
+    background-color: var(--bg2);
+    color: white;
+    width: 100%;
+}
+
+/* MI TABLE */
+
+.mi-table {
+    font-size: 0.85rem;
+}
