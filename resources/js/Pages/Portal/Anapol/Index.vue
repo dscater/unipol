@@ -9,7 +9,6 @@ import { onMounted, ref } from "vue";
 import { Link, usePage, router } from "@inertiajs/vue3";
 import { useAxios } from "@/composables/axios/useAxios";
 import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
-import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "@/Pages/Portal/Anapol/Parcial/Navbar.vue";
 const appStore = useAppStore();
@@ -17,9 +16,6 @@ const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
 const user = ref(props_page.auth?.user);
 const url_asset = ref(props_page.url_assets);
-
-const accion_formulario = ref(0);
-const muestra_formulario = ref(false);
 
 const listItems = ref([
     {
@@ -85,17 +81,9 @@ onMounted(() => {});
         </div>
         <div class="bg-carusel"></div>
     </el-carousel>
-
-    <FormLogin
-        :muestra_formulario="muestra_formulario"
-        @cerrar-formulario="muestra_formulario = false"
-    ></FormLogin>
 </template>
 
 <style scoped>
-.img_admicion {
-    height: 50px;
-}
 .img-seccion {
     width: 200px;
     filter: drop-shadow(5px 5px 10px rgba(255, 255, 255, 0.5));
@@ -104,7 +92,7 @@ onMounted(() => {});
 .text-seccion {
     color: white;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .carusel {
@@ -124,9 +112,6 @@ onMounted(() => {});
 
 .carusel video {
     height: 100%;
-    width: 177.77777778vh; /* 100 * 16 / 9 */
-    min-width: 100%;
-    min-height: 56.25vw; /* 100 * 9 / 16 */
 }
 .bg-carusel {
     position: absolute;
@@ -179,20 +164,17 @@ onMounted(() => {});
 }
 
 @media (min-width: 900px) {
-    .img_admicion {
-        height: 150px;
-    }
-    .contenido .imgs img {
-        width: 140px;
+    .text-seccion {
+        color: white;
+        font-weight: bold;
+        font-size: 2rem;
     }
 
-    .tituloAdmicion {
-        width: 620px;
+    .carusel video {
+        height: 100%;
+        width: 177.77777778vh; /* 100 * 16 / 9 */
+        min-width: 100%;
+        min-height: 56.25vw; /* 100 * 9 / 16 */
     }
-}
-
-.navbar-nav li a {
-    font-size: 0.9em;
-    color: white;
 }
 </style>

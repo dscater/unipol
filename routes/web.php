@@ -30,7 +30,16 @@ Route::get("formularioRegistro/{postulante}", [FormularioRegistroController::cla
 Route::post("formularioRegistro/{postulante}", [FormularioRegistroController::class, 'store'])->name("formularioRegistro.store");
 
 // PORTAL
+
+// ** ANAPOL
 Route::get("anapol", [AnapolController::class, 'index'])->name("anapol");
+Route::get("anapol/nuestra_academia", [AnapolController::class, 'nuestra_academia'])->name("anapol.nuestra_academia");
+Route::get("anapol/requisitos", [AnapolController::class, 'requisitos'])->name("anapol.requisitos");
+Route::get("anapol/fase_convocatoria", [AnapolController::class, 'fase_convocatoria'])->name("anapol.fase_convocatoria");
+Route::get("anapol/fase_seleccion", [AnapolController::class, 'fase_seleccion'])->name("anapol.fase_seleccion");
+Route::get("anapol/fase_incorporacion", [AnapolController::class, 'fase_incorporacion'])->name("anapol.fase_incorporacion");
+Route::get("anapol/comunicados", [AnapolController::class, 'comunicados'])->name("anapol.comunicados");
+Route::get("anapol/contactos", [AnapolController::class, 'contactos'])->name("anapol.contactos");
 
 // ADMINISTRACION
 Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function () {

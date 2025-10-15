@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 15-10-2025 a las 01:24:43
+-- Tiempo de generación: 15-10-2025 a las 03:17:20
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.2.22
 
@@ -169,7 +169,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `dir`, `correo`, `fono`, `password`, `acceso`, `tipo`, `foto`, `fecha_registro`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', 'admin', '', '0', '', '', '', '', '$2y$12$65d4fgZsvBV5Lc/AxNKh4eoUdbGyaczQ4sSco20feSQANshNLuxSC', 1, 'ADMINISTRADOR', NULL, '2025-10-14', 1, '2025-10-14 23:02:13', '2025-10-14 23:02:13'),
-(6, 'juan@gmail.com', 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', NULL, 'victorgonzalo.as@gmail.com', '777777777', '$2y$12$F7Kt97t9v3GsuatU4hAIVO94kEygvzxWflh1BvPR9xmJ/9NGUqvJG', 0, 'POSTULANTE', NULL, '2025-10-14', 1, '2025-10-15 00:53:40', '2025-10-15 00:53:40');
+(6, 'juan@gmail.com', 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', NULL, 'juan@gmail.com', '777777777', '$2y$12$F7Kt97t9v3GsuatU4hAIVO94kEygvzxWflh1BvPR9xmJ/9NGUqvJG', 0, 'POSTULANTE', NULL, '2025-10-14', 1, '2025-10-15 00:53:40', '2025-10-15 00:53:40');
 
 --
 -- Índices para tablas volcadas

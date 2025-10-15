@@ -8,8 +8,11 @@
     --bg7: #e4ab00;
     --bg2t: #66722dd2;
     --bg3t: rgba(75, 82, 35, 0.9);
+    --bgDarkPrincipal: rgb(18, 20, 9);
     --bgDark: rgb(22, 21, 21);
     --bgDarkGray: rgb(31, 31, 31);
+    --bgSuccess: #009143;
+    --bgSuccesst: rgb(3, 121, 58);
 }
 
 /* GENERAL */
@@ -17,9 +20,19 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+table .bg-principal,
 .bg-principal {
     background-color: var(--bg3);
     color: white;
+}
+table .bg-dark-principal,
+.bg-dark-principal {
+    background-color: var(--bgDarkPrincipal);
+    color: white;
+}
+
+.italic {
+    font-style: italic;
 }
 
 .bg-secundario {
@@ -36,6 +49,11 @@ body {
 
 .text-principal:hover {
     color: var(--bg3);
+}
+
+.dropdown-menu {
+    background-color: var(--bg7);
+    padding: 10px 15px;
 }
 
 .content-wrapper h1,
@@ -95,6 +113,17 @@ label.required::after {
 }
 
 /* BOTON */
+body .btn.btn-success {
+    color: white;
+    background-color: var(--bgSuccess);
+    border-color: var(--bgSuccess);
+    font-weight: 800;
+}
+
+body .btn.btn-success:hover {
+    background-color: var(--bgSuccesst);
+    color: white;
+}
 .btn-principal {
     color: white;
     background-color: var(--bg6);
@@ -106,12 +135,17 @@ label.required::after {
     color: white;
 }
 
-.btn-success {
+.btn-alert-success {
     background-color: #218838;
 }
 
 .btn-error {
     background-color: #c82333;
+}
+
+.page-item.active .page-link {
+    background-color: var(--bg3);
+    border-color: var(--bg3);
 }
 
 /* SIDEBAR */
@@ -135,5 +169,87 @@ label.required::after {
 /* MI TABLE */
 
 .mi-table {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+}
+
+body table.table.mitabla.tablaFixeada thead tr {
+    box-shadow: none;
+}
+
+body table.table tbody tr .accion .btn.accion_icon {
+    width: 40px;
+    margin: 1px;
+}
+
+body table.table tbody tr td {
+    vertical-align: middle;
+}
+
+body .mi-table thead.bg__primary tr th {
+    color: white;
+    background-color: var(--bg2);
+}
+
+body .mi-table table thead tr th .iheader .accion {
+    color: white;
+}
+
+body .mi-table table thead tr th .iheader .accion.active {
+    color: white;
+}
+
+/* PORTAL */
+
+.titulo-seccion {
+    font-size: 1.3em;
+    color: var(--bg3);
+    font-style: italic;
+    font-weight: bold;
+}
+
+.subtitulo-seccion {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.contenedor_secciones .col-12 {
+    padding: 10px;
+}
+
+.contenedor_secciones > .col-12:nth-child(2n) {
+    background-color: var(--bg3);
+    color: white;
+}
+
+.contenedor_secciones > .col-12:nth-child(2n) table thead tr th,
+.contenedor_secciones > .col-12:nth-child(2n) table tbody tr td {
+    color: white;
+}
+
+.contenedor_secciones .col-12:nth-child(2n) .titulo-seccion {
+    color: white;
+}
+
+.contenedor_secciones img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* SECCIONES PORTAL */
+
+.img_admicion {
+    height: 50px;
+}
+
+@media (min-width: 900px) {
+    .img_admicion {
+        height: 100px;
+    }
+    .contenido .imgs img {
+        width: 140px;
+    }
+
+    .tituloAdmicion {
+        width: 620px;
+    }
 }

@@ -266,7 +266,7 @@ onMounted(async () => {
                                             props_page.auth?.user.permisos ==
                                                 '*' ||
                                             props_page.auth?.user.permisos.includes(
-                                                'personas.edit'
+                                                'usuarios.edit'
                                             )
                                         "
                                     >
@@ -285,7 +285,7 @@ onMounted(async () => {
                                             props_page.auth?.user.permisos ==
                                                 '*' ||
                                             props_page.auth?.user.permisos.includes(
-                                                'personas.destroy'
+                                                'usuarios.destroy'
                                             )
                                         "
                                     >

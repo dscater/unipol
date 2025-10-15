@@ -65,7 +65,7 @@ const enviarFormulario = () => {
                 showCancelButton: false,
                 confirmButtonText: "Aceptar",
                 customClass: {
-                    confirmButton: "btn-success",
+                    confirmButton: "btn-alert-success",
                 },
             });
         },

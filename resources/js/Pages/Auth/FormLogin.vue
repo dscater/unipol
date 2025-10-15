@@ -60,7 +60,7 @@ const enviarFormulario = () => {
                 html: `<strong>Sesión iniciada correctamente</strong>`,
                 confirmButtonText: `Aceptar`,
                 customClass: {
-                    confirmButton: "btn-success",
+                    confirmButton: "btn-alert-success",
                 },
             });
             setTimeout(() => {

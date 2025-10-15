@@ -109,7 +109,7 @@ const enviarFormulario = () => {
                 html: `<strong>${success}</strong>`,
                 confirmButtonText: `Aceptar`,
                 customClass: {
-                    confirmButton: "btn-success",
+                    confirmButton: "btn-alert-success",
                 },
             });
             limpiarUsuario();
