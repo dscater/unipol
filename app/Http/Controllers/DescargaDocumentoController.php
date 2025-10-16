@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostulanteStoreRequest;
-use App\Http\Requests\PostulanteUpdateRequest;
-use App\Models\Postulante;
-use App\Services\PostulanteService;
+use App\Http\Requests\DescargaDocumentoStoreRequest;
+use App\Http\Requests\DescargaDocumentoUpdateRequest;
+use App\Models\DescargaDocumento;
+use App\Services\DescargaDocumentoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,9 +15,9 @@ use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 
-class PostulanteController extends Controller
+class DescargaDocumentoController extends Controller
 {
-    public function __construct(private PostulanteService $postulanteService) {}
+    public function __construct(private DescargaDocumentoService $descarga_documentoService) {}
 
     /**
      * Página index
@@ -26,41 +26,18 @@ class PostulanteController extends Controller
      */
     public function index(): InertiaResponse
     {
-        return Inertia::render("Admin/Postulantes/Index");
+        return Inertia::render("Admin/DescargaDocumentos/Index");
     }
 
     /**
-     * Página preinscripcion
-     *
-     * @return Response
-     */
-    public function preinscripcion(): InertiaResponse
-    {
-        return Inertia::render("Admin/Postulantes/Preinscripcion");
-    }
-
-    /**
-     * Listado de postulantes
+     * Listado de descarga_documentos
      *
      * @return JsonResponse
      */
     public function listado(): JsonResponse
     {
         return response()->JSON([
-            "postulantes" => $this->postulanteService->listado()
-        ]);
-    }
-
-    /**
-     * Listado de postulantes
-     *
-     * @return JsonResponse
-     */
-    public function listadoByCi(Request $request): JsonResponse
-    {
-        $ci = trim($request->input("ci"));
-        return response()->JSON([
-            "postulantes" =>  $ci ? $this->postulanteService->listadoByCi($ci, ["requisito"]) : []
+            "descarga_documentos" => $this->descarga_documentoService->listado()
         ]);
     }
 
@@ -86,28 +63,28 @@ class PostulanteController extends Controller
             ];
         }
 
-        $postulantes = $this->postulanteService->listadoPaginado($perPage, $page, $search, $columnsSerachLike, $columnsFilter, $columnsBetweenFilter, $arrayOrderBy);
+        $descarga_documentos = $this->descarga_documentoService->listadoPaginado($perPage, $page, $search, $columnsSerachLike, $columnsFilter, $columnsBetweenFilter, $arrayOrderBy);
         return response()->JSON([
-            "data" => $postulantes->items(),
-            "total" => $postulantes->total(),
-            "lastPage" => $postulantes->lastPage()
+            "data" => $descarga_documentos->items(),
+            "total" => $descarga_documentos->total(),
+            "lastPage" => $descarga_documentos->lastPage()
         ]);
     }
 
     /**
-     * Registrar un nuevo postulante
+     * Registrar un nuevo descarga_documento
      *
-     * @param PostulanteStoreRequest $request
+     * @param DescargaDocumentoStoreRequest $request
      * @return RedirectResponse|Response
      */
-    public function store(PostulanteStoreRequest $request): RedirectResponse|Response
+    public function store(DescargaDocumentoStoreRequest $request): RedirectResponse|Response
     {
         DB::beginTransaction();
         try {
-            // crear el Postulante
-            $this->postulanteService->crear($request->validated());
+            // crear el DescargaDocumento
+            $this->descarga_documentoService->crear($request->validated());
             DB::commit();
-            return redirect()->route("postulantes.preinscripcion")->with("bien", "Registro realizado");
+            return redirect()->route("descarga_documentos.preinscripcion")->with("bien", "Registro realizado");
         } catch (\Exception $e) {
             DB::rollBack();
             throw ValidationException::withMessages([
@@ -117,24 +94,24 @@ class PostulanteController extends Controller
     }
 
     /**
-     * Mostrar un postulante
+     * Mostrar un descarga_documento
      *
-     * @param Postulante $postulante
+     * @param DescargaDocumento $descarga_documento
      * @return JsonResponse
      */
-    public function show(Postulante $postulante): JsonResponse
+    public function show(DescargaDocumento $descarga_documento): JsonResponse
     {
-        return response()->JSON($postulante->load(["requisito"]));
+        return response()->JSON($descarga_documento->load(["area", "producto", "supervisor", "descarga_documento_materials.material", "descarga_documento_operarios.user"]));
     }
 
-    public function update(Postulante $postulante, PostulanteUpdateRequest $request)
+    public function update(DescargaDocumento $descarga_documento, DescargaDocumentoUpdateRequest $request)
     {
         DB::beginTransaction();
         try {
-            // actualizar postulante
-            $this->postulanteService->actualizar($request->validated(), $postulante);
+            // actualizar descarga_documento
+            $this->descarga_documentoService->actualizar($request->validated(), $descarga_documento);
             DB::commit();
-            return redirect()->route("postulantes.index")->with("bien", "Registro actualizado");
+            return redirect()->route("descarga_documentos.index")->with("bien", "Registro actualizado");
         } catch (\Exception $e) {
             DB::rollBack();
             // Log::debug($e->getMessage());
@@ -145,16 +122,16 @@ class PostulanteController extends Controller
     }
 
     /**
-     * Eliminar postulante
+     * Eliminar descarga_documento
      *
-     * @param Postulante $postulante
+     * @param DescargaDocumento $descarga_documento
      * @return JsonResponse|Response
      */
-    public function destroy(Postulante $postulante): JsonResponse|Response
+    public function destroy(DescargaDocumento $descarga_documento): JsonResponse|Response
     {
         DB::beginTransaction();
         try {
-            $this->postulanteService->eliminar($postulante);
+            $this->descarga_documentoService->eliminar($descarga_documento);
             DB::commit();
             return response()->JSON([
                 'sw' => true,

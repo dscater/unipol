@@ -4,6 +4,7 @@ use App\Http\Controllers\AnapolController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ContenidoController;
+use App\Http\Controllers\DescargaDocumentoController;
 use App\Http\Controllers\EsbapolmusController;
 use App\Http\Controllers\FatescipolController;
 use App\Http\Controllers\FormularioRegistroController;
@@ -114,6 +115,17 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
     Route::resource("postulantes", PostulanteController::class)->only(
         ["index", "store", "edit", "show", "update", "destroy"]
     );
+
+
+
+    // DESCARGA DOCUMENTOS
+    Route::get("descarga_documentos/api", [DescargaDocumentoController::class, 'api'])->name("descarga_documentos.api");
+    Route::get("descarga_documentos/paginado", [DescargaDocumentoController::class, 'paginado'])->name("descarga_documentos.paginado");
+    Route::get("descarga_documentos/listado", [DescargaDocumentoController::class, 'listado'])->name("descarga_documentos.listado");
+    Route::resource("descarga_documentos", DescargaDocumentoController::class)->only(
+        ["index", "store", "edit", "show", "update", "destroy"]
+    );
+
 
     // INSCRIPCION
     Route::get("inscripcions", [InscripcionController::class, 'index'])->name("inscripcions.index");

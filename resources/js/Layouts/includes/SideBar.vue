@@ -216,6 +216,11 @@ onUnmounted(() => {});
                         OTROS
                     </li>
                     <ItemMenu
+                        :label="'Documentos de descarga'"
+                        :ruta="'descarga_documentos.index'"
+                        :icon="'fa fa-file-download'"
+                    ></ItemMenu>
+                    <ItemMenu
                         :label="'Configuración Sistema'"
                         :ruta="'configuracions.index'"
                         :icon="'fa fa-cog'"

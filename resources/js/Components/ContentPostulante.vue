@@ -82,16 +82,18 @@ const salir = () => {
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-4 text-right">
+                        <div class="col-4">
                             <b class="text-principal">Código:</b>
                         </div>
                         <div class="col-8">{{ user.postulante.codigoPre }}</div>
                     </div>
-                    <div class="row mt-2">
-                        <div class="col-4 text-right">
-                            <b class="text-principal">Código:</b>
+                    <div class="row mt-2" v-if="user.postulante.codigoInsc">
+                        <div class="col-12">
+                            <b class="text-principal">Código Inscripción:</b>
                         </div>
-                        <div class="col-8">{{ user.postulante.codigoPre }}</div>
+                        <div class="col-12 text-center">
+                            {{ user.postulante.codigoInsc }}
+                        </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
@@ -177,19 +179,26 @@ const salir = () => {
                 </div>
             </div>
         </div>
-        <div class="footer d-flex justify-content-end pr-3">
-            <div class="row mt-4">
-                <div class="col-12">
-                    <Link
-                        v-if="!requisito"
-                        class="btn btn-default mr-2"
-                        :href="route('inscripcions.index')"
-                    >
-                        <i class="fa fa-clipboard-list"></i> INSCRIPCIÓN
-                    </Link>
-                    <button class="btn btn-principal" @click.prevent="salir()">
-                        <i class="fa fa-power-off"></i> CERRAR SESIÓN
-                    </button>
+        <div class="footer d-flex pr-3">
+            <div class="container-fluid">
+                <div class="row mt-4 justify-content-end">
+                    <div class="col-md-3 ml-2">
+                        <Link
+                            v-if="!requisito"
+                            class="rounded-0 btn btn-default w-100"
+                            :href="route('inscripcions.index')"
+                        >
+                            <i class="fa fa-clipboard-list"></i> INSCRIPCIÓN
+                        </Link>
+                    </div>
+                    <div class="col-md-3 ml-2">
+                        <button
+                            class="rounded-0 btn btn-principal w-100"
+                            @click.prevent="salir()"
+                        >
+                            <i class="fa fa-power-off"></i> CERRAR SESIÓN
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,6 +234,8 @@ const salir = () => {
     left: -370px;
     background-color: white;
     transition: all 0.4s;
+    /* max-height: 100vh; */
+    overflow: auto;
 }
 
 .fotoPostulante {
@@ -240,7 +251,8 @@ const salir = () => {
     position: fixed;
     top: 0px;
     right: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    width: 30px;
     z-index: 999;
     transition: all 0.5s;
 }
@@ -249,11 +261,12 @@ const salir = () => {
     z-index: 999;
     color: white;
     border: none;
-    background-color: var(--bg6);
+    background-color: var(--bg6t);
     position: fixed;
     top: 120px;
-    left: 348px;
-    font-size: 1.2rem;
+    left: 340px;
+    font-size: 1.4rem;
+    width: 30px;
     display: none;
     transition: all 0.5s;
 }

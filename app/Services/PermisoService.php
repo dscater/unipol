@@ -32,6 +32,16 @@ class PermisoService
             "postulantes.update",
             "postulantes.destroy",
 
+            "descarga_documentos.paginado",
+            "descarga_documentos.listado",
+            "descarga_documentos.index",
+            "descarga_documentos.create",
+            "descarga_documentos.store",
+            "descarga_documentos.edit",
+            "descarga_documentos.show",
+            "descarga_documentos.update",
+            "descarga_documentos.destroy",
+
             "requisitos.buscar",
             "requisitos.update",
 
