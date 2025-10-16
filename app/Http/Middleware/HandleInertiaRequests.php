@@ -44,8 +44,9 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user() ? $request->user() : null,
+                'user' => $request->user() ? $request->user()->load(["postulante"]) : null,
                 'permisos' => $request->user() ? $request->user()->permisos : null,
+                "requisito" => $request->user() && $request->user()->postulante ? $request->user()->postulante->requisito : null,
             ],
             'url_assets' => asset(''),
             'url_principal' => url(''),

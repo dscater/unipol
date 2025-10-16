@@ -3,21 +3,21 @@ import MiModal from "@/Components/MiModal.vue";
 import { useForm, usePage } from "@inertiajs/vue3";
 import { useUsuarios } from "@/composables/usuarios/useUsuarios";
 import { watch, ref, computed, defineEmits, onMounted, nextTick } from "vue";
-import FormLogin from "@/Pages/Auth/FormLogin.vue";
-import VerificacionCodigo from "./VerificacionCodigo.vue";
 const props = defineProps({
     muestra_formulario: {
         type: Boolean,
         default: false,
     },
+    usuario: {
+        type: Object,
+        default: null,
+    },
 });
 
-const { oUsuario, limpiarUsuario } = useUsuarios();
 const muestra_form = ref(props.muestra_formulario);
 const enviando = ref(false);
 let form = useForm({
-    usuario: "",
-    password: "",
+    codigo: "",
 });
 const inputUsuario = ref(null);
 watch(
@@ -39,58 +39,36 @@ watch(
 );
 
 const { flash, url_assets } = usePage().props;
-const tituloDialog = computed(() => {
-    return `<i class="fa fa-edit"></i> Usuario`;
-});
 
 const textBtn = computed(() => {
     if (enviando.value) {
         return `<i class="fa fa-spin fa-spinner"></i> Enviando...`;
     }
-    return `<i class="fa fa-sign-in"></i> Ingresar`;
+    return `<i class="fa fa-sign-in"></i> Verificar`;
 });
 
-const muestra_password = ref(false);
 const errors = ref([]);
-const muestraFormCodigo = ref(false);
-const oUserVerificado = ref(null);
-
 const enviarFormulario = () => {
     enviando.value = true;
     axios
-        .post(route("login"), form)
+        .post(
+            route("codigoVerificacion.verificarCodigo", props.usuario.id ?? 0),
+            form
+        )
         .then((response) => {
-            form.usuario = "";
-            form.password = "";
-            if (response.data.codigo == true) {
-                Swal.fire({
-                    icon: "info",
-                    title: "Atención",
-                    html: `Te enviamos un código de verificación a tu correo para que puedas iniciar sesión`,
-                    confirmButtonText: `Aceptar`,
-                    customClass: {
-                        confirmButton: "btn-alert-success",
-                    },
-                });
-                // ABRIR MODAL CÓDIGO
-                oUserVerificado.value = response.data.user;
-                muestraFormCodigo.value = true;
-                emits("cerrar-formulario");
-            } else {
-                // ENVIAR AL INICIO
-                Swal.fire({
-                    icon: "success",
-                    title: "Correcto",
-                    html: `<strong>Sesión iniciada correctamente</strong>`,
-                    confirmButtonText: `Aceptar`,
-                    customClass: {
-                        confirmButton: "btn-alert-success",
-                    },
-                });
-                setTimeout(() => {
-                    window.location.href = route("inicio");
-                });
-            }
+            console.log(response.data.errors);
+            Swal.fire({
+                icon: "success",
+                title: "Correcto",
+                html: `<strong>Sesión iniciada correctamente</strong>`,
+                confirmButtonText: `Aceptar`,
+                customClass: {
+                    confirmButton: "btn-alert-success",
+                },
+            });
+            setTimeout(() => {
+                window.location.href = route("inicio");
+            });
         })
         .catch((error) => {
             if (error.response?.status === 422) {
@@ -158,82 +136,37 @@ onMounted(() => {});
         <template #body>
             <form @submit.prevent="enviarFormulario()">
                 <h5 class="w-100 text-center font-weight-bold">
-                    Iniciar Sesión
+                    Ingresar código de verificación
                 </h5>
                 <div class="row">
                     <div>
                         <div class="input-group form-floating">
                             <span class="input-group-text">
-                                <i class="fa fa-user"></i>
+                                <i class="fa fa-hashtag"></i>
                             </span>
                             <input
                                 type="text"
-                                name="usuario"
-                                id="usuario"
+                                name="codigo"
+                                id="codigo"
                                 class="form-control fs-13px h-45px"
-                                placeholder="Usuario"
-                                v-model="form.usuario"
+                                placeholder="Código de verificación"
+                                v-model="form.codigo"
                                 autofocus
                                 ref="inputUsuario"
                             />
                             <label
-                                for="usuario"
+                                for="codigo"
                                 class="d-flex align-items-center text-gray-600 fs-13px ml-5"
                                 style="z-index: 100"
-                                >Usuario</label
+                                >Código de verificación</label
                             >
                         </div>
                         <ul
-                            v-if="errors?.usuario"
+                            v-if="errors?.codigo"
                             class="text-danger list-unstyled mb-0"
                         >
                             <li class="parsley-required">
-                                {{ errors?.usuario[0] }}
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="">
-                        <div class="input-group form-floating mt-3">
-                            <span class="input-group-text">
-                                <i class="fa fa-key"></i>
-                            </span>
-                            <input
-                                :type="muestra_password ? 'text' : 'password'"
-                                name="password"
-                                id="password"
-                                class="form-control fs-13px h-45p"
-                                v-model="form.password"
-                                autocomplete="false"
-                                placeholder="Contraseña"
-                            />
-
-                            <label
-                                for="password"
-                                class="d-flex align-items-center text-gray-600 fs-13px ml-5"
-                                style="z-index: 100"
-                                >Contraseña</label
-                            >
-                            <button
-                                class="btn btn-default"
-                                type="button"
-                                @click="muestra_password = !muestra_password"
-                            >
-                                <i
-                                    class="fa"
-                                    :class="[
-                                        muestra_password
-                                            ? 'fa-eye'
-                                            : 'fa-eye-slash',
-                                    ]"
-                                ></i>
-                            </button>
-                        </div>
-                        <ul
-                            v-if="errors?.password"
-                            class="text-danger list-unstyled"
-                        >
-                            <li class="parsley-required">
-                                {{ errors?.password[0] }}
+                                {{ errors?.codigo[0] }}
                             </li>
                         </ul>
                     </div>
@@ -266,12 +199,6 @@ onMounted(() => {});
             ></button>
         </template>
     </MiModal>
-
-    <VerificacionCodigo
-        :muestra_formulario="muestraFormCodigo"
-        :usuario="oUserVerificado"
-        @cerrar-formulario="muestraFormCodigo = false"
-    ></VerificacionCodigo>
 </template>
 
 <style>

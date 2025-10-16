@@ -5,12 +5,15 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\FormularioRegistroController;
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\PostulanteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\RequisitoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\VerificaCodigoVerificacionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -25,9 +28,16 @@ Route::get('/clear-cache', function () {
 
 Route::get("configuracions/getConfiguracion", [ConfiguracionController::class, 'getConfiguracion'])->name("configuracions.getConfiguracion");
 
+// ** Verificar codigo verificacion LOGIN
+Route::post("verificarCodigo/{user}", [VerificaCodigoVerificacionController::class, 'verificarCodigo'])->name("codigoVerificacion.verificarCodigo");
+
+// ** Formulario de Registro
+Route::post("formularioRegistro/{postulante}", [FormularioRegistroController::class, 'store'])->name("formularioRegistro.store");
 Route::get("formularioRegistro/{postulante}", [FormularioRegistroController::class, 'index'])->name("formularioRegistro.index");
 
-Route::post("formularioRegistro/{postulante}", [FormularioRegistroController::class, 'store'])->name("formularioRegistro.store");
+// ** Formulario Correo y Contraseña
+Route::get("formularioRegistro/registro/{postulante}", [FormularioRegistroController::class, 'registro'])->name("formularioRegistro.registro");
+Route::put("formularioRegistro/registro/{postulante}", [FormularioRegistroController::class, 'update'])->name("formularioRegistro.update");
 
 // PORTAL
 
@@ -80,6 +90,12 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
     Route::resource("postulantes", PostulanteController::class)->only(
         ["index", "store", "edit", "show", "update", "destroy"]
     );
+
+    // INSCRIPCION
+    Route::get("inscripcions", [InscripcionController::class, 'index'])->name("inscripcions.index");
+
+    // REQUISITOS
+    Route::post("requisitos/store", [RequisitoController::class, 'store'])->name("requisitos.store");
 
     // REPORTES
     Route::get('reportes/usuarios', [ReporteController::class, 'usuarios'])->name("reportes.usuarios");

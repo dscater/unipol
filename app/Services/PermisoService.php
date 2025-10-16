@@ -40,7 +40,11 @@ class PermisoService
             "reportes.usuarios",
             "reportes.r_usuarios",
         ],
-        "POSTULANTE" => [],
+        "POSTULANTE" => [
+            "inscripcions.index",
+
+            "requisitos.store",
+        ],
     ];
 
     public function getPermisosUser()

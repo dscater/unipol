@@ -2,11 +2,13 @@
 
 namespace App\Services;
 
+use App\Mail\CodigoVerificacionMail;
 use App\Models\Configuracion;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PreinscripcionMail;
 use App\Models\Postulante;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 class EnviarCorreoService
@@ -40,7 +42,7 @@ class EnviarCorreoService
     }
 
     /**
-     * Enviar correo de nueva orden de venta
+     * Enviar correo de nueva preinscripcion
      *
      * @param Postulante $postulante
      * @return void
@@ -49,7 +51,7 @@ class EnviarCorreoService
     {
 
         $mensaje = "Hola " . $postulante->full_name . '<br/>';
-        $mensaje .= 'Tú código de preinscripción es <strong>' . $postulante->codigo . '</strong><br/>
+        $mensaje .= 'Tú código de preinscripción es <h4>' . $postulante->codigo . '</h4><br/>
         Para finalizar tu registro debes ingresar tú Número de Carnet y el código en el siguiente <a href="' . route('formularioRegistro.index', $postulante->id) . '">Formulario de registro</a>
         </strong>.<br/> Te recomendamos no compartir el código con nadie.';
 
@@ -59,5 +61,26 @@ class EnviarCorreoService
 
         Mail::to($postulante->correo)
             ->send(new PreinscripcionMail($datos));
+    }
+
+    /**
+     * Enviar correo de codigo verificacion login POSTULANTE
+     *
+     * @param User $user
+     * @return void
+     */
+    public function mailCodigoVerificacion(User $user, $codigo): void
+    {
+
+        $mensaje = "Hola " . $user->postulante->full_name . '<br/>';
+        $mensaje .= 'Tú código de verificación es <h4>' . $codigo . '</h4><br/>
+        </strong>.<br/> Te recomendamos no compartir el código con nadie.';
+
+        $datos = [
+            "mensaje" => $mensaje
+        ];
+
+        Mail::to($user->correo)
+            ->send(new CodigoVerificacionMail($datos));
     }
 }

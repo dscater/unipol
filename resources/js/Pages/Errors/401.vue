@@ -12,20 +12,32 @@ const { props: props_page } = usePage();
     </ol>
     <!-- END breadcrumb -->
     <!-- BEGIN page-header -->
-    <h1 class="page-header">Sin autorización</h1>
+    <h1 class="page-header w-100 text-center">Sin autorización</h1>
     <!-- END page-header -->
 
-    <div class="row">
-        <div class="col-md-12">
-            <!-- BEGIN panel -->
-            <div class="panel panel-inverse">
-                <!-- BEGIN panel-body -->
-                <div class="panel-body">
-                    <h4>No tienes autorización para ver esta página</h4>
+    <div class="container bg-principal">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- BEGIN panel -->
+                <div class="panel panel-inverse">
+                    <!-- BEGIN panel-body -->
+                    <div class="panel-body text-center pb-5 pt-3">
+                        <h4 class="w-100 text-center">
+                            No tienes autorización para ver esta página
+                        </h4>
+                        <Link :href="route('inicio')" class="btn btn-default"
+                            >Volver al inicio</Link
+                        >
+                    </div>
+                    <!-- END panel-body -->
                 </div>
-                <!-- END panel-body -->
+                <!-- END panel -->
             </div>
-            <!-- END panel -->
         </div>
     </div>
 </template>
+<style>
+body {
+    background-color: var(--bg5);
+}
+</style>

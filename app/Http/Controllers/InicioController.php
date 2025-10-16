@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Parametrizacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class InicioController extends Controller
@@ -11,6 +12,11 @@ class InicioController extends Controller
     public function inicio()
     {
         $array_infos = UserController::getInfoBoxUser();
+
+        if (Auth::user()->tipo == 'POSTULANTE') {
+            return Inertia::render('Admin/Postulante/Inicio');
+        }
+
         return Inertia::render('Admin/Home', compact('array_infos'));
     }
 

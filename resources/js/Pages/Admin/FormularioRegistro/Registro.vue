@@ -1,14 +1,17 @@
 <script>
 import Login from "@/Layouts/Login.vue";
 import { onMounted, ref } from "vue";
+import { useProps } from "element-plus/es/components/select-v2/src/useProps";
 export default {
     layout: Login,
 };
 </script>
 <script setup>
 import { Head, Link, router, useForm, usePage } from "@inertiajs/vue3";
+
 import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
+const { props } = usePage();
 const { url_assets } = usePage().props;
 const { oConfiguracion } = useConfiguracion();
 const propsForm = defineProps({
@@ -18,22 +21,43 @@ const propsForm = defineProps({
     },
 });
 const muestra_formulario = ref(false);
-const form = useForm({
-    ci: "",
-    codigo: "",
-});
 const enviando = ref(false);
+const errorPass = ref(false);
+const errorPassword = ref("");
+const muestra_password = ref(false);
+const form = useForm({
+    correo: propsForm.postulante.correo,
+    password: "",
+    foto: "",
+    _method: "put",
+});
+
+const foto = ref(null);
+const cargarFoto = (e) => {
+    form["foto"] = e.target.files[0];
+};
+
+const validarPassword = () => {
+    errorPassword.value = "";
+    errorPass.value = false;
+    if (!/^\d{6}$/.test(form.password)) {
+        errorPass.value = true;
+        errorPassword.value =
+            "La contraseña debe tener exactamente 6 dígitos numéricos.";
+    }
+};
 
 const submit = () => {
     enviando.value = true;
-    let url = route("formularioRegistro.store", propsForm.postulante.id);
+    let url = route("formularioRegistro.update", propsForm.postulante.id);
     form.post(url, {
         preserveScroll: true,
         forceFormData: true,
         onSuccess: (response) => {
             console.log("correcto");
             const success =
-                response.props.flash.success ?? "Proceso realizado con éxito";
+                response.props.flash.success ??
+                "Registro éxitoso. Ahora puedes Iniciar Sesión";
             Swal.fire({
                 icon: "success",
                 title: "Correcto",
@@ -43,8 +67,10 @@ const submit = () => {
                     confirmButton: "btn-alert-success",
                 },
             });
+            // limpiarPostulante();
         },
         onError: (err, code) => {
+            console.log(code ?? "");
             if (form.errors) {
                 const error =
                     "Existen errores en el formulario, por favor verifique";
@@ -93,12 +119,16 @@ onMounted(() => {});
                         class="img_logo"
                     />
                 </div>
-                <div class="card-body" v-if="postulante.ecodigo == 0">
+                <div
+                    class="card-body"
+                    v-if="postulante.epass == 0 && postulante.ecodigo == 1"
+                >
                     <form @submit.prevent="submit">
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="w-100 text-center">
-                                    Finalizar Registro
+                                    Finalizar registro<br />
+                                    <small>Asignar Contraseña y Foto</small>
                                 </h4>
                             </div>
                             <div class="col-12">
@@ -114,25 +144,26 @@ onMounted(() => {});
                                     </span>
                                     <input
                                         type="text"
-                                        name="ci"
+                                        name="correo"
                                         class="form-control fs-13px h-45p"
-                                        v-model="form.ci"
+                                        v-model="form.correo"
                                         autocomplete="false"
-                                        placeholder="Contraseña"
+                                        placeholder="Correo electrónico"
+                                        readonly
                                     />
                                     <label
-                                        for="ci"
+                                        for="correo"
                                         class="d-flex align-items-center text-gray-600 fs-13px ml-5"
                                         style="z-index: 100"
-                                        >Número de Carnet</label
+                                        >Correo electrónico</label
                                     >
                                 </div>
                                 <ul
-                                    v-if="form.errors?.ci"
+                                    v-if="form.errors?.correo"
                                     class="text-danger list-unstyled mb-0"
                                 >
                                     <li class="parsley-required">
-                                        {{ form.errors?.ci }}
+                                        {{ form.errors?.correo }}
                                     </li>
                                 </ul>
                             </div>
@@ -142,26 +173,83 @@ onMounted(() => {});
                                         <i class="fa fa-key"></i>
                                     </span>
                                     <input
-                                        type="password"
-                                        name="codigo"
+                                        :type="
+                                            muestra_password
+                                                ? 'text'
+                                                : 'password'
+                                        "
+                                        name="password"
                                         class="form-control fs-13px h-45p"
-                                        v-model="form.codigo"
+                                        v-model="form.password"
+                                        @input="validarPassword"
                                         autocomplete="false"
-                                        placeholder="Código de Preinscripción"
+                                        placeholder="Ingrese Nueva Contraseña de 6 Dígitos"
                                     />
                                     <label
-                                        for="codigo"
+                                        for="password"
                                         class="d-flex align-items-center text-gray-600 fs-13px ml-5"
                                         style="z-index: 100"
-                                        >Código de Preinscripción</label
+                                        >Ingrese Nueva Contraseña de 6
+                                        Dígitos</label
                                     >
+                                    <button
+                                        class="btn btn-default"
+                                        type="button"
+                                        @click="
+                                            muestra_password = !muestra_password
+                                        "
+                                    >
+                                        <i
+                                            class="fa"
+                                            :class="[
+                                                muestra_password
+                                                    ? 'fa-eye'
+                                                    : 'fa-eye-slash',
+                                            ]"
+                                        ></i>
+                                    </button>
                                 </div>
                                 <ul
-                                    v-if="form.errors?.codigo"
+                                    v-if="errorPassword && errorPass"
                                     class="text-danger list-unstyled mb-0"
                                 >
                                     <li class="parsley-required">
-                                        {{ form.errors?.codigo }}
+                                        {{ errorPassword }}
+                                    </li>
+                                </ul>
+                                <ul
+                                    v-if="form.errors?.password"
+                                    class="text-danger list-unstyled mb-0"
+                                >
+                                    <li class="parsley-required">
+                                        {{ form.errors?.password }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group mt-3">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-camera"></i>
+                                    </span>
+                                    <input
+                                        type="file"
+                                        name="foto"
+                                        class="form-control h-45p"
+                                        autocomplete="false"
+                                        placeholder="Correo electrónico"
+                                        ref="foto"
+                                        @change="cargarFoto($event)"
+                                    />
+                                    <span class="input-group-text">
+                                        320x320
+                                    </span>
+                                </div>
+                                <ul
+                                    v-if="form.errors?.foto"
+                                    class="text-danger list-unstyled mb-0"
+                                >
+                                    <li class="parsley-required">
+                                        {{ form.errors?.foto }}
                                     </li>
                                 </ul>
                             </div>
@@ -175,17 +263,22 @@ onMounted(() => {});
                                 >
                                 <button
                                     class="btn btn-success"
-                                    @click="submit"
-                                    :disabled="enviando"
+                                    :disabled="enviando || errorPass"
                                 >
-                                    Registrar
+                                    <span
+                                        v-text="
+                                            enviando
+                                                ? 'Registrando...'
+                                                : 'Registrar'
+                                        "
+                                    ></span>
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-body" v-else>
-                    <div class="row" v-if="postulante.epass == 1">
+                    <div class="row">
                         <div class="col-12">
                             <p class="mb-0 w-100 text-center">
                                 <strong>Potulante: </strong
@@ -202,31 +295,6 @@ onMounted(() => {});
                             >
                                 Inicie sesión aquí
                             </button>
-                        </div>
-                    </div>
-                    <div class="row" v-else>
-                        <div class="col-12">
-                            <p class="mb-0 w-100 text-center">
-                                <strong>Potulante: </strong
-                                >{{ postulante.full_name }}
-                            </p>
-                        </div>
-                        <div class="col-12 text-center">
-                            <h4 class="w-100 text-center">
-                                Debes registrar tu nueva contraseña y cargar tu
-                                fotografía.
-                            </h4>
-                            <Link
-                                class="btn btn-principal"
-                                :href="
-                                    route(
-                                        'formularioRegistro.registro',
-                                        postulante.id
-                                    )
-                                "
-                            >
-                                Haz click aquí
-                            </Link>
                         </div>
                     </div>
                 </div>

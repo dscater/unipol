@@ -33,7 +33,13 @@ class Postulante extends Model
         "status",
     ];
 
-    protected $appends = ["url_foto", "foto_b64", "full_name", "full_ci", "fecha_registro_t"];
+    protected $appends = ["url_foto", "foto_b64", "full_name", "full_ci", "fecha_registro_t", "fecha_nac_t"];
+
+
+    public function getFechaNacTAttribute()
+    {
+        return date("d/m/Y", strtotime($this->fecha_nac));
+    }
 
     public function getFechaRegistroTAttribute()
     {
@@ -47,7 +53,7 @@ class Postulante extends Model
 
     public function getFullCiAttribute()
     {
-        return $this->ci . ' ' . $this->ci_exp;
+        return $this->ci . ' ' . $this->ci_exp . ($this->complemento ? ' ' . $this->complemento : '');
     }
 
     public function getUrlFotoAttribute()
@@ -73,5 +79,10 @@ class Postulante extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function requisito()
+    {
+        return $this->hasOne(Requisito::class, 'postulante_id');
     }
 }

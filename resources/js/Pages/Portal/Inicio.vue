@@ -17,7 +17,6 @@ const { props: props_page } = usePage();
 const user = ref(props_page.auth?.user);
 const url_asset = ref(props_page.url_assets);
 
-const accion_formulario = ref(0);
 const muestra_formulario = ref(false);
 
 const listItems = ref([
@@ -73,7 +72,7 @@ onMounted(() => {});
 
             <button
                 class="btn btn-principal btn-iniciar-sesion"
-                @click="muestra_formulario = true"
+                @click.prevent="muestra_formulario = true"
                 v-if="!user"
             >
                 INICIAR SESIÓN

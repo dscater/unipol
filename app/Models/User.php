@@ -35,6 +35,7 @@ class User extends Authenticatable
         "foto",
         "fecha_registro",
         "status",
+        "codigo",
     ];
 
     protected $appends = ["permisos", "url_foto", "foto_b64", "full_name", "full_ci", "fecha_registro_t", "usuario_abrev"];
@@ -114,6 +115,15 @@ class User extends Authenticatable
     }
 
     // RELACIONES
+    public function postulante()
+    {
+        return $this->hasOne(Postulante::class, 'user_id');
+    }
+
+    public function requisito()
+    {
+        return $this->hasOne(Requisito::class, 'user_id');
+    }
 
     // FUNCIONES
     public static function getNombreUsuario($nom, $apep)

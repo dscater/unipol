@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Publicacion;
+use App\Models\User;
+use App\Services\EnviarCorreoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,7 +38,21 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if ($request->ajax()) {
-            return response()->JSON(["user" => Auth::user()]);
+            $user = User::findOrFail(Auth::user()->id);
+            $tipo = $user->tipo;
+            if ($tipo == 'POSTULANTE') {
+                Auth::logout();
+                // GENERAR CÓDIGO DE VERIFICACIÓN DE 4 DIGITOS
+                $codigo = random_int(1000, 9999);
+                $user->codigo = $codigo;
+                $user->save();
+                $enviarCorreoService = new EnviarCorreoService();
+                $enviarCorreoService->mailCodigoVerificacion($user, $codigo);
+
+                return response()->JSON(["user" => $user, "codigo" => true]);
+            }
+
+            return response()->JSON(["user" => Auth::user(), "codigo" => false]);
         }
 
         return redirect()->intended(route('inicio'));
@@ -48,18 +64,14 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse|JsonResponse
     {
         Auth::guard('web')->logout();
-        Log::debug("ASDASD");
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
         if ($request->ajax()) {
-            Log::debug("BBB");
             return response()->JSON(true);
         }
-
-        Log::debug("ASDASD");
         return redirect('/');
     }
 }

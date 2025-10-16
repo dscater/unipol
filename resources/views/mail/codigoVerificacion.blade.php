@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Preinscripción</title>
+    <title>CódigoVerificación</title>
     <style>
         html,
         body {
@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <h1>Preinscripción</h1>
+    <h1>Código de Verificación</h1>
     <p>{!! $datos['mensaje'] !!}</p>
 </body>
 

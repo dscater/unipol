@@ -10,9 +10,11 @@
     --bg3t: rgba(75, 82, 35, 0.9);
     --bgDarkPrincipal: rgb(18, 20, 9);
     --bgDark: rgb(22, 21, 21);
+    --bgGray: rgb(126, 126, 126);
     --bgDarkGray: rgb(31, 31, 31);
     --bgSuccess: #009143;
     --bgSuccesst: rgb(3, 121, 58);
+    --bgDanger: #e63a3a;
 }
 
 /* GENERAL */
@@ -89,7 +91,7 @@ table .bg-dark-principal,
     align-items: center;
     background-color: var(--bg3t);
     transition: 0.3s;
-    opacity: 0.3;
+    opacity: 0;
     color: white;
     height: 100vh;
     width: 100vw;
