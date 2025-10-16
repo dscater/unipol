@@ -55,13 +55,15 @@ onMounted(() => {});
                 <Link :href="route('anapol')">
                     <img :src="url_asset + '/imgs/EANAPOL.png'" alt="" />
                     <br />ANAPOL</Link
-                ><a href="">
+                >
+                <Link :href="route('fatescipol')">
                     <img :src="url_asset + '/imgs/EFATESCIPOL.png'" alt="" />
-                    <br />FATESCIPOL </a
-                ><a href="">
+                    <br />FATESCIPOL
+                </Link>
+                <Link :href="route('esbapolmus')">
                     <img :src="url_asset + '/imgs/EESBAPOLMUS.png'" alt="" />
                     <br />
-                    ESBAPOLMUS</a
+                    ESBAPOLMUS</Link
                 >
             </div>
             <img

@@ -175,6 +175,7 @@ onMounted(() => {});
                                 v-model="form.usuario"
                                 autofocus
                                 ref="inputUsuario"
+                                @keypress.enter="enviarFormulario"
                             />
                             <label
                                 for="usuario"
@@ -205,6 +206,7 @@ onMounted(() => {});
                                 v-model="form.password"
                                 autocomplete="false"
                                 placeholder="Contraseña"
+                                @keypress.enter="enviarFormulario"
                             />
 
                             <label

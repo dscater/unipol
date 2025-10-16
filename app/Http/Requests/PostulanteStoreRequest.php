@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PostulanteFechaNacRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,7 +26,7 @@ class PostulanteStoreRequest extends FormRequest
         return [
             "nombre" => "required",
             "paterno" => "required",
-            "materno" => "required",
+            "materno" => "nullable",
             "ci" =>
             [
                 "required",
@@ -45,9 +46,10 @@ class PostulanteStoreRequest extends FormRequest
             "complemento" => "nullable",
             "genero" => "required",
             "unidad" => "required",
-            "fecha_nac" => "required|date",
+            "fecha_nac" => ["required", "date"],
             "cel" => "required",
             "correo" => "required|email",
+            // "correo" => "required|email|unique:postulantes,correo", //DESCOMENTAR
             "nro_cuenta" => "required",
             "lugar_preins" => "required",
             "observacion" => "nullable|string",

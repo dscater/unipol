@@ -4,7 +4,7 @@ defineOptions({
     layout: App,
 });
 import ContentPostulante from "@/Components/ContentPostulante.vue";
-import { usePage, Head, Link, useForm } from "@inertiajs/vue3";
+import { usePage, Head, Link, useForm, router } from "@inertiajs/vue3";
 import { onMounted, onBeforeMount, ref, computed } from "vue";
 import Highcharts from "highcharts";
 import exporting from "highcharts/modules/exporting";
@@ -133,6 +133,11 @@ const guardar = () => {
             });
         }
     });
+};
+
+const cancelar = () => {
+    form.reset();
+    router.get(route("inicio"));
 };
 
 const appStore = useAppStore();
@@ -899,25 +904,11 @@ onMounted(() => {
                                 <li>{{ form.errors?.file13 }}</li>
                             </ul>
                         </label>
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="edad"
-                                    >Postulante con 17 años de edad, debe marcar
-                                    casilla
-                                    <input
-                                        type="checkbox"
-                                        v-model="form.edad"
-                                        id="edad"
-                                        :true-value="1"
-                                        :false-value="0"
-                                        style="height: 15px; width: 15px"
-                                /></label>
-                            </div>
-                        </div>
                         <label
                             for="file14"
                             class="contenedorFile"
                             :class="form.file14 ? 'cargado' : 'sinCargar'"
+                            v-if="auth.user.postulante.edad_lim < 18"
                         >
                             <div class="principal">
                                 <div class="icon icon-pdf">
@@ -974,12 +965,13 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-12 text-right">
-                <button class="btn btn-danger mr-2">
+                <button class="btn btn-danger mr-2" @click="cancelar">
                     <i class="fa fa-times"></i> CANCELAR
                 </button>
                 <button
+                    v-if="user?.postulante.edad_lim >= 17"
                     class="btn btn-success"
                     @click.prevent="guardar"
                     :disabled="enviando"

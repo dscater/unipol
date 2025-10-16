@@ -46,7 +46,9 @@ class RequisitoService
         $this->cargarArchivo($requisito, $datos["file11"], 11);
         $this->cargarArchivo($requisito, $datos["file12"], 12);
         $this->cargarArchivo($requisito, $datos["file13"], 13);
-        $this->cargarArchivo($requisito, $datos["file14"], 14);
+        if ($user->postulante->edad_lim < 18) {
+            $this->cargarArchivo($requisito, $datos["file14"], 14);
+        }
 
         // ACTUALIZAR POSTULANTE
         $postulante = $user->postulante;
@@ -112,8 +114,10 @@ class RequisitoService
         if ($datos["file13"]) {
             $this->cargarArchivo($requisito, $datos["file13"], 13);
         }
-        if ($datos["file14"]) {
-            $this->cargarArchivo($requisito, $datos["file14"], 14);
+        if ($datos["file14"])
+            if ($user->postulante->edad_lim < 18) {
+                $this->cargarArchivo($requisito, $datos["file14"], 14);
+            } {
         }
 
         // registrar accion

@@ -38,7 +38,6 @@ class RequisitoStoreRequest extends FormRequest
             "file11" => "required|file|mimes:pdf",
             "file12" => "required|file|mimes:pdf",
             "file13" => "required|file|mimes:pdf",
-            "file14" => "required|file|mimes:pdf",
         ];
 
         // Solo si es femenino, requerir file5
@@ -46,6 +45,11 @@ class RequisitoStoreRequest extends FormRequest
             $rules['file5'] = 'required|file|mimes:pdf';
         } else {
             $rules['file5'] = 'nullable|file|mimes:pdf';
+        }
+        if (auth()->user() && auth()->user()->postulante->edad_lim < 18) {
+            $rules['file14'] = 'required|file|mimes:pdf';
+        } else {
+            $rules['file14'] = 'nullable|file|mimes:pdf';
         }
 
         return $rules;

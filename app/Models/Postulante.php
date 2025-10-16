@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,8 +38,29 @@ class Postulante extends Model
         "status",
     ];
 
-    protected $appends = ["url_foto", "foto_b64", "full_name", "full_ci", "fecha_registro_t", "fecha_nac_t"];
+    protected $appends = ["url_foto", "foto_b64", "full_name", "full_ci", "fecha_registro_t", "fecha_nac_t", "edad_lim", "edad"];
 
+
+    public function getEdadLimAttribute()
+    {
+        $fechaNacimiento = Carbon::parse($this->fecha_nac);
+        $fechaLimite = Carbon::create(2025, 12, 31); //FECHA LIMITE
+
+        $edad = $fechaNacimiento->diffInYears($fechaLimite);
+        return $edad;
+    }
+
+    public function getEdadAttribute()
+    {
+        $nacimiento = Carbon::parse($this->fecha_nac);
+        $fechaComparacion = Carbon::now();
+        $diff = $nacimiento->diff($fechaComparacion);
+        return [
+            'anios' => $diff->y,
+            'meses' => $diff->m,
+            'dias' => $diff->d,
+        ];
+    }
 
     public function getFechaNacTAttribute()
     {

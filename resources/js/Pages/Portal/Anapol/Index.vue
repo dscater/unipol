@@ -70,7 +70,9 @@ onMounted(() => {});
                 alt=""
                 class="img-seccion"
             />
-            <span class="text-seccion">ACADEMIA NACIONAL DE POLICÍAS</span>
+            <span class="text-seccion text-center"
+                >ACADEMIA NACIONAL DE POLICÍAS</span
+            >
 
             <Link
                 :href="route('portal.index')"

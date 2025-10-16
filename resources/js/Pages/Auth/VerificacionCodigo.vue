@@ -56,7 +56,6 @@ const enviarFormulario = () => {
             form
         )
         .then((response) => {
-            console.log(response.data.errors);
             Swal.fire({
                 icon: "success",
                 title: "Correcto",
@@ -71,7 +70,7 @@ const enviarFormulario = () => {
             });
         })
         .catch((error) => {
-            if (error.response?.status === 422) {
+            if (error.response?.status === 422 && error.response.data.errors) {
                 errors.value = error.response.data.errors || {};
             } else {
                 Swal.fire({
@@ -161,6 +160,14 @@ onMounted(() => {});
                                 >Código de verificación</label
                             >
                         </div>
+                        <ul
+                            v-if="errors?.error"
+                            class="text-danger list-unstyled mb-0"
+                        >
+                            <li class="parsley-required">
+                                {{ errors?.error[0] }}
+                            </li>
+                        </ul>
                         <ul
                             v-if="errors?.codigo"
                             class="text-danger list-unstyled mb-0"

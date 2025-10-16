@@ -55,7 +55,7 @@ onMounted(() => {});
             <div class="col-12">
                 <div class="row contenedor_secciones">
                     <!-- AUTORIDADES -->
-                    <div class="col-12">
+                    <div class="col-12 py-5 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="container">
                             <h2 class="titulo-seccion">NUESTRAS AUTORIDADES</h2>
                             <div class="col-12">
@@ -95,7 +95,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- VALORES Y PRINCIPIOS DEL CADETE -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 VALORES Y PRINCIPIOS DEL CADETE
@@ -133,7 +133,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- RESEÑA HISTORICA -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">RESEÑA HISTORICA</h2>
                             <div class="row">
@@ -197,7 +197,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- HIMNOS -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">HIMNOS</h2>
                             <div class="row">
@@ -232,7 +232,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- MISIÓN Y VISIÓN -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">MISIÓN Y VISIÓN</h2>
                             <div class="row">
@@ -292,7 +292,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- PERFIL DE INGRESO -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">PERFIL DE INGRESO</h2>
                             <div class="row">
@@ -327,7 +327,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- FORMACIÓN PROFESIONAL -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 FORMACIÓN PROFESIONAL
@@ -364,7 +364,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- JERARQUIA INTERNA Y DISTINCIONES -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 JERARQUIA INTERNA Y DISTINCIONES
@@ -401,7 +401,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- BECAS AL EXTERIOR -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">BECAS AL EXTERIOR</h2>
                             <div class="row">
@@ -436,7 +436,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- INFRAESTRUCTURA -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">INFRAESTRUCTURA</h2>
                             <div class="row">
@@ -471,7 +471,7 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- TÍTULO PROFESIONAL -->
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">TÍTULO PROFESIONAL</h2>
                             <div class="row">

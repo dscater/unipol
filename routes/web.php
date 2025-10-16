@@ -4,6 +4,8 @@ use App\Http\Controllers\AnapolController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ContenidoController;
+use App\Http\Controllers\EsbapolmusController;
+use App\Http\Controllers\FatescipolController;
 use App\Http\Controllers\FormularioRegistroController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\InscripcionController;
@@ -51,6 +53,26 @@ Route::get("anapol/fase_seleccion", [AnapolController::class, 'fase_seleccion'])
 Route::get("anapol/fase_incorporacion", [AnapolController::class, 'fase_incorporacion'])->name("anapol.fase_incorporacion");
 Route::get("anapol/comunicados", [AnapolController::class, 'comunicados'])->name("anapol.comunicados");
 Route::get("anapol/contactos", [AnapolController::class, 'contactos'])->name("anapol.contactos");
+
+// ** FATESCIPOL
+Route::get("fatescipol", [FatescipolController::class, 'index'])->name("fatescipol");
+Route::get("fatescipol/nuestra_academia", [FatescipolController::class, 'nuestra_academia'])->name("fatescipol.nuestra_academia");
+Route::get("fatescipol/requisitos", [FatescipolController::class, 'requisitos'])->name("fatescipol.requisitos");
+Route::get("fatescipol/fase_convocatoria", [FatescipolController::class, 'fase_convocatoria'])->name("fatescipol.fase_convocatoria");
+Route::get("fatescipol/fase_seleccion", [FatescipolController::class, 'fase_seleccion'])->name("fatescipol.fase_seleccion");
+Route::get("fatescipol/fase_incorporacion", [FatescipolController::class, 'fase_incorporacion'])->name("fatescipol.fase_incorporacion");
+Route::get("fatescipol/comunicados", [FatescipolController::class, 'comunicados'])->name("fatescipol.comunicados");
+Route::get("fatescipol/contactos", [FatescipolController::class, 'contactos'])->name("fatescipol.contactos");
+
+// ** ESBAPOLMUS
+Route::get("esbapolmus", [EsbapolmusController::class, 'index'])->name("esbapolmus");
+Route::get("esbapolmus/nuestra_academia", [EsbapolmusController::class, 'nuestra_academia'])->name("esbapolmus.nuestra_academia");
+Route::get("esbapolmus/requisitos", [EsbapolmusController::class, 'requisitos'])->name("esbapolmus.requisitos");
+Route::get("esbapolmus/fase_convocatoria", [EsbapolmusController::class, 'fase_convocatoria'])->name("esbapolmus.fase_convocatoria");
+Route::get("esbapolmus/fase_seleccion", [EsbapolmusController::class, 'fase_seleccion'])->name("esbapolmus.fase_seleccion");
+Route::get("esbapolmus/fase_incorporacion", [EsbapolmusController::class, 'fase_incorporacion'])->name("esbapolmus.fase_incorporacion");
+Route::get("esbapolmus/comunicados", [EsbapolmusController::class, 'comunicados'])->name("esbapolmus.comunicados");
+Route::get("esbapolmus/contactos", [EsbapolmusController::class, 'contactos'])->name("esbapolmus.contactos");
 
 // ADMINISTRACION
 Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function () {

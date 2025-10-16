@@ -207,6 +207,28 @@ body .btn.btn-success:hover {
     transition: all 0.3s ease-out;
 }
 
+/* MI SUB MENU */
+.mi-submenu > .submenu {
+    padding: 0px 0px;
+    font-weight: bold;
+}
+
+.mi-submenu > .level1,
+.mi-submenu > .level2 {
+    max-width: 90%;
+    background-color: blue;
+    height: 0px;
+}
+
+.mi-submenu > .level1 a,
+.mi-submenu > .level2 a {
+    word-break: break-all;
+}
+
+.mi-submenu > .submenu .level2 {
+    height: 0px;
+}
+
 /* MI TABLE */
 
 .mi-table {

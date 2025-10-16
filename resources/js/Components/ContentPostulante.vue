@@ -8,12 +8,28 @@ const toggleUsuario = ref(false);
 const showUsuario = ref(false);
 
 const salir = () => {
-    axios
-        .post(route("logout"))
-        .then((response) => {})
-        .finally(() => {
-            window.location.href = route("portal.index");
-        });
+    Swal.fire({
+        type: "question",
+        title: "Cerrar sesión",
+        html: `¿Esta seguro(a) de cerrar sesión?`,
+        showCancelButton: true,
+        confirmButtonText: "Si, salir",
+        cancelButtonText: "Cancelar",
+        denyButtonText: `Cancelar`,
+        customClass: {
+            confirmButton: "btn-success",
+        },
+    }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            axios
+                .post(route("logout"))
+                .then((response) => {})
+                .finally(() => {
+                    window.location.href = route("portal.index");
+                });
+        }
+    });
 };
 </script>
 <template>
@@ -64,6 +80,12 @@ const salir = () => {
                                 class="fotoPostulante"
                             />
                         </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-4 text-right">
+                            <b class="text-principal">Código:</b>
+                        </div>
+                        <div class="col-8">{{ user.postulante.codigoPre }}</div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-4 text-right">
