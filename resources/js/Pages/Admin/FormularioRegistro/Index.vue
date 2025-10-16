@@ -109,7 +109,7 @@ onMounted(() => {});
                             </div>
                             <div class="col-12">
                                 <div class="input-group form-floating mt-3">
-                                    <span class="input-group-text">
+                                    <span class="input-group-text bg-principal">
                                         <i class="fa fa-id-card"></i>
                                     </span>
                                     <input
@@ -138,7 +138,7 @@ onMounted(() => {});
                             </div>
                             <div class="col-12">
                                 <div class="input-group form-floating mt-3">
-                                    <span class="input-group-text">
+                                    <span class="input-group-text bg-principal">
                                         <i class="fa fa-key"></i>
                                     </span>
                                     <input

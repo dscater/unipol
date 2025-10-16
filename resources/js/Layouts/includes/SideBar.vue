@@ -104,15 +104,79 @@ onUnmounted(() => {});
                     <li class="nav-header font-weight-bold bg-principal">
                         ADMINISTRACIÓN
                     </li>
-                    <ItemMenu
-                        v-if="
-                            permisos &&
-                            permisos.includes('postulantes.preinscripcion')
-                        "
-                        :label="'Preinscripción'"
-                        :ruta="'postulantes.preinscripcion'"
-                        :icon="'fa fa-edit'"
-                    ></ItemMenu>
+                    <li class="nav-item">
+                        <a
+                            href="#"
+                            class="nav-link sub-menu"
+                            :class="[
+                                route_current == 'evaluacions.index' ||
+                                route_current == 'evaluacions.preinscripcion'
+                                    ? 'active menu-is-opening menu-open'
+                                    : '',
+                            ]"
+                            @click.stop="toggleSubMenu($event)"
+                        >
+                            <i class="nav-icon fas fa-clipboard-check"></i>
+                            <p>
+                                Evaluaciones
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <ItemMenu
+                                :label="'Evaluación Médica'"
+                                :ruta="'postulantes.preinscripcion'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Evaluación Psicológica'"
+                                :ruta="'postulantes.preinscripcion'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Evaluación del Área de Conocimientos'"
+                                :ruta="'postulantes.preinscripcion'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="#"
+                            class="nav-link sub-menu"
+                            :class="[
+                                route_current == 'postulantes.index' ||
+                                route_current == 'postulantes.preinscripcion' ||
+                                route_current == 'requisitos.buscar'
+                                    ? 'active menu-is-opening menu-open'
+                                    : '',
+                            ]"
+                            @click.stop="toggleSubMenu($event)"
+                        >
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                                Postulantes
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <ItemMenu
+                                :label="'Preinscripción'"
+                                :ruta="'postulantes.preinscripcion'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Lista de Postulantes'"
+                                :ruta="'postulantes.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Verificación de requisitos'"
+                                :ruta="'requisitos.buscar'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                        </ul>
+                    </li>
                     <ItemMenu
                         v-if="permisos && permisos.includes('usuarios.index')"
                         :label="'Usuarios'"

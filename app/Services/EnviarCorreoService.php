@@ -51,7 +51,7 @@ class EnviarCorreoService
     {
 
         $mensaje = "Hola " . $postulante->full_name . '<br/>';
-        $mensaje .= 'Tú código de preinscripción es <h4>' . $postulante->codigo . '</h4><br/>
+        $mensaje .= 'Tú código de preinscripción es <h4>' . $postulante->codigoPre . '</h4><br/>
         Para finalizar tu registro debes ingresar tú Número de Carnet y el código en el siguiente <a href="' . route('formularioRegistro.index', $postulante->id) . '">Formulario de registro</a>
         </strong>.<br/> Te recomendamos no compartir el código con nadie.';
 

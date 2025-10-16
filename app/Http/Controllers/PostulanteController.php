@@ -52,38 +52,45 @@ class PostulanteController extends Controller
     }
 
     /**
-     * Listado de postulantes para portal
+     * Listado de postulantes
      *
      * @return JsonResponse
      */
-    public function listadoPortal(): JsonResponse
+    public function listadoByCi(Request $request): JsonResponse
     {
+        $ci = trim($request->input("ci"));
         return response()->JSON([
-            "postulantes" => $this->postulanteService->listado()
+            "postulantes" =>  $ci ? $this->postulanteService->listadoByCi($ci, ["requisito"]) : []
         ]);
     }
 
-    /**
-     * Endpoint para obtener la lista de postulantes paginado para datatable
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function api(Request $request): JsonResponse
+    public function paginado(Request $request)
     {
+        $perPage = $request->perPage;
+        $page = (int)($request->input("page", 1));
+        $search = (string)$request->input("search", "");
+        $orderByCol = $request->orderByCol;
+        $desc = $request->desc;
 
-        $length = (int)$request->input('length', 10); // Valor de `length` enviado por DataTable
-        $start = (int)$request->input('start', 0); // Índice de inicio enviado por DataTable
-        $page = (int)(($start / $length) + 1); // Cálculo de la página actual
-        $search = (string)$request->input('search', '');
+        $columnsSerachLike = [
+            "CONCAT_WS(' ', nombre, paterno, materno)",
+            "CONCAT_WS(' ', ci, ci_exp, complemento)",
+            "unidad"
+        ];
+        $columnsFilter = [];
+        $columnsBetweenFilter = [];
+        $arrayOrderBy = [];
+        if ($orderByCol && $desc) {
+            $arrayOrderBy = [
+                [$orderByCol, $desc]
+            ];
+        }
 
-        $usuarios = $this->postulanteService->listadoDataTable($length, $start, $page, $search);
-
+        $postulantes = $this->postulanteService->listadoPaginado($perPage, $page, $search, $columnsSerachLike, $columnsFilter, $columnsBetweenFilter, $arrayOrderBy);
         return response()->JSON([
-            'data' => $usuarios->items(),
-            'recordsTotal' => $usuarios->total(),
-            'recordsFiltered' => $usuarios->total(),
-            'draw' => intval($request->input('draw')),
+            "data" => $postulantes->items(),
+            "total" => $postulantes->total(),
+            "lastPage" => $postulantes->lastPage()
         ]);
     }
 

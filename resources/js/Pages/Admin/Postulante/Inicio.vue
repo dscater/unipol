@@ -10,6 +10,7 @@ import Highcharts from "highcharts";
 import exporting from "highcharts/modules/exporting";
 import accessibility from "highcharts/modules/accessibility";
 import { useAppStore } from "@/stores/aplicacion/appStore";
+import InfoBoton from "@/Pages/Admin/Postulante/Parcials/InfoBoton.vue";
 import axios from "axios";
 const { auth } = usePage().props;
 const user = ref(auth.user);
@@ -40,6 +41,13 @@ onBeforeMount(() => {
     appStore.startLoading();
 });
 
+const muestra_info = ref(false);
+const nro_info = ref(-1);
+const mostrarContenido = (nro) => {
+    muestra_info.value = true;
+    nro_info.value = nro;
+};
+
 const { props } = usePage();
 
 onMounted(() => {
@@ -53,123 +61,153 @@ onMounted(() => {
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-12 mt-2">
-                        <h5 class="text-principal">
+                        <h5 class="text-principal font-weight-bold">
                             Condiciones generales del Proceso de Admisión:
                         </h5>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Número de Plazas Vacantes</button>
+                        <button @click="mostrarContenido(1)">
+                            Número de Plazas Vacantes
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Esc. de Calificación de Evaluaciones</button>
+                        <button @click="mostrarContenido(2)">
+                            Esc. de Calificación de Evaluaciones
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>
+                        <button @click="mostrarContenido(3)">
                             Condiciones para la Admisión e Incorporación
                         </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>
+                        <button @click="mostrarContenido(4)">
                             Causales de Separación del Proceso de Admisión
                         </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>
+                        <button @click="mostrarContenido(5)">
                             Causales de Separación del Proceso de Admisión
                         </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <h5 class="text-principal">
+                        <h5 class="text-principal font-weight-bold">
                             Fases del Proceso de Admisión:
                         </h5>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Fase de Convocatoria</button>
+                        <button @click="mostrarContenido(6)">
+                            Fase de Convocatoria
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Tabla de Precios</button>
+                        <button @click="mostrarContenido(7)">
+                            Tabla de Precios
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Requisitos de Inscripción</button>
+                        <button @click="mostrarContenido(8)">
+                            Requisitos de Inscripción
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Fase de Selección</button>
+                        <button @click="mostrarContenido(9)">
+                            Fase de Selección
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Etapa de Evaluación Médica</button>
+                        <button @click="mostrarContenido(10)">
+                            Etapa de Evaluación Médica
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Etapa de Evaluación Psicológica</button>
+                        <button @click="mostrarContenido(11)">
+                            Etapa de Evaluación Psicológica
+                        </button>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button @click="mostrarContenido(12)">
+                            Etapa de Evaluación Física
+                        </button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-12 mt-2">
-                        <button>Etapa del Prefacultativo</button>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <button>Evaluación del Área de Conocimientos</button>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <button>Evaluación del Área de Aptitud Física</button>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <button>
-                            Evaluación del Área de Instrucción Policial
+                        <button @click="mostrarContenido(13)">
+                            Etapa del Prefacultativo
                         </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>
-                            Admisión Directa por el Perfil Policial idóneo
+                        <button @click="mostrarContenido(14)">
+                            Fase de Incorporación
                         </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Fase de Incorporación</button>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <button>
-                            Publicación del Cuadro General de Admitidos
+                        <button @click="mostrarContenido(15)">
+                            Cantidad de Postulantes Admitidos
                         </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Cantidad de postulantes Admitidos</button>
-                    </div>
-                    <div class="col-12 mt-2">
-                        <button>
-                            Publicación de Lista de Admitidos e Incorporación
+                        <button @click="mostrarContenido(16)">
+                            Publicación de la lista de admitidos e incorporación
+                            de Postulantes
                         </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Validez de la Aceptación</button>
+                        <button @click="mostrarContenido(17)">
+                            Documentos para la incorporación
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Plazo de Incorporación</button>
+                        <button @click="mostrarContenido(18)">
+                            Validez de la aceptación
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Documentos para la Incorporación</button>
+                        <button @click="mostrarContenido(19)">
+                            Plazo de incorporación
+                        </button>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button>Resultados de las evaluaciones</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-12 mt-2">
-                        <h5 class="text-principal">
+                        <h5 class="text-principal font-weight-bold">
                             Documentos para Descargar
                         </h5>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Reglamento de Admisión</button>
+                        <button @click="mostrarContenido(1)">
+                            Reglamento de Admisión
+                        </button>
                     </div>
                     <div class="col-12 mt-2">
-                        <h5 class="text-principal">Videotutoriales</h5>
+                        <h5 class="text-principal font-weight-bold">
+                            Videotutoriales
+                        </h5>
                     </div>
                     <div class="col-12 mt-2">
-                        <button>Reglamento de Admisión</button>
+                        <button @click="mostrarContenido(1)">
+                            Reglamento de Admisión
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+        <InfoBoton
+            :archivo="nro_info"
+            :muestra_formulario="muestra_info"
+            @cerrar-formulario="
+                muestra_info = false;
+                nro_info = -1;
+            "
+        ></InfoBoton>
     </ContentPostulante>
 </template>
 <style scoped>
@@ -181,6 +219,7 @@ onMounted(() => {
     width: 100%;
     padding: 6px;
     text-align: center;
+    transition: all 0.3s;
 }
 
 .contenedor_botones button:hover {

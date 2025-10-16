@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnapolController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConfiguracionController;
+use App\Http\Controllers\ContenidoController;
 use App\Http\Controllers\FormularioRegistroController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\InscripcionController;
@@ -87,6 +88,7 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
     Route::get("postulantes/api", [PostulanteController::class, 'api'])->name("postulantes.api");
     Route::get("postulantes/paginado", [PostulanteController::class, 'paginado'])->name("postulantes.paginado");
     Route::get("postulantes/listado", [PostulanteController::class, 'listado'])->name("postulantes.listado");
+    Route::get("postulantes/listadoByCi", [PostulanteController::class, 'listadoByCi'])->name("postulantes.listadoByCi");
     Route::resource("postulantes", PostulanteController::class)->only(
         ["index", "store", "edit", "show", "update", "destroy"]
     );
@@ -95,7 +97,12 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
     Route::get("inscripcions", [InscripcionController::class, 'index'])->name("inscripcions.index");
 
     // REQUISITOS
+    Route::get("requisitos/buscar", [RequisitoController::class, 'buscar'])->name("requisitos.buscar");
     Route::post("requisitos/store", [RequisitoController::class, 'store'])->name("requisitos.store");
+    Route::put("requisitos/update/{requisito}", [RequisitoController::class, 'update'])->name("requisitos.update");
+
+    // CONTENIDO
+    Route::get("contenidos/getContenido", [ContenidoController::class, 'getContenido'])->name("contenidos.getContenido");
 
     // REPORTES
     Route::get('reportes/usuarios', [ReporteController::class, 'usuarios'])->name("reportes.usuarios");

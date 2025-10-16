@@ -59,60 +59,79 @@ const cargarArchivo = (e, key) => {
 
 const enviando = ref(false);
 const guardar = () => {
-    enviando.value = true;
-    let url = route("requisitos.store");
+    Swal.fire({
+        type: "question",
+        title: "¿Está seguro(a)?",
+        html: `Se enviarán todos los archivos adjuntos para proceder con su inscripción`,
+        showCancelButton: true,
+        confirmButtonText: "Si, registrar",
+        cancelButtonText: "Cancelar",
+        denyButtonText: `Cancelar`,
+        customClass: {
+            confirmButton: "btn-success",
+        },
+    }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            enviando.value = true;
+            let url = route("requisitos.store");
 
-    form.post(url, {
-        preserveScroll: true,
-        forceFormData: true,
-        onSuccess: (response) => {
-            console.log("correcto");
-            const success =
-                response.props.flash.success ?? "Proceso realizado con éxito";
-            Swal.fire({
-                icon: "success",
-                title: "Correcto",
-                html: `<strong>${success}</strong>`,
-                confirmButtonText: `Aceptar`,
-                customClass: {
-                    confirmButton: "btn-alert-success",
+            form.post(url, {
+                preserveScroll: true,
+                forceFormData: true,
+                onSuccess: (response) => {
+                    console.log("correcto");
+                    console.log(response.props);
+                    const success =
+                        response.props.flash.success ??
+                        "Proceso realizado con éxito";
+                    const codigoInsc = response.props.flash.codigoInsc ?? "S/C";
+                    Swal.fire({
+                        icon: "success",
+                        title: "Registro finalizado!",
+                        html: `Código de Inscripción ${codigoInsc}.<br/>Debe presentarse en un lapso de 3 días a su Evaluación Médico-psicológica`,
+                        confirmButtonText: `Aceptar`,
+                        customClass: {
+                            confirmButton: "btn-alert-success",
+                        },
+                    });
+                    form.reset();
+                },
+                onError: (err, code) => {
+                    console.log(code ?? "");
+                    console.log(form.errors);
+                    if (form.errors) {
+                        const error =
+                            "Existen errores en el formulario, por favor verifique";
+                        Swal.fire({
+                            icon: "info",
+                            title: "Error",
+                            html: `<strong>${error}</strong>`,
+                            confirmButtonText: `Aceptar`,
+                            customClass: {
+                                confirmButton: "btn-error",
+                            },
+                        });
+                    } else {
+                        const error =
+                            "Ocurrió un error inesperado contactese con el Administrador";
+                        Swal.fire({
+                            icon: "info",
+                            title: "Error",
+                            html: `<strong>${error}</strong>`,
+                            confirmButtonText: `Aceptar`,
+                            customClass: {
+                                confirmButton: "btn-error",
+                            },
+                        });
+                    }
+                    console.log("error: " + err.error);
+                },
+                onFinish: () => {
+                    enviando.value = false;
                 },
             });
-            form.reset();
-        },
-        onError: (err, code) => {
-            console.log(code ?? "");
-            console.log(form.errors);
-            if (form.errors) {
-                const error =
-                    "Existen errores en el formulario, por favor verifique";
-                Swal.fire({
-                    icon: "info",
-                    title: "Error",
-                    html: `<strong>${error}</strong>`,
-                    confirmButtonText: `Aceptar`,
-                    customClass: {
-                        confirmButton: "btn-error",
-                    },
-                });
-            } else {
-                const error =
-                    "Ocurrió un error inesperado contactese con el Administrador";
-                Swal.fire({
-                    icon: "info",
-                    title: "Error",
-                    html: `<strong>${error}</strong>`,
-                    confirmButtonText: `Aceptar`,
-                    customClass: {
-                        confirmButton: "btn-error",
-                    },
-                });
-            }
-            console.log("error: " + err.error);
-        },
-        onFinish: () => {
-            enviando.value = false;
-        },
+        }
     });
 };
 
@@ -974,66 +993,4 @@ onMounted(() => {
         </div>
     </ContentPostulante>
 </template>
-<style scoped>
-.contenedorFile {
-    margin-top: 10px;
-    width: 100%;
-    border: solid 2px;
-    border-radius: 7px;
-    cursor: pointer;
-    background-color: white;
-}
-.contenedorFile.cargado {
-    border-color: var(--bgSuccess);
-}
-
-.contenedorFile.cargado i,
-.contenedorFile.cargado .contInfo {
-    color: var(--bgSuccess);
-}
-
-.contenedorFile.sinCargar {
-    border-color: var(--bgDanger);
-}
-
-.contenedorFile.sinCargar i,
-.contenedorFile.sinCargar .contInfo {
-    color: var(--bgDanger);
-}
-
-.contenedorFile .contInfo .descripcion {
-    color: var(--bgGray);
-}
-
-.contenedorFile .principal {
-    display: flex;
-    flex-direction: row;
-}
-
-.contenedorFile .principal .icon {
-    font-size: 1.6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2px 5px;
-}
-
-.contenedorFile .contInfo {
-    cursor: pointer;
-    font-size: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 64px);
-}
-
-.contenedorFile .contInfo .title,
-.contenedorFile .contInfo .descripcion {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.contenedorFile input[type="file"] {
-    display: none;
-}
-</style>
+<style scoped></style>

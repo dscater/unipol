@@ -31,11 +31,15 @@ return new class extends Migration
             $table->string("foto", 255)->nullable();
             $table->unsignedBigInteger("user_id");
             $table->date("fecha_registro");
-            $table->bigInteger("nro_insc");
+            $table->bigInteger("nroPre");
+            $table->string("codigoPre", 255)->unique();
+            $table->bigInteger("nroInsc")->nullable();
+            $table->string("codigoInsc", 255)->nullable();
             $table->string("codigo", 255)->unique();
             $table->integer("ecodigo")->default(0);
             $table->integer("epass")->default(0);
             $table->integer("status")->default(1);
+
             $table->timestamps();
 
             $table->foreign("user_id")->on("users")->references("id");

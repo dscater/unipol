@@ -69,7 +69,7 @@ const salir = () => {
                         <div class="col-4 text-right">
                             <b class="text-principal">Código:</b>
                         </div>
-                        <div class="col-8">{{ user.postulante.codigo }}</div>
+                        <div class="col-8">{{ user.postulante.codigoPre }}</div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">

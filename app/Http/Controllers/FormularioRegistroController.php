@@ -29,7 +29,7 @@ class FormularioRegistroController extends Controller
         $datos = $request->validated();
         $ci = $datos["ci"];
         $codigo = $datos["codigo"];
-        if ($postulante->codigo != trim($codigo)) {
+        if ($postulante->codigoPre != trim($codigo)) {
             // generar un error del campo codigo
             throw ValidationException::withMessages([
                 "codigo" => "El código ingresado no es correcto"

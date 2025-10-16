@@ -6,6 +6,7 @@
     --bg5: #b6b6b6;
     --bg6: #c59a15;
     --bg7: #e4ab00;
+    --bg8: #ebd592;
     --bg2t: #66722dd2;
     --bg3t: rgba(75, 82, 35, 0.9);
     --bgDarkPrincipal: rgb(18, 20, 9);
@@ -15,11 +16,15 @@
     --bgSuccess: #009143;
     --bgSuccesst: rgb(3, 121, 58);
     --bgDanger: #e63a3a;
+    --bgWhite2: #cfcfcf;
 }
 
 /* GENERAL */
+html {
+    font-family: "Montserrat", sans-serif !important;
+}
 body {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
 }
 
 table .bg-principal,
@@ -47,6 +52,10 @@ table .bg-dark-principal,
 
 .text-principal {
     color: var(--bg3);
+}
+
+.text-secundario {
+    color: var(--bg6);
 }
 
 .text-principal:hover {
@@ -168,6 +177,36 @@ body .btn.btn-success:hover {
     width: 100%;
 }
 
+.sidebar-dark-success .nav-sidebar > .nav-item > .nav-link {
+    width: 100%;
+}
+
+/* SUB MENU */
+
+.nav-sidebar .nav-item > .nav-link.sub-menu.menu-is-opening .right {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.nav-treeview > .nav-item > .nav-link {
+    width: 100%;
+    border-radius: 0;
+}
+
+.nav-treeview > .nav-item > .nav-link.active,
+.nav-treeview > .nav-item > .nav-link.active:focus,
+.nav-treeview > .nav-item > .nav-link.active:hover {
+    background-color: var(--bgWhite2) !important;
+    font-weight: bold;
+}
+
+.nav-sidebar .nav-treeview {
+    height: 0;
+    display: block;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+}
+
 /* MI TABLE */
 
 .mi-table {
@@ -254,4 +293,67 @@ body .mi-table table thead tr th .iheader .accion.active {
     .tituloAdmicion {
         width: 620px;
     }
+}
+
+/* ARCHIVOS INSCRIPCIÓN /REQUISITOS */
+.contenedorFile {
+    margin-top: 10px;
+    width: 100%;
+    border: solid 2px;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: white;
+}
+.contenedorFile.cargado {
+    border-color: var(--bgSuccess);
+}
+
+.contenedorFile.cargado i,
+.contenedorFile.cargado .contInfo {
+    color: var(--bgSuccess);
+}
+
+.contenedorFile.sinCargar {
+    border-color: var(--bgDanger);
+}
+
+.contenedorFile.sinCargar i,
+.contenedorFile.sinCargar .contInfo {
+    color: var(--bgDanger);
+}
+
+.contenedorFile .contInfo .descripcion {
+    color: var(--bgGray);
+}
+
+.contenedorFile .principal {
+    display: flex;
+    flex-direction: row;
+}
+
+.contenedorFile .principal .icon {
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px;
+}
+
+.contenedorFile .contInfo {
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 64px);
+}
+
+.contenedorFile .contInfo .title,
+.contenedorFile .contInfo .descripcion {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.contenedorFile input[type="file"] {
+    display: none;
 }

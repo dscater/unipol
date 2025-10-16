@@ -77,14 +77,7 @@ onMounted(() => {});
             >
                 INICIAR SESIÓN
             </button>
-            <Link
-                v-else
-                :href="
-                    user.tipo != 'POSTULANTE'
-                        ? route('inicio')
-                        : route('inicio_postulante')
-                "
-                class="btn btn-principal"
+            <Link v-else :href="route('inicio')" class="btn btn-principal"
                 >VOLVER AL INICIO</Link
             >
         </div>

@@ -139,7 +139,7 @@ onMounted(() => {});
                             </div>
                             <div class="col-12">
                                 <div class="input-group form-floating mt-3">
-                                    <span class="input-group-text">
+                                    <span class="input-group-text bg-principal">
                                         <i class="fa fa-id-card"></i>
                                     </span>
                                     <input
@@ -169,7 +169,7 @@ onMounted(() => {});
                             </div>
                             <div class="col-12">
                                 <div class="input-group form-floating mt-3">
-                                    <span class="input-group-text">
+                                    <span class="input-group-text bg-principal">
                                         <i class="fa fa-key"></i>
                                     </span>
                                     <input
@@ -228,7 +228,7 @@ onMounted(() => {});
                             </div>
                             <div class="col-12">
                                 <div class="input-group mt-3">
-                                    <span class="input-group-text">
+                                    <span class="input-group-text bg-principal">
                                         <i class="fa fa-camera"></i>
                                     </span>
                                     <input
@@ -240,7 +240,7 @@ onMounted(() => {});
                                         ref="foto"
                                         @change="cargarFoto($event)"
                                     />
-                                    <span class="input-group-text">
+                                    <span class="input-group-text bg-principal">
                                         320x320
                                     </span>
                                 </div>

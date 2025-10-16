@@ -1202,7 +1202,7 @@ defineExpose({
                                 <tr>
                                     <td
                                         :colspan="listCols.length"
-                                        class="text-center"
+                                        class="text-center py-2"
                                     >
                                         {{ textSinRegistros }}
                                     </td>

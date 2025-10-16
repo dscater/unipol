@@ -146,6 +146,7 @@ const enviarFormulario = () => {
                     confirmButton: "btn-alert-success",
                 },
             });
+            form.reset();
             limpiarPostulante();
         },
         onError: (err, code) => {

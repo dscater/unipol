@@ -141,7 +141,7 @@ onMounted(() => {});
                 <div class="row">
                     <div>
                         <div class="input-group form-floating">
-                            <span class="input-group-text">
+                            <span class="input-group-text bg-principal">
                                 <i class="fa fa-hashtag"></i>
                             </span>
                             <input

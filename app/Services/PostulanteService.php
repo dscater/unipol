@@ -24,28 +24,67 @@ class PostulanteService
     {
         $postulantes = Postulante::select("postulantes.*")
             ->join("postulante_operarios", "postulante_operarios.postulante_id", "=", "postulantes.id");
-
-        if (Auth::user()->tipo == 'OPERARIOS') {
-            $postulantes->where("postulante_operarios.user_id", Auth::user()->id);
-        }
         $postulantes->distinct("postulantes.id");
         $postulantes->groupBy("postulantes.id");
         $postulantes = $postulantes->get();
         return $postulantes;
     }
 
-    public function listadoDataTable(int $length, int $start, int $page, string $search): LengthAwarePaginator
+    public function listadoByCi($ci, $relaciones = []): Collection
     {
-        $postulantes = Postulante::with(["postulante", "producto", "supervisor", "postulante_materials", "postulante_operarios"])->select("postulantes.*")
-            ->join("postulante_operarios", "postulante_operarios.postulante_id", "=", "postulantes.id");
-        if ($search && trim($search) != '') {
-            $postulantes->where("nombre", "LIKE", "%$search%");
+        $postulantes = Postulante::with($relaciones)->select("postulantes.*");
+        $postulantes->where("ci", $ci);
+        $postulantes = $postulantes->get();
+        return $postulantes;
+    }
+
+
+    /**
+     * Lista de users paginado con filtros
+     *
+     * @param integer $length
+     * @param integer $page
+     * @param string $search
+     * @param array $columnsSerachLike
+     * @param array $columnsFilter
+     * @return LengthAwarePaginator
+     */
+    public function listadoPaginado(int $length, int $page, string $search, array $columnsSerachLike = [], array $columnsFilter = [], array $columnsBetweenFilter = [], array $orderBy = []): LengthAwarePaginator
+    {
+        $postulantes = Postulante::with(["user"])->select("postulantes.*");
+        $postulantes->where("postulantes.status", 1);
+
+        // Filtros exactos
+        foreach ($columnsFilter as $key => $value) {
+            if (!is_null($value)) {
+                $postulantes->where("postulantes.$key", $value);
+            }
         }
-        if (Auth::user()->tipo == 'OPERARIOS') {
-            $postulantes->where("postulante_operarios.user_id", Auth::user()->id);
+
+        // Filtros por rango
+        foreach ($columnsBetweenFilter as $key => $value) {
+            if (isset($value[0], $value[1])) {
+                $postulantes->whereBetween("postulantes.$key", $value);
+            }
         }
-        $postulantes->distinct("postulantes.id");
-        $postulantes->groupBy("postulantes.id");
+
+        // Búsqueda en múltiples columnas con LIKE
+        if (!empty($search) && !empty($columnsSerachLike)) {
+            $postulantes->where(function ($query) use ($search, $columnsSerachLike) {
+                foreach ($columnsSerachLike as $col) {
+                    $query->orWhereRaw("$col LIKE ?", ["%{$search}%"]);
+                }
+            });
+        }
+
+        // Ordenamiento
+        foreach ($orderBy as $value) {
+            if (isset($value[0], $value[1])) {
+                $postulantes->orderBy($value[0], $value[1]);
+            }
+        }
+
+
         $postulantes = $postulantes->paginate($length, ['*'], 'page', $page);
         return $postulantes;
     }
@@ -92,8 +131,8 @@ class PostulanteService
             "nro_cuenta" => $datos["nro_cuenta"],
             "lugar_preins" => mb_strtoupper($datos["lugar_preins"]),
             "observacion" => mb_strtoupper($datos["observacion"]),
-            "nro_insc" => $codigo[0],
-            "codigo" => $codigo[1],
+            "nroPre" => $codigo[0],
+            "codigoPre" => $codigo[1],
             "estado" => "PREINSCRITO",
             "fecha_registro" => date("Y-m-d"),
             "user_id" => $user->id,
@@ -172,29 +211,29 @@ class PostulanteService
     private function getCodigoPreInsc($unidad)
     {
 
-        $postulante = Postulante::where("unidad", $unidad)->orderBy("nro_insc", "asc")->get()->last();
-        $nro_insc = 1;
+        $postulante = Postulante::where("unidad", $unidad)->orderBy("nroPre", "asc")->get()->last();
+        $nroPre = 1;
         $codigo = substr($unidad, 0, 1);
         if ($postulante) {
-            $nro_insc = (int)$postulante->nro_insc;
+            $nroPre = (int)$postulante->nroPre + 1;
         }
 
-        if ($nro_insc < 10) {
-            $codigo = $codigo . '-000000' . $nro_insc;
-        } elseif ($nro_insc < 100) {
-            $codigo = $codigo . '-00000' . $nro_insc;
-        } elseif ($nro_insc < 1000) {
-            $codigo = $codigo . '-0000' . $nro_insc;
-        } elseif ($nro_insc < 10000) {
-            $codigo = $codigo . '-000' . $nro_insc;
-        } elseif ($nro_insc < 100000) {
-            $codigo = $codigo . '-00' . $nro_insc;
-        } elseif ($nro_insc < 1000000) {
-            $codigo = $codigo . '-0' . $nro_insc;
+        if ($nroPre < 10) {
+            $codigo = $codigo . '-000000' . $nroPre;
+        } elseif ($nroPre < 100) {
+            $codigo = $codigo . '-00000' . $nroPre;
+        } elseif ($nroPre < 1000) {
+            $codigo = $codigo . '-0000' . $nroPre;
+        } elseif ($nroPre < 10000) {
+            $codigo = $codigo . '-000' . $nroPre;
+        } elseif ($nroPre < 100000) {
+            $codigo = $codigo . '-00' . $nroPre;
+        } elseif ($nroPre < 1000000) {
+            $codigo = $codigo . '-0' . $nroPre;
         } else {
-            $codigo = $codigo . '-' . $nro_insc;
+            $codigo = $codigo . '-' . $nroPre;
         }
 
-        return [$nro_insc, $codigo];
+        return [$nroPre, $codigo];
     }
 }

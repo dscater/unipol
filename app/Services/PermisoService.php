@@ -23,6 +23,7 @@ class PermisoService
             "postulantes.preinscripcion",
             "postulantes.paginado",
             "postulantes.listado",
+            "postulantes.listadoByCi",
             "postulantes.index",
             "postulantes.create",
             "postulantes.store",
@@ -30,6 +31,9 @@ class PermisoService
             "postulantes.show",
             "postulantes.update",
             "postulantes.destroy",
+
+            "requisitos.buscar",
+            "requisitos.update",
 
             "configuracions.index",
             "configuracions.create",
@@ -44,6 +48,8 @@ class PermisoService
             "inscripcions.index",
 
             "requisitos.store",
+
+            "contenidos.getContenido"
         ],
     ];
 

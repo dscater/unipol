@@ -25,6 +25,14 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    header: {
+        type: Boolean,
+        default: true,
+    },
+    maxHeightBody: {
+        type: String,
+        default: "auto",
+    },
 });
 const emits = defineEmits(["close"]);
 const show = ref(props.open_modal);
@@ -108,10 +116,14 @@ onBeforeUnmount(() => {
     >
         <div class="modal-dialog" :class="[size]">
             <div class="modal-content" :class="{ shake: isShaking }">
-                <div class="modal-header" :class="[headerClass]">
+                <div v-if="header" class="modal-header" :class="[headerClass]">
                     <slot name="header"></slot>
                 </div>
-                <div class="modal-body" :class="[bodyClass]">
+                <div
+                    class="modal-body"
+                    :class="[bodyClass]"
+                    :style="{ maxHeight: maxHeightBody }"
+                >
                     <slot name="body"></slot>
                 </div>
                 <div class="modal-footer" :class="[footerClass]">
@@ -142,5 +154,9 @@ onBeforeUnmount(() => {
 
 .shake {
     animation: shake 0.5s ease-in-out;
+}
+
+.modal-body {
+    overflow: auto;
 }
 </style>

@@ -28,8 +28,12 @@ class Postulante extends Model
         "foto",
         "user_id",
         "fecha_registro",
-        "nro_insc",
-        "codigo",
+        "nroPre",
+        "codigoPre",
+        "nroInsc",
+        "codigoInsc",
+        "ecodigo",
+        "epass",
         "status",
     ];
 
