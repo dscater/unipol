@@ -133,7 +133,6 @@ class EvaluacionMedicaController extends Controller
         // OBTENER POSTULANTES
         $postulantes = Postulante::where("status", 1);
         $postulantes->where("estado", "INSCRITO");
-        $postulantes->where("status", 1);
         $postulantes = $postulantes->get();
         foreach ($postulantes as $key => $postulante) {
             $sheet->setCellValue('A' . $fila, $key + 1);
@@ -207,13 +206,13 @@ class EvaluacionMedicaController extends Controller
 
                 if (!$postulante->evaluacion_medica) {
                     $postulante->evaluacion_medica()->create([
-                        "valoracion" => trim($colJ),
+                        "valoracion" => mb_strtoupper(trim($colJ)),
                         "nro_baucher" => trim($colK),
                         "nro_folder" => trim($colL),
                     ]);
                 } else {
                     $postulante->evaluacion_medica->update([
-                        "valoracion" => trim($colJ),
+                        "valoracion" => mb_strtoupper(trim($colJ)),
                         "nro_baucher" => trim($colK),
                         "nro_folder" => trim($colL),
                     ]);

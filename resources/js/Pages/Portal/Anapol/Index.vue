@@ -10,7 +10,8 @@ import { Link, usePage, router } from "@inertiajs/vue3";
 import { useAxios } from "@/composables/axios/useAxios";
 import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import { useAppStore } from "@/stores/aplicacion/appStore";
-import NavBar from "@/Pages/Portal/Anapol/Parcial/Navbar.vue";
+import NavBar from "./Parcial/Navbar.vue";
+import Footer from "./Parcial/Footer.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -83,100 +84,7 @@ onMounted(() => {});
         </div>
         <div class="bg-carusel"></div>
     </el-carousel>
+    <Footer></Footer>
 </template>
 
-<style scoped>
-.img-seccion {
-    width: 200px;
-    filter: drop-shadow(5px 5px 10px rgba(255, 255, 255, 0.5));
-}
-
-.text-seccion {
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.carusel {
-    width: 100%;
-    height: 100%;
-}
-
-.btn-volver-principal {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-.carusel img {
-    object-fit: cover;
-}
-
-.carusel video {
-    height: 100%;
-}
-.bg-carusel {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.contenido {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-}
-
-.contenido .imgs {
-    display: flex;
-    gap: 20px;
-}
-
-.btn-iniciar-sesion {
-    margin-top: 20px;
-}
-
-.contenido .imgs a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    font-weight: 700;
-}
-
-.contenido .imgs img {
-    width: 90px;
-}
-
-.tituloAdmicion {
-    width: 400px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-@media (min-width: 900px) {
-    .text-seccion {
-        color: white;
-        font-weight: bold;
-        font-size: 2rem;
-    }
-
-    .carusel video {
-        height: 100%;
-        width: 177.77777778vh; /* 100 * 16 / 9 */
-        min-width: 100%;
-        min-height: 56.25vw; /* 100 * 9 / 16 */
-    }
-}
-</style>
+<style scoped></style>

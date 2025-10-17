@@ -12,6 +12,7 @@ import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "./Parcial/Navbar.vue";
+import Footer from "./Parcial/Footer.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -35,7 +36,7 @@ const listItems = ref([
 onMounted(() => {});
 </script>
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid pagina">
         <div class="row bg-principal p-2 pt-4 pb-4">
             <div class="col-12 text-center">
                 <img
@@ -54,7 +55,7 @@ onMounted(() => {});
             <div class="col-12">
                 <div class="row contenedor_secciones">
                     <!-- FASES -->
-                    <div class="col-12">
+                    <div class="col-12 py-4">
                         <div class="container">
                             <h2 class="titulo-seccion">FASE DE CONVOCATORIA</h2>
                             <p>
@@ -63,7 +64,7 @@ La Convocatoria para el Proceso de Admisión de las y los postulantes a la Facul
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-4">
                         <div class="container">
                             <h4 class="titulo-seccion">TABLA DE PRECIOS</h4>
                             <table class="table table-bordered">
@@ -114,13 +115,13 @@ La Convocatoria para el Proceso de Admisión de las y los postulantes a la Facul
                             <p class="italic"><b>*NOTA: </b> La Dirección Nacional de Salud y Bienestar Social, según normativa vigente, fijará la tabla de precios de las evaluaciones Médicas, Odontológicas, Psicológicas y afines, en el ámbito de sus competencias, en coordinación con la Comisión Nacional del Proceso de Admisión.</p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-4">
                         <div class="container">
                             <h2 class="titulo-seccion">IRREVERSIBILIDAD DE LOS DEPÓSITOS BANCARIOS</h2>
                             <p>Una vez realizados los depósitos bancarios establecidos para el Proceso de Admisión por las y los postulantes a favor de la Universidad Policial, en cualquiera de las fases y/o etapas de este proceso según modalidad, no serán devueltos por ningún motivo.</p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-4">
                         <div class="container">
                             <h2 class="titulo-seccion">ACCESO AL PROSPECTO</h2>
                             <p>Las y los postulantes a la Facultad de Ciencias Policiales “Academia Nacional de Policías”, para acceder al “Prospecto de Admisión”, realizarán el depósito bancario en la entidad financiera autorizada, con el precio establecido conforme a la Tabla de Precios para el efecto.</p>
@@ -141,7 +142,7 @@ La Convocatoria para el Proceso de Admisión de las y los postulantes a la Facul
  <p class="italic"><b>*NOTA IMPORTANTE: </b> La o el postulante será responsable de la veracidad de la información ingresada o presentada, al momento de la preinscripción. Esta información será considerada como Declaración Jurada y estará sujeta a verificación por la Universidad Policial y la Policía Boliviana, para que, en caso de advertirse información falsa, se asuman las acciones legales que correspondan.</p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <div class="h2 titulo-seccion">REQUISITOS DE INSCRIPCIÓN</div>
                             <div class="row">
@@ -156,6 +157,7 @@ La Convocatoria para el Proceso de Admisión de las y los postulantes a la Facul
             </div>
         </div>
     </div>
+    <Footer></Footer>
 </template>
 
 <style scoped>

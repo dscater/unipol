@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 17-10-2025 a las 03:49:57
+-- Tiempo de generación: 17-10-2025 a las 18:40:27
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.2.22
 
@@ -42,7 +42,7 @@ CREATE TABLE `configuracions` (
 --
 
 INSERT INTO `configuracions` (`id`, `nombre_sistema`, `alias`, `logo`, `envio_email`, `created_at`, `updated_at`) VALUES
-(1, 'UNIPOL S.A.', 'UNIPOL', 'logo.png', '{\"host\": \"smtp.gmail.com\", \"correo\": \"kingcerocias@gmail.com\", \"driver\": \"smtp\", \"nombre\": \"unipol\", \"puerto\": \"587\", \"password\": \"bubtfibqsypckzzz\", \"encriptado\": \"tls\"}', '2025-10-14 23:02:13', '2025-10-15 00:53:30');
+(1, 'UNIPOL S.A.', 'UNIPOL', 'logo.png', '{\"host\": \"smtp.gmail.com\", \"correo\": \"kingcerocias@gmail.com\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"bubtfibqsypckzzz\", \"encriptado\": \"ssl\"}', '2025-10-14 23:02:13', '2025-10-17 14:03:02');
 
 -- --------------------------------------------------------
 
@@ -81,6 +81,13 @@ CREATE TABLE `evaluacion_conocimientos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `evaluacion_conocimientos`
+--
+
+INSERT INTO `evaluacion_conocimientos` (`id`, `postulante_id`, `nota`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 5, 70, 'APROBADO', '2025-10-17 12:43:12', '2025-10-17 12:43:12');
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +103,13 @@ CREATE TABLE `evaluacion_fisicas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `evaluacion_fisicas`
+--
+
+INSERT INTO `evaluacion_fisicas` (`id`, `postulante_id`, `nota`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 5, 85, 'APROBADO', '2025-10-17 12:25:01', '2025-10-17 12:25:01');
+
 -- --------------------------------------------------------
 
 --
@@ -110,6 +124,13 @@ CREATE TABLE `evaluacion_instruccions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `evaluacion_instruccions`
+--
+
+INSERT INTO `evaluacion_instruccions` (`id`, `postulante_id`, `nota`, `descripcion`, `created_at`, `updated_at`) VALUES
+(1, 5, 90, 'APROBADO', '2025-10-17 12:38:52', '2025-10-17 12:38:52');
 
 -- --------------------------------------------------------
 
@@ -132,7 +153,7 @@ CREATE TABLE `evaluacion_medicas` (
 --
 
 INSERT INTO `evaluacion_medicas` (`id`, `postulante_id`, `valoracion`, `nro_baucher`, `nro_folder`, `created_at`, `updated_at`) VALUES
-(1, 5, 'APTO', '1111', '123', '2025-10-17 03:41:41', '2025-10-17 03:46:09'),
+(1, 5, 'APTO', '11112', '1234', '2025-10-17 03:41:41', '2025-10-17 12:48:42'),
 (2, 10, 'NO APTO', '2222', '1234', '2025-10-17 03:41:41', '2025-10-17 03:46:09');
 
 -- --------------------------------------------------------
@@ -151,6 +172,13 @@ CREATE TABLE `evaluacion_odontologicas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `evaluacion_odontologicas`
+--
+
+INSERT INTO `evaluacion_odontologicas` (`id`, `postulante_id`, `valoracion`, `nro_baucher`, `nro_folder`, `created_at`, `updated_at`) VALUES
+(1, 5, 'APTO', '11112', '1234', '2025-10-17 12:49:33', '2025-10-17 12:49:33');
+
 -- --------------------------------------------------------
 
 --
@@ -166,6 +194,13 @@ CREATE TABLE `evaluacion_psicologicas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `evaluacion_psicologicas`
+--
+
+INSERT INTO `evaluacion_psicologicas` (`id`, `postulante_id`, `valoracion`, `nro_baucher`, `nro_folder`, `created_at`, `updated_at`) VALUES
+(1, 5, 'APTO', '111112', '1234', '2025-10-17 12:10:23', '2025-10-17 12:23:08');
 
 -- --------------------------------------------------------
 
@@ -230,7 +265,10 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (35, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"documento\": \"31760660786.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:26:26.000000Z\", \"descripcion\": \"DESCRIPCION\"}', NULL, 'DOCUMENTOS DE DESCARGA', '2025-10-16', '20:26:26', '2025-10-17 00:26:26', '2025-10-17 00:26:26'),
 (36, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"documento\": \"31760660786.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:26:26.000000Z\", \"descripcion\": \"DESCRIPCION\"}', '{\"id\": 3, \"documento\": \"31760660864.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:27:44.000000Z\", \"descripcion\": \"DESCRIPCION\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-16', '20:27:44', '2025-10-17 00:27:44', '2025-10-17 00:27:44'),
 (37, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"documento\": \"31760660864.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:27:44.000000Z\", \"descripcion\": \"DESCRIPCION\"}', '{\"id\": 3, \"documento\": \"31760660864.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:28:28.000000Z\", \"descripcion\": \"DESCRIPCION 2\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-16', '20:28:28', '2025-10-17 00:28:28', '2025-10-17 00:28:28'),
-(38, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"documento\": \"31760660864.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:28:28.000000Z\", \"descripcion\": \"DESCRIPCION 2\"}', '{\"id\": 3, \"documento\": \"31760660914.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:28:34.000000Z\", \"descripcion\": \"DESCRIPCION 2\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-16', '20:28:34', '2025-10-17 00:28:34', '2025-10-17 00:28:34');
+(38, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"documento\": \"31760660864.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:28:28.000000Z\", \"descripcion\": \"DESCRIPCION 2\"}', '{\"id\": 3, \"documento\": \"31760660914.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:28:34.000000Z\", \"descripcion\": \"DESCRIPCION 2\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-16', '20:28:34', '2025-10-17 00:28:34', '2025-10-17 00:28:34'),
+(39, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ LA CONFIGURACIÓN DEL SISTEMA', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-15T00:53:30.000000Z\", \"envio_email\": {\"host\": \"smtp.gmail.com\", \"correo\": \"kingcerocias@gmail.com\", \"driver\": \"smtp\", \"nombre\": \"unipol\", \"puerto\": \"587\", \"password\": \"bubtfibqsypckzzz\", \"encriptado\": \"tls\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T13:56:49.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"tls\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', 'CONFIGURACIÓN SISTEMA', '2025-10-17', '09:56:49', '2025-10-17 13:56:49', '2025-10-17 13:56:49'),
+(40, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ LA CONFIGURACIÓN DEL SISTEMA', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T13:56:49.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"tls\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:01:05.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"465\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', 'CONFIGURACIÓN SISTEMA', '2025-10-17', '10:01:05', '2025-10-17 14:01:05', '2025-10-17 14:01:05'),
+(41, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ LA CONFIGURACIÓN DEL SISTEMA', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:01:05.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"465\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:03:02.000000Z\", \"envio_email\": {\"host\": \"smtp.gmail.com\", \"correo\": \"kingcerocias@gmail.com\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"bubtfibqsypckzzz\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', 'CONFIGURACIÓN SISTEMA', '2025-10-17', '10:03:02', '2025-10-17 14:03:02', '2025-10-17 14:03:02');
 
 -- --------------------------------------------------------
 
@@ -385,12 +423,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `dir`, `correo`, `fono`, `password`, `acceso`, `tipo`, `foto`, `fecha_registro`, `status`, `codigo`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', 'admin', '', '0', '', '', '', '', '$2y$12$65d4fgZsvBV5Lc/AxNKh4eoUdbGyaczQ4sSco20feSQANshNLuxSC', 1, 'ADMINISTRADOR', NULL, '2025-10-14', 1, NULL, '2025-10-14 23:02:13', '2025-10-14 23:02:13'),
-(6, 'juan@gmail.com', 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', NULL, 'juan@gmail.com', '777777777', '$2y$12$JWHNcI3nC88tscBw1kvu5eeFsdjblMWW2tpCpyuHBBl1Sy/4DZZR2', 1, 'POSTULANTE', '61760559326.jpg', '2025-10-14', 1, '8856', '2025-10-15 00:53:40', '2025-10-17 03:47:36'),
+(6, 'juan@gmail.com', 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', NULL, 'juan@gmail.com', '777777777', '$2y$12$JWHNcI3nC88tscBw1kvu5eeFsdjblMWW2tpCpyuHBBl1Sy/4DZZR2', 1, 'POSTULANTE', '61760559326.jpg', '2025-10-14', 1, '2468', '2025-10-15 00:53:40', '2025-10-17 12:49:53'),
 (8, 'jorge@gmail.com', 'JORGE', 'GONZALES', 'CONDORI', '7777777', 'LP', NULL, 'jorge@gmail.com', '78787878', '$2y$12$IgHvW/F6N9dukj/xVOXZX.UIR7lcZ0lYpQmyH2HhBC1kmYmswSrCK', 1, 'POSTULANTE', '81760631307.jpg', '2025-10-16', 1, '3365', '2025-10-16 16:11:37', '2025-10-16 16:15:47'),
 (9, 'maria@gmail.com', 'MARIA', 'MAMANI', 'MAMANI', '6767678', 'LP', NULL, 'maria@gmail.com', '6767676767', '$2y$12$9Dm0Uss4S6VEjWBe8P/pxe/ToOJFZdm4GEirCZMhU.XhHFi0xiOam', 1, 'POSTULANTE', '91760631872.jpg', '2025-10-16', 1, '3411', '2025-10-16 16:22:56', '2025-10-16 16:28:48'),
 (10, 'daniela@gmail.com', 'DANIELA', 'CARVAJAL', 'GONZALES', '3434344', 'LP', NULL, 'daniela@gmail.com', '66767677', '$2y$12$Env97Cmcw8PWzUURJ9Pq4.U0U6Jz53bpIlir/d0dPWcoNPfScXwRi', 1, 'POSTULANTE', '101760641297.jpg', '2025-10-16', 1, '5228', '2025-10-16 18:49:37', '2025-10-17 01:09:15'),
 (11, 'marcos@gmail.com', 'MARCOS', 'GONZALES', 'RAMIREZ', '1231233', 'LP', NULL, 'marcos@gmail.com', '787878787', '$2y$12$cYxoqik0NhFL1ZPLcm7noe7ja3YwzN5vBOs9121LkzsVLS91L41T.', 1, 'POSTULANTE', '111760641621.jpg', '2025-10-16', 1, '1315', '2025-10-16 19:00:58', '2025-10-17 03:00:24'),
-(12, 'fernando@gmail.com', 'FERNANDO', 'PAREDES', 'MAMANI', '675675675', 'LP', NULL, 'fernando@gmail.com', '67676767', '$2y$12$2dPtXYNuZW1R1CTixuBRhuUZJ3Teb1ly6ZeqKzoiqKd/R/Pnb1Rim', 1, 'POSTULANTE', '121760649664.jpg', '2025-10-16', 1, '7021', '2025-10-16 21:20:27', '2025-10-16 21:21:31');
+(12, 'fernando@gmail.com', 'FERNANDO', 'PAREDES', 'MAMANI', '675675675', 'LP', NULL, 'fernando@gmail.com', '67676767', '$2y$12$2dPtXYNuZW1R1CTixuBRhuUZJ3Teb1ly6ZeqKzoiqKd/R/Pnb1Rim', 1, 'POSTULANTE', '121760649664.jpg', '2025-10-16', 1, '8629', '2025-10-16 21:20:27', '2025-10-17 14:03:07');
 
 --
 -- Índices para tablas volcadas
@@ -505,19 +543,19 @@ ALTER TABLE `descarga_documentos`
 -- AUTO_INCREMENT de la tabla `evaluacion_conocimientos`
 --
 ALTER TABLE `evaluacion_conocimientos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluacion_fisicas`
 --
 ALTER TABLE `evaluacion_fisicas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluacion_instruccions`
 --
 ALTER TABLE `evaluacion_instruccions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluacion_medicas`
@@ -529,19 +567,19 @@ ALTER TABLE `evaluacion_medicas`
 -- AUTO_INCREMENT de la tabla `evaluacion_odontologicas`
 --
 ALTER TABLE `evaluacion_odontologicas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluacion_psicologicas`
 --
 ALTER TABLE `evaluacion_psicologicas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`

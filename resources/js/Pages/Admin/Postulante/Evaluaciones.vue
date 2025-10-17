@@ -53,6 +53,11 @@ onMounted(() => {
     <ContentPostulante>
         <div class="row contenedor_botones pb-3">
             <div class="col-12 mt-3">
+                <h4 class="text-principal font-weight-bold">
+                    RESULTADO DE EVALUACIONES
+                </h4>
+            </div>
+            <div class="col-12 mt-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="row align-items-center">
@@ -140,7 +145,7 @@ onMounted(() => {
                             <div class="col-md-2 text-center">
                                 <span>{{
                                     evaluacionFisica
-                                        ? evaluacionFisica.nro_folder
+                                        ? evaluacionFisica.descripcion
                                         : "S/R"
                                 }}</span
                                 ><br /><b>Resultado</b>
@@ -167,7 +172,7 @@ onMounted(() => {
                             <div class="col-md-2 text-center">
                                 <span>{{
                                     evaluacionInstruccion
-                                        ? evaluacionInstruccion.nro_folder
+                                        ? evaluacionInstruccion.descripcion
                                         : "S/R"
                                 }}</span
                                 ><br /><b>Resultado</b>
@@ -194,7 +199,7 @@ onMounted(() => {
                             <div class="col-md-2 text-center">
                                 <span>{{
                                     evaluacionConocimiento
-                                        ? evaluacionConocimiento.nro_folder
+                                        ? evaluacionConocimiento.descripcion
                                         : "S/R"
                                 }}</span
                                 ><br /><b>Resultado</b>

@@ -101,7 +101,32 @@ onUnmounted(() => {});
                         :ruta="'inicio'"
                         :icon="'fa fa-home'"
                     ></ItemMenu>
-                    <li class="nav-header font-weight-bold bg-principal">
+                    <li
+                        class="nav-header font-weight-bold bg-principal"
+                        v-if="
+                            permisos &&
+                            (permisos.includes('usuarios.index') ||
+                                permisos.includes('postulantes.index') ||
+                                permisos.includes(
+                                    'postulantes.preinscripcion'
+                                ) ||
+                                permisos.includes('requisitos.buscar') ||
+                                permisos.includes('evaluacion_medicas.index') ||
+                                permisos.includes(
+                                    'evaluacion_psicologicas.index'
+                                ) ||
+                                permisos.includes('evaluacion_fisicas.index') ||
+                                permisos.includes(
+                                    'evaluacion_instruccions.index'
+                                ) ||
+                                permisos.includes(
+                                    'evaluacion_conocimientos.index'
+                                ) ||
+                                permisos.includes(
+                                    'evaluacion_odontologicas.index'
+                                ))
+                        "
+                    >
                         ADMINISTRACIÓN
                     </li>
                     <li class="nav-item">
@@ -109,8 +134,16 @@ onUnmounted(() => {});
                             href="#"
                             class="nav-link sub-menu"
                             :class="[
-                                route_current == 'evaluacions.index' ||
-                                route_current == 'evaluacions.preinscripcion'
+                                route_current == 'evaluacion_medicas.index' ||
+                                route_current ==
+                                    'evaluacion_psicologicas.index' ||
+                                route_current == 'evaluacion_fisicas.index' ||
+                                route_current ==
+                                    'evaluacion_instruccions.index' ||
+                                route_current ==
+                                    'evaluacion_conocimientos.index' ||
+                                route_current ==
+                                    'evaluacion_odontologicas.index'
                                     ? 'active menu-is-opening menu-open'
                                     : '',
                             ]"
@@ -130,27 +163,27 @@ onUnmounted(() => {});
                             ></ItemMenu>
                             <ItemMenu
                                 :label="'Evaluación Psicológica'"
-                                :ruta="'evaluacion_medicas.index'"
+                                :ruta="'evaluacion_psicologicas.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                             <ItemMenu
                                 :label="'Evaluación del Área de Aptitud Física'"
-                                :ruta="'evaluacion_medicas.index'"
+                                :ruta="'evaluacion_fisicas.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                             <ItemMenu
                                 :label="'Evaluación del Área de Instrucción Policial'"
-                                :ruta="'evaluacion_medicas.index'"
+                                :ruta="'evaluacion_instruccions.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                             <ItemMenu
                                 :label="'Evaluación del Área de Conocimientos'"
-                                :ruta="'evaluacion_medicas.index'"
+                                :ruta="'evaluacion_conocimientos.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                             <ItemMenu
                                 :label="'Evaluación Odontológica'"
-                                :ruta="'evaluacion_medicas.index'"
+                                :ruta="'evaluacion_odontologicas.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                         </ul>

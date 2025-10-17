@@ -12,6 +12,7 @@ import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "./Parcial/Navbar.vue";
+import Footer from "./Parcial/Footer.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -35,7 +36,7 @@ const listItems = ref([
 onMounted(() => {});
 </script>
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid pagina">
         <div class="row bg-principal p-2 pt-4 pb-4">
             <div class="col-12 text-center">
                 <img
@@ -57,12 +58,24 @@ onMounted(() => {});
                     <div class="col-12">
                         <div class="container">
                             <h2 class="titulo-seccion">COMUNICADOS</h2>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="w-100 text-center">
+                                                NO SE ENCONTRARÓN COMUNICADOS
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <Footer></Footer>
 </template>
 
 <style scoped>

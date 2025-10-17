@@ -161,11 +161,19 @@ const salir = () => {
                             {{ user.postulante.correo }}
                         </div>
                     </div>
-                    <div class="row mt-2" v-if="user.postulante.edad_lim < 18">
+                    <div
+                        class="row mt-2"
+                        v-if="
+                            user.postulante &&
+                            user.postulante.edad_lim < 18 &&
+                            user.postulante.requisito &&
+                            user.postulante.url_file14
+                        "
+                    >
                         <div class="col-12 text-center">
                             <a
                                 class="btn btn-success"
-                                :href="user.postulante.requisito.url_file14"
+                                :href="user.postulante?.requisito?.url_file14"
                                 target="_blank"
                             >
                                 Descargar declaración jurada
@@ -175,7 +183,7 @@ const salir = () => {
                 </div>
             </div>
             <div
-                class="contenido"
+                class="contenidoPostulante"
                 :class="[
                     toggleUsuario ? 'content-100' : '',
                     showUsuario ? 'content-100' : '',
@@ -321,13 +329,12 @@ const salir = () => {
 .usuario.toggle .toggle_usuario_normal {
     left: 0px;
 }
-.contenido {
+.contenidoPostulante {
     width: 100%;
     transition: all 0.4s;
-    padding-left: 15px;
 }
 
-.contenido.content-100 {
+.contenidoPostulante.content-100 {
     flex-basis: 100%;
 }
 
@@ -362,7 +369,7 @@ const salir = () => {
         z-index: 2;
     }
 
-    .principal.toggle .contenido {
+    .principal.toggle .contenidoPostulante {
         position: relative;
         flex: 0 0 98vw;
         left: -370px;

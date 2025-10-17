@@ -12,6 +12,7 @@ import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "./Parcial/Navbar.vue";
+import Footer from "./Parcial/Footer.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -35,7 +36,7 @@ const listItems = ref([
 onMounted(() => {});
 </script>
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid pagina">
         <div class="row bg-principal p-2 pt-4 pb-4">
             <div class="col-12 text-center">
                 <img
@@ -117,21 +118,21 @@ onMounted(() => {});
                                         Bachiller.</li>
                                         <li>
 <b>h)</b> Certificado de Registro
-                                        Judicial de Antecedentes Penales, SIN
-                                        ANTECEDENTES, para la o el postulante.
+                                        Judicial de Antecedentes Penales, <b><u>SIN
+                                        ANTECEDENTES</u></b>, para la o el postulante.
                                         </li>
                                         <li>
   <b>i)</b> Certificado de Antecedentes de No
-                                        Violencia en Razón de Género, SIN
-                                        ANTECEDENTES, para la o el postulante.
+                                        Violencia en Razón de Género, <b><u>SIN
+                                        ANTECEDENTES</u></b>, para la o el postulante.
                                         </li>
                                         <li>
 <b>j)</b> Certificado de Antecedentes
-                                        Policiales (FELCC, FELCN, TRANSITO), sin
+                                        Policiales <b>(FELCC, FELCN, TRANSITO)</b>, sin
                                         antecedentes, para la o el postulante.
                                         </li>
                                         <li>
- <b>k)</b> Certificados de NO haber sido dado de
+ <b>k)</b> Certificados de <b>NO</b> haber sido dado de
                                         baja por faltas disciplinarias de
                                         cualquier Unidad Académica de Pregrado
                                         de la Universidad Policial y/o de los
@@ -167,47 +168,32 @@ onMounted(() => {});
                                         formato digital (CD).
                                         </li>
                                         <li>
-<b>o)</b> Original y
-                                        fotocopia de la Boleta de Depósito
-                                        Bancario para el Prospecto de Admisión o
-                                        transferencia electrónica.
+<b>o)</b> Original y fotocopia de la Boleta de Depósito Bancario para el Prospecto de
+Admisión o transferencia electrónica.
                                         </li>
                                         <li>
-<b>p)</b> Contar con
-                                        domicilio virtual (número de WhatsApp y
-                                        correo electrónico activo), que será
-                                        proporcionado por la o el postulante al
-                                        momento de su inscripción y será
-                                        utilizado para recibir notificaciones
-                                        durante el Proceso de Admisión hasta su
-                                        conclusión.
+<b>p)</b> Contar con domicilio virtual (número de WhatsApp y correo electrónico activo),
+que será proporcionado por la o el postulante al momento de su inscripción y
+será utilizado para recibir notificaciones durante el Proceso de Admisión hasta
+su conclusión.
                                         </li>
                                         <li>
-<b>q)</b> Otras, establecidas de
-                                        acuerdo a necesidad y expresamente
-                                        aprobadas por la Comisión Nacional del
-                                        Proceso de Admisión. II. Las y los
-                                        postulantes que tengan diecisiete (17)
-                                        años de edad y cumplan los demás
-                                        requisitos exigidos para la inscripción,
-                                        además de lo señalado, deberán adjuntar
-                                        una Declaración Jurada debidamente
-                                        Notariada, mediante la cual el padre,
-                                        madre o tutor autoricen su postulación a
-                                        la Unidad Académica de Pregrado,
-                                        asumiendo la responsabilidad por el
-                                        mismo, en tanto cumpla la mayoría de
-                                        edad. III. La documentación requerida,
-                                        deberá ser presentada en un folder
-                                        rotulado, debidamente ordenada y con
-                                        separadores plásticos transparentes
-                                        individuales. IV. Las o los postulantes
-                                        que cuenten con antecedentes penales o
-                                        policiales exigidos para la inscripción,
-                                        serán separados del Proceso de Admisión.
+<b>q)</b>Otras, establecidas de acuerdo a necesidad y expresamente aprobadas por la
+Comisión Nacional del Proceso de Admisión.
                                         </li>
                                         </ul>
                                     </p>
+                                    <p><b>II.</b> Las y los postulantes que tengan diecisiete (17) años de edad y cumplan los
+demás requisitos exigidos para la inscripción, además de lo señalado, deberán
+adjuntar una Declaración Jurada debidamente Notariada, mediante la cual el padre,
+madre o tutor autoricen su postulación a la Facultad de Ciencias Policiales
+“Academia Nacional de Policías”, asumiendo la responsabilidad por el mismo, en
+tanto cumpla la mayoría de edad.</p>
+<p><b>III.</b> La documentación requerida, deberá ser presentada en un folder rotulado,
+debidamente ordenada y con separadores plásticos transparentes individuales.
+</p>
+<p><b>IV.</b> Las o los postulantes que cuenten con antecedentes penales o policiales exigidos
+para la inscripción, serán separados del Proceso de Admisión.</p>
                                 </div>
                             </div>
                         </div>
@@ -216,6 +202,7 @@ onMounted(() => {});
             </div>
         </div>
     </div>
+    <Footer></Footer>
 </template>
 
 <style scoped>

@@ -15,7 +15,7 @@ onMounted(async () => {
 });
 
 const descargar = () => {
-    const url = route("evaluacion_medicas.descargar");
+    const url = route("evaluacion_psicologicas.descargar");
     window.open(url, "_blank");
 };
 
@@ -30,7 +30,7 @@ const subirArchivo = async () => {
     formData.append("archivo", archivo.value);
     try {
         const response = await axios.post(
-            route("evaluacion_medicas.subir"),
+            route("evaluacion_psicologicas.subir"),
             formData,
             {
                 headers: {
@@ -90,13 +90,13 @@ const txtSubir = computed(() => {
 });
 </script>
 <template>
-    <Head title="Evaluación Médica"></Head>
+    <Head title="Evaluación Psicologica"></Head>
 
     <Content>
         <template #header>
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Evaluación Médica</h1>
+                    <h1 class="m-0">Evaluación Psicologica</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
@@ -105,7 +105,7 @@ const txtSubir = computed(() => {
                             <Link :href="route('inicio')">Inicio</Link>
                         </li>
                         <li class="breadcrumb-item active">
-                            Evaluación Médica
+                            Evaluación Psicologica
                         </li>
                     </ol>
                 </div>
