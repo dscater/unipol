@@ -38,7 +38,6 @@ class PostulanteService
         return $postulantes;
     }
 
-
     /**
      * Lista de users paginado con filtros
      *
@@ -57,7 +56,7 @@ class PostulanteService
         // Filtros exactos
         foreach ($columnsFilter as $key => $value) {
             if (!is_null($value)) {
-                $postulantes->where("postulantes.$key", $value);
+                $postulantes->orWhere("postulantes.$key", $value);
             }
         }
 

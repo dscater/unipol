@@ -222,14 +222,13 @@ onMounted(async () => {
                             <template #estado="{ item }">
                                 <div
                                     class="badge text-sm text-wrap"
-                                    :class="{
-                                        'bg-success': (item.user.estado =
-                                            'INSCRITO'),
-                                        'bg-gray': (item.user.estado =
-                                            'PREINSCRITO'),
-                                    }"
+                                    :class="[
+                                        item.estado == 'INSCRITO'
+                                            ? 'badge-success'
+                                            : 'bg-gray',
+                                    ]"
                                 >
-                                    {{ item.user.estado }}
+                                    {{ item.estado }}
                                 </div>
                             </template>
                             <template #foto="{ item }">
