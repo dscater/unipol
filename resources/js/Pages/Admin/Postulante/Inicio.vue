@@ -10,11 +10,11 @@ import Highcharts from "highcharts";
 import exporting from "highcharts/modules/exporting";
 import accessibility from "highcharts/modules/accessibility";
 import { useAppStore } from "@/stores/aplicacion/appStore";
-import InfoBoton from "@/Pages/Admin/Postulante/Parcials/InfoBoton.vue";
-import axios from "axios";
+import InfoBoton from "./Parcials/InfoBoton.vue";
+import DescargarDocumento from "./Parcials/DescargarDocumento.vue";
+import VerVideo from "./Parcials/VerVideo.vue";
 const { auth } = usePage().props;
 const user = ref(auth.user);
-
 exporting(Highcharts);
 accessibility(Highcharts);
 Highcharts.setOptions({
@@ -31,8 +31,13 @@ Highcharts.setOptions({
 });
 
 const props_page = defineProps({
-    array_infos: {
+    listDescargaDocumentos: {
         type: Array,
+        default: [],
+    },
+    listVideos: {
+        type: Array,
+        default: [],
     },
 });
 
@@ -46,6 +51,22 @@ const nro_info = ref(-1);
 const mostrarContenido = (nro) => {
     muestra_info.value = true;
     nro_info.value = nro;
+};
+
+// DESCARGAS
+const oDescargaDocumento = ref(null);
+const muestraDescargaDocumento = ref(false);
+const mostrarDescarga = (item) => {
+    oDescargaDocumento.value = item;
+    muestraDescargaDocumento.value = true;
+};
+
+// VIDEOS
+const oVideo = ref(null);
+const muestraVideo = ref(false);
+const mostrarVideo = (item) => {
+    oVideo.value = item;
+    muestraVideo.value = true;
 };
 
 const { props } = usePage();
@@ -182,9 +203,12 @@ onMounted(() => {
                             Documentos para Descargar
                         </h5>
                     </div>
-                    <div class="col-12 mt-2">
-                        <button @click="mostrarContenido(1)">
-                            Reglamento de Admisión
+                    <div
+                        class="col-12 mt-2"
+                        v-for="item in listDescargaDocumentos"
+                    >
+                        <button @click="mostrarDescarga(item)">
+                            {{ item.descripcion }}
                         </button>
                     </div>
                     <div class="col-12 mt-2">
@@ -192,9 +216,9 @@ onMounted(() => {
                             Videotutoriales
                         </h5>
                     </div>
-                    <div class="col-12 mt-2">
-                        <button @click="mostrarContenido(1)">
-                            Reglamento de Admisión
+                    <div class="col-12 mt-2" v-for="item in listVideos">
+                        <button @click="mostrarVideo(item)">
+                            {{ item.descripcion }}
                         </button>
                     </div>
                 </div>
@@ -208,6 +232,16 @@ onMounted(() => {
                 nro_info = -1;
             "
         ></InfoBoton>
+        <DescargarDocumento
+            :muestra_formulario="muestraDescargaDocumento"
+            :archivo="oDescargaDocumento"
+            @cerrar-formulario="muestraDescargaDocumento = false"
+        ></DescargarDocumento>
+        <VerVideo
+            :muestra_formulario="muestraVideo"
+            :archivo="oVideo"
+            @cerrar-formulario="muestraVideo = false"
+        ></VerVideo>
     </ContentPostulante>
 </template>
 <style scoped>

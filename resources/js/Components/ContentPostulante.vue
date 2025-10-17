@@ -9,7 +9,7 @@ const showUsuario = ref(false);
 
 const salir = () => {
     Swal.fire({
-        type: "question",
+        icon: "question",
         title: "Cerrar sesión",
         html: `¿Esta seguro(a) de cerrar sesión?`,
         showCancelButton: true,
@@ -142,7 +142,7 @@ const salir = () => {
                             <b class="text-principal">Sede de Evaluación:</b>
                         </div>
                         <div class="col-12 text-center">
-                            {{ user.postulante.lugar_preins }}
+                            {{ user.postulante.sede }}
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -159,6 +159,17 @@ const salir = () => {
                         </div>
                         <div class="col-12 text-center">
                             {{ user.postulante.correo }}
+                        </div>
+                    </div>
+                    <div class="row mt-2" v-if="user.postulante.edad_lim < 18">
+                        <div class="col-12 text-center">
+                            <a
+                                class="btn btn-success"
+                                :href="user.postulante.requisito.url_file14"
+                                target="_blank"
+                            >
+                                Descargar declaración jurada
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -182,9 +193,30 @@ const salir = () => {
         <div class="footer d-flex pr-3">
             <div class="container-fluid">
                 <div class="row mt-4 justify-content-end">
-                    <div class="col-md-3 ml-2">
+                    <div
+                        class="col-md-3 ml-2"
+                        v-if="user?.postulante.estado == 'INSCRITO'"
+                    >
                         <Link
-                            v-if="!requisito"
+                            class="rounded-0 btn btn-info w-100"
+                            :href="route('vestibulares')"
+                        >
+                            <i class="fa fa-clipboard-check"></i> VESTIBULARES
+                        </Link>
+                    </div>
+                    <div
+                        class="col-md-3 ml-2"
+                        v-if="user?.postulante.estado == 'INSCRITO'"
+                    >
+                        <Link
+                            class="rounded-0 btn btn-success w-100"
+                            :href="route('evaluaciones')"
+                        >
+                            <i class="fa fa-clipboard-check"></i> EVALUACIONES
+                        </Link>
+                    </div>
+                    <div class="col-md-3 ml-2" v-if="!requisito">
+                        <Link
                             class="rounded-0 btn btn-default w-100"
                             :href="route('inscripcions.index')"
                         >
@@ -222,7 +254,7 @@ const salir = () => {
 .footer {
     position: fixed;
     bottom: -1px;
-    height: 100px;
+    min-height: 100px;
     width: 100%;
     z-index: 5;
     background-color: var(--bg3);

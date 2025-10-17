@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluacionConocimiento extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "postulante_id",
+        "nota",
+        "descripcion",
+    ];
+
+    public function postulante()
+    {
+        return $this->belongsTo(Postulante::class, 'postulante_id');
+    }
 }

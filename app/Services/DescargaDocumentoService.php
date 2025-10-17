@@ -27,9 +27,7 @@ class DescargaDocumentoService
      */
     public function listadoPaginado(int $length, int $page, string $search, array $columnsSerachLike = [], array $columnsFilter = [], array $columnsBetweenFilter = [], array $orderBy = []): LengthAwarePaginator
     {
-        $descarga_documentos = DescargaDocumento::select("descarga_documentos.*")->where("descarga_documentos.id", "!=", 1);
-        $descarga_documentos->where("tipo", "!=", "POSTULANTE");
-        $descarga_documentos->where("descarga_documentos.status", 1);
+        $descarga_documentos = DescargaDocumento::select("descarga_documentos.*");
 
         // Filtros exactos
         foreach ($columnsFilter as $key => $value) {
@@ -76,7 +74,7 @@ class DescargaDocumentoService
     public function crear(array $datos): DescargaDocumento
     {
         $descarga_documento = DescargaDocumento::create([
-            "descripcion" => mb_strtoupper($datos["descripcion"]),
+            "descripcion" => $datos["descripcion"],
         ]);
 
         // cargar documento
@@ -99,7 +97,7 @@ class DescargaDocumentoService
     {
         $old_descarga_documento = clone $descarga_documento;
         $descarga_documento->update([
-            "descripcion" => mb_strtoupper($datos["descripcion"]),
+            "descripcion" => $datos["descripcion"],
         ]);
 
         // cargar documento
@@ -123,7 +121,7 @@ class DescargaDocumentoService
     public function cargarDocumento(DescargaDocumento $descarga_documento, UploadedFile $documento): void
     {
         if ($descarga_documento->documento) {
-            \File::delete(public_path("files/descarga_documentos/" . $this->descarga_documento->documento));
+            \File::delete(public_path("files/descarga_documentos/" . $descarga_documento->documento));
         }
 
         $nombre = $descarga_documento->id . time();
@@ -139,10 +137,12 @@ class DescargaDocumentoService
      */
     public function eliminar(DescargaDocumento $descarga_documento): bool
     {
+        if ($descarga_documento->documento) {
+            \File::delete(public_path("files/descarga_documentos/" . $descarga_documento->documento));
+        }
+
         // no eliminar descarga_documentos predeterminados para el funcionamiento del sistema
-        $old_descarga_documento = DescargaDocumento::find($descarga_documento->id);
-        $descarga_documento->status = 0;
-        $descarga_documento->save();
+        $descarga_documento->delete();
 
         // registrar accion
         $this->historialAccionService->registrarAccion($this->modulo, "ELIMINACIÓN", "ELIMINÓ AL USUARIO " . $old_descarga_documento->descarga_documento, $old_descarga_documento, $descarga_documento);

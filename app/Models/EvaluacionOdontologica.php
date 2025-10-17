@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EvaluacionInstruccion extends Model
+class EvaluacionOdontologica extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         "postulante_id",
-        "nota",
-        "descripcion",
+        "valoracion",
+        "nro_baucher",
+        "nro_folder",
     ];
 
     public function postulante()

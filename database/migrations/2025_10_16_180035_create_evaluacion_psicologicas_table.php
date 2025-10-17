@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('evaluacion_psicologicas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("postulante_id");
-            $table->double("nota", 8, 2)->nullable();
-            $table->string("descripcion");
+            $table->string("valoracion", 255);
+            $table->string("nro_baucher", 255);
+            $table->string("nro_folder", 255);
             $table->timestamps();
 
             $table->foreign("postulante_id")->on("postulantes")->references("id");

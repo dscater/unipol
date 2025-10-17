@@ -125,17 +125,32 @@ onUnmounted(() => {});
                         <ul class="nav nav-treeview">
                             <ItemMenu
                                 :label="'Evaluación Médica'"
-                                :ruta="'postulantes.preinscripcion'"
+                                :ruta="'evaluacion_medicas.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                             <ItemMenu
                                 :label="'Evaluación Psicológica'"
-                                :ruta="'postulantes.preinscripcion'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Evaluación del Área de Aptitud Física'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Evaluación del Área de Instrucción Policial'"
+                                :ruta="'evaluacion_medicas.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                             <ItemMenu
                                 :label="'Evaluación del Área de Conocimientos'"
-                                :ruta="'postulantes.preinscripcion'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Evaluación Odontológica'"
+                                :ruta="'evaluacion_medicas.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                         </ul>

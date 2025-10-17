@@ -50,9 +50,7 @@ class DescargaDocumentoController extends Controller
         $desc = $request->desc;
 
         $columnsSerachLike = [
-            "CONCAT_WS(' ', nombre, paterno, materno)",
-            "CONCAT_WS(' ', ci, ci_exp, complemento)",
-            "unidad"
+            "descripcion"
         ];
         $columnsFilter = [];
         $columnsBetweenFilter = [];
@@ -84,7 +82,7 @@ class DescargaDocumentoController extends Controller
             // crear el DescargaDocumento
             $this->descarga_documentoService->crear($request->validated());
             DB::commit();
-            return redirect()->route("descarga_documentos.preinscripcion")->with("bien", "Registro realizado");
+            return redirect()->route("descarga_documentos.index")->with("bien", "Registro realizado");
         } catch (\Exception $e) {
             DB::rollBack();
             throw ValidationException::withMessages([

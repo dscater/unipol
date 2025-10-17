@@ -60,7 +60,7 @@ const cargarArchivo = (e, key) => {
 const enviando = ref(false);
 const guardar = () => {
     Swal.fire({
-        type: "question",
+        icon: "question",
         title: "¿Está seguro(a)?",
         html: `Se enviarán todos los archivos adjuntos para proceder con su inscripción`,
         showCancelButton: true,

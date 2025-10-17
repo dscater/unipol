@@ -142,6 +142,15 @@ body .btn.btn-success:hover {
     font-weight: 800;
 }
 
+.btn-outline-principal {
+    color: var(--bg6);
+    border-color: var(--bg6);
+    font-weight: 800;
+}
+.btn-outline-principal:hover {
+    color: var(--bg6t);
+}
+
 .btn-principal:hover {
     background-color: var(--bg7);
     color: white;

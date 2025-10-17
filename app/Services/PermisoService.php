@@ -42,8 +42,33 @@ class PermisoService
             "descarga_documentos.update",
             "descarga_documentos.destroy",
 
+            "evaluacion_medicas.index",
+            "evaluacion_medicas.descargar",
+            "evaluacion_medicas.subir",
+
+            "evaluacion_psicologicas.index",
+            "evaluacion_psicologicas.descargar",
+            "evaluacion_psicologicas.subir",
+
+            "evaluacion_fisicas.index",
+            "evaluacion_fisicas.descargar",
+            "evaluacion_fisicas.subir",
+
+            "evaluacion_instruccions.index",
+            "evaluacion_instruccions.descargar",
+            "evaluacion_instruccions.subir",
+
+            "evaluacion_conocimientos.index",
+            "evaluacion_conocimientos.descargar",
+            "evaluacion_conocimientos.subir",
+
+            "evaluacion_odontologicas.index",
+            "evaluacion_odontologicas.descargar",
+            "evaluacion_odontologicas.subir",
+
             "requisitos.buscar",
             "requisitos.update",
+            "requisitos.aprobarInscripcion",
 
             "configuracions.index",
             "configuracions.create",
@@ -56,6 +81,9 @@ class PermisoService
         ],
         "POSTULANTE" => [
             "inscripcions.index",
+
+            "evaluaciones",
+            "vestibulares",
 
             "requisitos.store",
 

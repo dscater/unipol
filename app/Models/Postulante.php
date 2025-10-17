@@ -38,8 +38,34 @@ class Postulante extends Model
         "status",
     ];
 
-    protected $appends = ["url_foto", "foto_b64", "full_name", "full_ci", "fecha_registro_t", "fecha_nac_t", "edad_lim", "edad"];
+    protected $appends = ["url_foto", "foto_b64", "full_name", "full_ci", "fecha_registro_t", "fecha_nac_t", "edad_lim", "edad", "sede"];
 
+
+    public function getSedeAttribute()
+    {
+        $sedes = ["LA PAZ", "ORURO", "POTOSÍ", "CHUQUISCA", "TARIJA", "PANDO", "BENI", "SANTA CRUZ", "COCHABAMBA"];
+        $lugar_preins = [
+            "ANAPOL" => 0,
+            'FATESCIPOL "EL ALTO"' => 0,
+            'FATESCIPOL "COLQUIRI"' => 0,
+            'FATESCIPOL "HUANUNI"' => 1,
+            'FATESCIPOL "CARACOLLO"' => 1,
+            "COMANDO DPTAL. DE ORURO" => 1,
+            'FATESCIPOL "POTOSÍ”' => 2,
+            'FATESCIPOL "LLALLAGUA”' => 2,
+            'FATESCIPOL "SUCRE”' => 3,
+            'FATESCIPOL "TARIJA”' => 4,
+            'FATESCIPOL "GRAN CHACO”' => 4,
+            'FATESCIPOL "PANDO”' => 5,
+            "COMANDO DPTAL. DE BEN" => 6,
+            'FATESCIPOL "RIBERALTA"' => 6,
+            'FATESCIPOL "SANTA CRUZ"' => 7,
+            'FATESCIPOL "COCHABAMBA"' => 8,
+            "ESBAPOLMUS" => 9,
+        ];
+
+        return $sedes[$lugar_preins[$this->lugar_preins]];
+    }
 
     public function getEdadLimAttribute()
     {
@@ -110,5 +136,35 @@ class Postulante extends Model
     public function requisito()
     {
         return $this->hasOne(Requisito::class, 'postulante_id');
+    }
+
+    public function evaluacion_medica()
+    {
+        return $this->hasOne(EvaluacionMedica::class, 'postulante_id');
+    }
+
+    public function evaluacion_psicologica()
+    {
+        return $this->hasOne(EvaluacionPsicologica::class, 'postulante_id');
+    }
+
+    public function evaluacion_fisica()
+    {
+        return $this->hasOne(EvaluacionFisica::class, 'postulante_id');
+    }
+
+    public function evaluacion_instruccion()
+    {
+        return $this->hasOne(EvaluacionInstruccion::class, 'postulante_id');
+    }
+
+    public function evaluacion_conocimiento()
+    {
+        return $this->hasOne(EvaluacionConocimiento::class, 'postulante_id');
+    }
+
+    public function evaluacion_odontologica()
+    {
+        return $this->hasOne(EvaluacionOdontologica::class, 'postulante_id');
     }
 }

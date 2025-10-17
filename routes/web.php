@@ -6,6 +6,7 @@ use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ContenidoController;
 use App\Http\Controllers\DescargaDocumentoController;
 use App\Http\Controllers\EsbapolmusController;
+use App\Http\Controllers\EvaluacionMedicaController;
 use App\Http\Controllers\FatescipolController;
 use App\Http\Controllers\FormularioRegistroController;
 use App\Http\Controllers\InicioController;
@@ -106,6 +107,10 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
         ["index", "store"]
     );
 
+    // POSTULANTE
+    Route::get('/evaluaciones', [InicioController::class, 'evaluaciones'])->name('evaluaciones');
+    Route::get('/vestibulares', [InicioController::class, 'vestibulares'])->name('vestibulares');
+
     // POSTULANTES
     Route::get("postulantes/preinscripcion", [PostulanteController::class, 'preinscripcion'])->name("postulantes.preinscripcion");
     Route::get("postulantes/api", [PostulanteController::class, 'api'])->name("postulantes.api");
@@ -116,8 +121,6 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
         ["index", "store", "edit", "show", "update", "destroy"]
     );
 
-
-
     // DESCARGA DOCUMENTOS
     Route::get("descarga_documentos/api", [DescargaDocumentoController::class, 'api'])->name("descarga_documentos.api");
     Route::get("descarga_documentos/paginado", [DescargaDocumentoController::class, 'paginado'])->name("descarga_documentos.paginado");
@@ -126,7 +129,6 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
         ["index", "store", "edit", "show", "update", "destroy"]
     );
 
-
     // INSCRIPCION
     Route::get("inscripcions", [InscripcionController::class, 'index'])->name("inscripcions.index");
 
@@ -134,9 +136,40 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
     Route::get("requisitos/buscar", [RequisitoController::class, 'buscar'])->name("requisitos.buscar");
     Route::post("requisitos/store", [RequisitoController::class, 'store'])->name("requisitos.store");
     Route::put("requisitos/update/{requisito}", [RequisitoController::class, 'update'])->name("requisitos.update");
+    Route::patch("requisitos/aprobarInscripcion/{postulante}", [RequisitoController::class, 'aprobarInscripcion'])->name("requisitos.aprobarInscripcion");
 
     // CONTENIDO
     Route::get("contenidos/getContenido", [ContenidoController::class, 'getContenido'])->name("contenidos.getContenido");
+
+    // EVALUACION MEDICAS
+    Route::get("evaluacion_medicas/index", [EvaluacionMedicaController::class, 'index'])->name("evaluacion_medicas.index");
+    Route::get("evaluacion_medicas/descargar", [EvaluacionMedicaController::class, 'descargar'])->name("evaluacion_medicas.descargar");
+    Route::post("evaluacion_medicas/subir", [EvaluacionMedicaController::class, 'subir'])->name("evaluacion_medicas.subir");
+
+    // EVALUACION PSICOLOGICA
+    Route::get("evaluacion_psicologicas/index", [EvaluacionMedicaController::class, 'index'])->name("evaluacion_psicologicas.index");
+    Route::get("evaluacion_psicologicas/descargar", [EvaluacionMedicaController::class, 'descargar'])->name("evaluacion_psicologicas.descargar");
+    Route::post("evaluacion_psicologicas/subir", [EvaluacionMedicaController::class, 'subir'])->name("evaluacion_psicologicas.subir");
+
+    // EVALUACION FISICA
+    Route::get("evaluacion_fisicas/index", [EvaluacionMedicaController::class, 'index'])->name("evaluacion_fisicas.index");
+    Route::get("evaluacion_fisicas/descargar", [EvaluacionMedicaController::class, 'descargar'])->name("evaluacion_fisicas.descargar");
+    Route::post("evaluacion_fisicas/subir", [EvaluacionMedicaController::class, 'subir'])->name("evaluacion_fisicas.subir");
+
+    // EVALUACION INSTRUCCION
+    Route::get("evaluacion_instruccions/index", [EvaluacionMedicaController::class, 'index'])->name("evaluacion_instruccions.index");
+    Route::get("evaluacion_instruccions/descargar", [EvaluacionMedicaController::class, 'descargar'])->name("evaluacion_instruccions.descargar");
+    Route::post("evaluacion_instruccions/subir", [EvaluacionMedicaController::class, 'subir'])->name("evaluacion_instruccions.subir");
+
+    // EVALUACION CONOCIMIENTO
+    Route::get("evaluacion_conocimientos/index", [EvaluacionMedicaController::class, 'index'])->name("evaluacion_conocimientos.index");
+    Route::get("evaluacion_conocimientos/descargar", [EvaluacionMedicaController::class, 'descargar'])->name("evaluacion_conocimientos.descargar");
+    Route::post("evaluacion_conocimientos/subir", [EvaluacionMedicaController::class, 'subir'])->name("evaluacion_conocimientos.subir");
+
+    // EVALUACION ODONTOLOGICA
+    Route::get("evaluacion_odontologicas/index", [EvaluacionMedicaController::class, 'index'])->name("evaluacion_odontologicas.index");
+    Route::get("evaluacion_odontologicas/descargar", [EvaluacionMedicaController::class, 'descargar'])->name("evaluacion_odontologicas.descargar");
+    Route::post("evaluacion_odontologicas/subir", [EvaluacionMedicaController::class, 'subir'])->name("evaluacion_odontologicas.subir");
 
     // REPORTES
     Route::get('reportes/usuarios', [ReporteController::class, 'usuarios'])->name("reportes.usuarios");

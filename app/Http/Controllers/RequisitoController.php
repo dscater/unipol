@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RequisitoStoreRequest;
 use App\Http\Requests\RequisitoUpdateRequest;
+use App\Models\Postulante;
 use App\Models\Requisito;
 use App\Services\RequisitoService;
 use Illuminate\Http\Request;
@@ -57,6 +58,25 @@ class RequisitoController extends Controller
             $this->requisitoService->actualizar($request->validated(), $requisito);
             DB::commit();
             return redirect()->route("requisitos.buscar")->with("bien", "Actualización correcta")->with("codigoInsc", $requisito->postulante->codigoInsc);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw ValidationException::withMessages([
+                'error' =>  $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function aprobarInscripcion(Postulante $postulante)
+    {
+        DB::beginTransaction();
+        try {
+            $postulante->estado = "INSCRITO";
+            $postulante->save();
+            DB::commit();
+            return response()->JSON([
+                "postulante" => $postulante,
+                "sw" => true
+            ]);
         } catch (\Exception $e) {
             DB::rollBack();
             throw ValidationException::withMessages([

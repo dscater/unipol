@@ -44,6 +44,57 @@ const verRequisito = (item) => {
     oPostulante.value = item;
     muestraArchivos.value = true;
 };
+
+const aprobarInscripcion = (id) => {
+    Swal.fire({
+        icon: "question",
+        title: "Aprobar",
+        html: `¿Esta seguro(a) de aprobar esta Inscripción?`,
+        showCancelButton: true,
+        confirmButtonText: "Si, aprobar",
+        cancelButtonText: "Cancelar",
+        denyButtonText: `Cancelar`,
+        customClass: {
+            confirmButton: "btn-success",
+        },
+    }).then(async (result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            axios
+                .post(route("requisitos.aprobarInscripcion", id), {
+                    _method: "patch",
+                })
+                .then((response) => {
+                    const success = `Registro actualizado correctamente`;
+                    Swal.fire({
+                        icon: "success",
+                        title: "Correcto",
+                        html: `<strong>${success}</strong>`,
+                        confirmButtonText: `Aceptar`,
+                        customClass: {
+                            confirmButton: "btn-alert-success",
+                        },
+                    });
+                })
+                .catch((error) => {
+                    const errorMsg =
+                        "Ocurrió un error, no se pudo actualizar el registro";
+                    Swal.fire({
+                        icon: "info",
+                        title: "Error",
+                        html: `<strong>${errorMsg}</strong>`,
+                        confirmButtonText: `Aceptar`,
+                        customClass: {
+                            confirmButton: "btn-error",
+                        },
+                    });
+                })
+                .finally(() => {
+                    buscarPostulantes();
+                });
+        }
+    });
+};
 </script>
 <template>
     <Head title="Verificación de requisitos"></Head>
@@ -149,8 +200,18 @@ const verRequisito = (item) => {
                                                     >{{ item.full_ci }}
                                                 </p>
                                                 <p class="mb-1">
-                                                    <strong>Estado: </strong
-                                                    >{{ item.estado }}
+                                                    <strong>Estado: </strong>
+                                                    <span
+                                                        class="badge"
+                                                        :class="[
+                                                            item.estado ==
+                                                            'INSCRITO'
+                                                                ? 'badge-success'
+                                                                : 'badge-info',
+                                                        ]"
+                                                    >
+                                                        {{ item.estado }}
+                                                    </span>
                                                 </p>
                                             </div>
                                             <div class="col-md-6">
@@ -172,7 +233,7 @@ const verRequisito = (item) => {
                                     </div>
                                     <div class="col-md-3">
                                         <button
-                                            class="btn btn-success w-100"
+                                            class="btn btn-principal mb-2 w-100"
                                             @click="verRequisito(item)"
                                             v-if="item?.requisito"
                                         >
@@ -184,6 +245,17 @@ const verRequisito = (item) => {
                                             class="bg-gray p-2 w-100 d-block text-center"
                                             >No se cargaron archivos</span
                                         >
+                                        <button
+                                            class="btn btn-success w-100"
+                                            @click="aprobarInscripcion(item.id)"
+                                            v-if="
+                                                item?.requisito &&
+                                                item.estado == 'PREINSCRITO'
+                                            "
+                                        >
+                                            <i class="fa fa-check"></i> Aprobar
+                                            Inscripción
+                                        </button>
                                     </div>
                                 </div>
                             </div>

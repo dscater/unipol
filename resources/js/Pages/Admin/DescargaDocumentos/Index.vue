@@ -2,7 +2,7 @@
 import Content from "@/Components/Content.vue";
 import MiTable from "@/Components/MiTable.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
-import { useUsuarios } from "@/composables/usuarios/useUsuarios";
+import { useDescargaDocumentos } from "@/composables/descarga_documentos/useDescargaDocumentos";
 import { ref, onMounted, onBeforeMount } from "vue";
 import Formulario from "./Formulario.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
@@ -15,7 +15,8 @@ onBeforeMount(() => {
     appStore.startLoading();
 });
 
-const { setUsuario, limpiarUsuario } = useUsuarios();
+const { setDescargaDocumento, limpiarDescargaDocumento } =
+    useDescargaDocumentos();
 
 const miTable = ref(null);
 const headers = [
@@ -51,7 +52,7 @@ const accion_formulario = ref(0);
 const muestra_formulario = ref(false);
 
 const agregarRegistro = () => {
-    limpiarUsuario();
+    limpiarDescargaDocumento();
     accion_formulario.value = 0;
     muestra_formulario.value = true;
 };
@@ -63,10 +64,10 @@ const updateDatatable = async () => {
     }
 };
 
-const eliminarUsuario = (item) => {
+const eliminarDescargaDocumento = (item) => {
     Swal.fire({
         title: "¿Quierés eliminar este registro?",
-        html: `<strong>${item.full_name}</strong>`,
+        html: `<strong>${item.descripcion}</strong>`,
         showCancelButton: true,
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "No, cancelar",
@@ -78,7 +79,7 @@ const eliminarUsuario = (item) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             let respuesta = await axiosDelete(
-                route("usuarios.destroy", item.id)
+                route("descarga_documentos.destroy", item.id)
             );
             if (respuesta && respuesta.sw) {
                 updateDatatable();
@@ -92,13 +93,13 @@ onMounted(async () => {
 });
 </script>
 <template>
-    <Head title="Usuarios"></Head>
+    <Head title="Documentos de descarga"></Head>
 
     <Content>
         <template #header>
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Usuarios</h1>
+                    <h1 class="m-0">Documentos de descarga</h1>
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
@@ -106,7 +107,9 @@ onMounted(async () => {
                         <li class="breadcrumb-item">
                             <Link :href="route('inicio')">Inicio</Link>
                         </li>
-                        <li class="breadcrumb-item active">Usuarios</li>
+                        <li class="breadcrumb-item active">
+                            Documentos de descarga
+                        </li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -122,14 +125,15 @@ onMounted(async () => {
                             v-if="
                                 props_page.auth?.user.permisos == '*' ||
                                 props_page.auth?.user.permisos.includes(
-                                    'usuarios.create'
+                                    'descarga_documentos.create'
                                 )
                             "
                             type="button"
                             class="btn btn-success"
                             @click="agregarRegistro"
                         >
-                            <i class="fa fa-plus"></i> Nuevo Usuario
+                            <i class="fa fa-plus"></i> Nuevo Documento de
+                            Descarga
                         </button>
                     </div>
                     <div class="col-md-8 my-1">
@@ -164,7 +168,7 @@ onMounted(async () => {
                             ref="miTable"
                             :cols="headers"
                             :api="true"
-                            :url="route('usuarios.paginado')"
+                            :url="route('descarga_documentos.paginado')"
                             :numPages="5"
                             :multiSearch="multiSearch"
                             :syncOrderBy="'id'"
@@ -188,7 +192,7 @@ onMounted(async () => {
                                     <button
                                         class="btn btn-warning"
                                         @click="
-                                            setUsuario(item);
+                                            setDescargaDocumento(item);
                                             accion_formulario = 1;
                                             muestra_formulario = true;
                                         "
@@ -196,7 +200,7 @@ onMounted(async () => {
                                             props_page.auth?.user.permisos ==
                                                 '*' ||
                                             props_page.auth?.user.permisos.includes(
-                                                'usuarios.edit'
+                                                'descarga_documentos.edit'
                                             )
                                         "
                                     >
@@ -210,12 +214,12 @@ onMounted(async () => {
                                 >
                                     <button
                                         class="btn btn-danger"
-                                        @click="eliminarUsuario(item)"
+                                        @click="eliminarDescargaDocumento(item)"
                                         v-if="
                                             props_page.auth?.user.permisos ==
                                                 '*' ||
                                             props_page.auth?.user.permisos.includes(
-                                                'usuarios.destroy'
+                                                'descarga_documentos.destroy'
                                             )
                                         "
                                     >
@@ -227,12 +231,11 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
+        <Formulario
+            :muestra_formulario="muestra_formulario"
+            :accion_formulario="accion_formulario"
+            @envio-formulario="updateDatatable"
+            @cerrar-formulario="muestra_formulario = false"
+        ></Formulario>
     </Content>
-
-    <Formulario
-        :muestra_formulario="muestra_formulario"
-        :accion_formulario="accion_formulario"
-        @envio-formulario="updateDatatable"
-        @cerrar-formulario="muestra_formulario = false"
-    ></Formulario>
 </template>
