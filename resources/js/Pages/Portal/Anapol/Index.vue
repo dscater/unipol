@@ -21,11 +21,43 @@ const url_asset = ref(props_page.url_assets);
 const listItems = ref([
     {
         tipo: "img",
-        ruta: "/imgs/F12 COD 001.jpg",
+        ruta: "/imgs/anapol/FOTO ANA 46.jpg",
     },
     {
-        tipo: "video",
-        ruta: "/videos/video1.mp4",
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 47.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 48.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 49.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 50.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 51.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 52.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 53.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 54.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/anapol/FOTO ANA 55.jpg",
     },
 ]);
 
@@ -50,7 +82,13 @@ onMounted(() => {});
     </div>
     <el-carousel height="calc(100vh - 200px)">
         <el-carousel-item v-for="item in listItems">
-            <div class="carusel">
+            <div
+                class="carusel"
+                :style="{
+                    color: 'black',
+                    backgroundImage: `url(' ${url_asset + item.ruta} ')`,
+                }"
+            >
                 <template v-if="item.tipo == 'img'">
                     <img :src="url_asset + item.ruta" alt="Foto" />
                 </template>

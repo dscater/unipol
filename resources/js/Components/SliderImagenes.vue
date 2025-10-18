@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 const props = defineProps({
     imagenes: {
         type: Array,
@@ -9,9 +9,16 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    height: {
+        type: String,
+        default: "200px",
+    },
+    interval: {
+        type: Number,
+        default: -1,
+    },
 });
 
-console.log(props.imagenes);
 const index_img = ref(0);
 
 const actualizaImagen = (mueve) => {
@@ -22,10 +29,14 @@ const actualizaImagen = (mueve) => {
     if (index_img.value > props.imagenes.length - 1) {
         index_img.value = 0;
     }
+    clearInterval(intervalSlider.value);
+    iniciaInterval();
 };
 
 const irImagen = (index) => {
+    clearInterval(intervalSlider.value);
     index_img.value = index;
+    iniciaInterval();
 };
 
 const contenedorSlider = ref(null);
@@ -46,6 +57,18 @@ const pantallaCompleta = () => {
         }
     }
 };
+
+const intervalSlider = ref(null);
+const iniciaInterval = () => {
+    intervalSlider.value = setInterval(() => {
+        index_img.value = (index_img.value + 1) % props.imagenes.length;
+    }, props.interval);
+};
+onMounted(() => {
+    if (props.interval > 1000) {
+        iniciaInterval();
+    }
+});
 </script>
 <template>
     <div class="contenendor_principal_slider" ref="contenedorSlider">
@@ -62,23 +85,23 @@ const pantallaCompleta = () => {
             ><i class="fa fa-expand"></i
         ></span>
         <div class="contenedor_sliders">
-            <div
-                class="slider"
-                v-for="(item, index) in imagenes"
-                v-show="index == index_img"
-            >
-                <img
-                    :src="item.url_imagen"
-                    alt="Imagen"
-                    :class="[index != index_img ? 'oculto' : '']"
-                    :key="index"
-                />
+            <transition name="fade" mode="out-in">
                 <div
-                    class="descripcion"
-                    v-if="item.html"
-                    v-html="item.html"
-                ></div>
-            </div>
+                    class="slider"
+                    :key="index_img"
+                    :style="{
+                        backgroundImage: `url('${imagenes[index_img].url_imagen}')`,
+                        height: height,
+                    }"
+                >
+                    <img :src="imagenes[index_img].url_imagen" alt="Imagen" />
+                    <div
+                        class="descripcion"
+                        v-if="imagenes[index_img].html"
+                        v-html="imagenes[index_img].html"
+                    ></div>
+                </div>
+            </transition>
         </div>
         <div class="contenedor_puntos">
             <span
@@ -94,9 +117,13 @@ const pantallaCompleta = () => {
     </div>
 </template>
 <style scoped>
-img {
-    width: 100%;
-    transition: opacity 0.5s ease-in-out;
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 
 img.oculto {
@@ -119,6 +146,7 @@ img.oculto {
     padding: 8px 13px;
     border-radius: 50%;
     transition: all 0.3s;
+    z-index: 100;
 }
 
 .contenendor_principal_slider .icon-left:hover,
@@ -128,6 +156,7 @@ img.oculto {
 }
 .contenedor_sliders .slider {
     width: 100%;
+    display: flex;
 }
 
 .contenedor_sliders .slider .descripcion {
@@ -140,15 +169,12 @@ img.oculto {
     font-size: 0.9rem;
 }
 
-.contenedor_sliders .slider img {
-    object-fit: fill;
-}
-
 .contenedor_puntos {
     position: absolute;
     bottom: 0px;
     width: 100%;
     text-align: center;
+    z-index: 11;
 }
 
 .contenedor_puntos .punto {
@@ -165,6 +191,7 @@ img.oculto {
 }
 
 .contenendor_principal_slider .pantalla_completa {
+    z-index: 20;
     cursor: pointer;
     position: absolute;
     top: 0px;
@@ -175,10 +202,11 @@ img.oculto {
 }
 
 .fa-circle {
-    color: rgb(168, 168, 168);
+    z-index: 1000;
+    color: rgb(255, 255, 255);
 }
 .fa-circle.active {
-    color: rgb(233, 229, 219);
+    color: rgb(255, 255, 255);
 }
 
 /* Animaciones de la transición */
@@ -194,10 +222,6 @@ img.oculto {
 
 .contenendor_principal_slider {
     border-radius: 6px 6px 0px 0px;
-}
-
-.contenendor_principal_slider .contenedor_sliders .slider img {
-    object-fit: cover; /* Para asegurarse de que la imagen se ajuste bien dentro de la pantalla */
 }
 
 /* Estilo para el contenedor en pantalla completa */
@@ -226,11 +250,31 @@ img.oculto {
     height: 98vh;
 }
 
-.contenendor_principal_slider:fullscreen .contenedor_sliders img {
-    width: 100%;
-    height: 100%;
+.contenedor_sliders .slider::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: inherit; /* usa la misma imagen de fondo */
+    filter: blur(20px) brightness(0.6); /* efecto difuminado y oscurecido */
+    transform: scale(1.2); /* expande un poco para cubrir bordes */
+    z-index: 0;
 }
 
+.contenedor_sliders .slider img,
+.contenedor_sliders .slider video {
+    z-index: 1;
+    margin: 0 auto;
+}
+
+.contenendor_principal_slider:fullscreen .contenedor_sliders .slider {
+    height: 100vh !important;
+}
+.contenendor_principal_slider:-webkit-full-screen img {
+    object-fit: contain;
+    margin: auto;
+    height: 100%;
+}
 /* Estilo para los botones cuando estamos en pantalla completa */
 .contenendor_principal_slider:fullscreen .icon-left,
 .contenendor_principal_slider:fullscreen .icon-right,
@@ -239,7 +283,7 @@ img.oculto {
         0,
         0,
         0,
-        0.5
+        0.651
     ); /* Fondo más oscuro para los controles */
     color: white;
 }

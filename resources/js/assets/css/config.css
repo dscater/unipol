@@ -13,6 +13,7 @@
     --bgDarkPrincipal: rgb(18, 20, 9);
     --bgDark: rgb(22, 21, 21);
     --bgGray: rgb(126, 126, 126);
+    --bgGrayLight: rgb(241, 241, 241);
     --bgDarkGray: rgb(31, 31, 31);
     --bgSuccess: #009143;
     --bgSuccesst: rgb(3, 121, 58);
@@ -314,16 +315,45 @@ body .mi-table table thead tr th .iheader .accion.active {
 
 /* PORTAL */
 
+.contenedor_secciones .seccion .info_seccion img {
+    margin: auto;
+    max-height: 500px;
+    /* filter: drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.5)); */
+}
+
+.contenedor_secciones .seccion:nth-child(odd) .info_seccion {
+    background-color: var(--bgGrayLight);
+    border: solid 1px var(--bgGray);
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 3px var(--bg3);
+}
+.contenedor_secciones .seccion:nth-child(odd) .info_seccion img {
+    border: solid 1px var(--bg5);
+    box-shadow: 0px 0px 10px var(--bg3);
+}
+
+.contenedor_secciones .seccion:nth-child(even) .info_seccion {
+    background-color: var(--bg2);
+    border: solid 1px var(--bg6);
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 10px var(--bgDark);
+}
+.contenedor_secciones .seccion:nth-child(even) .info_seccion img {
+    border: solid 1px var(--bg3);
+    box-shadow: 0px 0px 10px var(--bgDark);
+}
+
 .titulo-seccion {
-    font-size: 1.3em;
+    font-size: 2.2em;
     color: var(--bg3);
     font-style: italic;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 .subtitulo-seccion {
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.5em;
 }
 
 .contenedor_secciones .col-12 {
@@ -350,7 +380,6 @@ body .mi-table table thead tr th .iheader .accion.active {
 }
 
 /* SECCIONES PORTAL */
-
 .img_admicion {
     height: 50px;
 }
@@ -435,18 +464,39 @@ body .mi-table table thead tr th .iheader .accion.active {
 .carusel {
     width: 100%;
     height: 100%;
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
-.carusel img {
-    object-fit: cover;
+.carusel::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: inherit; /* usa la misma imagen de fondo */
+    background-repeat: no-repeat;
+    filter: blur(20px) brightness(0.6); /* efecto difuminado y oscurecido */
+    transform: scale(1.2); /* expande un poco para cubrir bordes */
+    z-index: 0;
 }
 
+.carusel img,
 .carusel video {
-    height: 100%;
-    min-width: 100%;
-    min-height: 56.25vw; /* 100 * 9 / 16 */
+    z-index: 1000;
+    position: relative;
+    z-index: 1;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
+
 .bg-carusel {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
@@ -494,7 +544,7 @@ body .mi-table table thead tr th .iheader .accion.active {
 
 .contenido .imgs img {
     width: 90px;
-    filter: drop-shadow(5px 5px 10px rgba(255, 255, 255, 0.5));
+    filter: drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.5));
 }
 
 .tituloAdmicion {

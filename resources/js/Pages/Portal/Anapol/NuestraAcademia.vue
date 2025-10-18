@@ -13,6 +13,7 @@ import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "@/Pages/Portal/Anapol/Parcial/Navbar.vue";
 import Footer from "@/Pages/Portal/Anapol/Parcial/Footer.vue";
+import SliderImagenes from "@/Components/SliderImagenes.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -58,6 +59,18 @@ onMounted(() => {
     });
 });
 
+const listImagensIntegral = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/F14 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F15 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F16 COD 001.jpg",
+    },
+]);
+
 onMounted(() => {});
 </script>
 <template>
@@ -80,22 +93,28 @@ onMounted(() => {});
             <div class="col-12">
                 <div class="row contenedor_secciones">
                     <!-- AUTORIDADES -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">NUESTRAS AUTORIDADES</h2>
                             <div class="col-12">
-                                <div class="row py-3" id="ana_aspectos1">
-                                    <div class="col-md-4">
+                                <div
+                                    class="row py-3 info_seccion"
+                                    id="ana_aspectos1"
+                                >
+                                    <div class="col-12 text-center">
                                         <img
                                             :src="
                                                 url_asset +
-                                                '/imgs/F1 COD 001.jpg'
+                                                '/imgs/anapol/FOTO ANA 001.png'
                                             "
+                                            class="img_seccion1"
                                             alt=""
                                         />
                                     </div>
-                                    <div class="col-md-8">
-                                        <h5 class="subtitulo-seccion">
+                                    <div class="col-12">
+                                        <h5
+                                            class="subtitulo-seccion text-center"
+                                        >
                                             MENSAJE DEL SEÑOR COMANDANTE GENERAL
                                             DE LA POLICÍA BOLIVIANA
                                         </h5>
@@ -156,9 +175,24 @@ onMounted(() => {});
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row py-3" id="ana_aspectos2">
-                                    <div class="col-md-8">
-                                        <h5 class="subtitulo-seccion">
+                                <div
+                                    class="row py-3 info_seccion"
+                                    id="ana_aspectos2"
+                                >
+                                    <div class="col-12 text-center">
+                                        <img
+                                            :src="
+                                                url_asset +
+                                                '/imgs/emblemaUnipol.png'
+                                            "
+                                            class="img_seccion1"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="col-12">
+                                        <h5
+                                            class="subtitulo-seccion text-center"
+                                        >
                                             MENSAJE DEL MAGNIFICO RECTOR DE LA
                                             UNIVERSIDAD POLICIAL “MCAL. ANTONIO
                                             JOSÉ DE SUCRE”
@@ -223,28 +257,25 @@ onMounted(() => {});
                                             “MCAL. ANTONIO JOSÉ DE SUCRE”
                                         </p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <img
-                                            :src="
-                                                url_asset +
-                                                '/imgs/emblemaUnipol.png'
-                                            "
-                                            alt=""
-                                        />
-                                    </div>
                                 </div>
-                                <div class="row py-3" id="ana_aspectos3">
-                                    <div class="col-md-4">
+                                <div
+                                    class="row py-3 info_seccion"
+                                    id="ana_aspectos3"
+                                >
+                                    <div class="col-12 text-center">
                                         <img
                                             :src="
                                                 url_asset +
                                                 '/imgs/emblemaUnipol.png'
                                             "
+                                            class="img_seccion1"
                                             alt=""
                                         />
                                     </div>
-                                    <div class="col-md-8">
-                                        <h5 class="subtitulo-seccion">
+                                    <div class="col-12">
+                                        <h5
+                                            class="subtitulo-seccion text-center"
+                                        >
                                             MENSAJE DEL SEÑOR DIRECTOR DE LA
                                             FACULTAD DE CIENCIAS POLICIALES
                                             “ACADEMIA NACIONAL DE POLICÍAS”
@@ -311,14 +342,17 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- VALORES Y PRINCIPIOS DEL CADETE -->
-                    <div class="col-12 py-5" id="ana_aspectos4">
+                    <div class="col-12 seccion py-5" id="ana_aspectos4">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 VALORES Y PRINCIPIOS DEL CADETE
                             </h2>
 
-                            <div class="row py-3" id="ana_aspectos5">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos5"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F2 COD 001.jpg'
@@ -326,8 +360,10 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">CADETE</h5>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        CADETE
+                                    </h5>
                                     <p class="text-justify">
                                         La palabra “Cadete” tiene sus raíces en
                                         el francés “cadet”, que significa “hijo
@@ -401,9 +437,17 @@ onMounted(() => {});
                                 </div>
                             </div>
 
-                            <div class="row py-3" id>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div class="row py-3 info_seccion" id>
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset + '/imgs/F37 COD 001.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         VALORES Y PRINCIPIOS
                                     </h5>
                                     <p class="text-justify">
@@ -492,23 +536,18 @@ onMounted(() => {});
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F37 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- RESEÑA HISTORICA -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">RESEÑA HISTORICA</h2>
-                            <div class="row PY-3" id="ana_aspectos6">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos6"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F4 COD 001.png'
@@ -516,9 +555,9 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
-                                        POLICIA BOLIVIANA
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        HISTORIA DE LA POLICÍA BOLIVIANA
                                     </h5>
                                     <p class="text-justify">
                                         Al proclamarse la Independencia
@@ -577,10 +616,22 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos7">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
-                                        ACADEMIA NACIONAL DE POLICÍAS
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos7"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset + '/imgs/F5 COD 001.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        HISTORIA DE LA ACADEMIA NACIONAL DE
+                                        POLICÍAS
                                     </h5>
                                     <p class="text-justify">
                                         La Academia Nacional de Policías, fue
@@ -635,30 +686,29 @@ onMounted(() => {});
                                         de la Policía Boliviana…
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F5 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- HIMNOS -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">HIMNOS</h2>
-                            <div class="row py-3" id="ana_aspectos8">
-                                <div class="col-md-4">
-                                    <img
-                                        :src="url_asset + '/imgs/himno.png'"
-                                        alt=""
-                                    />
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos8"
+                            >
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/FcK5HvGr9do"
+                                        frameborder="0"
+                                        allowfullscreen
+                                        width="100%"
+                                        height="400px"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    ></iframe>
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-md-6 offset-md-3">
+                                    <h5 class="subtitulo-seccion text-center">
                                         Himno del Policía y del Carabinero
                                     </h5>
                                     <div class="d-block w-100 text-sm italic">
@@ -669,6 +719,7 @@ onMounted(() => {});
                                         Carpio
                                     </div>
                                     <p class="text-center w-100 mt-3">
+                                        <b>I</b><br />
                                         Del derecho en la antorcha encendida, te
                                         dio el cielo su inmenso poder Guardia
                                         fiel qué te importa la vida, si
@@ -722,17 +773,22 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos9">
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F6 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos9"
+                            >
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/FcK5HvGr9do"
+                                        frameborder="0"
+                                        allowfullscreen
+                                        width="100%"
+                                        height="400px"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    ></iframe>
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-md-6 offset-md-3">
+                                    <h5 class="subtitulo-seccion text-center">
                                         Himno a la Academia Nacional de Policías
                                     </h5>
                                     <div class="d-block w-100 text-sm italic">
@@ -762,11 +818,14 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- MISIÓN Y VISIÓN -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">MISIÓN Y VISIÓN</h2>
-                            <div class="row py-3" id="ana_aspectos10">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos10"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F7 COD 001.jpg'
@@ -774,8 +833,10 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">MISIÓN</h5>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        MISIÓN
+                                    </h5>
                                     <p class="text-justify">
                                         Formar profesionales en el ámbito de las
                                         Ciencias Policiales, Oficiales de
@@ -789,9 +850,22 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos11">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">Visión</h5>
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos11"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset + '/imgs/F25 COD 001.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        Visión
+                                    </h5>
                                     <p class="text-justify">
                                         Constituirse en una Unidad Académica de
                                         excelencia, reconocida y acreditada
@@ -808,17 +882,12 @@ onMounted(() => {});
                                         Bolivia.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F25 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos12">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos12"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F41 COD 001.jpg'
@@ -826,8 +895,10 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">FILOSOFÍA</h5>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        FILOSOFÍA
+                                    </h5>
                                     <p class="text-justify">
                                         La Universidad Policial “Mcal. Antonio
                                         José de Sucre” a través de la Facultad
@@ -849,11 +920,14 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- PERFIL DE INGRESO -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">PERFIL DE INGRESO</h2>
-                            <div class="row py-3" id="ana_aspectos13">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos13"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F8 COD 001.jpg'
@@ -861,7 +935,7 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-12">
                                     <p class="text-justify">
                                         Señoritas y jóvenes bolivianos, quienes
                                         cuentan con: educación humanística,
@@ -883,13 +957,16 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- FORMACIÓN PROFESIONAL -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 FORMACIÓN PROFESIONAL
                             </h2>
-                            <div class="row py-3" id="ana_aspectos14">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos14"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F9 COD 001.jpg'
@@ -897,8 +974,8 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         CARACTERISTICAS DEL REGIMEN DE ESTUDIOS
                                     </h5>
                                     <p class="text-justify">
@@ -935,9 +1012,20 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos15">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos15"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset + '/imgs/F10 COD 001.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN ACADÉMICA-POLICIAL
                                     </h5>
                                     <p class="text-justify">
@@ -958,18 +1046,21 @@ onMounted(() => {});
                                         Bolivia.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos16"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F10 COD 001.jpg'
+                                            url_asset + '/imgs/F11 COD 001.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                            </div>
-                            <div class="row py-3" id="ana_aspectos16">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN FÍSICA Y DEPORTES
                                     </h5>
                                     <p class="text-justify">
@@ -988,17 +1079,12 @@ onMounted(() => {});
                                         extrema y peculiar.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F11 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos17">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos17"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F12 COD 001.jpg'
@@ -1006,8 +1092,8 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN ÉTICO Y MORAL (DISCIPLINA)
                                     </h5>
                                     <p class="text-justify">
@@ -1024,9 +1110,20 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos18">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion"
+                                id="ana_aspectos18"
+                            >
+                                <div class="col-12">
+                                    <img
+                                        :src="
+                                            url_asset + '/imgs/F12 COD 001.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN INTEGRAL
                                     </h5>
                                     <p class="text-justify">
@@ -1047,36 +1144,12 @@ onMounted(() => {});
                                         exigencia disciplinario riguroso.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F12 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                                 <div class="col-12 d-flex">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F14 COD 001.jpg'
-                                        "
-                                        alt=""
-                                        class="w-33"
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F15 COD 001.jpg'
-                                        "
-                                        alt=""
-                                        class="w-33"
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F16 COD 001.jpg'
-                                        "
-                                        alt=""
-                                        class="w-33"
-                                    />
+                                    <SliderImagenes
+                                        :imagenes="listImagensIntegral"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
                                 </div>
                             </div>
                             <div class="row py-3" id="ana_aspectos19">

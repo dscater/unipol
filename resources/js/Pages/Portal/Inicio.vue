@@ -22,11 +22,43 @@ const muestra_formulario = ref(false);
 const listItems = ref([
     {
         tipo: "img",
-        ruta: "/imgs/F12 COD 001.jpg",
+        ruta: "/imgs/portada/FOTO PP 001.jpg",
     },
     {
-        tipo: "video",
-        ruta: "/videos/video1.mp4",
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 002.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 003.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 004.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 005.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 006.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 007.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 008.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 009.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "/imgs/portada/FOTO PP 010.jpg",
     },
 ]);
 
@@ -34,8 +66,14 @@ onMounted(() => {});
 </script>
 <template>
     <el-carousel height="100vh">
-        <el-carousel-item v-for="item in listItems">
-            <div class="carusel">
+        <el-carousel-item v-for="item in listItems" :interval="10000">
+            <div
+                class="carusel"
+                :style="{
+                    color: 'black',
+                    backgroundImage: `url(' ${url_asset + item.ruta} ')`,
+                }"
+            >
                 <template v-if="item.tipo == 'img'">
                     <img :src="url_asset + item.ruta" alt="Foto" />
                 </template>
