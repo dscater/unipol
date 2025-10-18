@@ -16,7 +16,7 @@ import "./assets/js/bootstrap.bundle.js";
 // import "./assets/js/adminlte.min.js";
 
 import { createApp, h } from "vue";
-import { createInertiaApp } from "@inertiajs/vue3";
+import { createInertiaApp, router } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy";
 
@@ -32,11 +32,31 @@ const pinia = createPinia();
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 
+// ANIMATE CSS
+import "animate.css";
+import WOW from "wow.js";
+new WOW().init();
+
 // Default Layout
 import App from "@/Layouts/App.vue";
 
 // App
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+
+router.on("navigate", () => {
+    // Reinicia WOW.js al navegar
+    new WOW().init();
+
+    setTimeout(() => {
+        const hash = window.location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, 300);
+});
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -51,12 +71,13 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+        const vueApp = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(pinia)
-            .use(ElementPlus)
-            .mount(el);
+            .use(ElementPlus);
+        vueApp.mount(el);
+        return vueApp;
     },
     progress: {
         color: "#aac13f",

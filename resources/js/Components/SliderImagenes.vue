@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 const props = defineProps({
     imagenes: {
         type: Array,
@@ -29,18 +29,26 @@ const actualizaImagen = (mueve) => {
     if (index_img.value > props.imagenes.length - 1) {
         index_img.value = 0;
     }
-    clearInterval(intervalSlider.value);
-    iniciaInterval();
+    verificaInterval();
 };
 
 const irImagen = (index) => {
-    clearInterval(intervalSlider.value);
     index_img.value = index;
-    iniciaInterval();
+    verificaInterval();
+};
+
+const verificaInterval = () => {
+    if (intervalSlider.value && props.interval > 1000) {
+        clearInterval(intervalSlider.value);
+        iniciaInterval();
+    }
+};
+const detieneInterval = () => {
+    clearInterval(intervalSlider.value);
 };
 
 const contenedorSlider = ref(null);
-
+const isFullscreen = ref(false);
 const pantallaCompleta = () => {
     // pantalla completa
     const contenedor = contenedorSlider.value;
@@ -58,6 +66,11 @@ const pantallaCompleta = () => {
     }
 };
 
+// 🔹 Detectar cambios de pantalla completa
+const handleFullscreenChange = () => {
+    isFullscreen.value = !!document.fullscreenElement;
+};
+
 const intervalSlider = ref(null);
 const iniciaInterval = () => {
     intervalSlider.value = setInterval(() => {
@@ -65,9 +78,14 @@ const iniciaInterval = () => {
     }, props.interval);
 };
 onMounted(() => {
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
     if (props.interval > 1000) {
         iniciaInterval();
     }
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener("fullscreenchange", handleFullscreenChange);
 });
 </script>
 <template>
@@ -91,8 +109,10 @@ onMounted(() => {
                     :key="index_img"
                     :style="{
                         backgroundImage: `url('${imagenes[index_img].url_imagen}')`,
-                        height: height,
+                        height: isFullscreen ? '100vh' : height,
                     }"
+                    @mouseleave="verificaInterval"
+                    @mouseenter="detieneInterval"
                 >
                     <img :src="imagenes[index_img].url_imagen" alt="Imagen" />
                     <div
@@ -119,14 +139,10 @@ onMounted(() => {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 1.5s ease;
+    transition: opacity 0.3s ease;
 }
 .fade-enter-from,
 .fade-leave-to {
-    opacity: 0;
-}
-
-img.oculto {
     opacity: 0;
 }
 
@@ -135,6 +151,7 @@ img.oculto {
     width: 100%;
     margin: auto;
     position: relative;
+    background-color: black;
 }
 
 .contenendor_principal_slider .icon-left,
@@ -224,32 +241,6 @@ img.oculto {
     border-radius: 6px 6px 0px 0px;
 }
 
-/* Estilo para el contenedor en pantalla completa */
-.contenendor_principal_slider:fullscreen {
-    width: 50% !important;
-    top: 0;
-    left: 0;
-    position: fixed;
-    z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.747);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contenendor_principal_slider:fullscreen .pantalla_completa {
-    top: 10px;
-    right: 10px;
-    font-size: 1.4em;
-}
-.contenendor_principal_slider:fullscreen .contenedor_sliders {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90vw;
-    height: 98vh;
-}
-
 .contenedor_sliders .slider::before {
     content: "";
     z-index: -1;
@@ -260,21 +251,32 @@ img.oculto {
     transform: scale(1.2); /* expande un poco para cubrir bordes */
     z-index: 0;
 }
-
 .contenedor_sliders .slider img,
 .contenedor_sliders .slider video {
     z-index: 1;
     margin: 0 auto;
 }
 
-.contenendor_principal_slider:fullscreen .contenedor_sliders .slider {
-    height: 100vh !important;
-}
-.contenendor_principal_slider:-webkit-full-screen img {
-    object-fit: contain;
-    margin: auto;
+/* Estilo para el contenedor en pantalla completa */
+.contenendor_principal_slider:fullscreen .contenedor_sliders {
     height: 100%;
 }
+.contenendor_principal_slider:fullscreen .contenedor_sliders .slider {
+    display: block;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.contenendor_principal_slider:fullscreen .contenedor_sliders .slider img {
+    display: none;
+}
+
+.contenendor_principal_slider:fullscreen .contenedor_sliders .slider::before {
+    filter: none; /* efecto difuminado y oscurecido */
+    z-index: 3;
+}
+
 /* Estilo para los botones cuando estamos en pantalla completa */
 .contenendor_principal_slider:fullscreen .icon-left,
 .contenendor_principal_slider:fullscreen .icon-right,

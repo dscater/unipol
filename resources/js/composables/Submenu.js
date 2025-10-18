@@ -1,5 +1,6 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
+const openSubMenu = ref(false);
 export const useSubmenu = () => {
     const isMobile = ref(false);
 
@@ -27,16 +28,45 @@ export const useSubmenu = () => {
         submenu.classList.toggle("show");
     }
 
-    function onHover(e, state) {
+    function onClickSubmenu(e, state) {
         if (isMobile.value) return;
+
+        if (openSubMenu.value) {
+            // cerrar otros
+            const openSubmenus = document.querySelector(".miSubmenu");
+            const dropdown_submenus =
+                openSubmenus.querySelectorAll(".dropdown-submenu");
+            dropdown_submenus.forEach((elem) => {
+                const dropdown_menu = elem.querySelector(".dropdown-menu");
+                dropdown_menu.classList.remove("show");
+            });
+        }
+
+        openSubMenu.value = state;
 
         const trigger = e.currentTarget.querySelector(".dropdown-toggle");
         const submenu = trigger?.nextElementSibling;
         if (submenu) {
+            const rect = e.target.getBoundingClientRect();
+            submenu.style.position = "fixed";
+            submenu.style.top = rect.top + "px";
+            submenu.style.left = rect.right + "px";
+
             if (state) submenu.classList.add("show");
             else submenu.classList.remove("show");
         }
     }
+
+    // Para cerrar al hacer click fuera
+    document.addEventListener("click", (e) => {
+        const openSubmenus = document.querySelector(".miSubmenu");
+        const dropdown_submenus =
+            openSubmenus.querySelectorAll(".dropdown-submenu");
+        dropdown_submenus.forEach((elem) => {
+            const dropdown_menu = elem.querySelector(".dropdown-menu");
+            dropdown_menu.classList.remove("show");
+        });
+    });
 
     function handleClickOutside(e) {
         if (!e.target.closest(".dropdown-submenu")) {
@@ -58,6 +88,6 @@ export const useSubmenu = () => {
     });
     return {
         toggleSubmenu,
-        onHover,
+        onClickSubmenu,
     };
 };

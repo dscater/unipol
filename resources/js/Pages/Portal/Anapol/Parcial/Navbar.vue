@@ -5,7 +5,7 @@ import { onBeforeMount, onMounted, onUnmounted, ref } from "vue";
 import { useSubmenu } from "@/composables/Submenu";
 const muestra_formulario = ref(false);
 
-const { toggleSubmenu, onHover } = useSubmenu();
+const { toggleSubmenu, onClickSubmenu } = useSubmenu();
 
 const isFixed = ref(false);
 const showButton = ref(false);
@@ -65,8 +65,7 @@ onUnmounted(() => {
                         <!-- 1er nivel de submenú -->
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"
@@ -106,8 +105,7 @@ onUnmounted(() => {
                         </div>
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"
@@ -137,8 +135,7 @@ onUnmounted(() => {
                         </div>
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"
@@ -168,8 +165,7 @@ onUnmounted(() => {
                         </div>
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"
@@ -199,8 +195,7 @@ onUnmounted(() => {
                         </div>
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"
@@ -246,8 +241,7 @@ onUnmounted(() => {
                         >
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"
@@ -317,8 +311,7 @@ onUnmounted(() => {
                         </div>
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"
@@ -364,8 +357,7 @@ onUnmounted(() => {
                         >
                         <div
                             class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                            @click.prevent="onClickSubmenu($event, true)"
                         >
                             <a
                                 href="#"

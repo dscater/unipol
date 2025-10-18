@@ -71,7 +71,85 @@ const listImagensIntegral = ref([
     },
 ]);
 
-onMounted(() => {});
+const listImagensInstruccion = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/f18 cod 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F22 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F20 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F23 COD 001.jpg",
+    },
+]);
+const listDistinciones = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/F28 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F29 COD 001.jpg",
+    },
+]);
+
+const listBecas = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/F31 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F32 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F33 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F34 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F30 COD 001.jpg",
+    },
+]);
+
+const listInfraestructura = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/F28 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F25 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F5 COD 001.jpg",
+    },
+]);
+
+const listCampoOcupacional = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/F38 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F39 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F40 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F41 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F42 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F43 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F44 COD 001.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/F45 COD 001.jpg",
+    },
+]);
 </script>
 <template>
     <div class="container-fluid pagina">
@@ -98,7 +176,7 @@ onMounted(() => {});
                             <h2 class="titulo-seccion">NUESTRAS AUTORIDADES</h2>
                             <div class="col-12">
                                 <div
-                                    class="row py-3 info_seccion"
+                                    class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                     id="ana_aspectos1"
                                 >
                                     <div class="col-12 text-center">
@@ -176,7 +254,7 @@ onMounted(() => {});
                                     </div>
                                 </div>
                                 <div
-                                    class="row py-3 info_seccion"
+                                    class="row py-3 info_seccion wow animate__animated animate__slideInRight"
                                     id="ana_aspectos2"
                                 >
                                     <div class="col-12 text-center">
@@ -259,7 +337,7 @@ onMounted(() => {});
                                     </div>
                                 </div>
                                 <div
-                                    class="row py-3 info_seccion"
+                                    class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
                                     id="ana_aspectos3"
                                 >
                                     <div class="col-12 text-center">
@@ -349,7 +427,7 @@ onMounted(() => {});
                             </h2>
 
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos5"
                             >
                                 <div class="col-12 text-center">
@@ -437,7 +515,10 @@ onMounted(() => {});
                                 </div>
                             </div>
 
-                            <div class="row py-3 info_seccion" id>
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id
+                            >
                                 <div class="col-12 text-center">
                                     <img
                                         :src="
@@ -544,7 +625,7 @@ onMounted(() => {});
                         <div class="container">
                             <h2 class="titulo-seccion">RESEÑA HISTORICA</h2>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos6"
                             >
                                 <div class="col-12 text-center">
@@ -617,7 +698,7 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
                                 id="ana_aspectos7"
                             >
                                 <div class="col-12 text-center">
@@ -694,7 +775,7 @@ onMounted(() => {});
                         <div class="container">
                             <h2 class="titulo-seccion">HIMNOS</h2>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos8"
                             >
                                 <div class="col-12">
@@ -774,7 +855,7 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
                                 id="ana_aspectos9"
                             >
                                 <div class="col-12">
@@ -822,7 +903,7 @@ onMounted(() => {});
                         <div class="container">
                             <h2 class="titulo-seccion">MISIÓN Y VISIÓN</h2>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos10"
                             >
                                 <div class="col-12 text-center">
@@ -851,7 +932,7 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
                                 id="ana_aspectos11"
                             >
                                 <div class="col-12 text-center">
@@ -884,7 +965,7 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
                                 id="ana_aspectos12"
                             >
                                 <div class="col-12 text-center">
@@ -924,7 +1005,7 @@ onMounted(() => {});
                         <div class="container">
                             <h2 class="titulo-seccion">PERFIL DE INGRESO</h2>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos13"
                             >
                                 <div class="col-12 text-center">
@@ -963,7 +1044,7 @@ onMounted(() => {});
                                 FORMACIÓN PROFESIONAL
                             </h2>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos14"
                             >
                                 <div class="col-12 text-center">
@@ -1013,7 +1094,7 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
                                 id="ana_aspectos15"
                             >
                                 <div class="col-12 text-center">
@@ -1048,7 +1129,7 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
                                 id="ana_aspectos16"
                             >
                                 <div class="col-12 text-center">
@@ -1081,7 +1162,7 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
                                 id="ana_aspectos17"
                             >
                                 <div class="col-12 text-center">
@@ -1111,10 +1192,10 @@ onMounted(() => {});
                                 </div>
                             </div>
                             <div
-                                class="row py-3 info_seccion"
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
                                 id="ana_aspectos18"
                             >
-                                <div class="col-12">
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F12 COD 001.jpg'
@@ -1152,8 +1233,11 @@ onMounted(() => {});
                                     ></SliderImagenes>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos19">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="ana_aspectos19"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F17 COD 001.jpg'
@@ -1161,8 +1245,8 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN CON PERSPECTIVA DE GÉNERO
                                     </h5>
                                     <p class="text-justify">
@@ -1179,9 +1263,19 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos20">
-                                <div class="col-md-12">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                id="ana_aspectos20"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listImagensInstruccion"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         INSTRUCCIÓN POLICIAL
                                     </h5>
                                     <p class="w-100 text-justify">
@@ -1195,35 +1289,35 @@ onMounted(() => {});
                                         de cada Unidad Operativa institucional,
                                         estando relacionados con lo siguiente:
                                     </p>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            a) Portar armas de fuego y, en su
-                                            caso utilizarlas en diferentes
+                                    <ul class="list-unstyled text-justify pl-4">
+                                        <li class="mb-3">
+                                            <b>a)</b> Portar armas de fuego y,
+                                            en su caso utilizarlas en diferentes
                                             modalidades e intensidades.
                                         </li>
-                                        <li>
-                                            b) Portar equipo, armamento,
+                                        <li class="mb-3">
+                                            <b>b)</b> Portar equipo, armamento,
                                             munición policial-militar, y en su
                                             caso utilizarlo en diferentes
                                             modalidades e intensidades.
                                         </li>
-                                        <li>
-                                            c) Participar en entrenamientos,
-                                            capacitaciones, eventos y similares
-                                            en ambientes peculiares extremos, en
-                                            diferentes regiones del Estado
-                                            Boliviano.
+                                        <li class="mb-3">
+                                            <b>c)</b> Participar en
+                                            entrenamientos, capacitaciones,
+                                            eventos y similares en ambientes
+                                            peculiares extremos, en diferentes
+                                            regiones del Estado Boliviano.
                                         </li>
-                                        <li>
-                                            d) Realizar ejercicios físicos, con
-                                            o sin equipo y armamento que
-                                            implican diferentes niveles de
-                                            intensidad y desafío de resistencia
-                                            física y psicológica con niveles
-                                            graduales y progresivos.
+                                        <li class="mb-3">
+                                            <b>d)</b> Realizar ejercicios
+                                            físicos, con o sin equipo y
+                                            armamento que implican diferentes
+                                            niveles de intensidad y desafío de
+                                            resistencia física y psicológica con
+                                            niveles graduales y progresivos.
                                         </li>
-                                        <li>
-                                            e) Participar en ejercicios,
+                                        <li class="mb-3">
+                                            <b>e)</b> Participar en ejercicios,
                                             prácticas y pruebas, que incluyen
                                             varios niveles de estrés operativo,
                                             simulando la cercanía a la realidad
@@ -1241,8 +1335,8 @@ onMounted(() => {});
                                             templanza y equilibrio deseado para
                                             la actividad policial.
                                         </li>
-                                        <li>
-                                            f) Participar en ejercicios e
+                                        <li class="mb-3">
+                                            <b>f)</b> Participar en ejercicios e
                                             instrucción a realizarse en
                                             diferentes alturas y profundidades,
                                             infraestructuras, montaña, peñascos,
@@ -1250,24 +1344,24 @@ onMounted(() => {});
                                             confinados y similares.
                                         </li>
 
-                                        <li>
-                                            g) Participar en ejercicios e
+                                        <li class="mb-3">
+                                            <b>g)</b> Participar en ejercicios e
                                             instrucción de natación utilitaria y
                                             desempeñar entrenamiento en
                                             supervivencia en aguas de diferente
                                             caudal, además de rescate acuático.
                                         </li>
-                                        <li>
-                                            h) Conducir vehículos de dos y
-                                            cuatro ruedas.
+                                        <li class="mb-3">
+                                            <b>h)</b> Conducir vehículos de dos
+                                            y cuatro ruedas.
                                         </li>
-                                        <li>
-                                            i) Participar en ejercicios y
+                                        <li class="mb-3">
+                                            <b>i)</b> Participar en ejercicios y
                                             entrenamientos con animales,
                                             especialmente con caballos y canes.
                                         </li>
-                                        <li>
-                                            j) Participar en ejercicios e
+                                        <li class="mb-3">
+                                            <b>j)</b> Participar en ejercicios e
                                             instrucción en modalidades
                                             combinadas de uno o varios de los
                                             establecidos en el presente artículo
@@ -1279,68 +1373,20 @@ onMounted(() => {});
                                         </li>
                                     </ul>
                                 </div>
-                                <div
-                                    class="col-md-6 offset-md-3 bg-dark-gray py-3"
-                                >
-                                    <el-carousel
-                                        height="500px"
-                                        direction="vertical"
-                                        type="card"
-                                        :autoplay="false"
-                                    >
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/f18 cod 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/F22 COD 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/F20 COD 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/F23 COD 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                    </el-carousel>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- JERARQUIA INTERNA Y DISTINCIONES -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 JERARQUIA INTERNA Y DISTINCIONES
                             </h2>
-                            <div class="row py-3" id="ana_aspectos21">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="ana_aspectos21"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F26 COD 001.jpg'
@@ -1348,8 +1394,10 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">ASCENSOS</h5>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        ASCENSOS
+                                    </h5>
                                     <p class="text-justify">
                                         La jerarquía entre las Damas y
                                         Caballeros Cadetes está determinada por
@@ -1368,8 +1416,11 @@ onMounted(() => {});
                                         detalla:
                                     </p>
                                     <ul>
-                                        <li>
-                                            1er. AÑO DE FORMACIÓN PROFESIONAL
+                                        <li class="mb-3">
+                                            <b
+                                                >1er. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1387,8 +1438,11 @@ onMounted(() => {});
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            2do. AÑO DE FORMACIÓN PROFESIONAL
+                                        <li class="mb-3">
+                                            <b
+                                                >2do. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1399,8 +1453,11 @@ onMounted(() => {});
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            3er. AÑO DE FORMACIÓN PROFESIONAL
+                                        <li class="mb-3">
+                                            <b
+                                                >3er. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1412,7 +1469,10 @@ onMounted(() => {});
                                             </ul>
                                         </li>
                                         <li>
-                                            4to. AÑO DE FORMACIÓN PROFESIONAL
+                                            <b
+                                                >4to. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <br />
                                             Cadetes destacados de 4to año, son
                                             ascendidos con grados Honoríficos
@@ -1442,9 +1502,19 @@ onMounted(() => {});
                                     </ul>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos22">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="ana_aspectos22"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listDistinciones"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         DISTINCIONES
                                     </h5>
                                     <p class="text-justify">
@@ -1455,9 +1525,12 @@ onMounted(() => {});
                                         cumplimiento del deber, se les otorga
                                         las siguientes distinciones:
                                     </p>
-                                    <ul>
-                                        <li>
-                                            1er. AÑO DE FORMACIÓN PROFESIONAL
+                                    <ul class="text-justify">
+                                        <li class="mb-3">
+                                            <b
+                                                >1er. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1472,8 +1545,11 @@ onMounted(() => {});
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            2do. AÑO DE FORMACIÓN PROFESIONAL
+                                        <li class="mb-3">
+                                            <b
+                                                >2do. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1497,8 +1573,11 @@ onMounted(() => {});
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            3er. AÑO DE FORMACIÓN PROFESIONAL
+                                        <li class="mb-3">
+                                            <b
+                                                >3er. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1523,7 +1602,10 @@ onMounted(() => {});
                                             </ul>
                                         </li>
                                         <li>
-                                            4to. AÑO DE FORMACIÓN PROFESIONAL
+                                            <b
+                                                >4to. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1591,37 +1673,25 @@ onMounted(() => {});
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F28 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F29 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- BECAS AL EXTERIOR -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">BECAS AL EXTERIOR</h2>
-                            <div class="row py-3" id="ana_aspectos23">
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="ana_aspectos23"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listBecas"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-12">
                                     <p class="text-justify">
                                         El Comando General de la Policía
                                         Boliviana dispone y otorga anualmente
@@ -1641,32 +1711,6 @@ onMounted(() => {});
                                         nivel nacional como internacional.
                                     </p>
                                 </div>
-                                <div class="col-md-12 img-grid">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F31 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F32 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F33 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F34 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1674,36 +1718,29 @@ onMounted(() => {});
                     <div class="col-12 py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">INFRAESTRUCTURA</h2>
-                            <div class="row py-3" id="ana_aspectos24">
-                                <div class="col-md-12 img-grid">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F28 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F25 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F5 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="ana_aspectos24"
+                            >
+                                <div class="col-md-12">
+                                    <SliderImagenes
+                                        :imagenes="listInfraestructura"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- TÍTULO PROFESIONAL -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">TÍTULO PROFESIONAL</h2>
-                            <div class="row py-3" id="ana_aspectos25">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="ana_aspectos25"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F35 COD 001.jpg'
@@ -1711,7 +1748,7 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-12">
                                     <p class="text-justify">
                                         El plan de formación profesional es
                                         altamente selectivo, de permanente
@@ -1729,8 +1766,11 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos25">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="ana_aspectos25"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F37 COD 001.jpg'
@@ -1738,8 +1778,8 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         COMPETENCIAS DEL EGRESADO
                                     </h5>
                                     <p class="text-justify">
@@ -1771,22 +1811,39 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos26">
-                                <div class="col-md-8 offset-md-2">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                id="ana_aspectos26"
+                            >
+                                <div class="col-12 text-center">
                                     <h5 class="subtitulo-seccion text-center">
                                         GRADOS JERARQUICOS
                                     </h5>
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F36 COD 001.svg'
-                                        "
-                                        alt=""
-                                    />
+                                    <SliderImagenes
+                                        :imagenes="[
+                                            {
+                                                url_imagen:
+                                                    url_asset +
+                                                    '/imgs/F36 COD 001.svg',
+                                            },
+                                        ]"
+                                        :height="'450px'"
+                                    ></SliderImagenes>
                                 </div>
                             </div>
-                            <div class="row py-3" id="ana_aspectos27">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="ana_aspectos27"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listCampoOcupacional"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
+                                </div>
                                 <div class="col-md-12">
-                                    <h5 class="subtitulo-seccion">
+                                    <h5 class="subtitulo-seccion text-center">
                                         CAMPO OCUPACIONAL
                                     </h5>
                                     <p class="text-justify">
@@ -1805,56 +1862,6 @@ onMounted(() => {});
                                         hallarse al servicio de toda la sociedad
                                         boliviana.
                                     </p>
-                                </div>
-                                <div class="col-md-12 img-grid">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F38 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F39 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F40 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F41 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F42 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F43 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F44 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F45 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
                                 </div>
                             </div>
                         </div>
