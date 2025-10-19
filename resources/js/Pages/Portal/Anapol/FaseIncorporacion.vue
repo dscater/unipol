@@ -60,19 +60,19 @@ onMounted(() => {});
                             <h2 class="titulo-seccion">
                                 FASE DE INCORPORACIÓN
                             </h2>
-                            <p>
+                            <p class="text-justify">
                                 La Fase de Selección para el Proceso de
                                 Admisión, estará comprendida por las siguientes
                                 etapas:
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 CUADRO GENERAL DE LOS ADMITIDOS
                             </h4>
-                            <p>
+                            <p class="text-justify">
                                 Concluidas las fases de Convocatoria y
                                 Selección, la Comisión Nacional del Proceso de
                                 Admisión, de acuerdo al Cronograma de
@@ -84,7 +84,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 CANTIDAD DE POSTULANTES ADMITIDOS

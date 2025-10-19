@@ -1,6 +1,6 @@
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3";
-import { ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 const { auth, url_assets } = usePage().props;
 const user = ref(auth.user);
 const requisito = ref(auth.requisito);
@@ -31,11 +31,90 @@ const salir = () => {
         }
     });
 };
+
+const isFixed = ref(false);
+const handleScroll = () => {
+    const y = window.scrollY;
+    isFixed.value = y > 125;
+};
+
+const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+onMounted(() => {
+    window.addEventListener("scroll", handleScroll);
+});
+onUnmounted(() => {
+    window.removeEventListener("scroll", handleScroll);
+});
 </script>
 <template>
     <div class="main">
-        <div class="header">
-            <img :src="url_assets + '/imgs/ADMINICION.png'" alt="" />
+        <div class="header p-0">
+            <div class="col-12 border_bot">
+                <img :src="url_assets + '/imgs/ADMINICION.png'" alt="" />
+            </div>
+            <div
+                class="navbar-nav"
+                :class="[isFixed ? 'fixed-top shadow' : '']"
+            >
+                <div class="container-fluid">
+                    <div class="row py-2 justify-content-center">
+                        <div class="col-2">
+                            <Link
+                                class="rounded-0 btn btn-default w-100"
+                                :href="route('inicio')"
+                            >
+                                <i class="fa fa-home"></i>
+                                <span class="desc_menu">INICIO</span>
+                            </Link>
+                        </div>
+                        <div
+                            class="col-2"
+                            v-if="user?.postulante.estado == 'INSCRITO'"
+                        >
+                            <Link
+                                class="rounded-0 btn btn-info w-100"
+                                :href="route('vestibulares')"
+                            >
+                                <i class="fa fa-clipboard-check"></i>
+                                <span class="desc_menu">PREFACULTATIVOS</span>
+                            </Link>
+                        </div>
+                        <div
+                            class="col-2"
+                            v-if="user?.postulante.estado == 'INSCRITO'"
+                        >
+                            <Link
+                                class="rounded-0 btn btn-success w-100"
+                                :href="route('evaluaciones')"
+                            >
+                                <i class="fa fa-clipboard-check"></i>
+                                <span class="desc_menu">EVALUACIONES</span>
+                            </Link>
+                        </div>
+                        <div class="col-2" v-if="!requisito">
+                            <Link
+                                class="rounded-0 btn btn-default w-100"
+                                :href="route('inscripcions.index')"
+                            >
+                                <i class="fa fa-clipboard-list"></i>
+                                <span class="desc_menu">INSCRIPCIÓN</span>
+                            </Link>
+                        </div>
+                        <div class="col-2">
+                            <button
+                                class="rounded-0 btn btn-principal w-100"
+                                @click.prevent="salir()"
+                            >
+                                <i class="fa fa-power-off"></i>
+                                <span class="desc_menu">CERRAR SESIÓN</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div
             class="principal"
@@ -65,13 +144,13 @@ const salir = () => {
                 ></i>
             </button>
             <div
-                class="usuario pb-5"
+                class="usuario pb-5 overflow-auto"
                 :class="[
                     toggleUsuario ? 'toggle' : '',
                     showUsuario ? 'show' : '',
                 ]"
             >
-                <div class="container">
+                <div class="container pb-5">
                     <div class="row mt-3">
                         <div class="col-12 text-center">
                             <img
@@ -155,31 +234,23 @@ const salir = () => {
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <b class="text-principal">Coreo:</b>
+                            <b class="text-principal">Correo:</b>
                         </div>
                         <div class="col-12 text-center">
                             {{ user.postulante.correo }}
                         </div>
                     </div>
-                    <div
-                        class="row mt-2"
-                        v-if="
-                            user.postulante &&
-                            user.postulante.edad_lim < 18 &&
-                            user.postulante.requisito &&
-                            user.postulante.url_file14
-                        "
-                    >
+                    <!-- <div class="row mt-2" v-if="user.postulante.codigoInsc">
                         <div class="col-12 text-center">
                             <a
                                 class="btn btn-success"
-                                :href="user.postulante?.requisito?.url_file14"
+                                :href="url_assets + '/files/declaracion.pdf'"
                                 target="_blank"
                             >
                                 Descargar declaración jurada
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div
@@ -198,46 +269,14 @@ const salir = () => {
                 </div>
             </div>
         </div>
-        <div class="footer d-flex pr-3">
+        <div class="footer d-flex">
             <div class="container-fluid">
-                <div class="row mt-4 justify-content-end">
-                    <div
-                        class="col-md-3 ml-2"
-                        v-if="user?.postulante.estado == 'INSCRITO'"
-                    >
-                        <Link
-                            class="rounded-0 btn btn-info w-100"
-                            :href="route('vestibulares')"
-                        >
-                            <i class="fa fa-clipboard-check"></i> VESTIBULARES
-                        </Link>
-                    </div>
-                    <div
-                        class="col-md-3 ml-2"
-                        v-if="user?.postulante.estado == 'INSCRITO'"
-                    >
-                        <Link
-                            class="rounded-0 btn btn-success w-100"
-                            :href="route('evaluaciones')"
-                        >
-                            <i class="fa fa-clipboard-check"></i> EVALUACIONES
-                        </Link>
-                    </div>
-                    <div class="col-md-3 ml-2" v-if="!requisito">
-                        <Link
-                            class="rounded-0 btn btn-default w-100"
-                            :href="route('inscripcions.index')"
-                        >
-                            <i class="fa fa-clipboard-list"></i> INSCRIPCIÓN
-                        </Link>
-                    </div>
-                    <div class="col-md-3 ml-2">
-                        <button
-                            class="rounded-0 btn btn-principal w-100"
-                            @click.prevent="salir()"
-                        >
-                            <i class="fa fa-power-off"></i> CERRAR SESIÓN
-                        </button>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-center text-white pt-4">
+                            <b>UNIPOL</b> {{ new Date().getFullYear() }} &copy;
+                            Todos los derechos reservado
+                        </p>
                     </div>
                 </div>
             </div>
@@ -252,15 +291,42 @@ const salir = () => {
     background-color: var(--bg5);
 }
 
+.border_bot {
+    border-bottom: solid 1px var(--bg6);
+}
+
+.navbar-nav {
+    z-index: 9999;
+    padding: 0;
+    width: 100%;
+    background-color: var(--bg3);
+    box-shadow: 0px 3px 10px black;
+}
+
 .principal {
+    margin-top: 0px;
     display: flex;
     min-height: calc(100vh - 112px);
     height: auto;
-    padding-bottom: 100px;
+}
+
+.navbar-nav .btn {
+    height: 100%;
+}
+
+.desc_menu {
+    margin-left: 5px;
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+@media (max-width: 1000px) {
+    .desc_menu {
+        display: none;
+    }
 }
 
 .footer {
-    position: fixed;
     bottom: -1px;
     min-height: 100px;
     width: 100%;
@@ -268,6 +334,7 @@ const salir = () => {
     background-color: var(--bg3);
 }
 .usuario {
+    margin-top: 3px;
     z-index: -1;
     opacity: 0;
     width: 0px;
@@ -289,7 +356,7 @@ const salir = () => {
     border: none;
     background-color: var(--bg6);
     position: fixed;
-    top: 0px;
+    bottom: 10px;
     right: 0;
     font-size: 1.4rem;
     width: 30px;
@@ -303,7 +370,7 @@ const salir = () => {
     border: none;
     background-color: var(--bg6t);
     position: fixed;
-    top: 120px;
+    top: 138px;
     left: 340px;
     font-size: 1.4rem;
     width: 30px;

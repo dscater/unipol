@@ -111,6 +111,10 @@ onMounted(() => {
                             Causales de Separación del Proceso de Admisión
                         </button>
                     </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
                     <div class="col-12 mt-2">
                         <h5 class="text-principal font-weight-bold">
                             Fases del Proceso de Admisión:
@@ -151,10 +155,6 @@ onMounted(() => {
                             Etapa de Evaluación Física
                         </button>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
                     <div class="col-12 mt-2">
                         <button @click="mostrarContenido(13)">
                             Etapa del Prefacultativo

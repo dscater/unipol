@@ -12,6 +12,7 @@ import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "./Parcial/Navbar.vue";
+import Footer from "./Parcial/Footer.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -35,7 +36,7 @@ const listItems = ref([
 onMounted(() => {});
 </script>
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid pagina">
         <div class="row bg-principal p-2 pt-4 pb-4">
             <div class="col-12 text-center">
                 <img
@@ -64,7 +65,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 a) Etapa de Evaluación Médica y Odontológica
@@ -81,7 +82,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 b) Etapa de Evaluación Psicológica.
@@ -97,7 +98,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 c) Etapa de Evaluación de Aptitud Física
@@ -113,7 +114,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 d) Etapa del Prefacultativo
@@ -128,8 +129,8 @@ onMounted(() => {});
                                 administrativos, para facilitar su adaptación a
                                 la formación profesional policial, garantizando
                                 un proceso transparente, equitativo e inclusivo
-                                en el proceso de admisión a las Unidades
-                                Académicas de Pregrado de la UNIPOL.
+                                en el proceso de admisión a la Escuela Básica
+                                Policial de Música.
                             </p>
                         </div>
                     </div>
@@ -137,6 +138,7 @@ onMounted(() => {});
             </div>
         </div>
     </div>
+    <Footer></Footer>
 </template>
 
 <style scoped>

@@ -65,7 +65,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 a) Etapa de Evaluación Médica y Odontológica
@@ -78,11 +78,11 @@ onMounted(() => {});
                                 requeridas para la formación profesional
                                 policial, mediante evaluaciones de Medicina
                                 General, Odontología, laboratorio clínico y
-                                pruebas complementarias de diagnóstico
+                                pruebas complementarias de diagnóstico.
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 b) Etapa de Evaluación Psicológica.
@@ -98,7 +98,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 c) Etapa de Evaluación de Aptitud Física
@@ -114,7 +114,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 d) Etapa del Prefacultativo
@@ -129,8 +129,8 @@ onMounted(() => {});
                                 administrativos, para facilitar su adaptación a
                                 la formación profesional policial, garantizando
                                 un proceso transparente, equitativo e inclusivo
-                                en el proceso de admisión a las Unidades
-                                Académicas de Pregrado de la UNIPOL.
+                                en el proceso de admisión a la Facultad Técnica
+                                Superior en Ciencias Policiales.
                             </p>
                         </div>
                     </div>

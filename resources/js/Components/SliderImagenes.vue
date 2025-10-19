@@ -220,10 +220,9 @@ onBeforeUnmount(() => {
 
 .fa-circle {
     z-index: 1000;
-    color: rgb(255, 255, 255);
 }
 .fa-circle.active {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
 }
 
 /* Animaciones de la transición */

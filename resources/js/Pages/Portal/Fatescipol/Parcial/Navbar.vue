@@ -44,7 +44,7 @@ onUnmounted(() => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol')"
+                    <Link class="nav-link" :href="route('fatescipol')"
                         >INICIO <span class="sr-only">(current)</span></Link
                     >
                 </li>
@@ -74,8 +74,8 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos1'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos1'
                                     "
                                     >SEÑOR COMANDANTE GENERAL DE LA POLICÍA
                                     BOLIVIANA</Link
@@ -83,19 +83,29 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos2'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos2'
                                     "
                                     >MAGNIFICO RECTOR DE LA UNIPOL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos3'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos3'
                                     "
-                                    >SEÑOR DIRECTOR DE LA ANAPOL</Link
+                                    >MENSAJE DE LOS SEÑORES DIRECTORES DE LA
+                                    FATESCIPOL</Link
                                 >
+                                <Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos4'
+                                    "
+                                    >MENSAJE DEL SEÑOR SUBOFICIAL DE ESTADO
+                                    MAYOR
+                                </Link>
                             </div>
                         </li>
                         <li class="nav-item dropdown" @click.stop>
@@ -112,16 +122,16 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos4'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos5'
                                     "
-                                    >CADETE</Link
+                                    >ALUMNO</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos5'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos6'
                                     "
                                     >VALORES Y PRINCIPIOS</Link
                                 >
@@ -141,19 +151,19 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos6'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos7'
                                     "
                                     >POLICIA BOLIVIANA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos7'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos8'
                                     "
-                                    >ACADEMIA NACIONAL DE POLICÍAS</Link
-                                >
+                                    >HISTORIA DE LA FATESCIPOL
+                                </Link>
                             </div>
                         </li>
                         <li class="nav-item dropdown" @click.stop>
@@ -170,18 +180,18 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos8'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos9'
                                     "
                                     >HIMNO AL POLICIA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos9'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos10'
                                     "
-                                    >HIMNO A LA ANAPOL</Link
+                                    >HIMNO A LA FATESCIPOL</Link
                                 >
                             </div>
                         </li>
@@ -199,24 +209,24 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos10'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos11'
                                     "
                                     >MISIÓN</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos11'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos12'
                                     "
                                     >VISIÓN</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos12'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos13'
                                     "
                                     >FILOSOFÍA</Link
                                 >
@@ -225,8 +235,8 @@ onUnmounted(() => {
                         <Link
                             class="nav-link"
                             :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos13'
+                                route('fatescipol.nuestra_academia') +
+                                '#fat_aspectos14'
                             "
                             >PERFIL DE INGRESO</Link
                         >
@@ -244,8 +254,8 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos14'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos15'
                                     "
                                     >CARACTERISTICAS DEL REGIMEN DE
                                     ESTUDIOS</Link
@@ -253,47 +263,47 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos15'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos16'
                                     "
                                     >FORMACIÓN ACADÉMICA-POLICIAL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos16'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos17'
                                     "
                                     >FORMACIÓN FÍSICA Y DEPORTES</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos17'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos18'
                                     "
                                     >FORMACIÓN ÉTICO Y MORAL (DISCIPLINA)</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos18'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos19'
                                     "
                                     >FORMACIÓN INTEGRAL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos19'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos20'
                                     "
                                     >FORMACIÓN CON PERSPECTIVA DE GÉNERO</Link
                                 ><Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos20'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos21'
                                     "
                                     >INSTRUCCIÓN POLICIAL</Link
                                 >
@@ -313,16 +323,16 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos21'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos22'
                                     "
-                                    >ASCENSOS</Link
+                                    >JERARQUIA INTERNA Y ASCENSOS</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos22'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos23'
                                     "
                                     >DISTINCIONES</Link
                                 >
@@ -331,19 +341,11 @@ onUnmounted(() => {
                         <Link
                             class="nav-link"
                             :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos23'
+                                route('fatescipol.nuestra_academia') +
+                                '#fat_aspectos24'
                             "
-                            >BECAS AL EXTERIOR</Link
-                        >
-                        <Link
-                            class="nav-link"
-                            :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos24'
-                            "
-                            >INFRAESTRUCTURA</Link
-                        >
+                            >SEDES DE LA FATESCIPOL
+                        </Link>
                         <li class="nav-item dropdown" @click.stop>
                             <a
                                 class="nav-link dropdown-toggle text-wrap"
@@ -358,24 +360,24 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos25'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos25'
                                     "
                                     >COMPETENCIAS DEL EGRESADO</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos26'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos26'
                                     "
                                     >GRADOS JERARQUICOS</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos27'
+                                        route('fatescipol.nuestra_academia') +
+                                        '#fat_aspectos27'
                                     "
                                     >CAMPO OCUPACIONAL</Link
                                 >
@@ -384,15 +386,17 @@ onUnmounted(() => {
                         <!-- <Link
                             class="nav-link"
                             :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos28'
+                                route('fatescipol.nuestra_academia') +
+                                '#fat_aspectos28'
                             "
                             >FUNCIONES DE LA POLICÍA BOLIVIANA</Link
                         > -->
                     </div>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol.requisitos')"
+                    <Link
+                        class="nav-link"
+                        :href="route('fatescipol.requisitos')"
                         >REQUISITOS</Link
                     >
                 </li>
@@ -409,29 +413,31 @@ onUnmounted(() => {
                     <div class="dropdown-menu">
                         <Link
                             class="nav-link"
-                            :href="route('anapol.fase_convocatoria')"
+                            :href="route('fatescipol.fase_convocatoria')"
                             >FASE DE CONVOCATORIA</Link
                         >
                         <Link
                             class="nav-link"
-                            :href="route('anapol.fase_seleccion')"
+                            :href="route('fatescipol.fase_seleccion')"
                             >FASE DE SELECCIÓN</Link
                         >
                         <Link
                             class="nav-link"
-                            :href="route('anapol.fase_incorporacion')"
+                            :href="route('fatescipol.fase_incorporacion')"
                             >FASE DE INCORPORACIÓN</Link
                         >
                     </div>
                 </li>
                 <li class="nav-item"></li>
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol.comunicados')"
+                    <Link
+                        class="nav-link"
+                        :href="route('fatescipol.comunicados')"
                         >COMUNICADOS</Link
                     >
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol.contactos')"
+                    <Link class="nav-link" :href="route('fatescipol.contactos')"
                         >CONTACTOS</Link
                     >
                 </li>
@@ -453,9 +459,7 @@ onUnmounted(() => {
                     >
                         <Link
                             class="nav-link"
-                            :href="
-                                route('anapol.antecedentes') + '#ana_aspectos24'
-                            "
+                            :href="route('fatescipol.antecedentes')"
                             >CERTIFICADO DE ANTECEDENTES POLICIALES</Link
                         >
                         <li class="nav-item dropdown" @click.stop>
@@ -472,8 +476,8 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.evaluacion_medica') +
-                                        '#ana_evaluacion1'
+                                        route('fatescipol.evaluacion_medica') +
+                                        '#fat_evaluacion1'
                                     "
                                     >ASPECTOS IMPORTANTES Y CANJE DE
                                     FOLDER</Link
@@ -481,16 +485,16 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.evaluacion_medica') +
-                                        '#ana_evaluacion2'
+                                        route('fatescipol.evaluacion_medica') +
+                                        '#fat_evaluacion2'
                                     "
                                     >EVALUACIÓN MÉDICA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.evaluacion_medica') +
-                                        '#ana_evaluacion3'
+                                        route('fatescipol.evaluacion_medica') +
+                                        '#fat_evaluacion3'
                                     "
                                     >EVALUACIÓN PSICOLÓGICA</Link
                                 >

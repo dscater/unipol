@@ -48,6 +48,9 @@ watch(
     () => props.accion_formulario,
     (newValue) => {
         accion_form.value = newValue;
+        if (accion_form.value == 0) {
+            form["_method"] = "POST";
+        }
     }
 );
 
@@ -204,7 +207,7 @@ onMounted(() => {
         :footer-class="'justify-content-end'"
     >
         <template #header>
-            <h4 class="modal-title" v-html="tituloDialog"></h4>
+            <h4 class="modal-title text-white" v-html="tituloDialog"></h4>
             <button
                 type="button"
                 class="close"

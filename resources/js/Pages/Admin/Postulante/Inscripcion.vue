@@ -86,10 +86,12 @@ const guardar = () => {
                         response.props.flash.success ??
                         "Proceso realizado con éxito";
                     const codigoInsc = response.props.flash.codigoInsc ?? "S/C";
+                    // const mensaje = `Código de Inscripción ${codigoInsc}.<br/>Debe presentarse en un lapso de 3 días a su Evaluación Médico-psicológica`;
+                    const mensaje = `Código de Inscripción ${codigoInsc}`;
                     Swal.fire({
                         icon: "success",
                         title: "Registro finalizado!",
-                        html: `Código de Inscripción ${codigoInsc}.<br/>Debe presentarse en un lapso de 3 días a su Evaluación Médico-psicológica`,
+                        html: mensaje,
                         confirmButtonText: `Aceptar`,
                         customClass: {
                             confirmButton: "btn-alert-success",

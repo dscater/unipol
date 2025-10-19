@@ -3,6 +3,7 @@ import Content from "@/Components/Content.vue";
 import { Head, Link, usePage, useForm } from "@inertiajs/vue3";
 import { ref, onMounted, onBeforeMount, computed } from "vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
+import MiTable from "@/Components/MiTable.vue";
 const { props: props_page } = usePage();
 const appStore = useAppStore();
 
@@ -51,7 +52,10 @@ const subirArchivo = async () => {
                 confirmButton: "btn-alert-success",
             },
         });
+        updateDatatable();
     } catch (error) {
+        inputArchivo.value.value = null;
+        archivo.value = null;
         console.error("Error al subir el archivo:", error);
         console.log(error.response);
         if (
@@ -88,6 +92,86 @@ const txtSubir = computed(() => {
     }
     return `<i class="fa fa-upload fa-spinner"></i> Subir`;
 });
+const miTable = ref(null);
+const headers = [
+    {
+        label: "UNIDAD",
+        key: "postulante.unidad",
+        sortable: true,
+        fixed: true,
+    },
+    {
+        label: "CÓDIGO PROSPECTO",
+        key: "postulante.codigoPre",
+        sortable: true,
+        fixed: true,
+    },
+    {
+        label: "C.I.",
+        key: "postulante.full_ci",
+        sortable: true,
+        fixed: true,
+    },
+    {
+        label: "FOTO",
+        key: "foto",
+        sortable: false,
+        width: "3%",
+        fixed: true,
+    },
+    {
+        label: "NOMBRE POSTULANTE",
+        key: "postulante.full_name",
+        sortable: true,
+        fixed: true,
+    },
+    {
+        label: "SEXO",
+        key: "postulante.genero",
+    },
+    {
+        label: "FECHA DE NACIMIENTO",
+        key: "postulante.fecha_nac_t",
+    },
+    {
+        label: "CELULAR",
+        key: "postulante.cel",
+    },
+    {
+        label: "CORREO",
+        key: "postulante.correo",
+        sortable: true,
+    },
+    {
+        label: "DONDE POSTULO",
+        key: "postulante.lugar_preins",
+        sortable: true,
+    },
+    {
+        label: "NOTA",
+        key: "nota",
+        sortable: true,
+    },
+    {
+        label: "RESULTADO",
+        key: "descripcion",
+        keySortable: "descripcion",
+        sortable: true,
+        width: "11%",
+    },
+];
+
+const multiSearch = ref({
+    search: "",
+    filtro: [],
+});
+
+const updateDatatable = async () => {
+    if (miTable.value) {
+        await miTable.value.cargarDatos();
+        muestra_formulario.value = false;
+    }
+};
 </script>
 <template>
     <Head title="Evaluación del Área de Conocimientos"></Head>
@@ -174,6 +258,88 @@ const txtSubir = computed(() => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-8 my-1">
+                        <div class="row justify-content-end">
+                            <div class="col-md-5">
+                                <div
+                                    class="input-group"
+                                    style="align-items: end"
+                                >
+                                    <input
+                                        v-model="multiSearch.search"
+                                        placeholder="Buscar"
+                                        class="form-control border-1 border-right-0"
+                                    />
+                                    <div class="input-append">
+                                        <button
+                                            class="btn btn-default rounded-0 border-left-0"
+                                            @click="updateDatos"
+                                        >
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <MiTable
+                    :tableClass="'bg-white mitabla'"
+                    ref="miTable"
+                    :cols="headers"
+                    :api="true"
+                    :url="route('evaluacion_fisicas.paginado')"
+                    :numPages="5"
+                    :multiSearch="multiSearch"
+                    :syncOrderBy="'id'"
+                    :syncOrderAsc="'DESC'"
+                    table-responsive
+                    :header-class="'bg__primary'"
+                    fixed-header
+                >
+                    <template #estado="{ item }">
+                        <div
+                            class="badge text-sm text-wrap"
+                            :class="[
+                                item.estado == 'INSCRITO'
+                                    ? 'badge-success'
+                                    : 'bg-gray',
+                            ]"
+                        >
+                            {{ item.estado }}
+                        </div>
+                    </template>
+                    <template #foto="{ item }">
+                        <img
+                            class="direct-chat-img"
+                            :src="item.postulante.url_foto"
+                            alt="Foto"
+                        />
+                    </template>
+
+                    <template #acceso="{ item }">
+                        <div
+                            class="badge text-sm"
+                            :class="[
+                                item.user.acceso == 1
+                                    ? 'bg-success'
+                                    : 'bg-danger',
+                            ]"
+                        >
+                            {{
+                                item.user.acceso == 1
+                                    ? "HABILITADO"
+                                    : "DESHABILITADO"
+                            }}
+                        </div>
+                    </template>
+                </MiTable>
             </div>
         </div>
     </Content>

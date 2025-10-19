@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string("codigo", 255)->unique();
             $table->integer("ecodigo")->default(0);
             $table->integer("epass")->default(0);
+            $table->integer("validDocs")->default(0);
             $table->integer("status")->default(1);
 
             $table->timestamps();

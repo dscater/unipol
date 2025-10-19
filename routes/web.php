@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnapolController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ComunicadoController;
 use App\Http\Controllers\ConfiguracionController;
 use App\Http\Controllers\ContenidoController;
 use App\Http\Controllers\DescargaDocumentoController;
@@ -59,6 +60,7 @@ Route::get("anapol/fase_convocatoria", [AnapolController::class, 'fase_convocato
 Route::get("anapol/fase_seleccion", [AnapolController::class, 'fase_seleccion'])->name("anapol.fase_seleccion");
 Route::get("anapol/fase_incorporacion", [AnapolController::class, 'fase_incorporacion'])->name("anapol.fase_incorporacion");
 Route::get("anapol/comunicados", [AnapolController::class, 'comunicados'])->name("anapol.comunicados");
+Route::get("anapol/getComunicados", [AnapolController::class, 'getComunicados'])->name("anapol.getComunicados");
 Route::get("anapol/contactos", [AnapolController::class, 'contactos'])->name("anapol.contactos");
 Route::get("anapol/antecedentes", [AnapolController::class, 'antecedentes'])->name("anapol.antecedentes");
 Route::get("anapol/evaluacion_medica", [AnapolController::class, 'evaluacion_medica'])->name("anapol.evaluacion_medica");
@@ -71,9 +73,10 @@ Route::get("fatescipol/fase_convocatoria", [FatescipolController::class, 'fase_c
 Route::get("fatescipol/fase_seleccion", [FatescipolController::class, 'fase_seleccion'])->name("fatescipol.fase_seleccion");
 Route::get("fatescipol/fase_incorporacion", [FatescipolController::class, 'fase_incorporacion'])->name("fatescipol.fase_incorporacion");
 Route::get("fatescipol/comunicados", [FatescipolController::class, 'comunicados'])->name("fatescipol.comunicados");
+Route::get("fatescipol/getComunicados", [FatescipolController::class, 'getComunicados'])->name("fatescipol.getComunicados");
 Route::get("fatescipol/contactos", [FatescipolController::class, 'contactos'])->name("fatescipol.contactos");
-Route::get("fatescipol/antecedentes", [AnapolController::class, 'antecedentes'])->name("fatescipol.antecedentes");
-Route::get("fatescipol/evaluacion_medica", [AnapolController::class, 'evaluacion_medica'])->name("fatescipol.evaluacion_medica");
+Route::get("fatescipol/antecedentes", [FatescipolController::class, 'antecedentes'])->name("fatescipol.antecedentes");
+Route::get("fatescipol/evaluacion_medica", [FatescipolController::class, 'evaluacion_medica'])->name("fatescipol.evaluacion_medica");
 
 // ** ESBAPOLMUS
 Route::get("esbapolmus", [EsbapolmusController::class, 'index'])->name("esbapolmus");
@@ -83,9 +86,10 @@ Route::get("esbapolmus/fase_convocatoria", [EsbapolmusController::class, 'fase_c
 Route::get("esbapolmus/fase_seleccion", [EsbapolmusController::class, 'fase_seleccion'])->name("esbapolmus.fase_seleccion");
 Route::get("esbapolmus/fase_incorporacion", [EsbapolmusController::class, 'fase_incorporacion'])->name("esbapolmus.fase_incorporacion");
 Route::get("esbapolmus/comunicados", [EsbapolmusController::class, 'comunicados'])->name("esbapolmus.comunicados");
+Route::get("esbapolmus/getComunicados", [EsbapolmusController::class, 'getComunicados'])->name("esbapolmus.getComunicados");
 Route::get("esbapolmus/contactos", [EsbapolmusController::class, 'contactos'])->name("esbapolmus.contactos");
-Route::get("esbapolmus/antecedentes", [AnapolController::class, 'antecedentes'])->name("esbapolmus.antecedentes");
-Route::get("esbapolmus/evaluacion_medica", [AnapolController::class, 'evaluacion_medica'])->name("esbapolmus.evaluacion_medica");
+Route::get("esbapolmus/antecedentes", [EsbapolmusController::class, 'antecedentes'])->name("esbapolmus.antecedentes");
+Route::get("esbapolmus/evaluacion_medica", [EsbapolmusController::class, 'evaluacion_medica'])->name("esbapolmus.evaluacion_medica");
 
 // ADMINISTRACION
 Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function () {
@@ -140,6 +144,14 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
         ["index", "store", "edit", "show", "update", "destroy"]
     );
 
+    // COMUNICADOS
+    Route::get("comunicados/api", [ComunicadoController::class, 'api'])->name("comunicados.api");
+    Route::get("comunicados/paginado", [ComunicadoController::class, 'paginado'])->name("comunicados.paginado");
+    Route::get("comunicados/listado", [ComunicadoController::class, 'listado'])->name("comunicados.listado");
+    Route::resource("comunicados", ComunicadoController::class)->only(
+        ["index", "store", "edit", "show", "update", "destroy"]
+    );
+
     // INSCRIPCION
     Route::get("inscripcions", [InscripcionController::class, 'index'])->name("inscripcions.index");
 
@@ -156,34 +168,43 @@ Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function (
     Route::get("evaluacion_medicas/index", [EvaluacionMedicaController::class, 'index'])->name("evaluacion_medicas.index");
     Route::get("evaluacion_medicas/descargar", [EvaluacionMedicaController::class, 'descargar'])->name("evaluacion_medicas.descargar");
     Route::post("evaluacion_medicas/subir", [EvaluacionMedicaController::class, 'subir'])->name("evaluacion_medicas.subir");
+    Route::get("evaluacion_medicas/paginado", [EvaluacionMedicaController::class, 'paginado'])->name("evaluacion_medicas.paginado");
 
     // EVALUACION PSICOLOGICA
     Route::get("evaluacion_psicologicas/index", [EvaluacionPsicologicaController::class, 'index'])->name("evaluacion_psicologicas.index");
     Route::get("evaluacion_psicologicas/descargar", [EvaluacionPsicologicaController::class, 'descargar'])->name("evaluacion_psicologicas.descargar");
     Route::post("evaluacion_psicologicas/subir", [EvaluacionPsicologicaController::class, 'subir'])->name("evaluacion_psicologicas.subir");
+    Route::get("evaluacion_psicologicas/paginado", [EvaluacionPsicologicaController::class, 'paginado'])->name("evaluacion_psicologicas.paginado");
 
     // EVALUACION FISICA
     Route::get("evaluacion_fisicas/index", [EvaluacionFisicaController::class, 'index'])->name("evaluacion_fisicas.index");
     Route::get("evaluacion_fisicas/descargar", [EvaluacionFisicaController::class, 'descargar'])->name("evaluacion_fisicas.descargar");
     Route::post("evaluacion_fisicas/subir", [EvaluacionFisicaController::class, 'subir'])->name("evaluacion_fisicas.subir");
+    Route::get("evaluacion_fisicas/paginado", [EvaluacionFisicaController::class, 'paginado'])->name("evaluacion_fisicas.paginado");
 
     // EVALUACION INSTRUCCION
     Route::get("evaluacion_instruccions/index", [EvaluacionInstruccionController::class, 'index'])->name("evaluacion_instruccions.index");
     Route::get("evaluacion_instruccions/descargar", [EvaluacionInstruccionController::class, 'descargar'])->name("evaluacion_instruccions.descargar");
     Route::post("evaluacion_instruccions/subir", [EvaluacionInstruccionController::class, 'subir'])->name("evaluacion_instruccions.subir");
+    Route::get("evaluacion_instruccions/paginado", [EvaluacionInstruccionController::class, 'paginado'])->name("evaluacion_instruccions.paginado");
 
     // EVALUACION CONOCIMIENTO
     Route::get("evaluacion_conocimientos/index", [EvaluacionConocimientoController::class, 'index'])->name("evaluacion_conocimientos.index");
     Route::get("evaluacion_conocimientos/descargar", [EvaluacionConocimientoController::class, 'descargar'])->name("evaluacion_conocimientos.descargar");
     Route::post("evaluacion_conocimientos/subir", [EvaluacionConocimientoController::class, 'subir'])->name("evaluacion_conocimientos.subir");
+    Route::get("evaluacion_conocimientos/paginado", [EvaluacionConocimientoController::class, 'paginado'])->name("evaluacion_conocimientos.paginado");
 
     // EVALUACION ODONTOLOGICA
     Route::get("evaluacion_odontologicas/index", [EvaluacionOdontologicaController::class, 'index'])->name("evaluacion_odontologicas.index");
     Route::get("evaluacion_odontologicas/descargar", [EvaluacionOdontologicaController::class, 'descargar'])->name("evaluacion_odontologicas.descargar");
     Route::post("evaluacion_odontologicas/subir", [EvaluacionOdontologicaController::class, 'subir'])->name("evaluacion_odontologicas.subir");
+    Route::get("evaluacion_odontologicas/paginado", [EvaluacionOdontologicaController::class, 'paginado'])->name("evaluacion_odontologicas.paginado");
 
     // REPORTES
     Route::get('reportes/usuarios', [ReporteController::class, 'usuarios'])->name("reportes.usuarios");
     Route::get('reportes/r_usuarios', [ReporteController::class, 'r_usuarios'])->name("reportes.r_usuarios");
+
+    Route::get('reportes/postulantes', [ReporteController::class, 'postulantes'])->name("reportes.postulantes");
+    Route::get('reportes/r_postulantes', [ReporteController::class, 'r_postulantes'])->name("reportes.r_postulantes");
 });
 require __DIR__ . '/auth.php';

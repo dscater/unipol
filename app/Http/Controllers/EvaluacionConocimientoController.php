@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EvaluacionConocimiento;
 use App\Models\EvaluacionFisica;
 use App\Models\EvaluacionInstruccion;
 use App\Models\Postulante;
@@ -92,6 +93,74 @@ class EvaluacionConocimientoController extends Controller
     public function index()
     {
         return Inertia::render("Admin/EvaluacionConocimientos/Index");
+    }
+
+    public function paginado(Request $request)
+    {
+        $perPage = $request->perPage;
+        $page = (int)($request->input("page", 1));
+        $search = (string)$request->input("search", "");
+        $orderByCol = $request->orderByCol;
+        $desc = $request->desc;
+
+        $columnsSerachLike = [
+            "CONCAT_WS(' ', postulantes.nombre, postulantes.paterno, postulantes.materno)",
+            "CONCAT_WS(' ', postulantes.ci, postulantes.complemento, postulantes.ci_exp)",
+            "postulantes.unidad",
+            "postulantes.codigoPre",
+            "valoracion",
+            "nro_baucher",
+            "nro_folder",
+        ];
+        $columnsFilter = [];
+        $columnsBetweenFilter = [];
+        $orderBy = [];
+        if ($orderByCol && $desc) {
+            $orderBy = [
+                [$orderByCol, $desc]
+            ];
+        }
+
+        $evaluacion_conocimientos = EvaluacionConocimiento::with(["postulante"])->select("evaluacion_conocimientos.*")
+            ->join("postulantes", "postulantes.id", "=", "evaluacion_conocimientos.postulante_id");
+
+
+        // Filtros exactos
+        foreach ($columnsFilter as $key => $value) {
+            if (!is_null($value)) {
+                $evaluacion_conocimientos->where("evaluacion_conocimientos.$key", $value);
+            }
+        }
+
+        // Filtros por rango
+        foreach ($columnsBetweenFilter as $key => $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_conocimientos->whereBetween("evaluacion_conocimientos.$key", $value);
+            }
+        }
+
+        // Búsqueda en múltiples columnas con LIKE
+        if (!empty($search) && !empty($columnsSerachLike)) {
+            $evaluacion_conocimientos->where(function ($query) use ($search, $columnsSerachLike) {
+                foreach ($columnsSerachLike as $col) {
+                    $query->orWhereRaw("$col LIKE ?", ["%{$search}%"]);
+                }
+            });
+        }
+        // Ordenamiento
+        foreach ($orderBy as $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_conocimientos->orderBy($value[0], $value[1]);
+            }
+        }
+
+
+        $evaluacion_conocimientos = $evaluacion_conocimientos->paginate($perPage, ['*'], 'page', $page);
+        return response()->JSON([
+            "data" => $evaluacion_conocimientos->items(),
+            "total" => $evaluacion_conocimientos->total(),
+            "lastPage" => $evaluacion_conocimientos->lastPage()
+        ]);
     }
 
     public function descargar()

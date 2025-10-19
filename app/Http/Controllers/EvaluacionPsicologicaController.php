@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\EvaluacionMedica;
+use App\Models\EvaluacionOdontologica;
+use App\Models\EvaluacionPsicologica;
 use App\Models\Postulante;
 use Exception;
 use Illuminate\Http\Request;
@@ -93,6 +95,75 @@ class EvaluacionPsicologicaController extends Controller
         return Inertia::render("Admin/EvaluacionPsicologicas/Index");
     }
 
+    public function paginado(Request $request)
+    {
+        $perPage = $request->perPage;
+        $page = (int)($request->input("page", 1));
+        $search = (string)$request->input("search", "");
+        $orderByCol = $request->orderByCol;
+        $desc = $request->desc;
+
+        $columnsSerachLike = [
+            "CONCAT_WS(' ', postulantes.nombre, postulantes.paterno, postulantes.materno)",
+            "CONCAT_WS(' ', postulantes.ci, postulantes.complemento, postulantes.ci_exp)",
+            "postulantes.unidad",
+            "postulantes.codigoPre",
+            "valoracion",
+            "nro_baucher",
+            "nro_folder",
+        ];
+        $columnsFilter = [];
+        $columnsBetweenFilter = [];
+        $orderBy = [];
+        if ($orderByCol && $desc) {
+            $orderBy = [
+                [$orderByCol, $desc]
+            ];
+        }
+
+        $evaluacion_psicologicas = EvaluacionPsicologica::with(["postulante"])->select("evaluacion_psicologicas.*")
+            ->join("postulantes", "postulantes.id", "=", "evaluacion_psicologicas.postulante_id");
+
+
+        // Filtros exactos
+        foreach ($columnsFilter as $key => $value) {
+            if (!is_null($value)) {
+                $evaluacion_psicologicas->where("evaluacion_psicologicas.$key", $value);
+            }
+        }
+
+        // Filtros por rango
+        foreach ($columnsBetweenFilter as $key => $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_psicologicas->whereBetween("evaluacion_psicologicas.$key", $value);
+            }
+        }
+
+        // Búsqueda en múltiples columnas con LIKE
+        if (!empty($search) && !empty($columnsSerachLike)) {
+            $evaluacion_psicologicas->where(function ($query) use ($search, $columnsSerachLike) {
+                foreach ($columnsSerachLike as $col) {
+                    $query->orWhereRaw("$col LIKE ?", ["%{$search}%"]);
+                }
+            });
+        }
+        // Ordenamiento
+        foreach ($orderBy as $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_psicologicas->orderBy($value[0], $value[1]);
+            }
+        }
+
+
+        $evaluacion_psicologicas = $evaluacion_psicologicas->paginate($perPage, ['*'], 'page', $page);
+        return response()->JSON([
+            "data" => $evaluacion_psicologicas->items(),
+            "total" => $evaluacion_psicologicas->total(),
+            "lastPage" => $evaluacion_psicologicas->lastPage()
+        ]);
+    }
+
+
     public function descargar()
     {
         $spreadsheet = new Spreadsheet();
@@ -132,12 +203,12 @@ class EvaluacionPsicologicaController extends Controller
         $fila++;
 
         // OBTENER POSTULANTES
-        $evaluacion_medicas = EvaluacionMedica::join("postulantes", "postulantes.id", "=", "evaluacion_medicas.postulante_id")
+        $evaluacion_odontologicas = EvaluacionOdontologica::join("postulantes", "postulantes.id", "=", "evaluacion_odontologicas.postulante_id")
             ->where("postulantes.status", 1);
-        $evaluacion_medicas->where("evaluacion_medicas.valoracion", "APTO");
-        $evaluacion_medicas->where("postulantes.estado", "INSCRITO");
-        $evaluacion_medicas = $evaluacion_medicas->get();
-        foreach ($evaluacion_medicas as $key => $evaluacion_medica) {
+        $evaluacion_odontologicas->where("evaluacion_odontologicas.valoracion", "APTO");
+        $evaluacion_odontologicas->where("postulantes.estado", "INSCRITO");
+        $evaluacion_odontologicas = $evaluacion_odontologicas->get();
+        foreach ($evaluacion_odontologicas as $key => $evaluacion_medica) {
             $sheet->setCellValue('A' . $fila, $key + 1);
             $sheet->setCellValue('B' . $fila, $evaluacion_medica->postulante->codigoPre);
             $sheet->setCellValue('C' . $fila, $evaluacion_medica->postulante->full_ci);

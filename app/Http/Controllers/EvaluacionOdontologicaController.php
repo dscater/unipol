@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\EvaluacionConocimiento;
 use App\Models\EvaluacionFisica;
 use App\Models\EvaluacionInstruccion;
+use App\Models\EvaluacionMedica;
+use App\Models\EvaluacionOdontologica;
 use App\Models\Postulante;
 use Exception;
 use Illuminate\Http\Request;
@@ -95,6 +97,74 @@ class EvaluacionOdontologicaController extends Controller
         return Inertia::render("Admin/EvaluacionOdontologicas/Index");
     }
 
+    public function paginado(Request $request)
+    {
+        $perPage = $request->perPage;
+        $page = (int)($request->input("page", 1));
+        $search = (string)$request->input("search", "");
+        $orderByCol = $request->orderByCol;
+        $desc = $request->desc;
+
+        $columnsSerachLike = [
+            "CONCAT_WS(' ', postulantes.nombre, postulantes.paterno, postulantes.materno)",
+            "CONCAT_WS(' ', postulantes.ci, postulantes.complemento, postulantes.ci_exp)",
+            "postulantes.unidad",
+            "postulantes.codigoPre",
+            "valoracion",
+            "nro_baucher",
+            "nro_folder",
+        ];
+        $columnsFilter = [];
+        $columnsBetweenFilter = [];
+        $orderBy = [];
+        if ($orderByCol && $desc) {
+            $orderBy = [
+                [$orderByCol, $desc]
+            ];
+        }
+
+        $evaluacion_odontologicas = EvaluacionOdontologica::with(["postulante"])->select("evaluacion_odontologicas.*")
+            ->join("postulantes", "postulantes.id", "=", "evaluacion_odontologicas.postulante_id");
+
+
+        // Filtros exactos
+        foreach ($columnsFilter as $key => $value) {
+            if (!is_null($value)) {
+                $evaluacion_odontologicas->where("evaluacion_odontologicas.$key", $value);
+            }
+        }
+
+        // Filtros por rango
+        foreach ($columnsBetweenFilter as $key => $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_odontologicas->whereBetween("evaluacion_odontologicas.$key", $value);
+            }
+        }
+
+        // Búsqueda en múltiples columnas con LIKE
+        if (!empty($search) && !empty($columnsSerachLike)) {
+            $evaluacion_odontologicas->where(function ($query) use ($search, $columnsSerachLike) {
+                foreach ($columnsSerachLike as $col) {
+                    $query->orWhereRaw("$col LIKE ?", ["%{$search}%"]);
+                }
+            });
+        }
+        // Ordenamiento
+        foreach ($orderBy as $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_odontologicas->orderBy($value[0], $value[1]);
+            }
+        }
+
+
+        $evaluacion_odontologicas = $evaluacion_odontologicas->paginate($perPage, ['*'], 'page', $page);
+        return response()->JSON([
+            "data" => $evaluacion_odontologicas->items(),
+            "total" => $evaluacion_odontologicas->total(),
+            "lastPage" => $evaluacion_odontologicas->lastPage()
+        ]);
+    }
+
     public function descargar()
     {
         $spreadsheet = new Spreadsheet();
@@ -134,21 +204,21 @@ class EvaluacionOdontologicaController extends Controller
         $fila++;
 
         // OBTENER POSTULANTES
-        $evaluacion_conocimientos = EvaluacionConocimiento::join("postulantes", "postulantes.id", "=", "evaluacion_conocimientos.postulante_id")
+        $evaluacion_medicas = EvaluacionMedica::join("postulantes", "postulantes.id", "=", "evaluacion_medicas.postulante_id")
             ->where("postulantes.status", 1);
-        $evaluacion_conocimientos->where("evaluacion_conocimientos.descripcion", "APROBADO");
-        $evaluacion_conocimientos->where("postulantes.estado", "INSCRITO");
-        $evaluacion_conocimientos = $evaluacion_conocimientos->get();
-        foreach ($evaluacion_conocimientos as $key => $evaluacion_conocimiento) {
+        $evaluacion_medicas->where("evaluacion_medicas.valoracion", "APTO");
+        $evaluacion_medicas->where("postulantes.estado", "INSCRITO");
+        $evaluacion_medicas = $evaluacion_medicas->get();
+        foreach ($evaluacion_medicas as $key => $evaluacion_medica) {
             $sheet->setCellValue('A' . $fila, $key + 1);
-            $sheet->setCellValue('B' . $fila, $evaluacion_conocimiento->postulante->codigoPre);
-            $sheet->setCellValue('C' . $fila, $evaluacion_conocimiento->postulante->full_ci);
-            $sheet->setCellValue('D' . $fila, $evaluacion_conocimiento->postulante->paterno);
-            $sheet->setCellValue('E' . $fila, $evaluacion_conocimiento->postulante->materno);
-            $sheet->setCellValue('F' . $fila, $evaluacion_conocimiento->postulante->nombre);
-            $sheet->setCellValue('G' . $fila, $evaluacion_conocimiento->postulante->genero);
-            $sheet->setCellValue('H' . $fila, $evaluacion_conocimiento->postulante->fecha_nac_t);
-            $sheet->setCellValue('I' . $fila, $evaluacion_conocimiento->postulante->unidad);
+            $sheet->setCellValue('B' . $fila, $evaluacion_medica->postulante->codigoPre);
+            $sheet->setCellValue('C' . $fila, $evaluacion_medica->postulante->full_ci);
+            $sheet->setCellValue('D' . $fila, $evaluacion_medica->postulante->paterno);
+            $sheet->setCellValue('E' . $fila, $evaluacion_medica->postulante->materno);
+            $sheet->setCellValue('F' . $fila, $evaluacion_medica->postulante->nombre);
+            $sheet->setCellValue('G' . $fila, $evaluacion_medica->postulante->genero);
+            $sheet->setCellValue('H' . $fila, $evaluacion_medica->postulante->fecha_nac_t);
+            $sheet->setCellValue('I' . $fila, $evaluacion_medica->postulante->unidad);
             $sheet->getStyle('A' . $fila . ':L' . $fila)->applyFromArray($this->bodyTabla);
             $fila++;
         }

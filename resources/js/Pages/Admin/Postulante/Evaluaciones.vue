@@ -93,6 +93,42 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div
+                                class="col-md-6 font-weight-bold text-principal"
+                            >
+                                EVALUACIÓN ODONTOLÓGICA
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <span>{{
+                                    evaluacionOdontologica
+                                        ? evaluacionOdontologica.valoracion
+                                        : "S/V"
+                                }}</span>
+                                <br /><b>Valoración</b>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <span>{{
+                                    evaluacionOdontologica
+                                        ? evaluacionOdontologica.nro_baucher
+                                        : "S/N"
+                                }}</span
+                                ><br /><b>Nro. Baucher</b>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <span>{{
+                                    evaluacionOdontologica
+                                        ? evaluacionOdontologica.nro_folder
+                                        : "S/N"
+                                }}</span
+                                ><br /><b>Nro. Folder</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="row align-items-center">
@@ -140,7 +176,7 @@ onMounted(() => {
                                 <span>{{
                                     evaluacionFisica ? evaluacionFisica.nota : 0
                                 }}</span
-                                ><br /><b>Nro. Baucher</b>
+                                ><br /><b>Nota</b>
                             </div>
                             <div class="col-md-2 text-center">
                                 <span>{{
@@ -167,7 +203,7 @@ onMounted(() => {
                                         ? evaluacionInstruccion.nota
                                         : 0
                                 }}</span
-                                ><br /><b>Nro. Baucher</b>
+                                ><br /><b>Nota</b>
                             </div>
                             <div class="col-md-2 text-center">
                                 <span>{{
@@ -194,7 +230,7 @@ onMounted(() => {
                                         ? evaluacionConocimiento.nota
                                         : 0
                                 }}</span
-                                ><br /><b>Nro. Baucher</b>
+                                ><br /><b>Nota</b>
                             </div>
                             <div class="col-md-2 text-center">
                                 <span>{{
@@ -203,41 +239,6 @@ onMounted(() => {
                                         : "S/R"
                                 }}</span
                                 ><br /><b>Resultado</b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div
-                                class="col-md-6 font-weight-bold text-principal"
-                            >
-                                EVALUACIÓN ODONTOLÓGICA
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <span>{{
-                                    evaluacionOdontologica
-                                        ? evaluacionOdontologica.valoracion
-                                        : "S/V"
-                                }}</span>
-                                <br /><b>Valoración</b>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <span>{{
-                                    evaluacionOdontologica
-                                        ? evaluacionOdontologica.nro_baucher
-                                        : "S/N"
-                                }}</span
-                                ><br /><b>Nro. Baucher</b>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <span>{{
-                                    evaluacionOdontologica
-                                        ? evaluacionOdontologica.nro_folder
-                                        : "S/N"
-                                }}</span
-                                ><br /><b>Nro. Folder</b>
                             </div>
                         </div>
                     </div>

@@ -58,11 +58,15 @@ table .bg-dark-principal,
 }
 
 .text-principal {
-    color: var(--bg3);
+    color: var(--bg3) !important;
 }
 
 .text-secundario {
     color: var(--bg6);
+}
+
+.text-secundario2 {
+    color: var(--bg7) !important;
 }
 
 .text-principal:hover {
@@ -80,6 +84,10 @@ table .bg-dark-principal,
 .content-wrapper h4,
 .content-wrapper h5 {
     color: var(--bg3);
+}
+
+.content-wrapper .descripcion {
+    color: white;
 }
 
 .content-wrapper .breadcrumb {
@@ -263,13 +271,23 @@ body .btn.btn-success:hover {
 }
 
 .navbar-nav .dropdown-menu .dropdown-menu.miSubmenu.show {
-    background-color: var(--bg4);
+    background-color: var(--bg7);
     max-width: 80vw;
     border-radius: 0px;
-    box-shadow: 1px 1px 5px var(--bgDark);
-    display: block;
+    /* box-shadow: 1px 1px 5px var(--bgDark); */
+    box-shadow: inset 2px 2px 10px var(--bgDarkGray);
     min-width: 100%;
     position: relative;
+}
+.navbar-nav .dropdown-menu .dropdown-menu.miSubmenu.show .dropdown-item {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar-nav .dropdown-menu .dropdown-menu.miSubmenu.show .dropdown-item:hover {
+    font-weight: 600;
+    background-color: transparent;
+    box-shadow: 2px 2px 10px var(--bgDark);
+    transform: translateY(-1px);
 }
 
 .navbar-nav .dropdown-menu.miSubmenu a {
@@ -318,37 +336,79 @@ body .mi-table table thead tr th .iheader .accion.active {
 }
 
 /* PORTAL */
+h2,
+h3,
+h4,
+.font-weight-bold,
+b {
+    color: var(--bg3);
+    font-weight: bold;
+}
 
 .contenedor_secciones .seccion .info_seccion img {
     margin: auto;
     max-height: 500px;
-    /* filter: drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.5)); */
+    transition: all 0.5s;
+}
+
+.contenedor_secciones .seccion .info_seccion img:hover {
+    transform: scale(1.01);
 }
 
 .contenedor_secciones .seccion:nth-child(odd) .info_seccion {
     background-color: var(--bgGrayLight);
-    border: solid 1px var(--bgGray);
     margin-bottom: 50px;
-    box-shadow: 0px 0px 3px var(--bg3);
-}
-.contenedor_secciones .seccion:nth-child(odd) .info_seccion img {
-    border: solid 1px var(--bg5);
-    box-shadow: 0px 0px 10px var(--bg3);
+    box-shadow: -2px 2px 10px var(--bg3);
 }
 
 .contenedor_secciones .seccion:nth-child(even) .info_seccion {
     background-color: var(--bg2);
-    border: solid 1px var(--bg6);
     margin-bottom: 50px;
-    box-shadow: 0px 0px 10px var(--bgDark);
+    box-shadow: 0px 0px 20px var(--bgDark);
 }
+
+.contenedor_secciones .seccion:nth-child(odd) .font-weight-bold,
+.contenedor_secciones .seccion:nth-child(odd) b,
+.contenedor_secciones .seccion:nth-child(odd) .subtitulo-seccion,
+.contenedor_secciones .seccion:nth-child(odd) .titulo-seccion {
+    color: var(--bg3);
+    font-weight: bold;
+}
+
+.contenedor_secciones .seccion:nth-child(even) .font-weight-bold,
+.contenedor_secciones .seccion:nth-child(even) b,
+.contenedor_secciones .seccion:nth-child(even) i,
+.contenedor_secciones .seccion:nth-child(even) .subtitulo-seccion,
+.contenedor_secciones .seccion:nth-child(even) .titulo-seccion {
+    color: var(--bg7);
+    font-weight: bold;
+}
+
+.contenedor_secciones .seccion i {
+    margin-right: 3px;
+}
+
 .contenedor_secciones .seccion:nth-child(even) .info_seccion img {
     border: solid 1px var(--bg3);
     box-shadow: 0px 0px 10px var(--bgDark);
 }
 
+img.img_png,
+.contenedor_secciones .seccion .info_seccion img.img_png {
+    box-shadow: none;
+    border: none;
+}
+
+.img_hover {
+    transition: all 0.3s;
+}
+
+.img_hover:hover {
+    transform: scale(1.05);
+}
+
 .titulo-seccion {
-    font-size: 2.2em;
+    font-size: 2.3em;
     color: var(--bg3);
     font-style: italic;
     font-weight: bold;
@@ -357,7 +417,7 @@ body .mi-table table thead tr th .iheader .accion.active {
 
 .subtitulo-seccion {
     font-weight: 600;
-    font-size: 1.5em;
+    font-size: 1.7em;
 }
 
 .contenedor_secciones .col-12 {
@@ -369,13 +429,26 @@ body .mi-table table thead tr th .iheader .accion.active {
     color: white;
 }
 
+.contenedor_secciones > .col-12:nth-child(2n) h1,
+.contenedor_secciones > .col-12:nth-child(2n) h2,
+.contenedor_secciones > .col-12:nth-child(2n) h3,
+.contenedor_secciones > .col-12:nth-child(2n) h4,
+.contenedor_secciones > .col-12:nth-child(2n) h5,
 .contenedor_secciones > .col-12:nth-child(2n) table thead tr th,
 .contenedor_secciones > .col-12:nth-child(2n) table tbody tr td {
     color: white;
 }
 
-.contenedor_secciones .col-12:nth-child(2n) .titulo-seccion {
-    color: white;
+.contenedor_secciones > .col-12:nth-child(2n) h1,
+.contenedor_secciones > .col-12:nth-child(2n) h2,
+.contenedor_secciones > .col-12:nth-child(2n) h3,
+.contenedor_secciones > .col-12:nth-child(2n) h4,
+.contenedor_secciones > .col-12:nth-child(2n) h5,
+.contenedor_secciones > .col-12:nth-child(2n) .titulo-seccion,
+.contenedor_secciones > .col-12:nth-child(2n) b,
+.contenedor_secciones > .col-12:nth-child(2n) .font-weight-bold,
+.contenedor_secciones > .col-12:nth-child(2n) table thead tr th {
+    color: var(--bg7);
 }
 
 .contenedor_secciones img {

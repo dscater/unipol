@@ -94,6 +94,74 @@ class EvaluacionFisicaController extends Controller
         return Inertia::render("Admin/EvaluacionFisicas/Index");
     }
 
+    public function paginado(Request $request)
+    {
+        $perPage = $request->perPage;
+        $page = (int)($request->input("page", 1));
+        $search = (string)$request->input("search", "");
+        $orderByCol = $request->orderByCol;
+        $desc = $request->desc;
+
+        $columnsSerachLike = [
+            "CONCAT_WS(' ', postulantes.nombre, postulantes.paterno, postulantes.materno)",
+            "CONCAT_WS(' ', postulantes.ci, postulantes.complemento, postulantes.ci_exp)",
+            "postulantes.unidad",
+            "postulantes.codigoPre",
+            "valoracion",
+            "nro_baucher",
+            "nro_folder",
+        ];
+        $columnsFilter = [];
+        $columnsBetweenFilter = [];
+        $orderBy = [];
+        if ($orderByCol && $desc) {
+            $orderBy = [
+                [$orderByCol, $desc]
+            ];
+        }
+
+        $evaluacion_fisicas = EvaluacionFisica::with(["postulante"])->select("evaluacion_fisicas.*")
+            ->join("postulantes", "postulantes.id", "=", "evaluacion_fisicas.postulante_id");
+
+
+        // Filtros exactos
+        foreach ($columnsFilter as $key => $value) {
+            if (!is_null($value)) {
+                $evaluacion_fisicas->where("evaluacion_fisicas.$key", $value);
+            }
+        }
+
+        // Filtros por rango
+        foreach ($columnsBetweenFilter as $key => $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_fisicas->whereBetween("evaluacion_fisicas.$key", $value);
+            }
+        }
+
+        // Búsqueda en múltiples columnas con LIKE
+        if (!empty($search) && !empty($columnsSerachLike)) {
+            $evaluacion_fisicas->where(function ($query) use ($search, $columnsSerachLike) {
+                foreach ($columnsSerachLike as $col) {
+                    $query->orWhereRaw("$col LIKE ?", ["%{$search}%"]);
+                }
+            });
+        }
+        // Ordenamiento
+        foreach ($orderBy as $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_fisicas->orderBy($value[0], $value[1]);
+            }
+        }
+
+
+        $evaluacion_fisicas = $evaluacion_fisicas->paginate($perPage, ['*'], 'page', $page);
+        return response()->JSON([
+            "data" => $evaluacion_fisicas->items(),
+            "total" => $evaluacion_fisicas->total(),
+            "lastPage" => $evaluacion_fisicas->lastPage()
+        ]);
+    }
+
     public function descargar()
     {
         $spreadsheet = new Spreadsheet();

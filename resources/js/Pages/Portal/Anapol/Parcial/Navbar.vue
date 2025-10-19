@@ -316,7 +316,7 @@ onUnmounted(() => {
                                         route('anapol.nuestra_academia') +
                                         '#ana_aspectos21'
                                     "
-                                    >ASCENSOS</Link
+                                    >JERARQUIA INTERNA Y ASCENSOS</Link
                                 >
                                 <Link
                                     class="dropdown-item"
@@ -453,9 +453,7 @@ onUnmounted(() => {
                     >
                         <Link
                             class="nav-link"
-                            :href="
-                                route('anapol.antecedentes') + '#ana_aspectos24'
-                            "
+                            :href="route('anapol.antecedentes')"
                             >CERTIFICADO DE ANTECEDENTES POLICIALES</Link
                         >
                         <li class="nav-item dropdown" @click.stop>

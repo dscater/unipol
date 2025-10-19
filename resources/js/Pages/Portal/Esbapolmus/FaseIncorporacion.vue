@@ -12,6 +12,7 @@ import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "./Parcial/Navbar.vue";
+import Footer from "./Parcial/Footer.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -35,7 +36,7 @@ const listItems = ref([
 onMounted(() => {});
 </script>
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid pagina">
         <div class="row bg-principal p-2 pt-4 pb-4">
             <div class="col-12 text-center">
                 <img
@@ -59,19 +60,19 @@ onMounted(() => {});
                             <h2 class="titulo-seccion">
                                 FASE DE INCORPORACIÓN
                             </h2>
-                            <p>
+                            <p class="text-justify">
                                 La Fase de Selección para el Proceso de
                                 Admisión, estará comprendida por las siguientes
                                 etapas:
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 CUADRO GENERAL DE LOS ADMITIDOS
                             </h4>
-                            <p>
+                            <p class="text-justify">
                                 Concluidas las fases de Convocatoria y
                                 Selección, la Comisión Nacional del Proceso de
                                 Admisión, de acuerdo al Cronograma de
@@ -83,7 +84,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 CANTIDAD DE POSTULANTES ADMITIDOS
@@ -99,13 +100,13 @@ onMounted(() => {});
                                     pregrado de la UNIPOL.
                                 </li>
                                 <li>
-                                    Las y los postulantes admitidos a la
-                                    Facultad en Ciencias Policiales “Academia
-                                    Nacional de policías”, será asignada
-                                    conforme a la cantidad de plazas habilitadas
-                                    y/o aprobadas y el orden de prelación de los
-                                    promedios más altos obtenidos durante la
-                                    etapa del Prefacultativo.
+                                    Las y los postulantes admitidos a la Escuela
+                                    Básica Policial de Música (ESBAPOLMUS), será
+                                    asignada conforme la cantidad de plazas
+                                    habilitadas y/o aprobadas y el orden de
+                                    prelación de los promedios más altos
+                                    obtenidos durante la etapa de
+                                    prefacultativo.
                                 </li>
                             </ul>
                         </div>
@@ -114,6 +115,7 @@ onMounted(() => {});
             </div>
         </div>
     </div>
+    <Footer></Footer>
 </template>
 
 <style scoped>

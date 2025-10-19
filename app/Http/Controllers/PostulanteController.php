@@ -74,7 +74,7 @@ class PostulanteController extends Controller
 
         $columnsSerachLike = [
             "CONCAT_WS(' ', nombre, paterno, materno)",
-            "CONCAT_WS(' ', ci, ci_exp, complemento)",
+            "CONCAT_WS(' ', ci, complemento,ci_exp)",
             "unidad",
             "estado"
         ];

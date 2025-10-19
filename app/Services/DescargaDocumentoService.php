@@ -137,6 +137,7 @@ class DescargaDocumentoService
      */
     public function eliminar(DescargaDocumento $descarga_documento): bool
     {
+        $old_descarga_documento = clone $descarga_documento;
         if ($descarga_documento->documento) {
             \File::delete(public_path("files/descarga_documentos/" . $descarga_documento->documento));
         }

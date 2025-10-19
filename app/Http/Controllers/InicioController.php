@@ -24,11 +24,6 @@ class InicioController extends Controller
                     "url_video" => asset("videos/video1.mp4"),
                     "ext" => "mp4"
                 ],
-                [
-                    "descripcion" => "Video 2",
-                    "url_video" => asset("videos/video1.mp4"),
-                    "ext" => "mp4"
-                ],
             ];
             return Inertia::render('Admin/Postulante/Inicio', compact("listDescargaDocumentos", "listVideos"));
         }

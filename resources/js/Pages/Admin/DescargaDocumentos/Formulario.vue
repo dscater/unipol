@@ -40,6 +40,9 @@ watch(
     () => props.accion_formulario,
     (newValue) => {
         accion_form.value = newValue;
+        if (accion_form.value == 0) {
+            form["_method"] = "POST";
+        }
     }
 );
 
@@ -54,8 +57,8 @@ function cargaArchivo(e, key) {
 
 const tituloDialog = computed(() => {
     return accion_form.value == 0
-        ? `<i class="fa fa-plus"></i> Nuevo DescargaDocumento`
-        : `<i class="fa fa-edit"></i> Editar DescargaDocumento`;
+        ? `<i class="fa fa-plus"></i> Nuevo Documento de descarga`
+        : `<i class="fa fa-edit"></i> Editar Documento de descarga`;
 });
 
 const textBtn = computed(() => {
@@ -157,7 +160,7 @@ onMounted(() => {});
         :footer-class="'justify-content-end'"
     >
         <template #header>
-            <h4 class="modal-title" v-html="tituloDialog"></h4>
+            <h4 class="modal-title text-white" v-html="tituloDialog"></h4>
             <button
                 type="button"
                 class="close"

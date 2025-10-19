@@ -44,7 +44,7 @@ onUnmounted(() => {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol')"
+                    <Link class="nav-link" :href="route('esbapolmus')"
                         >INICIO <span class="sr-only">(current)</span></Link
                     >
                 </li>
@@ -74,8 +74,8 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos1'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos1'
                                     "
                                     >SEÑOR COMANDANTE GENERAL DE LA POLICÍA
                                     BOLIVIANA</Link
@@ -83,18 +83,19 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos2'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos2'
                                     "
                                     >MAGNIFICO RECTOR DE LA UNIPOL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos3'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos3'
                                     "
-                                    >SEÑOR DIRECTOR DE LA ANAPOL</Link
+                                    >MENSAJE DEL SEÑOR DIRECTOR DE LA
+                                    ESBAPOLMUS</Link
                                 >
                             </div>
                         </li>
@@ -112,16 +113,16 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos4'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos4'
                                     "
-                                    >CADETE</Link
+                                    >ALUMNO</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos5'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos5'
                                     "
                                     >VALORES Y PRINCIPIOS</Link
                                 >
@@ -141,16 +142,16 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos6'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos6'
                                     "
                                     >POLICIA BOLIVIANA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos7'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos7'
                                     "
                                     >ACADEMIA NACIONAL DE POLICÍAS</Link
                                 >
@@ -170,18 +171,18 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos8'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos8'
                                     "
                                     >HIMNO AL POLICIA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos9'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos9'
                                     "
-                                    >HIMNO A LA ANAPOL</Link
+                                    >HIMNO A LA ESBAPOLMUS</Link
                                 >
                             </div>
                         </li>
@@ -199,24 +200,24 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos10'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos10'
                                     "
                                     >MISIÓN</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos11'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos11'
                                     "
                                     >VISIÓN</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos12'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos12'
                                     "
                                     >FILOSOFÍA</Link
                                 >
@@ -225,8 +226,8 @@ onUnmounted(() => {
                         <Link
                             class="nav-link"
                             :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos13'
+                                route('esbapolmus.nuestra_academia') +
+                                '#esb_aspectos13'
                             "
                             >PERFIL DE INGRESO</Link
                         >
@@ -244,8 +245,8 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos14'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos14'
                                     "
                                     >CARACTERISTICAS DEL REGIMEN DE
                                     ESTUDIOS</Link
@@ -253,50 +254,57 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos15'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos15'
                                     "
                                     >FORMACIÓN ACADÉMICA-POLICIAL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos16'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos16'
                                     "
                                     >FORMACIÓN FÍSICA Y DEPORTES</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos17'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos17'
                                     "
                                     >FORMACIÓN ÉTICO Y MORAL (DISCIPLINA)</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos18'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos18'
                                     "
                                     >FORMACIÓN INTEGRAL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos19'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos19'
                                     "
                                     >FORMACIÓN CON PERSPECTIVA DE GÉNERO</Link
                                 ><Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos20'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos20'
                                     "
                                     >INSTRUCCIÓN POLICIAL</Link
-                                >
+                                ><Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos21'
+                                    "
+                                    >PRACTICA INSTRUMENTAL
+                                </Link>
                             </div>
                         </li>
                         <li class="nav-item dropdown" @click.stop>
@@ -313,16 +321,16 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos21'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos22'
                                     "
-                                    >ASCENSOS</Link
+                                    >JERARQUIA INTERNA Y ASCENSOS</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos22'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos23'
                                     "
                                     >DISTINCIONES</Link
                                 >
@@ -331,16 +339,8 @@ onUnmounted(() => {
                         <Link
                             class="nav-link"
                             :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos23'
-                            "
-                            >BECAS AL EXTERIOR</Link
-                        >
-                        <Link
-                            class="nav-link"
-                            :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos24'
+                                route('esbapolmus.nuestra_academia') +
+                                '#esb_aspectos24'
                             "
                             >INFRAESTRUCTURA</Link
                         >
@@ -358,24 +358,24 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos25'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos25'
                                     "
                                     >COMPETENCIAS DEL EGRESADO</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos26'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos26'
                                     "
                                     >GRADOS JERARQUICOS</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.nuestra_academia') +
-                                        '#ana_aspectos27'
+                                        route('esbapolmus.nuestra_academia') +
+                                        '#esb_aspectos27'
                                     "
                                     >CAMPO OCUPACIONAL</Link
                                 >
@@ -384,15 +384,17 @@ onUnmounted(() => {
                         <!-- <Link
                             class="nav-link"
                             :href="
-                                route('anapol.nuestra_academia') +
-                                '#ana_aspectos28'
+                                route('esbapolmus.nuestra_academia') +
+                                '#esb_aspectos28'
                             "
                             >FUNCIONES DE LA POLICÍA BOLIVIANA</Link
                         > -->
                     </div>
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol.requisitos')"
+                    <Link
+                        class="nav-link"
+                        :href="route('esbapolmus.requisitos')"
                         >REQUISITOS</Link
                     >
                 </li>
@@ -409,29 +411,31 @@ onUnmounted(() => {
                     <div class="dropdown-menu">
                         <Link
                             class="nav-link"
-                            :href="route('anapol.fase_convocatoria')"
+                            :href="route('esbapolmus.fase_convocatoria')"
                             >FASE DE CONVOCATORIA</Link
                         >
                         <Link
                             class="nav-link"
-                            :href="route('anapol.fase_seleccion')"
+                            :href="route('esbapolmus.fase_seleccion')"
                             >FASE DE SELECCIÓN</Link
                         >
                         <Link
                             class="nav-link"
-                            :href="route('anapol.fase_incorporacion')"
+                            :href="route('esbapolmus.fase_incorporacion')"
                             >FASE DE INCORPORACIÓN</Link
                         >
                     </div>
                 </li>
                 <li class="nav-item"></li>
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol.comunicados')"
+                    <Link
+                        class="nav-link"
+                        :href="route('esbapolmus.comunicados')"
                         >COMUNICADOS</Link
                     >
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('anapol.contactos')"
+                    <Link class="nav-link" :href="route('esbapolmus.contactos')"
                         >CONTACTOS</Link
                     >
                 </li>
@@ -453,9 +457,7 @@ onUnmounted(() => {
                     >
                         <Link
                             class="nav-link"
-                            :href="
-                                route('anapol.antecedentes') + '#ana_aspectos24'
-                            "
+                            :href="route('esbapolmus.antecedentes')"
                             >CERTIFICADO DE ANTECEDENTES POLICIALES</Link
                         >
                         <li class="nav-item dropdown" @click.stop>
@@ -472,8 +474,8 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.evaluacion_medica') +
-                                        '#ana_evaluacion1'
+                                        route('esbapolmus.evaluacion_medica') +
+                                        '#esb_evaluacion1'
                                     "
                                     >ASPECTOS IMPORTANTES Y CANJE DE
                                     FOLDER</Link
@@ -481,16 +483,16 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.evaluacion_medica') +
-                                        '#ana_evaluacion2'
+                                        route('esbapolmus.evaluacion_medica') +
+                                        '#esb_evaluacion2'
                                     "
                                     >EVALUACIÓN MÉDICA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('anapol.evaluacion_medica') +
-                                        '#ana_evaluacion3'
+                                        route('esbapolmus.evaluacion_medica') +
+                                        '#esb_evaluacion3'
                                     "
                                     >EVALUACIÓN PSICOLÓGICA</Link
                                 >

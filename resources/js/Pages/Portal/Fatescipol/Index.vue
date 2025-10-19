@@ -20,47 +20,51 @@ const url_asset = ref(props_page.url_assets);
 const listItems = ref([
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 46.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 016.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 47.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 017.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 48.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 018.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 49.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 019.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 50.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 020.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 51.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 021.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 52.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 022.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 53.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 023.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 54.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 024.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 55.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 025.jpg",
     },
     {
         tipo: "img",
-        ruta: "/imgs/anapol/FOTO ANA 56.jpg",
+        ruta: "imgs/fatescipol/FOTO FAT 026.jpg",
+    },
+    {
+        tipo: "img",
+        ruta: "imgs/fatescipol/FOTO FAT 027.jpg",
     },
 ]);
 
@@ -71,7 +75,7 @@ onMounted(() => {});
         <div class="row bg-principal p-2 pt-4 pb-4">
             <div class="col-12 text-center">
                 <img
-                    :src="url_asset + '/imgs/ADMINICION.png'"
+                    :src="url_asset + 'imgs/ADMINICION.png'"
                     alt="admicion"
                     class="img_admicion"
                 />
@@ -108,7 +112,7 @@ onMounted(() => {});
         </el-carousel-item>
         <div class="contenido">
             <img
-                :src="url_asset + '/imgs/EANAPOL.png'"
+                :src="url_asset + 'imgs/EANAPOL.png'"
                 alt=""
                 class="img-seccion"
             />

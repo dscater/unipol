@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 17-10-2025 a las 18:40:27
+-- Tiempo de generación: 19-10-2025 a las 23:19:29
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.2.22
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `unipol_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comunicados`
+--
+
+CREATE TABLE `comunicados` (
+  `id` bigint UNSIGNED NOT NULL,
+  `unidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `comunicados`
+--
+
+INSERT INTO `comunicados` (`id`, `unidad`, `descripcion`, `imagen`, `created_at`, `updated_at`) VALUES
+(1, 'ANAPOL', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ips', '11760901398.jpg', '2025-10-19 19:16:38', '2025-10-19 19:16:38'),
+(2, 'FATESCIPOL', 'Comunicado Fatescipol', '21760901568.jpg', '2025-10-19 19:17:19', '2025-10-19 19:19:28'),
+(3, 'ESBAPOLMUS', 'comunciado esbapolmus', '31760901559.avif', '2025-10-19 19:17:44', '2025-10-19 19:19:19'),
+(4, 'ANAPOL', 'asdasdasd', '41760901803.png', '2025-10-19 19:20:04', '2025-10-19 19:23:23'),
+(5, 'ANAPOL', 'sdf', '51760901796.png', '2025-10-19 19:23:09', '2025-10-19 19:23:16');
 
 -- --------------------------------------------------------
 
@@ -153,8 +179,8 @@ CREATE TABLE `evaluacion_medicas` (
 --
 
 INSERT INTO `evaluacion_medicas` (`id`, `postulante_id`, `valoracion`, `nro_baucher`, `nro_folder`, `created_at`, `updated_at`) VALUES
-(1, 5, 'APTO', '11112', '1234', '2025-10-17 03:41:41', '2025-10-17 12:48:42'),
-(2, 10, 'NO APTO', '2222', '1234', '2025-10-17 03:41:41', '2025-10-17 03:46:09');
+(1, 5, 'APTO', '1112', '1234', '2025-10-17 03:41:41', '2025-10-19 21:16:51'),
+(2, 10, 'NO APTO', '1111', '123', '2025-10-17 03:41:41', '2025-10-19 21:19:12');
 
 -- --------------------------------------------------------
 
@@ -177,7 +203,7 @@ CREATE TABLE `evaluacion_odontologicas` (
 --
 
 INSERT INTO `evaluacion_odontologicas` (`id`, `postulante_id`, `valoracion`, `nro_baucher`, `nro_folder`, `created_at`, `updated_at`) VALUES
-(1, 5, 'APTO', '11112', '1234', '2025-10-17 12:49:33', '2025-10-17 12:49:33');
+(1, 5, 'APTO', '1112', '1234', '2025-10-17 12:49:33', '2025-10-19 21:20:33');
 
 -- --------------------------------------------------------
 
@@ -268,7 +294,24 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (38, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"documento\": \"31760660864.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:28:28.000000Z\", \"descripcion\": \"DESCRIPCION 2\"}', '{\"id\": 3, \"documento\": \"31760660914.pdf\", \"created_at\": \"2025-10-17T00:26:26.000000Z\", \"updated_at\": \"2025-10-17T00:28:34.000000Z\", \"descripcion\": \"DESCRIPCION 2\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-16', '20:28:34', '2025-10-17 00:28:34', '2025-10-17 00:28:34'),
 (39, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ LA CONFIGURACIÓN DEL SISTEMA', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-15T00:53:30.000000Z\", \"envio_email\": {\"host\": \"smtp.gmail.com\", \"correo\": \"kingcerocias@gmail.com\", \"driver\": \"smtp\", \"nombre\": \"unipol\", \"puerto\": \"587\", \"password\": \"bubtfibqsypckzzz\", \"encriptado\": \"tls\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T13:56:49.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"tls\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', 'CONFIGURACIÓN SISTEMA', '2025-10-17', '09:56:49', '2025-10-17 13:56:49', '2025-10-17 13:56:49'),
 (40, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ LA CONFIGURACIÓN DEL SISTEMA', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T13:56:49.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"tls\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:01:05.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"465\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', 'CONFIGURACIÓN SISTEMA', '2025-10-17', '10:01:05', '2025-10-17 14:01:05', '2025-10-17 14:01:05'),
-(41, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ LA CONFIGURACIÓN DEL SISTEMA', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:01:05.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"465\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:03:02.000000Z\", \"envio_email\": {\"host\": \"smtp.gmail.com\", \"correo\": \"kingcerocias@gmail.com\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"bubtfibqsypckzzz\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', 'CONFIGURACIÓN SISTEMA', '2025-10-17', '10:03:02', '2025-10-17 14:03:02', '2025-10-17 14:03:02');
+(41, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ LA CONFIGURACIÓN DEL SISTEMA', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:01:05.000000Z\", \"envio_email\": {\"host\": \"smtp.google.com\", \"correo\": \"admisiones@unipol.edu.bo\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"465\", \"password\": \"AdmisioneS2025*\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', '{\"id\": 1, \"logo\": \"logo.png\", \"alias\": \"UNIPOL\", \"created_at\": \"2025-10-14T23:02:13.000000Z\", \"updated_at\": \"2025-10-17T14:03:02.000000Z\", \"envio_email\": {\"host\": \"smtp.gmail.com\", \"correo\": \"kingcerocias@gmail.com\", \"driver\": \"smtp\", \"nombre\": \"unipol(admisiones)\", \"puerto\": \"587\", \"password\": \"bubtfibqsypckzzz\", \"encriptado\": \"ssl\"}, \"nombre_sistema\": \"UNIPOL S.A.\"}', 'CONFIGURACIÓN SISTEMA', '2025-10-17', '10:03:02', '2025-10-17 14:03:02', '2025-10-17 14:03:02'),
+(42, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN DOCUMENTO DE DESCARGA', '{\"id\": 1, \"imagen\": \"11760901398.jpg\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:16:38.000000Z\", \"updated_at\": \"2025-10-19T19:16:38.000000Z\", \"descripcion\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ips\"}', NULL, 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:16:38', '2025-10-19 19:16:38', '2025-10-19 19:16:38'),
+(43, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN DOCUMENTO DE DESCARGA', '{\"id\": 2, \"imagen\": \"21760901439.jpg\", \"unidad\": \"FATESCIPOL\", \"created_at\": \"2025-10-19T19:17:19.000000Z\", \"updated_at\": \"2025-10-19T19:17:19.000000Z\", \"descripcion\": \"Comunicado Fatescipol\"}', NULL, 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:17:19', '2025-10-19 19:17:19', '2025-10-19 19:17:19'),
+(44, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"imagen\": \"31760901464.jpg\", \"unidad\": \"ESBAPOLMUS\", \"created_at\": \"2025-10-19T19:17:44.000000Z\", \"updated_at\": \"2025-10-19T19:17:44.000000Z\", \"descripcion\": \"comunciado esbapolmus\"}', NULL, 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:17:44', '2025-10-19 19:17:44', '2025-10-19 19:17:44'),
+(45, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 3, \"imagen\": \"31760901464.jpg\", \"unidad\": \"ESBAPOLMUS\", \"created_at\": \"2025-10-19T19:17:44.000000Z\", \"updated_at\": \"2025-10-19T19:17:44.000000Z\", \"descripcion\": \"comunciado esbapolmus\"}', '{\"id\": 3, \"imagen\": \"31760901559.avif\", \"unidad\": \"ESBAPOLMUS\", \"created_at\": \"2025-10-19T19:17:44.000000Z\", \"updated_at\": \"2025-10-19T19:19:19.000000Z\", \"descripcion\": \"comunciado esbapolmus\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:19:19', '2025-10-19 19:19:19', '2025-10-19 19:19:19'),
+(46, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 2, \"imagen\": \"21760901439.jpg\", \"unidad\": \"FATESCIPOL\", \"created_at\": \"2025-10-19T19:17:19.000000Z\", \"updated_at\": \"2025-10-19T19:17:19.000000Z\", \"descripcion\": \"Comunicado Fatescipol\"}', '{\"id\": 2, \"imagen\": \"21760901568.jpg\", \"unidad\": \"FATESCIPOL\", \"created_at\": \"2025-10-19T19:17:19.000000Z\", \"updated_at\": \"2025-10-19T19:19:28.000000Z\", \"descripcion\": \"Comunicado Fatescipol\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:19:28', '2025-10-19 19:19:28', '2025-10-19 19:19:28'),
+(47, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN DOCUMENTO DE DESCARGA', '{\"id\": 4, \"imagen\": \"41760901604.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:20:04.000000Z\", \"descripcion\": \"asdasdasd\"}', NULL, 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:20:04', '2025-10-19 19:20:04', '2025-10-19 19:20:04'),
+(48, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 4, \"imagen\": \"41760901604.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:20:04.000000Z\", \"descripcion\": \"asdasdasd\"}', '{\"id\": 4, \"imagen\": \"41760901612.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:20:12.000000Z\", \"descripcion\": \"asdasdasd\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:20:12', '2025-10-19 19:20:12', '2025-10-19 19:20:12'),
+(49, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 4, \"imagen\": \"41760901612.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:20:12.000000Z\", \"descripcion\": \"asdasdasd\"}', '{\"id\": 4, \"imagen\": \"41760901696.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:21:36.000000Z\", \"descripcion\": \"asdasdasd\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:21:36', '2025-10-19 19:21:36', '2025-10-19 19:21:36'),
+(50, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 4, \"imagen\": \"41760901696.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:21:36.000000Z\", \"descripcion\": \"asdasdasd\"}', '{\"id\": 4, \"imagen\": \"41760901747.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:22:27.000000Z\", \"descripcion\": \"asdasdasd\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:22:27', '2025-10-19 19:22:27', '2025-10-19 19:22:27'),
+(51, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 4, \"imagen\": \"41760901747.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:22:27.000000Z\", \"descripcion\": \"asdasdasd\"}', '{\"id\": 4, \"imagen\": \"41760901783.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:23:03.000000Z\", \"descripcion\": \"asdasdasd\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:23:03', '2025-10-19 19:23:03', '2025-10-19 19:23:03'),
+(52, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN DOCUMENTO DE DESCARGA', '{\"id\": 5, \"imagen\": \"51760901789.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:23:09.000000Z\", \"updated_at\": \"2025-10-19T19:23:09.000000Z\", \"descripcion\": \"sdf\"}', NULL, 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:23:09', '2025-10-19 19:23:09', '2025-10-19 19:23:09'),
+(53, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 5, \"imagen\": \"51760901789.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:23:09.000000Z\", \"updated_at\": \"2025-10-19T19:23:09.000000Z\", \"descripcion\": \"sdf\"}', '{\"id\": 5, \"imagen\": \"51760901796.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:23:09.000000Z\", \"updated_at\": \"2025-10-19T19:23:16.000000Z\", \"descripcion\": \"sdf\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:23:16', '2025-10-19 19:23:16', '2025-10-19 19:23:16'),
+(54, 1, 'MODIFICACIÓN', 'EL USUARIO admin ACTUALIZÓ UN DOCUMENTO DE DESCARGA', '{\"id\": 4, \"imagen\": \"41760901783.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:23:03.000000Z\", \"descripcion\": \"asdasdasd\"}', '{\"id\": 4, \"imagen\": \"41760901803.png\", \"unidad\": \"ANAPOL\", \"created_at\": \"2025-10-19T19:20:04.000000Z\", \"updated_at\": \"2025-10-19T19:23:23.000000Z\", \"descripcion\": \"asdasdasd\"}', 'DOCUMENTOS DE DESCARGA', '2025-10-19', '15:23:23', '2025-10-19 19:23:23', '2025-10-19 19:23:23'),
+(55, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN POSTULANTE (PREINSCRIPCIÓN)', '{\"ci\": \"4322342\", \"id\": 12, \"cel\": \"675567566\", \"ci_exp\": \"CB\", \"correo\": \"julia@gmail.com\", \"estado\": \"PREINSCRITO\", \"genero\": \"F\", \"nombre\": \"JULIA\", \"nroPre\": 2, \"unidad\": \"ESBAPOLMUS\", \"materno\": \"GONZALES\", \"paterno\": \"CASTRO\", \"user_id\": 13, \"codigoPre\": \"E-0000002\", \"fecha_nac\": \"2008-01-01\", \"created_at\": \"2025-10-19T22:43:24.000000Z\", \"nro_cuenta\": \"1000022222\", \"updated_at\": \"2025-10-19T22:43:24.000000Z\", \"complemento\": \"C1\", \"observacion\": \"\", \"lugar_preins\": \"FATESCIPOL \\\"COCHABAMBA\\\"\", \"fecha_registro\": \"2025-10-19\"}', NULL, 'POSTULANTE', '2025-10-19', '18:43:30', '2025-10-19 22:43:30', '2025-10-19 22:43:30'),
+(56, 13, 'CREACIÓN', 'EL USUARIO julia@gmail.com REGISTRO UN USUARIO', '{\"id\": 25, \"file1\": \"1251760914031.pdf\", \"file2\": \"2251760914031.pdf\", \"file3\": \"3251760914031.pdf\", \"file4\": \"4251760914031.pdf\", \"file5\": \"5251760914031.pdf\", \"file6\": \"6251760914031.pdf\", \"file7\": \"7251760914031.pdf\", \"file8\": \"8251760914031.pdf\", \"file9\": \"9251760914031.pdf\", \"file10\": \"10251760914031.pdf\", \"file11\": \"11251760914031.pdf\", \"file12\": \"12251760914031.pdf\", \"file13\": \"13251760914031.pdf\", \"file14\": \"14251760914031.pdf\", \"user_id\": 13, \"created_at\": \"2025-10-19T22:47:11.000000Z\", \"updated_at\": \"2025-10-19T22:47:11.000000Z\", \"postulante_id\": 12}', NULL, 'REQUISITOS', '2025-10-19', '18:47:11', '2025-10-19 22:47:11', '2025-10-19 22:47:11'),
+(57, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN POSTULANTE (PREINSCRIPCIÓN)', '{\"ci\": \"345345345\", \"id\": 13, \"cel\": \"678678678\", \"ci_exp\": \"CB\", \"correo\": \"diana@gmail.com\", \"estado\": \"PREINSCRITO\", \"genero\": \"F\", \"nombre\": \"DIANA\", \"nroPre\": 5, \"unidad\": \"ANAPOL\", \"materno\": \"PAREDES\", \"paterno\": \"PAREDES\", \"user_id\": 14, \"codigoPre\": \"A-0000005\", \"fecha_nac\": \"2009-12-29\", \"created_at\": \"2025-10-19T23:03:15.000000Z\", \"nro_cuenta\": \"100000002\", \"updated_at\": \"2025-10-19T23:03:15.000000Z\", \"complemento\": \"\", \"observacion\": \"\", \"lugar_preins\": \"ANAPOL\", \"fecha_registro\": \"2025-10-19\"}', NULL, 'POSTULANTE', '2025-10-19', '19:03:18', '2025-10-19 23:03:18', '2025-10-19 23:03:18'),
+(58, 14, 'CREACIÓN', 'EL USUARIO victorgonzalo.as@gmail.com REGISTRO UN USUARIO', '{\"id\": 26, \"file1\": \"1261760915454.pdf\", \"file2\": \"2261760915454.pdf\", \"file3\": \"3261760915454.pdf\", \"file4\": \"4261760915454.pdf\", \"file5\": \"5261760915454.pdf\", \"file6\": \"6261760915454.pdf\", \"file7\": \"7261760915454.pdf\", \"file8\": \"8261760915454.pdf\", \"file9\": \"9261760915454.pdf\", \"file10\": \"10261760915454.pdf\", \"file11\": \"11261760915454.pdf\", \"file12\": \"12261760915454.pdf\", \"file13\": \"13261760915454.pdf\", \"file14\": \"14261760915454.pdf\", \"user_id\": 14, \"created_at\": \"2025-10-19T23:10:54.000000Z\", \"updated_at\": \"2025-10-19T23:10:54.000000Z\", \"postulante_id\": 13}', NULL, 'REQUISITOS', '2025-10-19', '19:10:59', '2025-10-19 23:10:59', '2025-10-19 23:10:59');
 
 -- --------------------------------------------------------
 
@@ -298,7 +341,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2025_10_16_180044_create_evaluacion_conocimientos_table', 3),
 (10, '2025_10_16_180053_create_evaluacion_instruccions_table', 3),
 (11, '2025_10_16_180102_create_evaluacion_fisicas_table', 3),
-(12, '2025_10_16_212652_create_evaluacion_odontologicas_table', 4);
+(12, '2025_10_16_212652_create_evaluacion_odontologicas_table', 4),
+(13, '2025_10_19_150124_create_comunicados_table', 5);
 
 -- --------------------------------------------------------
 
@@ -332,6 +376,7 @@ CREATE TABLE `postulantes` (
   `epass` int NOT NULL DEFAULT '0',
   `nroInsc` bigint DEFAULT NULL,
   `codigoInsc` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `validDocs` int NOT NULL DEFAULT '0',
   `status` int NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -341,13 +386,15 @@ CREATE TABLE `postulantes` (
 -- Volcado de datos para la tabla `postulantes`
 --
 
-INSERT INTO `postulantes` (`id`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `complemento`, `genero`, `unidad`, `fecha_nac`, `cel`, `correo`, `nro_cuenta`, `lugar_preins`, `observacion`, `estado`, `foto`, `user_id`, `fecha_registro`, `nroPre`, `codigoPre`, `ecodigo`, `epass`, `nroInsc`, `codigoInsc`, `status`, `created_at`, `updated_at`) VALUES
-(5, 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', '', 'M', 'ANAPOL', '2006-01-01', '777777777', 'juan@gmail.com', '100000000333', 'ANAPOL', 'OBS', 'INSCRITO', '61760559326.jpg', 6, '2025-10-14', 1, 'A-0000001', 1, 1, 1, 'ANA_2026-000001', 1, '2025-10-15 00:53:40', '2025-10-17 01:06:19'),
-(7, 'JORGE', 'GONZALES', 'CONDORI', '7777777', 'LP', '', 'M', 'ANAPOL', '2000-01-01', '78787878', 'jorge@gmail.com', '100000005555', 'ANAPOL', '', 'PREINSCRITO', '81760631307.jpg', 8, '2025-10-16', 2, 'A-0000002', 1, 1, 2, 'ANA_2026-000002', 1, '2025-10-16 16:11:37', '2025-10-16 16:20:03'),
-(8, 'MARIA', 'MAMANI', 'MAMANI', '6767678', 'LP', '', 'F', 'FATESCIPOL', '2003-01-01', '6767676767', 'maria@gmail.com', '100000333333', 'FATESCIPOL \"EL ALTO\"', '', 'PREINSCRITO', '91760631872.jpg', 9, '2025-10-16', 1, 'F-0000001', 1, 1, 1, 'FAT_2026-000001', 1, '2025-10-16 16:22:56', '2025-10-16 16:30:47'),
-(9, 'DANIELA', 'CARVAJAL', 'GONZALES', '3434344', 'LP', '', 'F', 'ESBAPOLMUS', '2004-01-01', '66767677', 'daniela@gmail.com', '1000033333434', 'FATESCIPOL \"COLQUIRI\"', '', 'PREINSCRITO', '101760641297.jpg', 10, '2025-10-16', 1, 'E-0000001', 1, 1, 1, 'ESB_2026-000001', 1, '2025-10-16 18:49:37', '2025-10-16 19:51:36'),
-(10, 'MARCOS', 'GONZALES', 'RAMIREZ', '1231233', 'LP', '', 'M', 'ANAPOL', '2008-12-31', '787878787', 'marcos@gmail.com', '1-3333333333', 'ANAPOL', '', 'INSCRITO', '111760641621.jpg', 11, '2025-10-16', 3, 'A-0000003', 1, 1, 3, 'ANA_2026-000003', 1, '2025-10-16 19:00:58', '2025-10-17 01:08:02'),
-(11, 'FERNANDO', 'PAREDES', 'MAMANI', '675675675', 'LP', '', 'M', 'ANAPOL', '2010-01-01', '67676767', 'fernando@gmail.com', '1-22212121', 'ANAPOL', '', 'PREINSCRITO', '121760649664.jpg', 12, '2025-10-16', 4, 'A-0000004', 1, 1, NULL, NULL, 1, '2025-10-16 21:20:27', '2025-10-16 21:21:04');
+INSERT INTO `postulantes` (`id`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `complemento`, `genero`, `unidad`, `fecha_nac`, `cel`, `correo`, `nro_cuenta`, `lugar_preins`, `observacion`, `estado`, `foto`, `user_id`, `fecha_registro`, `nroPre`, `codigoPre`, `ecodigo`, `epass`, `nroInsc`, `codigoInsc`, `validDocs`, `status`, `created_at`, `updated_at`) VALUES
+(5, 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', '', 'M', 'ANAPOL', '2006-01-01', '777777777', 'juan@gmail.com', '100000000333', 'ANAPOL', 'OBS', 'INSCRITO', '61760559326.jpg', 6, '2025-10-14', 1, 'A-0000001', 1, 1, 1, 'ANA_2026-000001', 0, 1, '2025-10-15 00:53:40', '2025-10-17 01:06:19'),
+(7, 'JORGE', 'GONZALES', 'CONDORI', '7777777', 'LP', '', 'M', 'ANAPOL', '2000-01-01', '78787878', 'jorge@gmail.com', '100000005555', 'ANAPOL', '', 'PREINSCRITO', '81760631307.jpg', 8, '2025-10-16', 2, 'A-0000002', 1, 1, 2, 'ANA_2026-000002', 0, 1, '2025-10-16 16:11:37', '2025-10-16 16:20:03'),
+(8, 'MARIA', 'MAMANI', 'MAMANI', '6767678', 'LP', '', 'F', 'FATESCIPOL', '2003-01-01', '6767676767', 'maria@gmail.com', '100000333333', 'FATESCIPOL \"EL ALTO\"', '', 'PREINSCRITO', '91760631872.jpg', 9, '2025-10-16', 1, 'F-0000001', 1, 1, 1, 'FAT_2026-000001', 0, 1, '2025-10-16 16:22:56', '2025-10-16 16:30:47'),
+(9, 'DANIELA', 'CARVAJAL', 'GONZALES', '3434344', 'LP', '', 'F', 'ESBAPOLMUS', '2004-01-01', '66767677', 'daniela@gmail.com', '1000033333434', 'FATESCIPOL \"COLQUIRI\"', '', 'PREINSCRITO', '101760641297.jpg', 10, '2025-10-16', 1, 'E-0000001', 1, 1, 1, 'ESB_2026-000001', 0, 1, '2025-10-16 18:49:37', '2025-10-16 19:51:36'),
+(10, 'MARCOS', 'GONZALES', 'RAMIREZ', '1231233', 'LP', '', 'M', 'ANAPOL', '2008-12-31', '787878787', 'marcos@gmail.com', '1-3333333333', 'ANAPOL', '', 'INSCRITO', '111760641621.jpg', 11, '2025-10-16', 3, 'A-0000003', 1, 1, 3, 'ANA_2026-000003', 0, 1, '2025-10-16 19:00:58', '2025-10-17 01:08:02'),
+(11, 'FERNANDO', 'PAREDES', 'MAMANI', '675675675', 'LP', '', 'M', 'ANAPOL', '2010-01-01', '67676767', 'fernando@gmail.com', '1-22212121', 'ANAPOL', '', 'PREINSCRITO', '121760649664.jpg', 12, '2025-10-16', 4, 'A-0000004', 1, 1, NULL, NULL, 0, 1, '2025-10-16 21:20:27', '2025-10-16 21:21:04'),
+(12, 'JULIA', 'CASTRO', 'GONZALES', '4322342', 'CB', 'C1', 'F', 'ESBAPOLMUS', '2008-01-01', '675567566', 'julia@gmail.com', '1000022222', 'FATESCIPOL \"COCHABAMBA\"', '', 'INSCRITO', '131760913912.jpg', 13, '2025-10-19', 2, 'E-0000002', 1, 1, 2, 'ESB_2026-000002', 0, 1, '2025-10-19 22:43:24', '2025-10-19 23:01:31'),
+(13, 'DIANA', 'PAREDES', 'PAREDES', '345345345', 'CB', '', 'F', 'ANAPOL', '2008-12-29', '678678678', 'diana@gmail.com', '100000002', 'ANAPOL', '', 'INSCRITO', '141760915292.jpg', 14, '2025-10-19', 5, 'A-0000005', 1, 1, 4, 'ANA_2026-000004', 1, 1, '2025-10-19 23:03:15', '2025-10-19 23:16:31');
 
 -- --------------------------------------------------------
 
@@ -387,7 +434,9 @@ INSERT INTO `requisitos` (`id`, `postulante_id`, `user_id`, `file1`, `file2`, `f
 (7, 7, 8, '171760631603.pdf', '271760631603.pdf', '371760631603.pdf', '471760631603.pdf', NULL, '671760631603.pdf', '771760631603.pdf', '871760631603.pdf', '971760631603.pdf', '1071760631603.pdf', '1171760631603.pdf', '1271760631603.pdf', '1371760631603.pdf', '1471760631603.pdf', NULL, '2025-10-16 16:20:03', '2025-10-16 16:20:03'),
 (11, 8, 9, '1111760632247.pdf', '2111760632247.pdf', '3111760632247.pdf', '4111760632247.pdf', '5111760632247.pdf', '6111760632247.pdf', '7111760632247.pdf', '8111760632247.pdf', '9111760632247.pdf', '10111760632247.pdf', '11111760632247.pdf', '12111760632247.pdf', '13111760632247.pdf', '14111760632247.pdf', NULL, '2025-10-16 16:30:47', '2025-10-16 16:30:47'),
 (12, 10, 11, '1121760642880.pdf', '2121760642880.pdf', '3121760642880.pdf', '4121760642880.pdf', NULL, '6121760642880.pdf', '7121760642880.pdf', '8121760642880.pdf', '9121760642880.pdf', '10121760642880.pdf', '11121760642880.pdf', '12121760642880.pdf', '13121760642880.pdf', '14121760642880.pdf', NULL, '2025-10-16 19:28:00', '2025-10-16 19:28:00'),
-(24, 9, 10, '1241760644583.pdf', '2241760644296.pdf', '3241760644296.pdf', '4241760644296.pdf', '5241760644296.pdf', '6241760644296.pdf', '7241760644296.pdf', '8241760644296.pdf', '9241760644296.pdf', '10241760644296.pdf', '11241760644296.pdf', '12241760644296.pdf', '13241760644296.pdf', NULL, NULL, '2025-10-16 19:51:36', '2025-10-16 19:56:23');
+(24, 9, 10, '1241760644583.pdf', '2241760644296.pdf', '3241760644296.pdf', '4241760644296.pdf', '5241760644296.pdf', '6241760644296.pdf', '7241760644296.pdf', '8241760644296.pdf', '9241760644296.pdf', '10241760644296.pdf', '11241760644296.pdf', '12241760644296.pdf', '13241760644296.pdf', NULL, NULL, '2025-10-16 19:51:36', '2025-10-16 19:56:23'),
+(25, 12, 13, '1251760914031.pdf', '2251760914031.pdf', '3251760914031.pdf', '4251760914031.pdf', '5251760914031.pdf', '6251760914031.pdf', '7251760914031.pdf', '8251760914031.pdf', '9251760914031.pdf', '10251760914031.pdf', '11251760914031.pdf', '12251760914031.pdf', '13251760914031.pdf', '14251760914031.pdf', NULL, '2025-10-19 22:47:11', '2025-10-19 22:47:11'),
+(26, 13, 14, '1261760915454.pdf', '2261760915454.pdf', '3261760915454.pdf', '4261760915454.pdf', '5261760915454.pdf', '6261760915454.pdf', '7261760915454.pdf', '8261760915454.pdf', '9261760915454.pdf', '10261760915454.pdf', '11261760915454.pdf', '12261760915454.pdf', '13261760915454.pdf', '14261760915454.pdf', NULL, '2025-10-19 23:10:54', '2025-10-19 23:10:54');
 
 -- --------------------------------------------------------
 
@@ -423,16 +472,24 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `dir`, `correo`, `fono`, `password`, `acceso`, `tipo`, `foto`, `fecha_registro`, `status`, `codigo`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', 'admin', '', '0', '', '', '', '', '$2y$12$65d4fgZsvBV5Lc/AxNKh4eoUdbGyaczQ4sSco20feSQANshNLuxSC', 1, 'ADMINISTRADOR', NULL, '2025-10-14', 1, NULL, '2025-10-14 23:02:13', '2025-10-14 23:02:13'),
-(6, 'juan@gmail.com', 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', NULL, 'juan@gmail.com', '777777777', '$2y$12$JWHNcI3nC88tscBw1kvu5eeFsdjblMWW2tpCpyuHBBl1Sy/4DZZR2', 1, 'POSTULANTE', '61760559326.jpg', '2025-10-14', 1, '2468', '2025-10-15 00:53:40', '2025-10-17 12:49:53'),
+(6, 'juan@gmail.com', 'JUAN', 'PEREZ', 'MAMANI', '6767677', 'LP', NULL, 'juan@gmail.com', '777777777', '$2y$12$JWHNcI3nC88tscBw1kvu5eeFsdjblMWW2tpCpyuHBBl1Sy/4DZZR2', 1, 'POSTULANTE', '61760559326.jpg', '2025-10-14', 1, '2834', '2025-10-15 00:53:40', '2025-10-19 20:56:41'),
 (8, 'jorge@gmail.com', 'JORGE', 'GONZALES', 'CONDORI', '7777777', 'LP', NULL, 'jorge@gmail.com', '78787878', '$2y$12$IgHvW/F6N9dukj/xVOXZX.UIR7lcZ0lYpQmyH2HhBC1kmYmswSrCK', 1, 'POSTULANTE', '81760631307.jpg', '2025-10-16', 1, '3365', '2025-10-16 16:11:37', '2025-10-16 16:15:47'),
 (9, 'maria@gmail.com', 'MARIA', 'MAMANI', 'MAMANI', '6767678', 'LP', NULL, 'maria@gmail.com', '6767676767', '$2y$12$9Dm0Uss4S6VEjWBe8P/pxe/ToOJFZdm4GEirCZMhU.XhHFi0xiOam', 1, 'POSTULANTE', '91760631872.jpg', '2025-10-16', 1, '3411', '2025-10-16 16:22:56', '2025-10-16 16:28:48'),
 (10, 'daniela@gmail.com', 'DANIELA', 'CARVAJAL', 'GONZALES', '3434344', 'LP', NULL, 'daniela@gmail.com', '66767677', '$2y$12$Env97Cmcw8PWzUURJ9Pq4.U0U6Jz53bpIlir/d0dPWcoNPfScXwRi', 1, 'POSTULANTE', '101760641297.jpg', '2025-10-16', 1, '5228', '2025-10-16 18:49:37', '2025-10-17 01:09:15'),
-(11, 'marcos@gmail.com', 'MARCOS', 'GONZALES', 'RAMIREZ', '1231233', 'LP', NULL, 'marcos@gmail.com', '787878787', '$2y$12$cYxoqik0NhFL1ZPLcm7noe7ja3YwzN5vBOs9121LkzsVLS91L41T.', 1, 'POSTULANTE', '111760641621.jpg', '2025-10-16', 1, '1315', '2025-10-16 19:00:58', '2025-10-17 03:00:24'),
-(12, 'fernando@gmail.com', 'FERNANDO', 'PAREDES', 'MAMANI', '675675675', 'LP', NULL, 'fernando@gmail.com', '67676767', '$2y$12$2dPtXYNuZW1R1CTixuBRhuUZJ3Teb1ly6ZeqKzoiqKd/R/Pnb1Rim', 1, 'POSTULANTE', '121760649664.jpg', '2025-10-16', 1, '8629', '2025-10-16 21:20:27', '2025-10-17 14:03:07');
+(11, 'marcos@gmail.com', 'MARCOS', 'GONZALES', 'RAMIREZ', '1231233', 'LP', NULL, 'marcos@gmail.com', '787878787', '$2y$12$cYxoqik0NhFL1ZPLcm7noe7ja3YwzN5vBOs9121LkzsVLS91L41T.', 1, 'POSTULANTE', '111760641621.jpg', '2025-10-16', 1, '8621', '2025-10-16 19:00:58', '2025-10-19 20:06:24'),
+(12, 'fernando@gmail.com', 'FERNANDO', 'PAREDES', 'MAMANI', '675675675', 'LP', NULL, 'fernando@gmail.com', '67676767', '$2y$12$2dPtXYNuZW1R1CTixuBRhuUZJ3Teb1ly6ZeqKzoiqKd/R/Pnb1Rim', 1, 'POSTULANTE', '121760649664.jpg', '2025-10-16', 1, '8071', '2025-10-16 21:20:27', '2025-10-19 20:02:49'),
+(13, 'julia@gmail.com', 'JULIA', 'CASTRO', 'GONZALES', '4322342', 'CB', NULL, 'julia@gmail.com', '675567566', '$2y$12$jMAgIoTTJAa9gq/L5bvvpONxYEOtzxnPTGoJjKRBW55RJoJaPNeQS', 1, 'POSTULANTE', '131760913912.jpg', '2025-10-19', 1, '5384', '2025-10-19 22:43:24', '2025-10-19 22:46:05'),
+(14, 'diana@gmail.com', 'DIANA', 'PAREDES', 'PAREDES', '345345345', 'CB', NULL, 'diana@gmail.com', '678678678', '$2y$12$Q6gDJXKd//as7iIN4Ui8aO7zMbAJ.nGnflM/hQBw0mwgbeZCKQeoG', 1, 'POSTULANTE', '141760915292.jpg', '2025-10-19', 1, '3070', '2025-10-19 23:03:15', '2025-10-19 23:08:22');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comunicados`
+--
+ALTER TABLE `comunicados`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `configuracions`
@@ -528,6 +585,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comunicados`
+--
+ALTER TABLE `comunicados`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `configuracions`
 --
 ALTER TABLE `configuracions`
@@ -579,31 +642,31 @@ ALTER TABLE `evaluacion_psicologicas`
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `postulantes`
 --
 ALTER TABLE `postulantes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `requisitos`
 --
 ALTER TABLE `requisitos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

@@ -11,6 +11,7 @@ import { useAxios } from "@/composables/axios/useAxios";
 import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import { useAppStore } from "@/stores/aplicacion/appStore";
 import NavBar from "./Parcial/Navbar.vue";
+import Footer from "./Parcial/Footer.vue";
 const appStore = useAppStore();
 const { oConfiguracion } = useConfiguracion();
 const { props: props_page } = usePage();
@@ -115,6 +116,7 @@ onMounted(() => {});
         </div>
         <div class="bg-carusel"></div>
     </el-carousel>
+    <Footer></Footer>
 </template>
 
 <style scoped>

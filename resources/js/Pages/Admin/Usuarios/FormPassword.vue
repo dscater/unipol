@@ -102,7 +102,10 @@ const cerrarDialog = () => {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h4 class="modal-title" v-html="tituloDialog"></h4>
+                    <h4
+                        class="modal-title text-white"
+                        v-html="tituloDialog"
+                    ></h4>
                     <button
                         type="button"
                         class="btn-close"

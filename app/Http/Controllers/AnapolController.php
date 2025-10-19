@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comunicado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class AnapolController extends Controller
@@ -35,6 +37,11 @@ class AnapolController extends Controller
     public function comunicados()
     {
         return Inertia::render("Portal/Anapol/Comunicados");
+    }
+    public function getComunicados(Request $request)
+    {
+        $comunicados = Comunicado::where("unidad", "ANAPOL")->orderBy("created_at", "desc")->paginate(10);
+        return response()->JSON(["comunicados" => $comunicados]);
     }
     public function contactos()
     {

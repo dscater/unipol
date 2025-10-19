@@ -58,22 +58,33 @@ onMounted(() => {});
                     <div class="col-12 py-4">
                         <div class="container">
                             <h2 class="titulo-seccion">FASE DE CONVOCATORIA</h2>
-                            <p>
-                                <h4 class="subtitulo-seccion">CONVOCATORIA</h4>
-La Convocatoria para el Proceso de Admisión de las y los postulantes a la Facultad de Ciencias Policiales “Academia Nacional de Policías”, se realizará según Cronograma de Actividades del Proceso de Admisión.
+                            <h4 class="subtitulo-seccion">CONVOCATORIA</h4>
+                            <p class="text-justify">
+                                La Convocatoria para el Proceso de Admisión de
+                                las y los postulantes a la Facultad Técnica
+                                Superior en Ciencias Policiales, se realizará
+                                según Cronograma de Actividades del Proceso de
+                                Admisión.
                             </p>
                         </div>
                     </div>
-                    <div class="col-12 py-4">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">TABLA DE PRECIOS</h4>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th colspan="4" class="text-center bg-dark-principal">TABLA DE PRECIOS - ANAPOL</th>
+                                        <th
+                                            colspan="4"
+                                            class="text-center bg-dark-principal"
+                                        >
+                                            TABLA DE PRECIOS - FATESCIPOL
+                                        </th>
                                     </tr>
                                     <tr>
-                                        <th colspan="4" class="text-center">FASES DEL PROCESO DE ADMISIÓN</th>
+                                        <th colspan="4" class="text-center">
+                                            FASES DEL PROCESO DE ADMISIÓN
+                                        </th>
                                     </tr>
                                     <tr>
                                         <th>CONCEPTO</th>
@@ -85,72 +96,139 @@ La Convocatoria para el Proceso de Admisión de las y los postulantes a la Facul
                                 <tbody>
                                     <tr>
                                         <td>Prospecto de Admisión</td>
-                                        <td>650 Bs.</td>
-                                        <td rowspan="2" align="middle">1-3872161<br/>Banco Unión</td>
-                                        <td rowspan="2" align="middle">Boletas a nombre de la o el postulante</td>
+                                        <td>550 Bs.</td>
+                                        <td rowspan="2" align="middle">
+                                            1-3872161<br />Banco Unión
+                                        </td>
+                                        <td rowspan="2" align="middle">
+                                            Boletas a nombre de la o el
+                                            postulante
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Prefacultativo</td>
-                                        <td>4,600 Bs.</td>
+                                        <td>3,000 Bs.</td>
                                     </tr>
                                 </tbody>
                                 <thead>
                                     <tr>
-                                        <th colspan="4" class="text-center">INSCRIPCIÓN Y MATRICULA SEMESTRAL (Solo postulantes admitidos)</th>
+                                        <th colspan="4" class="text-center">
+                                            INSCRIPCIÓN Y MATRICULA SEMESTRAL
+                                            (Solo postulantes admitidos)
+                                        </th>
                                     </tr>
                                 </thead>
-                                  <tbody>
+                                <tbody>
                                     <tr>
                                         <td>Inscripción</td>
-                                        <td>15,200 Bs.</td>
-                                        <td rowspan="2" align="middle">1-3872161<br/>Banco Unión</td>
-                                        <td rowspan="2" align="middle">Boletas a nombre de la o el Postulante Admitido</td>
+                                        <td>7,600 Bs.</td>
+                                        <td rowspan="2" align="middle">
+                                            1-3872161<br />Banco Unión
+                                        </td>
+                                        <td rowspan="2" align="middle">
+                                            Boletas a nombre de la o el
+                                            Postulante Admitido
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Prefacultativo</td>
-                                        <td>550 Bs.</td>
+                                        <td>330 Bs.</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <p class="italic"><b>*NOTA: </b> La Dirección Nacional de Salud y Bienestar Social, según normativa vigente, fijará la tabla de precios de las evaluaciones Médicas, Odontológicas, Psicológicas y afines, en el ámbito de sus competencias, en coordinación con la Comisión Nacional del Proceso de Admisión.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 py-4">
-                        <div class="container">
-                            <h2 class="titulo-seccion">IRREVERSIBILIDAD DE LOS DEPÓSITOS BANCARIOS</h2>
-                            <p>Una vez realizados los depósitos bancarios establecidos para el Proceso de Admisión por las y los postulantes a favor de la Universidad Policial, en cualquiera de las fases y/o etapas de este proceso según modalidad, no serán devueltos por ningún motivo.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 py-4">
-                        <div class="container">
-                            <h2 class="titulo-seccion">ACCESO AL PROSPECTO</h2>
-                            <p>Las y los postulantes a la Facultad de Ciencias Policiales “Academia Nacional de Policías”, para acceder al “Prospecto de Admisión”, realizarán el depósito bancario en la entidad financiera autorizada, con el precio establecido conforme a la Tabla de Precios para el efecto.</p>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="container">
-                            <h2 class="titulo-seccion">PREINSCRIPCIÓN</h2>
-                          La o el postulante que desee acceder al “Prospecto de Admisión”, al momento de la preinscripción deberá realizar las siguientes acciones:
-                            <ul class="list-unstyled pl-2">
-                                <li>
-                                   <b> a)</b>	Llenar el formulario digital con la información personal u otra que sea requerida.
-
-                                </li>
-                                <li><b>b)</b>	Aceptar los términos y condiciones de postulación para continuar con la Fase de Evaluación.</li>
-                                <li><b>c)</b>	Y otras establecida de acuerdo a comunicado.</li>
-                            </ul>
- <p class="italic"><b>*NOTA IMPORTANTE: </b> La o el postulante será responsable de la veracidad de la información ingresada o presentada, al momento de la preinscripción. Esta información será considerada como Declaración Jurada y estará sujeta a verificación por la Universidad Policial y la Policía Boliviana, para que, en caso de advertirse información falsa, se asuman las acciones legales que correspondan.</p>
+                            <p class="italic">
+                                <b>*NOTA: </b> La Dirección Nacional de Salud y
+                                Bienestar Social, según normativa vigente,
+                                fijará la tabla de precios de las evaluaciones
+                                Médicas, Odontológicas, Psicológicas y afines,
+                                en el ámbito de sus competencias, en
+                                coordinación con la Comisión Nacional del
+                                Proceso de Admisión.
+                            </p>
                         </div>
                     </div>
                     <div class="col-12 py-5">
                         <div class="container">
-                            <div class="h2 titulo-seccion">REQUISITOS DE INSCRIPCIÓN</div>
+                            <h2 class="titulo-seccion">
+                                IRREVERSIBILIDAD DE LOS DEPÓSITOS BANCARIOS
+                            </h2>
+                            <p class="text-justify">
+                                Una vez realizados los depósitos bancarios
+                                establecidos para el Proceso de Admisión por las
+                                y los postulantes a favor de la Universidad
+                                Policial, en cualquiera de las fases y/o etapas
+                                de este proceso según modalidad,
+                                <b
+                                    ><u
+                                        >NO SERÁN DEVUELTOS POR NINGÚN
+                                        MOTIVO.</u
+                                    ></b
+                                >
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 py-5">
+                        <div class="container">
+                            <h2 class="titulo-seccion">ACCESO AL PROSPECTO</h2>
+                            <p class="text-justify">
+                                Las y los postulantes a la Facultad Técnica
+                                Superior en Ciencias Policiales, para acceder al
+                                “Prospecto de Admisión”, realizarán el depósito
+                                bancario en la entidad 3 financiera autorizada,
+                                con el precio establecido conforme a la Tabla de
+                                Precios para el efecto.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container text-justify">
+                            <h2 class="titulo-seccion">PREINSCRIPCIÓN</h2>
+                            La o el postulante que desee acceder al “Prospecto
+                            de Admisión”, al momento de la preinscripción deberá
+                            realizar las siguientes acciones:
+                            <ul class="list-unstyled pl-5">
+                                <li class="mb-3">
+                                    <b> a)</b> Llenar el formulario digital con
+                                    la información personal u otra que sea
+                                    requerida.
+                                </li>
+                                <li class="mb-3">
+                                    <b>b)</b> Aceptar los términos y condiciones
+                                    de postulación para continuar con la Fase de
+                                    Evaluación.
+                                </li>
+                                <li class="mb-3">
+                                    <b>c)</b> Y otras establecida de acuerdo a
+                                    comunicado.
+                                </li>
+                            </ul>
+                            <p class="italic">
+                                <b>*NOTA IMPORTANTE: </b> La o el postulante
+                                será responsable de la veracidad de la
+                                información ingresada o presentada, al momento
+                                de la preinscripción. Esta información será
+                                considerada como Declaración Jurada y estará
+                                sujeta a verificación por la Universidad
+                                Policial y la Policía Boliviana, para que, en
+                                caso de advertirse información falsa, se asuman
+                                las acciones legales que correspondan.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 py-5">
+                        <div class="container">
+                            <div class="h2 titulo-seccion">
+                                REQUISITOS DE INSCRIPCIÓN
+                            </div>
                             <div class="row">
                                 <div class="col-12 text-center">
-                            <Link class="btn btn-principal" :href="route('anapol.requisitos')">VER REQUISITOS</Link>        
+                                    <Link
+                                        class="btn btn-principal"
+                                        :href="route('fatescipol.requisitos')"
+                                        >VER REQUISITOS</Link
+                                    >
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,7 @@ use App\Http\Requests\RequisitoStoreRequest;
 use App\Http\Requests\RequisitoUpdateRequest;
 use App\Models\Postulante;
 use App\Models\Requisito;
+use App\Services\EnviarCorreoService;
 use App\Services\RequisitoService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -17,7 +18,7 @@ use Inertia\Inertia;
 
 class RequisitoController extends Controller
 {
-    public function __construct(private RequisitoService $requisitoService) {}
+    public function __construct(private RequisitoService $requisitoService, private EnviarCorreoService $enviarCorreoService) {}
 
     public function buscar()
     {
@@ -70,8 +71,9 @@ class RequisitoController extends Controller
     {
         DB::beginTransaction();
         try {
-            $postulante->estado = "INSCRITO";
+            $postulante->validDocs = 1;
             $postulante->save();
+            $this->enviarCorreoService->mailFinalizaInscripcion($postulante);
             DB::commit();
             return response()->JSON([
                 "postulante" => $postulante,

@@ -42,29 +42,45 @@ class PermisoService
             "descarga_documentos.update",
             "descarga_documentos.destroy",
 
+            "comunicados.paginado",
+            "comunicados.listado",
+            "comunicados.index",
+            "comunicados.create",
+            "comunicados.store",
+            "comunicados.edit",
+            "comunicados.show",
+            "comunicados.update",
+            "comunicados.destroy",
+
             "evaluacion_medicas.index",
             "evaluacion_medicas.descargar",
             "evaluacion_medicas.subir",
+            "evaluacion_medicas.paginado",
 
             "evaluacion_psicologicas.index",
             "evaluacion_psicologicas.descargar",
             "evaluacion_psicologicas.subir",
+            "evaluacion_psicologicas.paginado",
 
             "evaluacion_fisicas.index",
             "evaluacion_fisicas.descargar",
             "evaluacion_fisicas.subir",
+            "evaluacion_fisicas.paginado",
 
             "evaluacion_instruccions.index",
             "evaluacion_instruccions.descargar",
             "evaluacion_instruccions.subir",
+            "evaluacion_instruccions.paginado",
 
             "evaluacion_conocimientos.index",
             "evaluacion_conocimientos.descargar",
             "evaluacion_conocimientos.subir",
+            "evaluacion_conocimientos.paginado",
 
             "evaluacion_odontologicas.index",
             "evaluacion_odontologicas.descargar",
             "evaluacion_odontologicas.subir",
+            "evaluacion_odontologicas.paginado",
 
             "requisitos.buscar",
             "requisitos.update",
@@ -78,6 +94,9 @@ class PermisoService
 
             "reportes.usuarios",
             "reportes.r_usuarios",
+
+            "reportes.postulantes",
+            "reportes.r_postulantes",
         ],
         "POSTULANTE" => [
             "inscripcions.index",

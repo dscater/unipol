@@ -191,7 +191,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.pagination{
+.pagination {
     flex-wrap: wrap;
 }
 .page-item.disabled,
@@ -206,7 +206,12 @@ onMounted(() => {
 
 .page-item a,
 .page-item button {
+    box-shadow: none;
     font-weight: 500;
     color: rgb(70, 70, 70);
+}
+
+.page-item button.page-link {
+    border: none;
 }
 </style>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comunicado;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -35,6 +36,11 @@ class FatescipolController extends Controller
     public function comunicados()
     {
         return Inertia::render("Portal/Fatescipol/Comunicados");
+    }
+    public function getComunicados(Request $request)
+    {
+        $comunicados = Comunicado::where("unidad", "FATESCIPOL")->orderBy("created_at", "desc")->paginate(1);
+        return response()->JSON(["comunicados" => $comunicados]);
     }
     public function contactos()
     {

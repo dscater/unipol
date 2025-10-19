@@ -11,7 +11,7 @@ import { useAxios } from "@/composables/axios/useAxios";
 import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
-import NavBar from "@/Pages/Portal/Anapol/Parcial/Navbar.vue";
+import NavBar from "./Parcial/Navbar.vue";
 import Footer from "@/Pages/Portal/Anapol/Parcial/Footer.vue";
 import SliderImagenes from "@/Components/SliderImagenes.vue";
 const appStore = useAppStore();
@@ -23,149 +23,71 @@ const url_asset = ref(props_page.url_assets);
 const accion_formulario = ref(0);
 const muestra_formulario = ref(false);
 
-const listImagens = ref([
+const listMensajeBienvenida = ref([
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 003.jpg",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 003.jpg",
+        html: `<p class="pt-1">Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “El Alto”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 004.png",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 004.png",
+        html: `<p class="pt-1">Tcnl. DEAP. Pablo Patiño Cuba<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Colquiri”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 005.png",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 005.png",
+        html: `<p class="pt-1">Tcnl. DEAP. Juan Arnez Peña<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Caracollo”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 006.jpg",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 006.jpg",
+        html: `<p class="pt-1">Tcnl. DEAP. Claudia Yusela Miranda Averanga<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Huanuni”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 007.png",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 007.png",
+        html: `<p class="pt-1">Tcnl. DEAP. Ramiro Jesús Camacho Borda<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Potosí”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 008.jpg",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 008.jpg",
+        html: `<p class="pt-1">Tcnl. DEAP. Ronny Oswaldo Yañez Villanueva<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Llallagua”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 009.jpg",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 009.jpg",
+        html: `<p class="pt-1">Tcnl. DEAP. Porfirio René Torrez Riveros<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Sucre”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 010.png",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 010.png",
+        html: `<p class="pt-1">Tcnl. DEAP. Edwar Olmar Pereira Dávila<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Tarija”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 011.png",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 011.png",
+        html: `<p class="pt-1">Tcnl. DEAP. Erick Velásquez Suarez<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Gran Chaco”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 012.jpg",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 012.jpg",
+        html: `<p class="pt-1">Tcnl. DEAP. Carlos Abdías Valdivia Diaz<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Pando”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 013.jpg",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 013.jpg",
+        html: `<p class="pt-1">Tcnl. DEAP. Ludwin Antonio Miranda Fanola<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Riberalta”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 014.jpg",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 014.jpg",
+        html: `<p class="pt-1">Tcnl. DEAP. Carlos Antonio Flores Prieto<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Cochabamba”</b></p>`,
     },
     {
-        url_imagen: url_asset.value + "imgs/FOTO FAT 015.png",
-        html: `
-      <p class="w-100 text-center">
-        Tcnl. DEAP. Jaime Rigoberto Larrea Álvarez
-      </p>
-      <p class="w-100 text-center font-weight-bold">
-        DIRECTOR DE LA FATESCIPOL “El Alto”
-      </p>
-    `,
+        tipo: "img",
+        url_imagen: "/imgs/fatescipol/FOTO FAT 015.png",
+        html: `<p class="pt-1">Tcnl. DEAP. Iván Ignacio Calderón Valle<br/><b class="text-secundario2">DIRECTOR DE LA FATESCIPOL “Santa Cruz”</b></p>`,
     },
 ]);
 
@@ -194,7 +116,132 @@ onMounted(() => {
     });
 });
 
-onMounted(() => {});
+const listImagensIntegral = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 034.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 033.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 030.jpg",
+    },
+]);
+
+const listImagensInstruccion = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 063.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 032.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 063.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 059.jpg",
+    },
+]);
+const listDistinciones = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 042.jpg",
+    },
+]);
+
+const listSedes = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 047.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “El Alto”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/F32 COD 001.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Colquiri”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/F33 COD 001.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Caracollo”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/F34 COD 001.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Huanuni”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 048.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Potosí”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 026.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Llallagua”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/F30 COD 001.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Sucre”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/F30 COD 001.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Tarija”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/F30 COD 001.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Gran Chaco”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 041.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Pando””</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 055.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Riberalta”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 021.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Cochabamba”</b></p>`,
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/F30 COD 001.jpg",
+
+        html: `<p class="pt-1 text-center"><b class="text-secundario2">FATESCIPOL “Santa Cruz”</b></p>`,
+    },
+]);
+
+const listCampoOcupacional = ref([
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 064.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 059.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 034.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 028.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 030.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 029.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 031.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/fatescipol/FOTO FAT 063.jpg",
+    },
+]);
 </script>
 <template>
     <div class="container-fluid pagina">
@@ -216,22 +263,28 @@ onMounted(() => {});
             <div class="col-12">
                 <div class="row contenedor_secciones">
                     <!-- AUTORIDADES -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">NUESTRAS AUTORIDADES</h2>
                             <div class="col-12">
-                                <div class="row py-3" id="fat_aspectos1">
-                                    <div class="col-md-4">
+                                <div
+                                    class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                    id="fat_aspectos1"
+                                >
+                                    <div class="col-12 text-center">
                                         <img
                                             :src="
                                                 url_asset +
-                                                '/imgs/F1 COD 001.jpg'
+                                                '/imgs/anapol/FOTO ANA 001.png'
                                             "
+                                            class="img_seccion1"
                                             alt=""
                                         />
                                     </div>
-                                    <div class="col-md-8">
-                                        <h5 class="subtitulo-seccion">
+                                    <div class="col-12">
+                                        <h5
+                                            class="subtitulo-seccion text-center"
+                                        >
                                             MENSAJE DEL SEÑOR COMANDANTE GENERAL
                                             DE LA POLICÍA BOLIVIANA
                                         </h5>
@@ -244,35 +297,45 @@ onMounted(() => {});
                                             nuestra noble institución policial,
                                             donde se forman lideres
                                             comprometidos con el futuro de
-                                            nuestro país. Ser policía es más que
-                                            una profesión, es un compromiso con
-                                            la protección y el servicio al
-                                            pueblo, el valor, la virtud y la
-                                            voluntad necesaria para construir
-                                            una sociedad justa, segura por el
-                                            bien de todos. La Academia Nacional
-                                            de Policías, alma mater de la
-                                            institución, es el lugar donde se
-                                            forjan mujeres y hombres con
-                                            decisión, con espíritu
+                                            nuestro país.
+                                        </p>
+                                        <p class="text-justify">
+                                            Ser policía es más que una
+                                            profesión, es un compromiso con la
+                                            protección y el servicio al pueblo,
+                                            el valor, la virtud y la voluntad
+                                            necesaria para construir una
+                                            sociedad justa, segura por el bien
+                                            de todos.
+                                        </p>
+                                        <p class="text-justify">
+                                            La Academia Nacional de Policías,
+                                            alma mater de la institución, es el
+                                            lugar donde se forjan mujeres y
+                                            hombres con decisión, con espíritu
                                             inquebrantable, carácter, coraje y
-                                            sentido del deber. Estén seguros
-                                            que; en su futura casa de estudios,
-                                            les serán entregados conocimientos,
-                                            habilidades, destrezas y valores
-                                            suficientes como para enfrentar los
-                                            desafíos del siglo XXI, que los
-                                            convertirán en héroes silenciosos,
-                                            respetuosos de la ley y el orden,
-                                            comprometidos con la patria y la
-                                            sociedad, disciplinados y leales
-                                            cuyo propósito es el servicio a
-                                            Bolivia. A nombre de la institución,
-                                            les invito a sumarse a la Policía
-                                            del Bicentenario, reto que se inicia
-                                            con ustedes, con quienes se
-                                            escribirá las nuevas páginas de la
-                                            historia policial.
+                                            sentido del deber.
+                                        </p>
+                                        <p class="text-justify">
+                                            Estén seguros que; en su futura casa
+                                            de estudios, les serán entregados
+                                            conocimientos, habilidades,
+                                            destrezas y valores suficientes como
+                                            para enfrentar los desafíos del
+                                            siglo XXI, que los convertirán en
+                                            héroes silenciosos, respetuosos de
+                                            la ley y el orden, comprometidos con
+                                            la patria y la sociedad,
+                                            disciplinados y leales cuyo
+                                            propósito es el servicio a Bolivia.
+                                        </p>
+                                        <p class="text-justify">
+                                            A nombre de la institución, les
+                                            invito a sumarse a la Policía del
+                                            Bicentenario, reto que se inicia con
+                                            ustedes, con quienes se escribirá
+                                            las nuevas páginas de la historia
+                                            policial.
                                         </p>
                                         <p
                                             class="w-100 font-weight-bold text-center mb-3"
@@ -292,59 +355,89 @@ onMounted(() => {});
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row py-3" id="fat_aspectos2">
-                                    <div class="col-md-8">
-                                        <h5 class="subtitulo-seccion">
+                                <div
+                                    class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                    id="fat_aspectos2"
+                                >
+                                    <div class="col-12 text-center">
+                                        <img
+                                            :src="
+                                                url_asset +
+                                                '/imgs/anapol/FOTO ANA 003.png'
+                                            "
+                                            class="img_seccion1"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="col-12">
+                                        <h5
+                                            class="subtitulo-seccion text-center"
+                                        >
                                             MENSAJE DEL MAGNIFICO RECTOR DE LA
                                             UNIVERSIDAD POLICIAL “MCAL. ANTONIO
                                             JOSÉ DE SUCRE”
                                         </h5>
                                         <p class="text-justify">
-                                            La Academia Nacional de Policías, es
-                                            la Facultad de Ciencias Policiales a
-                                            nivel licenciatura de la Universidad
-                                            Policial, constituyéndose en el
-                                            primer y único instituto de
-                                            formación de oficiales de la Policía
-                                            de Bolivia, que ha apostado por la
-                                            generación de oportunidades para las
-                                            y los jóvenes que tienen vocación de
-                                            servicio a la comunidad, porque la
-                                            dama o caballero Cadete se forma de
-                                            manera integral, en distintos campos
-                                            de las ciencias policiales, con
-                                            valores y principios éticos, con
-                                            pensamiento analítico, estratégico y
-                                            táctico; flexible y capaz de
-                                            adaptarse a cualquier situación, con
-                                            capacidad de trabajo en equipo,
-                                            disciplinado, respetuoso de las
-                                            normas legales, morales y de trato
-                                            social, desarrollando un buen estado
-                                            físico, preparándose para liderar y
-                                            comandar unidades policiales:
-                                            operativas, técnicas, logísticas y
-                                            administrativas, en cumplimiento de
-                                            la misión constitucional de la
-                                            Policía Boliviana. La dama o
-                                            caballero Cadete, es el futuro
-                                            Oficial de Policía, con vocación de
-                                            servicio a la comunidad, con una
-                                            actitud de permanente disponibilidad
-                                            y compromiso institucional,
-                                            preparado para afrontar los riesgos
-                                            y peligros de la profesión y si
-                                            fuera necesario ofrendar su propia
-                                            vida, en defensa de la sociedad y la
-                                            patria. Como Rector de la
-                                            Universidad Policial, tengo el honor
-                                            de extender una invitación especial
-                                            a todos los bachilleres de Bolivia,
-                                            que cumplan los requisitos para ser
-                                            Oficial de Policía y ser parte de la
-                                            Policía Boliviana, dedicada a
-                                            proteger y servir con integridad y
-                                            valentía a nuestra sociedad.
+                                            A las señoritas y jóvenes
+                                            postulantes a la Escuela Básica
+                                            Policial de Música.
+                                        </p>
+                                        <p class="text-justify">
+                                            Reciban un saludo afectuoso y
+                                            fraterno de la Dirección Nacional de
+                                            Instrucción y Enseñanza y del
+                                            Rectorado de la Universidad Policial
+                                            &quot;Mariscal Antonio José de
+                                            Sucre&quot;
+                                        </p>
+                                        <p class="text-justify">
+                                            Hoy, la UNIPOL abre sus puertas e
+                                            inicia el proceso de postulaciones y
+                                            admisiones para la Gestión 2026,
+                                            invitando a todos aquellos que
+                                            sienten en su corazón la vocación de
+                                            servir a la sociedad.
+                                        </p>
+                                        <p class="text-justify">
+                                            Les invitamos a ingresar a nuestro
+                                            portal informativo y dar el primer
+                                            paso hacia una institución que exige
+                                            entrega, disciplina y principios
+                                            éticos inquebrantables.
+                                        </p>
+                                        <p class="text-justify">
+                                            Esta Unidad Académica es el pilar en
+                                            la formación de futuros servidores
+                                            policiales íntegros, con visión
+                                            humanista, profesional y
+                                            comprometidos con la defensa del
+                                            bien común.
+                                        </p>
+                                        <p class="text-justify">
+                                            En este camino de formación, no solo
+                                            recibirán conocimientos, sino
+                                            también valores: respeto,
+                                            honestidad, responsabilidad y honor,
+                                            esenciales para portar el uniforme y
+                                            proteger con firmeza a nuestra
+                                            sociedad.
+                                        </p>
+                                        <p class="text-justify">
+                                            Les insto a asumir este desafío con
+                                            humildad, valentía y pasión.
+                                        </p>
+                                        <p class="text-justify">
+                                            Bolivia necesita mujeres y hombres
+                                            con convicción, comprometidos con
+                                            nuestra misión constitucional.
+                                        </p>
+                                        <p class="text-justify">
+                                            Este es el inicio de una vida de
+                                            servicio, de deber y honor.
+                                        </p>
+                                        <p class="text-center font-weight-bold">
+                                            ¡Sean bienvenidos a la Universidad
+                                            Policial!
                                         </p>
                                         <p class="w-100 text-center">
                                             Gral. My. José Gregorio Illanes
@@ -359,74 +452,98 @@ onMounted(() => {});
                                             “MCAL. ANTONIO JOSÉ DE SUCRE”
                                         </p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <img
-                                            :src="
-                                                url_asset +
-                                                '/imgs/emblemaUnipol.png'
-                                            "
-                                            alt=""
-                                        />
-                                    </div>
                                 </div>
-                                <div class="row py-3" id="fat_aspectos3">
-                                    <div class="col-md-6 offset-md-3">
+                                <div
+                                    class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                    id="fat_aspectos3"
+                                >
+                                    <div class="col-12 text-center">
                                         <SliderImagenes
-                                            :imagenes="listImagens"
+                                            :imagenes="listMensajeBienvenida"
+                                            :height="'430px'"
+                                            :htmnl="``"
                                         ></SliderImagenes>
                                     </div>
-                                    <div class="col-md-12">
-                                        <h5 class="subtitulo-seccion">
-                                            MENSAJE DE BIENVENIDA PARA
-                                            POSTULANTES A LA FACULTAD TÉCNICA
-                                            SUPERIOR EN CIENCIAS POLICIALES
+                                    <div class="col-12">
+                                        <h5
+                                            class="subtitulo-seccion text-center"
+                                        >
+                                            MENSAJE DE BIENVENIDA A LA FACULTAD
+                                            TÉCNICA SUPERIOR EN CIENCIAS
+                                            POLICIALES
                                         </h5>
+                                        Estimada juventud de nuestra Bolivia:<br />
                                         <p>
-                                            La Facultad Técnica Superior en
-                                            Ciencias Policiales invita a
-                                            señoritas y jóvenes bachilleres a
-                                            integrarse a la noble carrera
-                                            policial. Nuestra misión es formar
-                                            líderes íntegros con valores éticos,
-                                            morales y profesionales que
-                                            respondan eficazmente a las demandas
-                                            de seguridad de la sociedad actual.
-                                            Ofrecemos una educación de
-                                            excelencia que combina conocimientos
-                                            teóricos y prácticos para el futuro
-                                            Sargento de Policía con grado
-                                            académico de Técnico Superior en
-                                            Ciencias Policiales, cualificado
-                                            para actuar con compromiso en el
-                                            ámbito de la seguridad pública y la
-                                            justicia. Nuestros programas
-                                            académicos están diseñados para
-                                            proporcionar habilidades y aptitudes
-                                            necesarias para enfrentar los
-                                            desafíos del entorno policial y
-                                            contribuir al desarrollo de una
-                                            sociedad más segura y justa. Únete a
-                                            nuestra familia policial y participa
-                                            en la construcción de un futuro
-                                            próspero, basado en la vocación de
-                                            servir y proteger a Bolivia.
+                                            Reciban una cálida bienvenida de
+                                            parte de todo el equipo de esta
+                                            institución. Es un verdadero placer
+                                            darles la bienvenida a un espacio
+                                            dedicado a la formación musical y al
+                                            desarrollo de profesionales
+                                            comprometidos con la seguridad y el
+                                            servicio a la comunidad.
+                                        </p>
+                                        <p class="text-justify">
+                                            Su llegada marca el inicio de un
+                                            camino lleno de retos y
+                                            oportunidades. En esta escuela, no
+                                            solo perfeccionarán sus habilidades
+                                            musicales, sino que también
+                                            interiorizarán los valores
+                                            fundamentales de la disciplina, la
+                                            perseverancia y el honor, pilares
+                                            esenciales del músico policial.
+                                        </p>
+                                        <p class="text-justify">
+                                            Les insto a sumergirse de lleno en
+                                            esta experiencia, a abrazar el
+                                            aprendizaje con pasión, a colaborar
+                                            entre ustedes y a aprovechar cada
+                                            momento para crecer como músicos y
+                                            como personas.
+                                        </p>
+                                        <p class="text-justify">
+                                            Estamos seguros de que, con su
+                                            dedicación y nuestro apoyo, se
+                                            convertirán en músicos policiales
+                                            ejemplares, capaces de honrar la
+                                            tradición y el legado de esta
+                                            escuela.
+                                        </p>
+                                        <p class="text-center font-weight-bold">
+                                            ¡Bienvenidos a la Escuela Básica
+                                            Policial de Música!
                                         </p>
                                         <p
                                             class="w-100 text-center font-weight-bold"
                                         >
-                                            ¡Bienvenidos a la Escuela Básica
-                                            Policial de Música!
+                                            FACULTAD TÉCNICA SUPERIOR EN
+                                            CIENCIAS POLICIALES
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row py-3" id="fat_aspectos3">
-                                    <div class="col-md-8">
-                                        <h5 class="subtitulo-seccion">
+                                <div
+                                    class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                    id="fat_aspectos4"
+                                >
+                                    <div class="col-12 text-center">
+                                        <img
+                                            :src="
+                                                url_asset +
+                                                '/imgs/fatescipol/FOTO FAT 002.jpg'
+                                            "
+                                            class="img_seccion1"
+                                            alt=""
+                                        />
+                                    </div>
+                                    <div class="col-12">
+                                        <h5
+                                            class="subtitulo-seccion text-center"
+                                        >
                                             MENSAJE DEL SEÑOR SUBOFICIAL DE
                                             ESTADO MAYOR DE LA POLICÍA BOLIVIANA
                                         </h5>
-                                        Estimada juventud de nuestra Bolivia:<br />
-                                        <p>
+                                        <p class="text-justify">
                                             Estimados postulantes a la Facultad
                                             Técnica en Ciencias Policiales
                                             “FATESCIPOL”, la Unidad Académica de
@@ -450,7 +567,7 @@ onMounted(() => {});
                                             honor, lealtad, sacrificio y
                                             servicio.
                                         </p>
-                                        <p>
+                                        <p class="text-justify">
                                             Serán guiados por instructores
                                             experimentados que los acompañarán
                                             paso a paso en el fortalecimiento de
@@ -484,7 +601,7 @@ onMounted(() => {});
                                             cuando actúen con integridad y
                                             demuestren vocación de servicio.
                                         </p>
-                                        <p>
+                                        <p class="text-justify">
                                             El desafío es grande por ello
                                             convoco a todas y todos los jóvenes
                                             bachilleres postulantes a enfrentar
@@ -502,9 +619,8 @@ onMounted(() => {});
                                             prójimo de constante ayuda a la
                                             población en general.
                                         </p>
-                                        <p
-                                            class="w-100 text-center font-weight-bold"
-                                        >
+
+                                        <p class="w-100 text-center">
                                             Sof. Sup. DAP. Juan Carlos Huanca
                                             Condori
                                         </p>
@@ -515,37 +631,35 @@ onMounted(() => {});
                                             POLICÍA BOLIVIANA
                                         </p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <img
-                                            :src="
-                                                url_asset +
-                                                '/imgs/emblemaUnipol.png'
-                                            "
-                                            alt=""
-                                        />
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- VALORES Y PRINCIPIOS DEL CADETE -->
-                    <div class="col-12 py-5" id="fat_aspectos4">
+
+                    <!-- VALORES Y PRINCIPIOS DEL ALUMNO -->
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 VALORES Y PRINCIPIOS DEL ALUMNO
                             </h2>
 
-                            <div class="row py-3" id="fat_aspectos5">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos5"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F2 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 010.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">ALUMNO</h5>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        ALUMNO
+                                    </h5>
                                     <p class="text-justify">
                                         El Alumno(a) es el estudiante de la
                                         Facultad Técnica Superior en Ciencias
@@ -591,9 +705,21 @@ onMounted(() => {});
                                 </div>
                             </div>
 
-                            <div class="row py-3" id>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos6"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 004.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         VALORES Y PRINCIPIOS DE LOS ALUMNOS
                                     </h5>
                                     <p class="text-justify">
@@ -606,100 +732,91 @@ onMounted(() => {});
                                         futuro. Entre los valores más
                                         importantes se encuentran:
                                     </p>
-                                    <ul class="list-unstyled">
-                                        <li>
+                                    <ul class="list-unstyled text-justify">
+                                        <li class="mb-2">
                                             <b>A. DISCIPLINA:</b> Es la base de
                                             la formación del Alumno, permitiendo
                                             desarrollar autocontrol y la
                                             capacidad de actuar con precisión en
                                             situaciones críticas.
                                         </li>
-                                        <li>
-                                            <b>B. HONOR Y LEALTAD:</b> El Cadete
+                                        <li class="mb-2">
+                                            <b>B. HONOR Y LEALTAD:</b> El Alumno
                                             se compromete a ser ejemplo de
                                             integridad, manteniendo siempre el
                                             respeto hacia la institución y la
                                             sociedad.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>C. VOCACIÓN DE SERVICIO:</b> La
-                                            misión principal del Cadete es
-                                            servir a la comunidad, priorizando
+                                            misión principal del Alumno es
+                                            servir a la comunidad priorizando
                                             siempre el bienestar de los
-                                            ciudadanos, actuando con humanidad y
-                                            empatía.
+                                            ciudadanos y actuando con humanidad
+                                            y empatía.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>D. RESILIENCIA Y VALENTÍA:</b>
-                                            Durante su formación, el Cadete
+                                            Durante su formación, el Alumno
                                             enfrenta desafíos físicos y mentales
                                             que fortalecen su capacidad para
                                             superar adversidades y actuar con
                                             coraje ante el peligro.
                                         </li>
-                                        <li>
-                                            <b
-                                                >E. TRABAJO EN EQUIPO Y
-                                                LIDERAZGO:</b
-                                            >
+                                        <li class="mb-2">
+                                            <b>E. TRABAJO EN EQUIPO:</b>
                                             Se fomenta la cooperación y el
-                                            desarrollo de habilidades de
-                                            liderazgo, preparando al Cadete para
-                                            dirigir y trabajar en equipo con
-                                            otros miembros de la fuerza
-                                            policial.
+                                            desarrollo de habilidades del Alumno
+                                            para trabajar en equipo con otros
+                                            miembros de la fuerza policial.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>F. ENERGÍA:</b> La energía y
-                                            dinamismo caracteriza al Cadete como
-                                            jóvenes dinámicos y proactivos. Se
-                                            refleja en su entusiasmo, vigor
-                                            físico y disposición para enfrentar
-                                            retos con determinación.
+                                            dinamismo caracteriza al Alumno como
+                                            jóvenes damas y varones dinámicos y
+                                            proactivos. Se refleja en su
+                                            entusiasmo, vigor físico y
+                                            disposición para enfrentar retos con
+                                            determinación.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>G. ESPÍRITU DE CUERPO:</b> Este
                                             valor representa la unidad y la
-                                            cohesión entre los cadetes,
+                                            cohesión entre los Alumnos,
                                             promoviendo el sentido de
                                             pertenencia y camaradería. El
                                             espíritu de cuerpo fortalece el
                                             compromiso mutuo y la moral,
-                                            enseñando a los cadetes a trabajar
+                                            enseñando a los Alumnos a trabajar
                                             como un equipo sólido y a apoyarse
                                             unos a otros, especialmente en
                                             situaciones difíciles.
                                         </li>
-                                        <li>
-                                            <b>H. ESPÍRITU DE SACRIFICIO:</b> Es
-                                            la disposición del caballero o dama
-                                            Cadete que le impulsa a aceptar y
-                                            anteponer el cumplimiento del deber
-                                            a las 8 comodidades, los intereses y
-                                            las aspiraciones personales y si
-                                            fuera necesario la entrega de la
-                                            propia vida, por el servicio a la
-                                            sociedad y cumplimiento del deber.
+                                        <li class="mb-2">
+                                            <b>H. ESPÍRITU DE SACRIFICIO:</b>Es
+                                            la disposición del Alumno que le
+                                            impulsa a aceptar y anteponer el
+                                            cumplimiento del deber a las
+                                            comodidades, los intereses y las
+                                            aspiraciones personales y si fuera
+                                            necesario la entrega de la propia
+                                            vida, por el servicio a la sociedad
+                                            y cumplimiento del deber.
                                         </li>
                                     </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F37 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- RESEÑA HISTORICA -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">RESEÑA HISTORICA</h2>
-                            <div class="row PY-3" id="fat_aspectos6">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos7"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
                                             url_asset + '/imgs/F4 COD 001.png'
@@ -707,9 +824,9 @@ onMounted(() => {});
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
-                                        POLICIA BOLIVIANA
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        HISTORIA DE LA POLICÍA BOLIVIANA
                                     </h5>
                                     <p class="text-justify">
                                         Al proclamarse la Independencia
@@ -768,11 +885,23 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos7">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
-                                        FACULTAD TÉCNICA SUPERIOR EN CIENCIAS
-                                        POLICIALES
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos8"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 006.png'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        HISTORIA DE LA FACULTAD TÉCNICA SUPERIOR
+                                        EN CIENCIAS POLICIALES
                                     </h5>
                                     <p class="text-justify">
                                         En el año de 1941 se convocó al Primer
@@ -839,30 +968,19 @@ onMounted(() => {});
                                         Policía para Bolivia…
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F5 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- HIMNOS -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">HIMNOS</h2>
-                            <div class="row py-3" id="fat_aspectos8">
-                                <div class="col-md-4">
-                                    <img
-                                        :src="url_asset + '/imgs/himno.png'"
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos9"
+                            >
+                                <div class="col-md-6 offset-md-3">
+                                    <h5 class="subtitulo-seccion text-center">
                                         Himno del Policía y del Carabinero
                                     </h5>
                                     <div class="d-block w-100 text-sm italic">
@@ -873,6 +991,7 @@ onMounted(() => {});
                                         Carpio
                                     </div>
                                     <p class="text-center w-100 mt-3">
+                                        <b>I</b><br />
                                         Del derecho en la antorcha encendida, te
                                         dio el cielo su inmenso poder Guardia
                                         fiel qué te importa la vida, si
@@ -925,32 +1044,47 @@ onMounted(() => {});
                                         <b>CORO.</b> Del derecho... <br />
                                     </p>
                                 </div>
-                            </div>
-                            <div class="row py-3" id="fat_aspectos9">
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F6 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/as7kOARuJZg"
+                                        frameborder="0"
+                                        allowfullscreen
+                                        width="100%"
+                                        height="400px"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    ></iframe>
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            </div>
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos10"
+                            >
+                                <!-- <div class="col-12">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/as7kOARuJZg"
+                                        frameborder="0"
+                                        allowfullscreen
+                                        width="100%"
+                                        height="400px"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    ></iframe>
+                                </div> -->
+                                <div class="col-md-6 offset-md-3">
+                                    <h5 class="subtitulo-seccion text-center">
                                         Himno a la Facultad Técnica Superior en
                                         Ciencias Policiales
                                     </h5>
                                     <div class="d-block w-100 text-sm italic">
-                                        <b>Letra:</b>Tte. MSc. Roger A. Yujra
+                                        <b>Letra:</b> Tte. MSc. Roger A. Yujra
                                         Chipana
                                     </div>
                                     <div class="d-block w-100 text-sm italic">
                                         <b>Música:</b> Sof. 2do. Valentín Quispe
-                                        Huanca<br />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sgto.
+                                        Huanca
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sgto.
                                         My. Teófilo J. Osco Luque<br />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sgto.
-                                        2do. Cesar A. Mamani Sarzuri<br />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sgto.
+                                        2do. Cesar A. Mamani Sarzuri
                                     </div>
                                     <p class="text-center w-100 mt-3">
                                         FATESCIPOL, cuna de historia Donde nacen
@@ -979,20 +1113,26 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- MISIÓN Y VISIÓN -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">MISIÓN Y VISIÓN</h2>
-                            <div class="row py-3" id="fat_aspectos10">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos11"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F7 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 011.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">MISIÓN</h5>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        MISIÓN
+                                    </h5>
                                     <p class="text-justify">
                                         Formar profesionales en el ámbito de las
                                         Ciencias Policiales, Sargentos de
@@ -1006,9 +1146,23 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos11">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">Visión</h5>
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos12"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 016.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        Visión
+                                    </h5>
                                     <p class="text-justify">
                                         Constituirse en una Unidad Académica de
                                         excelencia, reconocida y acreditada
@@ -1025,59 +1179,62 @@ onMounted(() => {});
                                         Bolivia.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F25 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos12">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                id="fat_aspectos13"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F41 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 018.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">FILOSOFÍA</h5>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
+                                        FILOSOFÍA
+                                    </h5>
                                     <p class="text-justify">
                                         La Universidad Policial “Mcal. Antonio
                                         José de Sucre“, a través de la Facultad
                                         Técnica Superior en Ciencias Policiales,
-                                        impulsa y desarrolla valores ÉTICO
-                                        MORALES en sus componentes para hacer de
-                                        la acción de servicio a la sociedad un
-                                        apostolado; respetando los principios
-                                        universales de los derechos y las
-                                        garantías constitucionales, principios
-                                        que van aún más allá de la vida misma,
-                                        en el sublime acto de entrega por el
-                                        bien mayor, bajo la premisa “Contra el
-                                        Mal por el Bien de Todos”.
+                                        impulsa y desarrolla valores
+                                        <b>ÉTICO MORALES</b> en sus componentes
+                                        para hacer de la acción de servicio a la
+                                        sociedad un apostolado; respetando los
+                                        principios universales de los derechos y
+                                        las garantías constitucionales,
+                                        principios que van aún más allá de la
+                                        vida misma, en el sublime acto de
+                                        entrega por el bien mayor, bajo la
+                                        premisa “Contra el Mal por el Bien de
+                                        Todos”.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- PERFIL DE INGRESO -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">PERFIL DE INGRESO</h2>
-                            <div class="row py-3" id="fat_aspectos13">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos14"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F8 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 027.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-12">
                                     <p class="text-justify">
                                         Señoritas y Jóvenes Bolivianos, quienes
                                         cuentan con: educación humanística,
@@ -1097,22 +1254,26 @@ onMounted(() => {});
                         </div>
                     </div>
                     <!-- FORMACIÓN PROFESIONAL -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 FORMACIÓN PROFESIONAL
                             </h2>
-                            <div class="row py-3" id="fat_aspectos14">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos15"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F9 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 029.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         CARACTERISTICAS DEL REGIMEN DE ESTUDIOS
                                     </h5>
                                     <p class="text-justify">
@@ -1150,9 +1311,21 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos15">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos16"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 061.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN ACADÉMICA-POLICIAL
                                     </h5>
                                     <p class="text-justify">
@@ -1173,18 +1346,22 @@ onMounted(() => {});
                                         Bolivia.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                id="fat_aspectos17"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F10 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 036.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                            </div>
-                            <div class="row py-3" id="fat_aspectos16">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN FÍSICA Y DEPORTES
                                     </h5>
                                     <p class="text-justify">
@@ -1209,26 +1386,22 @@ onMounted(() => {});
                                         futuro profesional.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F11 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos17">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos18"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F12 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 019.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN ÉTICO Y MORAL (DISCIPLINA)
                                     </h5>
                                     <p class="text-justify">
@@ -1245,9 +1418,21 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos18">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                id="fat_aspectos19"
+                            >
+                                <div class="col-12 text-center">
+                                    <img
+                                        :src="
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 011.jpg'
+                                        "
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN INTEGRAL
                                     </h5>
                                     <p class="text-justify">
@@ -1269,49 +1454,29 @@ onMounted(() => {});
                                         rigurosa.
                                     </p>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F12 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                                 <div class="col-12 d-flex">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F14 COD 001.jpg'
-                                        "
-                                        alt=""
-                                        class="w-33"
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F15 COD 001.jpg'
-                                        "
-                                        alt=""
-                                        class="w-33"
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F16 COD 001.jpg'
-                                        "
-                                        alt=""
-                                        class="w-33"
-                                    />
+                                    <SliderImagenes
+                                        :imagenes="listImagensIntegral"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos19">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos20"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F17 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 061.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         FORMACIÓN CON PERSPECTIVA DE GÉNERO
                                     </h5>
                                     <p class="text-justify">
@@ -1329,9 +1494,19 @@ onMounted(() => {});
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos20">
-                                <div class="col-md-12">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                id="fat_aspectos21"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listImagensInstruccion"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         INSTRUCCIÓN POLICIAL
                                     </h5>
                                     <p class="w-100 text-justify">
@@ -1345,35 +1520,35 @@ onMounted(() => {});
                                         de cada Unidad Operativa Institucional,
                                         estando relacionados con lo siguiente:
                                     </p>
-                                    <ul class="list-unstyled">
-                                        <li>
-                                            a) Portar armas de fuego y, en su
-                                            caso utilizarlas en diferentes
+                                    <ul class="list-unstyled text-justify pl-4">
+                                        <li class="mb-3">
+                                            <b>a)</b> Portar armas de fuego y,
+                                            en su caso utilizarlas en diferentes
                                             modalidades e intensidades.
                                         </li>
-                                        <li>
-                                            b) Portar equipo, armamento,
+                                        <li class="mb-3">
+                                            <b>b)</b> Portar equipo, armamento,
                                             munición policial-militar, y en su
                                             caso utilizarlo en diferentes
                                             modalidades e intensidades.
                                         </li>
-                                        <li>
-                                            c) Participar en entrenamientos,
-                                            capacitaciones, eventos y similares
-                                            en ambientes peculiares extremos, en
-                                            diferentes regiones del Estado
-                                            Boliviano.
+                                        <li class="mb-3">
+                                            <b>c)</b> Participar en
+                                            entrenamientos, capacitaciones,
+                                            eventos y similares en ambientes
+                                            peculiares extremos, en diferentes
+                                            regiones del Estado Boliviano.
                                         </li>
-                                        <li>
-                                            d) Realizar ejercicios físicos, con
-                                            o sin equipo y armamento que
-                                            implican diferentes niveles de
-                                            intensidad y desafío de resistencia
-                                            física y psicológica con niveles
-                                            graduales y progresivos.
+                                        <li class="mb-3">
+                                            <b>d)</b> Realizar ejercicios
+                                            físicos, con o sin equipo y
+                                            armamento que implican diferentes
+                                            niveles de intensidad y desafío de
+                                            resistencia física y psicológica con
+                                            niveles graduales y progresivos.
                                         </li>
-                                        <li>
-                                            e) Participar en ejercicios,
+                                        <li class="mb-3">
+                                            <b>e)</b> Participar en ejercicios,
                                             prácticas y pruebas, que incluyen
                                             varios niveles de estrés operativo,
                                             simulando la cercanía a la realidad
@@ -1391,8 +1566,8 @@ onMounted(() => {});
                                             templanza y equilibrio deseado para
                                             la actividad policial.
                                         </li>
-                                        <li>
-                                            f) Participar en ejercicios e
+                                        <li class="mb-3">
+                                            <b>f)</b> Participar en ejercicios e
                                             instrucción a realizarse en
                                             diferentes alturas y profundidades,
                                             infraestructuras, montaña, peñascos,
@@ -1400,24 +1575,24 @@ onMounted(() => {});
                                             confinados y similares.
                                         </li>
 
-                                        <li>
-                                            g) Participar en ejercicios e
+                                        <li class="mb-3">
+                                            <b>g)</b> Participar en ejercicios e
                                             instrucción de natación utilitaria y
                                             desempeñar entrenamiento en
                                             supervivencia en aguas de diferente
                                             caudal, además de rescate acuático.
                                         </li>
-                                        <li>
-                                            h) Conducir vehículos de dos y
-                                            cuatro ruedas.
+                                        <li class="mb-3">
+                                            <b>h)</b> Conducir vehículos de dos
+                                            y cuatro ruedas.
                                         </li>
-                                        <li>
-                                            i) Participar en ejercicios y
+                                        <li class="mb-3">
+                                            <b>i)</b> Participar en ejercicios y
                                             entrenamientos con animales,
                                             especialmente con caballos y canes.
                                         </li>
-                                        <li>
-                                            j) Participar en ejercicios e
+                                        <li class="mb-3">
+                                            <b>j)</b> Participar en ejercicios e
                                             instrucción en modalidades
                                             combinadas de uno o varios de los
                                             establecidos en el presente artículo
@@ -1429,77 +1604,29 @@ onMounted(() => {});
                                         </li>
                                     </ul>
                                 </div>
-                                <div
-                                    class="col-md-6 offset-md-3 bg-dark-gray py-3"
-                                >
-                                    <el-carousel
-                                        height="500px"
-                                        direction="vertical"
-                                        type="card"
-                                        :autoplay="false"
-                                    >
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/f18 cod 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/F22 COD 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/F20 COD 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                        <el-carousel-item>
-                                            <img
-                                                :src="
-                                                    url_asset +
-                                                    '/imgs/F23 COD 001.jpg'
-                                                "
-                                                alt=""
-                                                class="w-100"
-                                            />
-                                        </el-carousel-item>
-                                    </el-carousel>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- JERARQUIA INTERNA Y DISTINCIONES -->
-                    <div class="col-12 py-5">
+                    <!-- JERARQUIA INTERNA Y ASCENSOS -->
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
-                                JERARQUIA INTERNA Y DISTINCIONES
+                                JERARQUIA INTERNA Y ASCENSOS
                             </h2>
-                            <div class="row py-3" id="fat_aspectos21">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos22"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F26 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 023.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">ASCENSOS</h5>
+                                <div class="col-12">
                                     <p class="text-justify">
                                         La jerarquía entre los Alumnos(as) está
                                         determinada por el curso al que
@@ -1517,30 +1644,38 @@ onMounted(() => {});
                                         continuación se detalla:
                                     </p>
                                     <ul>
-                                        <li>
-                                            1er. AÑO DE FORMACIÓN PROFESIONAL
+                                        <li class="mb-3">
+                                            <b
+                                                >1er. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
-                                                    De Aspirante a Cadete de 1er
+                                                    De Aspirante a Alumno de 1er
                                                     año
                                                 </li>
                                                 <li>
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
-                                                    De Cadete de 1er año a
-                                                    Cadete de 2do año
+                                                    De Alumno de 1er año a
+                                                    Alumno de 2do año
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            2do. AÑO DE FORMACIÓN PROFESIONAL<br />
-                                            Alumnos destacados de 2do. año, son
-                                            ascendidos con grados Honoríficos
-                                            de:
+                                        <li class="mb-3">
+                                            <b
+                                                >2do. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
+                                            <p class="text-justify">
+                                                Alumnos destacados de 2do. año,
+                                                son ascendidos con grados
+                                                Honoríficos de:
+                                            </p>
                                             <ul class="list-unstyled pl-3">
                                                 <li>
                                                     <i
@@ -1565,9 +1700,19 @@ onMounted(() => {});
                                     </ul>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos22">
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos23"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listDistinciones"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
+                                </div>
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         DISTINCIONES
                                     </h5>
                                     <p class="text-justify">
@@ -1578,51 +1723,61 @@ onMounted(() => {});
                                         cumplimiento del deber, se les otorga
                                         las siguientes distinciones:
                                     </p>
-                                    <ul>
-                                        <li>
-                                            1er. AÑO DE FORMACIÓN PROFESIONAL
+                                    <ul class="text-justify">
+                                        <li class="mb-3">
+                                            <b class="d-block mb-2"
+                                                >1er. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-carot-right"
                                                     ></i>
                                                     <b>CORDÓN NARANJA:</b> A la
-                                                    o el Cadete de 1er. año que
+                                                    o el Alumno de 1er. año que
                                                     ocupa el primer lugar en
                                                     antigüedad, en el Cuadro de
                                                     Calificaciones del primer
                                                     Semestre.
                                                 </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-carot-right"
                                                     ></i>
                                                     <b
                                                         >ESCOLTA DE LA BANDERA
                                                         DEL ORDEN:</b
-                                                    >A la o el Alumno que ocupa
+                                                    >
+                                                    A la o el Alumno que ocupa
                                                     el primer lugar en
                                                     antigüedad de 1er. año.
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            2do. AÑO DE FORMACIÓN PROFESIONAL
+                                        <li class="mb-3">
+                                            <b class="mb-2 d-block"
+                                                >2do. AÑO DE FORMACIÓN
+                                                PROFESIONAL</b
+                                            >
                                             <ul class="list-unstyled pl-3">
-                                                <li>
-                                                    <i
-                                                        class="fa fa-caret-right"
-                                                    ></i>
-                                                    ABANDERADO DEL ESTANDARTE
-                                                    NACIONAL DEL INSTITUTO: A la
-                                                    o el Alumno Mayor.
-                                                </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
                                                     <b
-                                                        >ABANDERADO DE LA
+                                                        >ABANDERADO DEL
+                                                        ESTANDARTE NACIONAL DEL
+                                                        INSTITUTO:</b
+                                                    >
+                                                    A la o el Alumno Mayor.
+                                                </li>
+                                                <li class="mb-2">
+                                                    <i
+                                                        class="fa fa-caret-right"
+                                                    ></i>
+                                                    <b
+                                                        >AABANDERADO DE LA
                                                         BANDERA DEL ORDEN DEL
                                                         INSTITUTO:</b
                                                     >
@@ -1630,7 +1785,7 @@ onMounted(() => {});
                                                     destacado después del Alumno
                                                     Mayor.
                                                 </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
@@ -1638,43 +1793,44 @@ onMounted(() => {});
                                                         >ESCOLTAS DEL ESTANDARTE
                                                         NACIONAL DEL
                                                         INSTITUTO:</b
-                                                    >Alumnos de 2do. año más
+                                                    >
+                                                    Alumnos de 2do. año más
                                                     destacados.
                                                 </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
-                                                    <b>CORDÓN AZUL </b>“De
+                                                    <b>CORDÓN AZUL</b> “De
                                                     aprovechamiento”: A la o el
                                                     Alumno Mayor.
                                                 </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
-                                                    <b>CORDÓN VERDE Y BLANCO </b
-                                                    >“De Espíritu Policial”.
+                                                    <b>CORDÓN VERDE Y BLANCO</b>
+                                                    “De Espíritu Policial”.
                                                 </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
-                                                    <b>CORDÓN BLANCO :</b>“De
+                                                    <b>CORDÓN BLANCO</b> “De
                                                     Disciplina y Conducta”.
                                                 </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
-                                                    <b>CORDÓN AMARILLO </b>“De
+                                                    <b>CORDÓN AMARILLO</b> “De
                                                     Tiro Policial”.
                                                 </li>
-                                                <li>
+                                                <li class="mb-2">
                                                     <i
                                                         class="fa fa-caret-right"
                                                     ></i>
-                                                    <b>CORDÓN VERDE </b>“De
+                                                    <b>CORDÓN VERDE</b> “De
                                                     Deportes y Educación
                                                     Física”.
                                                 </li>
@@ -1682,240 +1838,156 @@ onMounted(() => {});
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-md-4">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F28 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F29 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- SEDES -->
-                    <div class="col-12 py-5">
+                    <!-- SEDES DE LA FACULTAD TÉCNICA SUPERIOR EN CIENCIAS POLICIALES -->
+                    <div class="col-12 seccion py-5">
                         <div class="container">
-                            <h2 class="titulo-seccion">SEDES</h2>
-                            <div class="row py-3" id="fat_aspectos23">
-                                <div class="col-md-4">
-                                    FATESCIPOL “El Alto”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Colquiri”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Caracollo”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Huanuni”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Potosí”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Llallagua”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Sucre”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Tarija”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Gran Chaco”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Pando”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Riberalta”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Cochabamba”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                </div>
-                                <div class="col-md-4">
-                                    FATESCIPOL “Santa Cruz”
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F30 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
+                            <h2 class="titulo-seccion">
+                                SEDES DE LA FACULTAD TÉCNICA SUPERIOR EN
+                                CIENCIAS POLICIALES
+                            </h2>
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                                id="fat_aspectos24"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listSedes"
+                                        :height="'450px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- TÍTULO PROFESIONAL -->
-                    <div class="col-12 py-5">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">TÍTULO PROFESIONAL</h2>
-                            <div class="row py-3" id="fat_aspectos25">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInUp"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F35 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 056.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-12">
                                     <p class="text-justify">
                                         El plan de formación profesional es
                                         altamente selectivo, de permanente
                                         evaluación del desempeño académico y
                                         formativo por las exigencias de la
                                         profesión, por lo que se le otorga el
-                                        Título y Diploma de SARGENTO DE POLICÍA,
-                                        con el Grado Académico de TÉCNICO
-                                        SUPERIOR EN CIENCIAS POLICIALES, se
-                                        obtienen luego de haber culminado
+                                        Título y Diploma de
+                                        <b>SARGENTO DE POLICÍA</b>, con el Grado
+                                        Académico de
+                                        <b
+                                            >TÉCNICO SUPERIOR EN CIENCIAS
+                                            POLICIALES</b
+                                        >, se obtienen luego de haber culminado
                                         satisfactoriamente todo el programa de
                                         estudios y habiendo aprobado la
                                         modalidad de graduación.
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos25">
-                                <div class="col-md-4">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos26"
+                            >
+                                <div class="col-12 text-center">
                                     <img
                                         :src="
-                                            url_asset + '/imgs/F37 COD 001.jpg'
+                                            url_asset +
+                                            '/imgs/fatescipol/FOTO FAT 062.jpg'
                                         "
                                         alt=""
                                     />
                                 </div>
-                                <div class="col-md-8">
-                                    <h5 class="subtitulo-seccion">
+                                <div class="col-12">
+                                    <h5 class="subtitulo-seccion text-center">
                                         COMPETENCIAS DEL EGRESADO
                                     </h5>
                                     <p class="text-justify">
-                                        Sargento de la Policía Boliviana,
-                                        Técnico Superior en Ciencias Policiales,
-                                        quien luego de dos años de formación
+                                        Subteniente de la Policía Boliviana,
+                                        Licenciado en Ciencias Policiales, quien
+                                        luego de cuatro años de formación
                                         profesional, egresa preparado para
-                                        cumplir con la misión constitucional,
-                                        con capacidad para trabajar en equipo y
-                                        manejar conflictos, con conocimientos
-                                        técnico científicos y tecnológicos
-                                        policiales, manteniendo en todo momento
-                                        una condición física que le permita dar
-                                        respuesta a los desafíos de esta
-                                        profesión.
+                                        liderar y conducir al personal
+                                        subalterno en pro de la misión
+                                        constitucional.
                                     </p>
 
                                     <p class="text-justify">
-                                        Poseen habilidades comunicativas que les
-                                        permiten interactuar con la sociedad en
-                                        forma efectiva; con capacidad de auto
-                                        superación, conforme a los estándares
+                                        Con capacidad para delegar, trabajar en
+                                        equipo y manejar conflictos, con
+                                        conocimientos técnico-científicos y
+                                        tecnológicos policiales, manteniendo en
+                                        todo momento una condición física que le
+                                        permita dar respuesta a los desafíos de
+                                        esta profesión. Posee habilidades
+                                        comunicativas que le permiten
+                                        interactuar con la sociedad en forma
+                                        efectiva; con capacidades para formar e
+                                        instruir a personal subalterno,
+                                        motivándolos y estimulando en ellos la
+                                        auto preparación y el auto
+                                        entrenamiento, conforme a los estándares
                                         exigidos por la institución verde olivo.
                                     </p>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos26">
-                                <div class="col-md-8 offset-md-2">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInLeft"
+                                id="fat_aspectos28"
+                            >
+                                <div class="col-12 text-center">
                                     <h5 class="subtitulo-seccion text-center">
                                         GRADOS JERARQUICOS
                                     </h5>
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F36 COD 001.svg'
-                                        "
-                                        alt=""
-                                    />
+                                    <SliderImagenes
+                                        :imagenes="[
+                                            {
+                                                url_imagen:
+                                                    url_asset +
+                                                    '/imgs/fatescipol/FOTO FAT 057.svg',
+                                            },
+                                        ]"
+                                        :height="'450px'"
+                                    ></SliderImagenes>
                                 </div>
                             </div>
-                            <div class="row py-3" id="fat_aspectos27">
+                            <div
+                                class="row py-3 info_seccion wow animate__animated animate__slideInRight"
+                                id="fat_aspectos27"
+                            >
+                                <div class="col-12">
+                                    <SliderImagenes
+                                        :imagenes="listCampoOcupacional"
+                                        :height="'400px'"
+                                        :interval="3000"
+                                    ></SliderImagenes>
+                                </div>
                                 <div class="col-md-12">
-                                    <h5 class="subtitulo-seccion">
+                                    <h5 class="subtitulo-seccion text-center">
                                         CAMPO OCUPACIONAL
                                     </h5>
                                     <p class="text-justify">
                                         Las y los Sargentos de Policía
                                         egresados, serán destinados a cumplir
                                         servicio en reparticiones policiales de
-                                        la institución del orden EN CUALQUIER
-                                        PUNTO DEL TERRITORIO NACIONAL, de
-                                        acuerdo con las necesidades del
+                                        la institución del orden
+                                        <b
+                                            >EN CUALQUIER PUNTO DEL TERRITORIO
+                                            NACIONAL</b
+                                        >, de acuerdo con las necesidades del
                                         servicio, la especialidad y plan de
                                         carrera.
                                     </p>
@@ -1928,56 +2000,6 @@ onMounted(() => {});
                                         al servicio de toda la sociedad
                                         boliviana.
                                     </p>
-                                </div>
-                                <div class="col-md-12 img-grid">
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F38 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F39 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F40 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F41 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F42 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F43 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F44 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
-                                    <img
-                                        :src="
-                                            url_asset + '/imgs/F45 COD 001.jpg'
-                                        "
-                                        alt=""
-                                    />
                                 </div>
                             </div>
                         </div>

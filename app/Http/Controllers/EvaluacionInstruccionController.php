@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EvaluacionFisica;
+use App\Models\EvaluacionInstruccion;
 use App\Models\Postulante;
 use Exception;
 use Illuminate\Http\Request;
@@ -91,6 +92,74 @@ class EvaluacionInstruccionController extends Controller
     public function index()
     {
         return Inertia::render("Admin/EvaluacionInstruccions/Index");
+    }
+
+    public function paginado(Request $request)
+    {
+        $perPage = $request->perPage;
+        $page = (int)($request->input("page", 1));
+        $search = (string)$request->input("search", "");
+        $orderByCol = $request->orderByCol;
+        $desc = $request->desc;
+
+        $columnsSerachLike = [
+            "CONCAT_WS(' ', postulantes.nombre, postulantes.paterno, postulantes.materno)",
+            "CONCAT_WS(' ', postulantes.ci, postulantes.complemento, postulantes.ci_exp)",
+            "postulantes.unidad",
+            "postulantes.codigoPre",
+            "valoracion",
+            "nro_baucher",
+            "nro_folder",
+        ];
+        $columnsFilter = [];
+        $columnsBetweenFilter = [];
+        $orderBy = [];
+        if ($orderByCol && $desc) {
+            $orderBy = [
+                [$orderByCol, $desc]
+            ];
+        }
+
+        $evaluacion_instruccions = EvaluacionInstruccion::with(["postulante"])->select("evaluacion_instruccions.*")
+            ->join("postulantes", "postulantes.id", "=", "evaluacion_instruccions.postulante_id");
+
+
+        // Filtros exactos
+        foreach ($columnsFilter as $key => $value) {
+            if (!is_null($value)) {
+                $evaluacion_instruccions->where("evaluacion_instruccions.$key", $value);
+            }
+        }
+
+        // Filtros por rango
+        foreach ($columnsBetweenFilter as $key => $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_instruccions->whereBetween("evaluacion_instruccions.$key", $value);
+            }
+        }
+
+        // Búsqueda en múltiples columnas con LIKE
+        if (!empty($search) && !empty($columnsSerachLike)) {
+            $evaluacion_instruccions->where(function ($query) use ($search, $columnsSerachLike) {
+                foreach ($columnsSerachLike as $col) {
+                    $query->orWhereRaw("$col LIKE ?", ["%{$search}%"]);
+                }
+            });
+        }
+        // Ordenamiento
+        foreach ($orderBy as $value) {
+            if (isset($value[0], $value[1])) {
+                $evaluacion_instruccions->orderBy($value[0], $value[1]);
+            }
+        }
+
+
+        $evaluacion_instruccions = $evaluacion_instruccions->paginate($perPage, ['*'], 'page', $page);
+        return response()->JSON([
+            "data" => $evaluacion_instruccions->items(),
+            "total" => $evaluacion_instruccions->total(),
+            "lastPage" => $evaluacion_instruccions->lastPage()
+        ]);
     }
 
     public function descargar()

@@ -44,14 +44,21 @@ const verRequisito = (item) => {
     oPostulante.value = item;
     muestraArchivos.value = true;
 };
+const aprobando = ref(false);
+const txtAprobarInscripcion = computed(() => {
+    if (aprobando.value) {
+        return `<i class="fa fa-spin fa-spinner"></i> Validando...`;
+    }
+    return `<i class="fa fa-check"></i> Validar Documentos`;
+});
 
 const aprobarInscripcion = (id) => {
     Swal.fire({
         icon: "question",
-        title: "Aprobar",
-        html: `¿Esta seguro(a) de aprobar esta Inscripción?`,
+        title: "Validar",
+        html: `¿Esta seguro(a) de validar los documentos de esta Inscripción?`,
         showCancelButton: true,
-        confirmButtonText: "Si, aprobar",
+        confirmButtonText: "Si, validar",
         cancelButtonText: "Cancelar",
         denyButtonText: `Cancelar`,
         customClass: {
@@ -60,6 +67,7 @@ const aprobarInscripcion = (id) => {
     }).then(async (result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
+            aprobando.value = true;
             axios
                 .post(route("requisitos.aprobarInscripcion", id), {
                     _method: "patch",
@@ -90,6 +98,7 @@ const aprobarInscripcion = (id) => {
                     });
                 })
                 .finally(() => {
+                    aprobando.value = false;
                     buscarPostulantes();
                 });
         }
@@ -228,6 +237,24 @@ const aprobarInscripcion = (id) => {
                                                     <strong>Correo: </strong
                                                     >{{ item.correo }}
                                                 </p>
+                                                <p class="mb-1">
+                                                    <strong
+                                                        >Documentos:
+                                                    </strong>
+                                                    <span
+                                                        class="badge"
+                                                        :class="[
+                                                            item.validDocs == 1
+                                                                ? 'badge-success'
+                                                                : 'badge-danger',
+                                                        ]"
+                                                        v-text="
+                                                            item.validDocs == 1
+                                                                ? 'VERIFICADOS'
+                                                                : 'SIN VERIFICAR'
+                                                        "
+                                                    ></span>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -250,12 +277,11 @@ const aprobarInscripcion = (id) => {
                                             @click="aprobarInscripcion(item.id)"
                                             v-if="
                                                 item?.requisito &&
-                                                item.estado == 'PREINSCRITO'
+                                                item.validDocs == 0
                                             "
-                                        >
-                                            <i class="fa fa-check"></i> Aprobar
-                                            Inscripción
-                                        </button>
+                                            v-html="txtAprobarInscripcion"
+                                            :disabled="aprobando"
+                                        ></button>
                                     </div>
                                 </div>
                             </div>

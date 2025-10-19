@@ -35,6 +35,7 @@ class Postulante extends Model
         "codigoInsc",
         "ecodigo",
         "epass",
+        "validDocs",
         "status",
     ];
 
@@ -105,7 +106,7 @@ class Postulante extends Model
 
     public function getFullCiAttribute()
     {
-        return $this->ci . ' ' . $this->ci_exp . ($this->complemento ? ' ' . $this->complemento : '');
+        return $this->ci . ($this->complemento ? ' - ' . $this->complemento : '') . ' ' . $this->ci_exp;
     }
 
     public function getUrlFotoAttribute()

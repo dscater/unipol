@@ -11,7 +11,7 @@ import { useAxios } from "@/composables/axios/useAxios";
 import { useConfiguracion } from "@/composables/configuracion/useConfiguracion";
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { useAppStore } from "@/stores/aplicacion/appStore";
-import NavBar from "@/Pages/Portal/Anapol/Parcial/Navbar.vue";
+import NavBar from "./Parcial/Navbar.vue";
 import Footer from "@/Pages/Portal/Anapol/Parcial/Footer.vue";
 import SliderImagenes from "@/Components/SliderImagenes.vue";
 const appStore = useAppStore();
@@ -114,13 +114,43 @@ const listBecas = ref([
 
 const listInfraestructura = ref([
     {
-        url_imagen: url_asset.value + "/imgs/F28 COD 001.jpg",
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 001.jpg",
     },
     {
-        url_imagen: url_asset.value + "/imgs/F25 COD 001.jpg",
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 002.jpg",
     },
     {
-        url_imagen: url_asset.value + "/imgs/F5 COD 001.jpg",
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 003.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 004.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 005.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 006.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 007.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 008.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 009.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 010.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 011.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 012.jpg",
+    },
+    {
+        url_imagen: url_asset.value + "/imgs/anapol/ANA INFRA 013.jpg",
     },
 ]);
 
@@ -271,7 +301,7 @@ const listCampoOcupacional = ref([
                                         <img
                                             :src="
                                                 url_asset +
-                                                '/imgs/emblemaUnipol.png'
+                                                '/imgs/anapol/FOTO ANA 003.png'
                                             "
                                             class="img_seccion1"
                                             alt=""
@@ -286,56 +316,66 @@ const listCampoOcupacional = ref([
                                             JOSÉ DE SUCRE”
                                         </h5>
                                         <p class="text-justify">
-                                            La Academia Nacional de Policías, es
-                                            la Facultad de Ciencias Policiales a
-                                            nivel licenciatura de la Universidad
-                                            Policial, constituyéndose en el
-                                            primer y único instituto de
-                                            formación de oficiales de la Policía
-                                            de Bolivia, que ha apostado por la
-                                            generación de oportunidades para las
-                                            y los jóvenes que tienen vocación de
-                                            servicio a la comunidad, porque la
-                                            dama o caballero Cadete se forma de
-                                            manera integral, en distintos campos
-                                            de las ciencias policiales, con
-                                            valores y principios éticos, con
-                                            pensamiento analítico, estratégico y
-                                            táctico; flexible y capaz de
-                                            adaptarse a cualquier situación, con
-                                            capacidad de trabajo en equipo,
-                                            disciplinado, respetuoso de las
-                                            normas legales, morales y de trato
-                                            social, desarrollando un buen estado
-                                            físico, preparándose para liderar y
-                                            comandar unidades policiales:
-                                            operativas, técnicas, logísticas y
-                                            administrativas, en cumplimiento de
-                                            la misión constitucional de la
-                                            Policía Boliviana.
+                                            A las señoritas y jóvenes
+                                            postulantes a la Escuela Básica
+                                            Policial de Música.
                                         </p>
                                         <p class="text-justify">
-                                            La dama o caballero Cadete, es el
-                                            futuro Oficial de Policía, con
-                                            vocación de servicio a la comunidad,
-                                            con una actitud de permanente
-                                            disponibilidad y compromiso
-                                            institucional, preparado para
-                                            afrontar los riesgos y peligros de
-                                            la profesión y si fuera necesario
-                                            ofrendar su propia vida, en defensa
-                                            de la sociedad y la patria.
+                                            Reciban un saludo afectuoso y
+                                            fraterno de la Dirección Nacional de
+                                            Instrucción y Enseñanza y del
+                                            Rectorado de la Universidad Policial
+                                            &quot;Mariscal Antonio José de
+                                            Sucre&quot;
                                         </p>
                                         <p class="text-justify">
-                                            Como Rector de la Universidad
-                                            Policial, tengo el honor de extender
-                                            una invitación especial a todos los
-                                            bachilleres de Bolivia, que cumplan
-                                            los requisitos para ser Oficial de
-                                            Policía y ser parte de la Policía
-                                            Boliviana, dedicada a proteger y
-                                            servir con integridad y valentía a
-                                            nuestra sociedad.
+                                            Hoy, la UNIPOL abre sus puertas e
+                                            inicia el proceso de postulaciones y
+                                            admisiones para la Gestión 2026,
+                                            invitando a todos aquellos que
+                                            sienten en su corazón la vocación de
+                                            servir a la sociedad.
+                                        </p>
+                                        <p class="text-justify">
+                                            Les invitamos a ingresar a nuestro
+                                            portal informativo y dar el primer
+                                            paso hacia una institución que exige
+                                            entrega, disciplina y principios
+                                            éticos inquebrantables.
+                                        </p>
+                                        <p class="text-justify">
+                                            Esta Unidad Académica es el pilar en
+                                            la formación de futuros servidores
+                                            policiales íntegros, con visión
+                                            humanista, profesional y
+                                            comprometidos con la defensa del
+                                            bien común.
+                                        </p>
+                                        <p class="text-justify">
+                                            En este camino de formación, no solo
+                                            recibirán conocimientos, sino
+                                            también valores: respeto,
+                                            honestidad, responsabilidad y honor,
+                                            esenciales para portar el uniforme y
+                                            proteger con firmeza a nuestra
+                                            sociedad.
+                                        </p>
+                                        <p class="text-justify">
+                                            Les insto a asumir este desafío con
+                                            humildad, valentía y pasión.
+                                        </p>
+                                        <p class="text-justify">
+                                            Bolivia necesita mujeres y hombres
+                                            con convicción, comprometidos con
+                                            nuestra misión constitucional.
+                                        </p>
+                                        <p class="text-justify">
+                                            Este es el inicio de una vida de
+                                            servicio, de deber y honor.
+                                        </p>
+                                        <p class="text-center font-weight-bold">
+                                            ¡Sean bienvenidos a la Universidad
+                                            Policial!
                                         </p>
                                         <p class="w-100 text-center">
                                             Gral. My. José Gregorio Illanes
@@ -359,7 +399,7 @@ const listCampoOcupacional = ref([
                                         <img
                                             :src="
                                                 url_asset +
-                                                '/imgs/emblemaUnipol.png'
+                                                '/imgs/anapol/FOTO ANA 002.png'
                                             "
                                             class="img_seccion1"
                                             alt=""
@@ -444,7 +484,7 @@ const listCampoOcupacional = ref([
                         </div>
                     </div>
                     <!-- VALORES Y PRINCIPIOS DEL CADETE -->
-                    <div class="col-12 seccion py-5" id="ana_aspectos4">
+                    <div class="col-12 seccion py-5">
                         <div class="container">
                             <h2 class="titulo-seccion">
                                 VALORES Y PRINCIPIOS DEL CADETE
@@ -452,7 +492,7 @@ const listCampoOcupacional = ref([
 
                             <div
                                 class="row py-3 info_seccion wow animate__animated animate__slideInUp"
-                                id="ana_aspectos5"
+                                id="ana_aspectos4"
                             >
                                 <div class="col-12 text-center">
                                     <img
@@ -541,7 +581,7 @@ const listCampoOcupacional = ref([
 
                             <div
                                 class="row py-3 info_seccion wow animate__animated animate__slideInRight"
-                                id
+                                id="ana_aspectos5"
                             >
                                 <div class="col-12 text-center">
                                     <img
@@ -564,22 +604,22 @@ const listCampoOcupacional = ref([
                                         Entre los valores más importantes se
                                         encuentran:
                                     </p>
-                                    <ul class="list-unstyled">
-                                        <li>
+                                    <ul class="list-unstyled text-justify">
+                                        <li class="mb-2">
                                             <b>A. DISCIPLINA:</b> Es la base de
                                             la formación del cadete, permitiendo
                                             desarrollar autocontrol y la
                                             capacidad de actuar con precisión en
                                             situaciones críticas.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>B. HONOR Y LEALTAD:</b> El Cadete
                                             se compromete a ser ejemplo de
                                             integridad, manteniendo siempre el
                                             respeto hacia la institución y la
                                             sociedad.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>C. VOCACIÓN DE SERVICIO:</b> La
                                             misión principal del Cadete es
                                             servir a la comunidad, priorizando
@@ -587,7 +627,7 @@ const listCampoOcupacional = ref([
                                             ciudadanos, actuando con humanidad y
                                             empatía.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>D. RESILIENCIA Y VALENTÍA:</b>
                                             Durante su formación, el Cadete
                                             enfrenta desafíos físicos y mentales
@@ -595,7 +635,7 @@ const listCampoOcupacional = ref([
                                             superar adversidades y actuar con
                                             coraje ante el peligro.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b
                                                 >E. TRABAJO EN EQUIPO Y
                                                 LIDERAZGO:</b
@@ -607,7 +647,7 @@ const listCampoOcupacional = ref([
                                             otros miembros de la fuerza
                                             policial.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>F. ENERGÍA:</b> La energía y
                                             dinamismo caracteriza al Cadete como
                                             jóvenes dinámicos y proactivos. Se
@@ -615,7 +655,7 @@ const listCampoOcupacional = ref([
                                             físico y disposición para enfrentar
                                             retos con determinación.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>G. ESPÍRITU DE CUERPO:</b> Este
                                             valor representa la unidad y la
                                             cohesión entre los cadetes,
@@ -628,7 +668,7 @@ const listCampoOcupacional = ref([
                                             unos a otros, especialmente en
                                             situaciones difíciles.
                                         </li>
-                                        <li>
+                                        <li class="mb-2">
                                             <b>H. ESPÍRITU DE SACRIFICIO:</b> Es
                                             la disposición del caballero o dama
                                             Cadete que le impulsa a aceptar y
@@ -802,16 +842,6 @@ const listCampoOcupacional = ref([
                                 class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos8"
                             >
-                                <div class="col-12">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/as7kOARuJZg"
-                                        frameborder="0"
-                                        allowfullscreen
-                                        width="100%"
-                                        height="400px"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    ></iframe>
-                                </div>
                                 <div class="col-md-6 offset-md-3">
                                     <h5 class="subtitulo-seccion text-center">
                                         Himno del Policía y del Carabinero
@@ -876,6 +906,16 @@ const listCampoOcupacional = ref([
                                     <p class="text-center w-100">
                                         <b>CORO.</b> Del derecho... <br />
                                     </p>
+                                </div>
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/as7kOARuJZg"
+                                        frameborder="0"
+                                        allowfullscreen
+                                        width="100%"
+                                        height="400px"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    ></iframe>
                                 </div>
                             </div>
                             <div
@@ -1746,6 +1786,33 @@ const listCampoOcupacional = ref([
                                 class="row py-3 info_seccion wow animate__animated animate__slideInUp"
                                 id="ana_aspectos24"
                             >
+                                <div class="col-12">
+                                    <p>
+                                        La Facultad de Ciencias Policiales
+                                        “Academia Nacional de Policías”, cuenta
+                                        con una infraestructura equipada con:
+                                    </p>
+                                    <ul class="pl-5">
+                                        <li>
+                                            Laboratorios criminalísticos,
+                                            planificación vial, computación,
+                                            bibliotecas físicas y virtuales.
+                                        </li>
+                                        <li>
+                                            Salas de reuniones, visitas,
+                                            recepciones, museo histórico,
+                                            comedores, aulas multimedia,
+                                            gimnasio, defensa personal,
+                                            dormitorios, patios, canchas y
+                                            coliseo.
+                                        </li>
+                                        <li>
+                                            Polígono, de tres áreas de tiro de
+                                            precisión y combate y una sala de
+                                            tiro virtual.
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div class="col-md-12">
                                     <SliderImagenes
                                         :imagenes="listInfraestructura"

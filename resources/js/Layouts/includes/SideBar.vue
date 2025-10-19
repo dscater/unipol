@@ -162,6 +162,11 @@ onUnmounted(() => {});
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                             <ItemMenu
+                                :label="'Evaluación Odontológica'"
+                                :ruta="'evaluacion_odontologicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
                                 :label="'Evaluación Psicológica'"
                                 :ruta="'evaluacion_psicologicas.index'"
                                 :icon="'fa fa-angle-right'"
@@ -181,9 +186,52 @@ onUnmounted(() => {});
                                 :ruta="'evaluacion_conocimientos.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="#"
+                            class="nav-link sub-menu"
+                            :class="[
+                                route_current == 'evaluacion_medicas.index',
+                            ]"
+                            @click.stop="toggleSubMenu($event)"
+                        >
+                            <i class="nav-icon fas fa-clipboard-check"></i>
+                            <p>
+                                Prefacultativos
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
                             <ItemMenu
-                                :label="'Evaluación Odontológica'"
-                                :ruta="'evaluacion_odontologicas.index'"
+                                :label="'Lengua Castellana'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Matemáticas-Física'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Ciencias Sociales'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Historia Policiales'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Instrucción Policial'"
+                                :ruta="'evaluacion_medicas.index'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
+                            <ItemMenu
+                                :label="'Acondicionamiento Físico'"
+                                :ruta="'evaluacion_medicas.index'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
                         </ul>
@@ -258,6 +306,11 @@ onUnmounted(() => {});
                                 :ruta="'reportes.usuarios'"
                                 :icon="'fa fa-angle-right'"
                             ></ItemMenu>
+                            <ItemMenu
+                                :label="'Postulantes'"
+                                :ruta="'reportes.postulantes'"
+                                :icon="'fa fa-angle-right'"
+                            ></ItemMenu>
                         </ul>
                     </li>
                     <li class="nav-header font-weight-bold bg-principal">
@@ -267,6 +320,11 @@ onUnmounted(() => {});
                         :label="'Documentos de descarga'"
                         :ruta="'descarga_documentos.index'"
                         :icon="'fa fa-file-download'"
+                    ></ItemMenu>
+                    <ItemMenu
+                        :label="'Comunicados'"
+                        :ruta="'comunicados.index'"
+                        :icon="'fa fa-bullhorn'"
                     ></ItemMenu>
                     <ItemMenu
                         :label="'Configuración Sistema'"

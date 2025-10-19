@@ -65,7 +65,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 a) Etapa de Evaluación Médica y Odontológica
@@ -82,7 +82,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 b) Etapa de Evaluación Psicológica.
@@ -98,7 +98,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 c) Etapa de Evaluación de Aptitud Física
@@ -114,7 +114,7 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 d) Etapa del Prefacultativo

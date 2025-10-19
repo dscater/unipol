@@ -14,7 +14,7 @@ class RequisitoService
 {
     private $modulo = "REQUISITOS";
 
-    public function __construct(private  CargarArchivoService $cargarArchivoService, private HistorialAccionService $historialAccionService) {}
+    public function __construct(private  CargarArchivoService $cargarArchivoService, private HistorialAccionService $historialAccionService, private EnviarCorreoService $enviarCorreoService) {}
 
     /**
      * Crear requisito
@@ -55,7 +55,13 @@ class RequisitoService
         $codigo = $this->getCodigoInsc($postulante->unidad);
         $postulante->nroInsc = $codigo[0];
         $postulante->codigoInsc = $codigo[1];
+        $postulante->estado = "INSCRITO";
         $postulante->save();
+
+        // ENVIAR CORREO
+        $this->enviarCorreoService->mailInscripcion($postulante);
+
+
         // registrar accion
         $this->historialAccionService->registrarAccion($this->modulo, "CREACIÓN", "REGISTRO UN USUARIO", $requisito);
 

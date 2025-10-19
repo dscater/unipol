@@ -60,19 +60,19 @@ onMounted(() => {});
                             <h2 class="titulo-seccion">
                                 FASE DE INCORPORACIÓN
                             </h2>
-                            <p>
+                            <p class="text-justify">
                                 La Fase de Selección para el Proceso de
                                 Admisión, estará comprendida por las siguientes
                                 etapas:
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 CUADRO GENERAL DE LOS ADMITIDOS
                             </h4>
-                            <p>
+                            <p class="text-justify">
                                 Concluidas las fases de Convocatoria y
                                 Selección, la Comisión Nacional del Proceso de
                                 Admisión, de acuerdo al Cronograma de
@@ -84,13 +84,13 @@ onMounted(() => {});
                             </p>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="titulo-seccion">
                                 CANTIDAD DE POSTULANTES ADMITIDOS
                             </h4>
-                            <ul>
-                                <li>
+                            <ul class="text-justify">
+                                <li class="mb-3">
                                     La cantidad de las y los postulantes
                                     admitidos, se rige en base a la cantidad de
                                     plazas habilitadas y/o vacantes existentes
@@ -99,14 +99,38 @@ onMounted(() => {});
                                     de Admisión a las Unidades Académicas de
                                     pregrado de la UNIPOL.
                                 </li>
-                                <li>
-                                    Las y los postulantes admitidos a la
-                                    Facultad en Ciencias Policiales “Academia
-                                    Nacional de policías”, será asignada
-                                    conforme a la cantidad de plazas habilitadas
-                                    y/o aprobadas y el orden de prelación de los
-                                    promedios más altos obtenidos durante la
-                                    etapa del Prefacultativo.
+                                <li class="mb-3">
+                                    Las y los postulantes admitidos a las
+                                    Unidades Académicas de Pregrado a Nivel de
+                                    Técnico Superior (FATESCIPOL), serán
+                                    asignados a nivel nacional de acuerdo a los
+                                    siguientes criterios:
+                                    <ul class="list-unstyled pl-5">
+                                        <li class="mb-3">
+                                            <b>a) </b>Cantidad de plazas
+                                            habilitadas y/o aprobadas para cada
+                                            Unidad Académica de Pregrado a nivel
+                                            nacional (FATESCIPOLES).
+                                        </li>
+                                        <li class="mb-3">
+                                            <b>b) </b>Orden de prelación de los
+                                            promedios más altos obtenidos
+                                            durante la etapa de prefacultativo.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="mb-3">
+                                    La o el Postulante que no es admitido en la
+                                    Unidad académica en razón de la cantidad de
+                                    plazas habilitadas y/o aprobadas o promedio
+                                    final, previo consentimiento podrá ser
+                                    asignado a otra Unidad Académica de Pregrado
+                                    (FATESCIPOL) distinta a la que postuló. En
+                                    caso de que NO acepte su asignación de
+                                    manera voluntaria y por escrito; dejará de
+                                    ser tomado en cuenta en la Fase de
+                                    Incorporación de la gestión correspondiente,
+                                    bajo su responsabilidad.
                                 </li>
                             </ul>
                         </div>
