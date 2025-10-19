@@ -25,6 +25,7 @@ class InicioController extends Controller
                     "ext" => "mp4"
                 ],
             ];
+
             return Inertia::render('Admin/Postulante/Inicio', compact("listDescargaDocumentos", "listVideos"));
         }
 

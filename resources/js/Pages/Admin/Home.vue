@@ -65,7 +65,24 @@ onMounted(() => {
             <!-- /.row -->
         </template>
 
-        <div class="row"></div>
+        <div class="row">
+            <div class="col-lg-3 col-6" v-for="item in array_infos">
+                <!-- small box -->
+                <div class="small-box" :class="[item.color]">
+                    <div class="inner">
+                        <h3 class="text-white">{{ item.cantidad }}</h3>
+
+                        <p>{{ item.label }}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa" :class="[item.icon]"></i>
+                    </div>
+                    <Link :href="route(item.url)" class="small-box-footer"
+                        >Ver más <i class="fa fa-arrow-alt-circle-right"></i
+                    ></Link>
+                </div>
+            </div>
+        </div>
     </Content>
 </template>
 <style scoped>

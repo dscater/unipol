@@ -45,6 +45,10 @@ table .bg-dark-principal,
     color: white;
 }
 
+td .descripcion {
+    color: black !important;
+}
+
 .italic {
     font-style: italic;
 }
