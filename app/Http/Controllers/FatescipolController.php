@@ -49,10 +49,10 @@ class FatescipolController extends Controller
 
     public function antecedentes()
     {
-        return Inertia::render("Portal/Anapol/Antecedentes");
+        return Inertia::render("Portal/Fatescipol/Antecedentes");
     }
     public function evaluacion_medica()
     {
-        return Inertia::render("Portal/Anapol/EvaluacionMedica");
+        return Inertia::render("Portal/Fatescipol/EvaluacionMedica");
     }
 }

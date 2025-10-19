@@ -59,7 +59,7 @@ onUnmounted(() => {});
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-success elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <a :href="route('inicio')" class="brand-link">
             <img
                 :src="configuracionStore.oConfiguracion.url_logo"
                 alt="Logo"
