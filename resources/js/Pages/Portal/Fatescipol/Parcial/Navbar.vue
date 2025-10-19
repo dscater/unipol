@@ -2,10 +2,7 @@
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { Link, usePage, router } from "@inertiajs/vue3";
 import { onBeforeMount, onMounted, onUnmounted, ref } from "vue";
-import { useSubmenu } from "@/composables/Submenu";
 const muestra_formulario = ref(false);
-
-const { toggleSubmenu, onHover } = useSubmenu();
 
 const isFixed = ref(false);
 const showButton = ref(false);
@@ -45,13 +42,14 @@ onUnmounted(() => {
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('fatescipol')"
+                    <Link class="nav-link" :href="route('anapol')"
                         >INICIO <span class="sr-only">(current)</span></Link
                     >
                 </li>
                 <li class="nav-item dropdown" @click.stop>
+                    <!-- 1er nivel de submenú -->
                     <a
                         class="nav-link dropdown-toggle text-wrap"
                         href="#"
@@ -62,26 +60,22 @@ onUnmounted(() => {
                     </a>
 
                     <div class="dropdown-menu miSubmenu">
-                        <!-- 1er nivel de submenú -->
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
-                        >
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>NUESTRAS AUTORIDADES</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>NUESTRAS AUTORIDADES</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos1'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos1'
                                     "
                                     >SEÑOR COMANDANTE GENERAL DE LA POLICÍA
                                     BOLIVIANA</Link
@@ -89,187 +83,169 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos2'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos2'
                                     "
                                     >MAGNIFICO RECTOR DE LA UNIPOL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos2'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos3'
                                     "
-                                    >SEÑORES DIRECTORES DE LA FATESCIPOL</Link
-                                >
-                                <Link
-                                    class="dropdown-item"
-                                    :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos3'
-                                    "
-                                    >SEÑOR SUBOFICIAL DEL ESTADO MAYOR</Link
+                                    >SEÑOR DIRECTOR DE LA ANAPOL</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>VALORES Y PRINCIPIOS DEL CADETE</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>VALORES Y PRINCIPIOS DEL CADETE</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos4'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos4'
                                     "
-                                    >ALUMNO</Link
+                                    >CADETE</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos5'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos5'
                                     "
                                     >VALORES Y PRINCIPIOS</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>RESEÑA HISTORICA</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>RESEÑA HISTORICA</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos6'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos6'
                                     "
                                     >POLICIA BOLIVIANA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos7'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos7'
                                     "
-                                    >HISTORIA DE LA FATESCIPOL</Link
+                                    >ACADEMIA NACIONAL DE POLICÍAS</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>HIMNOS</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>HIMNOS</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos8'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos8'
                                     "
                                     >HIMNO AL POLICIA</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos9'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos9'
                                     "
                                     >HIMNO A LA ANAPOL</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>MISIÓN Y VISIÓN</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>MISIÓN Y VISIÓN</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos10'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos10'
                                     "
                                     >MISIÓN</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos11'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos11'
                                     "
                                     >VISIÓN</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos12'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos12'
                                     "
                                     >FILOSOFÍA</Link
                                 >
                             </div>
-                        </div>
+                        </li>
                         <Link
                             class="nav-link"
                             :href="
-                                route('fatescipol.nuestra_academia') +
-                                '#fat_aspectos13'
+                                route('anapol.nuestra_academia') +
+                                '#ana_aspectos13'
                             "
                             >PERFIL DE INGRESO</Link
                         >
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
-                        >
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>FORMACIÓN PROFESIONAL</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>FORMACIÓN PROFESIONAL</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos14'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos14'
                                     "
                                     >CARACTERISTICAS DEL REGIMEN DE
                                     ESTUDIOS</Link
@@ -277,144 +253,146 @@ onUnmounted(() => {
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos15'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos15'
                                     "
                                     >FORMACIÓN ACADÉMICA-POLICIAL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos16'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos16'
                                     "
                                     >FORMACIÓN FÍSICA Y DEPORTES</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos17'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos17'
                                     "
                                     >FORMACIÓN ÉTICO Y MORAL (DISCIPLINA)</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos18'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos18'
                                     "
                                     >FORMACIÓN INTEGRAL</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos19'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos19'
                                     "
                                     >FORMACIÓN CON PERSPECTIVA DE GÉNERO</Link
                                 ><Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos20'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos20'
                                     "
                                     >INSTRUCCIÓN POLICIAL</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>JERARQUÍA INTERNA Y DISTINCIONES</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>JERARQUÍA INTERNA Y DISTINCIONES</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos21'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos21'
                                     "
-                                    >JERARQUIA INTERNA Y ASCENSOS</Link
+                                    >ASCENSOS</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos22'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos22'
                                     "
                                     >DISTINCIONES</Link
                                 >
                             </div>
-                        </div>
+                        </li>
                         <Link
                             class="nav-link"
                             :href="
-                                route('fatescipol.nuestra_academia') +
-                                '#fat_aspectos23'
+                                route('anapol.nuestra_academia') +
+                                '#ana_aspectos23'
                             "
-                            >SEDES DE LA FATESCIPOL</Link
+                            >BECAS AL EXTERIOR</Link
                         >
-                        <div
-                            class="dropdown-submenu"
-                            @mouseenter="onHover($event, true)"
-                            @mouseleave="onHover($event, false)"
+                        <Link
+                            class="nav-link"
+                            :href="
+                                route('anapol.nuestra_academia') +
+                                '#ana_aspectos24'
+                            "
+                            >INFRAESTRUCTURA</Link
                         >
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>TÍTULO PROFESIONAL</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>TÍTULO PROFESIONAL</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos25'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos25'
                                     "
                                     >COMPETENCIAS DEL EGRESADO</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos26'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos26'
                                     "
                                     >GRADOS JERARQUICOS</Link
                                 >
                                 <Link
                                     class="dropdown-item"
                                     :href="
-                                        route('fatescipol.nuestra_academia') +
-                                        '#fat_aspectos27'
+                                        route('anapol.nuestra_academia') +
+                                        '#ana_aspectos27'
                                     "
                                     >CAMPO OCUPACIONAL</Link
                                 >
                             </div>
-                        </div>
+                        </li>
                         <!-- <Link
                             class="nav-link"
                             :href="
-                                route('fatescipol.nuestra_academia') +
-                                '#fat_aspectos28'
+                                route('anapol.nuestra_academia') +
+                                '#ana_aspectos28'
                             "
                             >FUNCIONES DE LA POLICÍA BOLIVIANA</Link
                         > -->
                     </div>
                 </li>
                 <li class="nav-item">
-                    <Link
-                        class="nav-link"
-                        :href="route('fatescipol.requisitos')"
+                    <Link class="nav-link" :href="route('anapol.requisitos')"
                         >REQUISITOS</Link
                     >
                 </li>
@@ -431,33 +409,94 @@ onUnmounted(() => {
                     <div class="dropdown-menu">
                         <Link
                             class="nav-link"
-                            :href="route('fatescipol.fase_convocatoria')"
+                            :href="route('anapol.fase_convocatoria')"
                             >FASE DE CONVOCATORIA</Link
                         >
                         <Link
                             class="nav-link"
-                            :href="route('fatescipol.fase_seleccion')"
+                            :href="route('anapol.fase_seleccion')"
                             >FASE DE SELECCIÓN</Link
                         >
                         <Link
                             class="nav-link"
-                            :href="route('fatescipol.fase_incorporacion')"
+                            :href="route('anapol.fase_incorporacion')"
                             >FASE DE INCORPORACIÓN</Link
                         >
                     </div>
                 </li>
                 <li class="nav-item"></li>
                 <li class="nav-item">
-                    <Link
-                        class="nav-link"
-                        :href="route('fatescipol.comunicados')"
+                    <Link class="nav-link" :href="route('anapol.comunicados')"
                         >COMUNICADOS</Link
                     >
                 </li>
                 <li class="nav-item">
-                    <Link class="nav-link" :href="route('fatescipol.contactos')"
+                    <Link class="nav-link" :href="route('anapol.contactos')"
                         >CONTACTOS</Link
                     >
+                </li>
+
+                <li class="nav-item dropdown" @click.stop>
+                    <!-- 1er nivel de submenú -->
+                    <a
+                        class="nav-link dropdown-toggle text-wrap"
+                        href="#"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        SERVICIOS
+                    </a>
+
+                    <div
+                        class="dropdown-menu miSubmenu"
+                        style="min-width: 300px"
+                    >
+                        <Link
+                            class="nav-link"
+                            :href="
+                                route('anapol.antecedentes') + '#ana_aspectos24'
+                            "
+                            >CERTIFICADO DE ANTECEDENTES POLICIALES</Link
+                        >
+                        <li class="nav-item dropdown" @click.stop>
+                            <a
+                                class="nav-link dropdown-toggle text-wrap"
+                                href="#"
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>EVALUACIÓN MÉDICA Y PSICOLÓGICA</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
+                                <Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('anapol.evaluacion_medica') +
+                                        '#ana_evaluacion1'
+                                    "
+                                    >ASPECTOS IMPORTANTES Y CANJE DE
+                                    FOLDER</Link
+                                >
+                                <Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('anapol.evaluacion_medica') +
+                                        '#ana_evaluacion2'
+                                    "
+                                    >EVALUACIÓN MÉDICA</Link
+                                >
+                                <Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('anapol.evaluacion_medica') +
+                                        '#ana_evaluacion3'
+                                    "
+                                    >EVALUACIÓN PSICOLÓGICA</Link
+                                >
+                            </div>
+                        </li>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -470,6 +509,7 @@ onUnmounted(() => {
     >
         <i class="fa fa-arrow-up"></i>
     </button>
+
     <FormLogin
         :muestra_formulario="muestra_formulario"
         @cerrar-formulario="muestra_formulario = false"

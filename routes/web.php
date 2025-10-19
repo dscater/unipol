@@ -60,6 +60,8 @@ Route::get("anapol/fase_seleccion", [AnapolController::class, 'fase_seleccion'])
 Route::get("anapol/fase_incorporacion", [AnapolController::class, 'fase_incorporacion'])->name("anapol.fase_incorporacion");
 Route::get("anapol/comunicados", [AnapolController::class, 'comunicados'])->name("anapol.comunicados");
 Route::get("anapol/contactos", [AnapolController::class, 'contactos'])->name("anapol.contactos");
+Route::get("anapol/antecedentes", [AnapolController::class, 'antecedentes'])->name("anapol.antecedentes");
+Route::get("anapol/evaluacion_medica", [AnapolController::class, 'evaluacion_medica'])->name("anapol.evaluacion_medica");
 
 // ** FATESCIPOL
 Route::get("fatescipol", [FatescipolController::class, 'index'])->name("fatescipol");
@@ -70,6 +72,8 @@ Route::get("fatescipol/fase_seleccion", [FatescipolController::class, 'fase_sele
 Route::get("fatescipol/fase_incorporacion", [FatescipolController::class, 'fase_incorporacion'])->name("fatescipol.fase_incorporacion");
 Route::get("fatescipol/comunicados", [FatescipolController::class, 'comunicados'])->name("fatescipol.comunicados");
 Route::get("fatescipol/contactos", [FatescipolController::class, 'contactos'])->name("fatescipol.contactos");
+Route::get("fatescipol/antecedentes", [AnapolController::class, 'antecedentes'])->name("fatescipol.antecedentes");
+Route::get("fatescipol/evaluacion_medica", [AnapolController::class, 'evaluacion_medica'])->name("fatescipol.evaluacion_medica");
 
 // ** ESBAPOLMUS
 Route::get("esbapolmus", [EsbapolmusController::class, 'index'])->name("esbapolmus");
@@ -80,6 +84,8 @@ Route::get("esbapolmus/fase_seleccion", [EsbapolmusController::class, 'fase_sele
 Route::get("esbapolmus/fase_incorporacion", [EsbapolmusController::class, 'fase_incorporacion'])->name("esbapolmus.fase_incorporacion");
 Route::get("esbapolmus/comunicados", [EsbapolmusController::class, 'comunicados'])->name("esbapolmus.comunicados");
 Route::get("esbapolmus/contactos", [EsbapolmusController::class, 'contactos'])->name("esbapolmus.contactos");
+Route::get("esbapolmus/antecedentes", [AnapolController::class, 'antecedentes'])->name("esbapolmus.antecedentes");
+Route::get("esbapolmus/evaluacion_medica", [AnapolController::class, 'evaluacion_medica'])->name("esbapolmus.evaluacion_medica");
 
 // ADMINISTRACION
 Route::middleware(['auth', 'permisoUsuario'])->prefix("admin")->group(function () {

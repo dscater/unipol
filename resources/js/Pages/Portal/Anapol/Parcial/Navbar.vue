@@ -2,10 +2,7 @@
 import FormLogin from "@/Pages/Auth/FormLogin.vue";
 import { Link, usePage, router } from "@inertiajs/vue3";
 import { onBeforeMount, onMounted, onUnmounted, ref } from "vue";
-import { useSubmenu } from "@/composables/Submenu";
 const muestra_formulario = ref(false);
-
-const { toggleSubmenu, onClickSubmenu } = useSubmenu();
 
 const isFixed = ref(false);
 const showButton = ref(false);
@@ -45,13 +42,14 @@ onUnmounted(() => {
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav m-auto">
                 <li class="nav-item">
                     <Link class="nav-link" :href="route('anapol')"
                         >INICIO <span class="sr-only">(current)</span></Link
                     >
                 </li>
                 <li class="nav-item dropdown" @click.stop>
+                    <!-- 1er nivel de submenú -->
                     <a
                         class="nav-link dropdown-toggle text-wrap"
                         href="#"
@@ -62,20 +60,17 @@ onUnmounted(() => {
                     </a>
 
                     <div class="dropdown-menu miSubmenu">
-                        <!-- 1er nivel de submenú -->
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>NUESTRAS AUTORIDADES</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>NUESTRAS AUTORIDADES</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -102,19 +97,18 @@ onUnmounted(() => {
                                     >SEÑOR DIRECTOR DE LA ANAPOL</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>VALORES Y PRINCIPIOS DEL CADETE</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>VALORES Y PRINCIPIOS DEL CADETE</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -132,19 +126,18 @@ onUnmounted(() => {
                                     >VALORES Y PRINCIPIOS</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>RESEÑA HISTORICA</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>RESEÑA HISTORICA</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -162,19 +155,18 @@ onUnmounted(() => {
                                     >ACADEMIA NACIONAL DE POLICÍAS</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>HIMNOS</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>HIMNOS</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -192,19 +184,18 @@ onUnmounted(() => {
                                     >HIMNO A LA ANAPOL</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>MISIÓN Y VISIÓN</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>MISIÓN Y VISIÓN</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -230,7 +221,7 @@ onUnmounted(() => {
                                     >FILOSOFÍA</Link
                                 >
                             </div>
-                        </div>
+                        </li>
                         <Link
                             class="nav-link"
                             :href="
@@ -239,18 +230,17 @@ onUnmounted(() => {
                             "
                             >PERFIL DE INGRESO</Link
                         >
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>FORMACIÓN PROFESIONAL</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>FORMACIÓN PROFESIONAL</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -308,19 +298,18 @@ onUnmounted(() => {
                                     >INSTRUCCIÓN POLICIAL</Link
                                 >
                             </div>
-                        </div>
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        </li>
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>JERARQUÍA INTERNA Y DISTINCIONES</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>JERARQUÍA INTERNA Y DISTINCIONES</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -338,7 +327,7 @@ onUnmounted(() => {
                                     >DISTINCIONES</Link
                                 >
                             </div>
-                        </div>
+                        </li>
                         <Link
                             class="nav-link"
                             :href="
@@ -355,18 +344,17 @@ onUnmounted(() => {
                             "
                             >INFRAESTRUCTURA</Link
                         >
-                        <div
-                            class="dropdown-submenu"
-                            @click.prevent="onClickSubmenu($event, true)"
-                        >
+                        <li class="nav-item dropdown" @click.stop>
                             <a
+                                class="nav-link dropdown-toggle text-wrap"
                                 href="#"
-                                class="dropdown-item dropdown-toggle text-wrap"
-                                @click="toggleSubmenu"
-                                ><p>TÍTULO PROFESIONAL</p>
-                                <i class="fa fa-caret-right"></i
-                            ></a>
-                            <div class="dropdown-menu">
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>TÍTULO PROFESIONAL</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
                                 <Link
                                     class="dropdown-item"
                                     :href="
@@ -392,7 +380,7 @@ onUnmounted(() => {
                                     >CAMPO OCUPACIONAL</Link
                                 >
                             </div>
-                        </div>
+                        </li>
                         <!-- <Link
                             class="nav-link"
                             :href="
@@ -446,6 +434,69 @@ onUnmounted(() => {
                     <Link class="nav-link" :href="route('anapol.contactos')"
                         >CONTACTOS</Link
                     >
+                </li>
+
+                <li class="nav-item dropdown" @click.stop>
+                    <!-- 1er nivel de submenú -->
+                    <a
+                        class="nav-link dropdown-toggle text-wrap"
+                        href="#"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        SERVICIOS
+                    </a>
+
+                    <div
+                        class="dropdown-menu miSubmenu"
+                        style="min-width: 300px"
+                    >
+                        <Link
+                            class="nav-link"
+                            :href="
+                                route('anapol.antecedentes') + '#ana_aspectos24'
+                            "
+                            >CERTIFICADO DE ANTECEDENTES POLICIALES</Link
+                        >
+                        <li class="nav-item dropdown" @click.stop>
+                            <a
+                                class="nav-link dropdown-toggle text-wrap"
+                                href="#"
+                                data-bs-toggle="dropdown"
+                            >
+                                <p>EVALUACIÓN MÉDICA Y PSICOLÓGICA</p>
+                                <i class="fa fa-caret-down"></i>
+                            </a>
+                            <!-- 2di nivel de submenú -->
+                            <div class="dropdown-menu miSubmenu">
+                                <Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('anapol.evaluacion_medica') +
+                                        '#ana_evaluacion1'
+                                    "
+                                    >ASPECTOS IMPORTANTES Y CANJE DE
+                                    FOLDER</Link
+                                >
+                                <Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('anapol.evaluacion_medica') +
+                                        '#ana_evaluacion2'
+                                    "
+                                    >EVALUACIÓN MÉDICA</Link
+                                >
+                                <Link
+                                    class="dropdown-item"
+                                    :href="
+                                        route('anapol.evaluacion_medica') +
+                                        '#ana_evaluacion3'
+                                    "
+                                    >EVALUACIÓN PSICOLÓGICA</Link
+                                >
+                            </div>
+                        </li>
+                    </div>
                 </li>
             </ul>
         </div>

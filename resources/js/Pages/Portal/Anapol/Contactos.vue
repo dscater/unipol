@@ -61,16 +61,6 @@ onMounted(() => {});
                             </h2>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <iframe
-                            width="100%"
-                            height="450"
-                            style="border: 0"
-                            loading="lazy"
-                            allowfullscreen
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1dxxx!2d-68.0961685!3d-16.5410194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f20d86919df05%3A0x1b71529ec45a9bbd!2sAcademia%20Nacional%20de%20Polic%C3%ADas!5e0!3m2!1ses!2sbo!4vXXXXXXXXXX"
-                        ></iframe>
-                    </div>
                     <div class="col-12 py-5">
                         <div class="container">
                             <h4 class="subtitulo-seccion">Dirección:</h4>
@@ -80,6 +70,16 @@ onMounted(() => {});
                                 Ernest, No. 7404, La Paz – Bolivia
                             </p>
                         </div>
+                    </div>
+                    <div class="col-12">
+                        <iframe
+                            width="100%"
+                            height="450"
+                            style="border: 0"
+                            loading="lazy"
+                            allowfullscreen
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1dxxx!2d-68.0961685!3d-16.5410194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f20d86919df05%3A0x1b71529ec45a9bbd!2sAcademia%20Nacional%20de%20Polic%C3%ADas!5e0!3m2!1ses!2sbo!4vXXXXXXXXXX"
+                        ></iframe>
                     </div>
                     <div class="col-12 py-4">
                         <div class="container redes_sociales">

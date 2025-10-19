@@ -60,21 +60,12 @@ onMounted(() => {});
                             <h2 class="titulo-seccion">REQUISITOS</h2>
                             <div class="row">
                                 <div class="col-12">
-                                    <p>
-                                        <img
-                                            :src="
-                                                url_asset +
-                                                '/imgs/F3 COD 001.jpg'
-                                            "
-                                            alt=""
-                                            width="240px"
-                                            style="float: right"
-                                        />
+                                    <p class="text-justify">
                                         <b>I.</b> Los requisitos para inscribirse como
                                         postulantes a la Facultad de Ciencias
                                         Policiales “Academia Nacional de
                                         Policías”, son los siguientes:
-                                        <ul class="list-unstyled pl-3">
+                                        <ul class="list-unstyled pl-3 text-justify">
                                             <li><b>a)</b> Ser
                                         boliviana o boliviano de nacimiento.</li>
                                         <li><b>b)</b>
@@ -183,16 +174,16 @@ Comisión Nacional del Proceso de Admisión.
                                         </li>
                                         </ul>
                                     </p>
-                                    <p><b>II.</b> Las y los postulantes que tengan diecisiete (17) años de edad y cumplan los
+                                    <p class="text-justify"><b>II.</b> Las y los postulantes que tengan diecisiete (17) años de edad y cumplan los
 demás requisitos exigidos para la inscripción, además de lo señalado, deberán
 adjuntar una Declaración Jurada debidamente Notariada, mediante la cual el padre,
 madre o tutor autoricen su postulación a la Facultad de Ciencias Policiales
 “Academia Nacional de Policías”, asumiendo la responsabilidad por el mismo, en
 tanto cumpla la mayoría de edad.</p>
-<p><b>III.</b> La documentación requerida, deberá ser presentada en un folder rotulado,
+<p class="text-justify"><b>III.</b> La documentación requerida, deberá ser presentada en un folder rotulado,
 debidamente ordenada y con separadores plásticos transparentes individuales.
 </p>
-<p><b>IV.</b> Las o los postulantes que cuenten con antecedentes penales o policiales exigidos
+<p class="text-justify"><b>IV.</b> Las o los postulantes que cuenten con antecedentes penales o policiales exigidos
 para la inscripción, serán separados del Proceso de Admisión.</p>
                                 </div>
                             </div>

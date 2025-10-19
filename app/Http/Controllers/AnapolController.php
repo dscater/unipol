@@ -40,4 +40,13 @@ class AnapolController extends Controller
     {
         return Inertia::render("Portal/Anapol/Contactos");
     }
+
+    public function antecedentes()
+    {
+        return Inertia::render("Portal/Anapol/Antecedentes");
+    }
+    public function evaluacion_medica()
+    {
+        return Inertia::render("Portal/Anapol/EvaluacionMedica");
+    }
 }

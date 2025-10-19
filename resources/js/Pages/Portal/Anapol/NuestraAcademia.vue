@@ -205,35 +205,45 @@ const listCampoOcupacional = ref([
                                             nuestra noble institución policial,
                                             donde se forman lideres
                                             comprometidos con el futuro de
-                                            nuestro país. Ser policía es más que
-                                            una profesión, es un compromiso con
-                                            la protección y el servicio al
-                                            pueblo, el valor, la virtud y la
-                                            voluntad necesaria para construir
-                                            una sociedad justa, segura por el
-                                            bien de todos. La Academia Nacional
-                                            de Policías, alma mater de la
-                                            institución, es el lugar donde se
-                                            forjan mujeres y hombres con
-                                            decisión, con espíritu
+                                            nuestro país.
+                                        </p>
+                                        <p class="text-justify">
+                                            Ser policía es más que una
+                                            profesión, es un compromiso con la
+                                            protección y el servicio al pueblo,
+                                            el valor, la virtud y la voluntad
+                                            necesaria para construir una
+                                            sociedad justa, segura por el bien
+                                            de todos.
+                                        </p>
+                                        <p class="text-justify">
+                                            La Academia Nacional de Policías,
+                                            alma mater de la institución, es el
+                                            lugar donde se forjan mujeres y
+                                            hombres con decisión, con espíritu
                                             inquebrantable, carácter, coraje y
-                                            sentido del deber. Estén seguros
-                                            que; en su futura casa de estudios,
-                                            les serán entregados conocimientos,
-                                            habilidades, destrezas y valores
-                                            suficientes como para enfrentar los
-                                            desafíos del siglo XXI, que los
-                                            convertirán en héroes silenciosos,
-                                            respetuosos de la ley y el orden,
-                                            comprometidos con la patria y la
-                                            sociedad, disciplinados y leales
-                                            cuyo propósito es el servicio a
-                                            Bolivia. A nombre de la institución,
-                                            les invito a sumarse a la Policía
-                                            del Bicentenario, reto que se inicia
-                                            con ustedes, con quienes se
-                                            escribirá las nuevas páginas de la
-                                            historia policial.
+                                            sentido del deber.
+                                        </p>
+                                        <p class="text-justify">
+                                            Estén seguros que; en su futura casa
+                                            de estudios, les serán entregados
+                                            conocimientos, habilidades,
+                                            destrezas y valores suficientes como
+                                            para enfrentar los desafíos del
+                                            siglo XXI, que los convertirán en
+                                            héroes silenciosos, respetuosos de
+                                            la ley y el orden, comprometidos con
+                                            la patria y la sociedad,
+                                            disciplinados y leales cuyo
+                                            propósito es el servicio a Bolivia.
+                                        </p>
+                                        <p class="text-justify">
+                                            A nombre de la institución, les
+                                            invito a sumarse a la Policía del
+                                            Bicentenario, reto que se inicia con
+                                            ustedes, con quienes se escribirá
+                                            las nuevas páginas de la historia
+                                            policial.
                                         </p>
                                         <p
                                             class="w-100 font-weight-bold text-center mb-3"
@@ -302,25 +312,30 @@ const listCampoOcupacional = ref([
                                             operativas, técnicas, logísticas y
                                             administrativas, en cumplimiento de
                                             la misión constitucional de la
-                                            Policía Boliviana. La dama o
-                                            caballero Cadete, es el futuro
-                                            Oficial de Policía, con vocación de
-                                            servicio a la comunidad, con una
-                                            actitud de permanente disponibilidad
-                                            y compromiso institucional,
-                                            preparado para afrontar los riesgos
-                                            y peligros de la profesión y si
-                                            fuera necesario ofrendar su propia
-                                            vida, en defensa de la sociedad y la
-                                            patria. Como Rector de la
-                                            Universidad Policial, tengo el honor
-                                            de extender una invitación especial
-                                            a todos los bachilleres de Bolivia,
-                                            que cumplan los requisitos para ser
-                                            Oficial de Policía y ser parte de la
-                                            Policía Boliviana, dedicada a
-                                            proteger y servir con integridad y
-                                            valentía a nuestra sociedad.
+                                            Policía Boliviana.
+                                        </p>
+                                        <p class="text-justify">
+                                            La dama o caballero Cadete, es el
+                                            futuro Oficial de Policía, con
+                                            vocación de servicio a la comunidad,
+                                            con una actitud de permanente
+                                            disponibilidad y compromiso
+                                            institucional, preparado para
+                                            afrontar los riesgos y peligros de
+                                            la profesión y si fuera necesario
+                                            ofrendar su propia vida, en defensa
+                                            de la sociedad y la patria.
+                                        </p>
+                                        <p class="text-justify">
+                                            Como Rector de la Universidad
+                                            Policial, tengo el honor de extender
+                                            una invitación especial a todos los
+                                            bachilleres de Bolivia, que cumplan
+                                            los requisitos para ser Oficial de
+                                            Policía y ser parte de la Policía
+                                            Boliviana, dedicada a proteger y
+                                            servir con integridad y valentía a
+                                            nuestra sociedad.
                                         </p>
                                         <p class="w-100 text-center">
                                             Gral. My. José Gregorio Illanes
@@ -371,9 +386,11 @@ const listCampoOcupacional = ref([
                                             un paso firme hacia una profesión
                                             noble, de responsabilidad y entrega,
                                             donde el servicio al ciudadano será
-                                            su vocación diaria. La carrera
-                                            policial es mucho más que un
-                                            trabajo; es una forma de vida que
+                                            su vocación diaria.
+                                        </p>
+                                        <p class="text-justify">
+                                            La carrera policial es mucho más que
+                                            un trabajo; es una forma de vida que
                                             exige integridad, disciplina,
                                             lealtad y valor. Durante su
                                             formación, se enfrentarán a desafíos
@@ -388,18 +405,25 @@ const listCampoOcupacional = ref([
                                             intachable, valores esenciales en un
                                             policía que tiene como misión
                                             proteger y servir a la comunidad.
+                                        </p>
+                                        <p class="text-justify">
                                             Ser policía requiere el compromiso
                                             de contribuir a la construcción de
                                             una sociedad justa y segura,
                                             defendiendo la ley y protegiendo la
-                                            paz con honor. Cada uno de ustedes
-                                            será un pilar en el fortalecimiento
-                                            de la seguridad ciudadana y, sobre
-                                            todo, en la confianza que la
-                                            sociedad deposita en nosotros. Los
-                                            animamos a vivir este proceso con
-                                            esfuerzo y dedicación, para que al
-                                            final del camino puedan llevar el
+                                            paz con honor.
+                                        </p>
+                                        <p class="text-justify">
+                                            Cada uno de ustedes será un pilar en
+                                            el fortalecimiento de la seguridad
+                                            ciudadana y, sobre todo, en la
+                                            confianza que la sociedad deposita
+                                            en nosotros.
+                                        </p>
+                                        <p class="text-justify">
+                                            Los animamos a vivir este proceso
+                                            con esfuerzo y dedicación, para que
+                                            al final del camino puedan llevar el
                                             uniforme con orgullo, siendo ejemplo
                                             de servicio y dignidad.
                                         </p>
@@ -780,7 +804,7 @@ const listCampoOcupacional = ref([
                             >
                                 <div class="col-12">
                                     <iframe
-                                        src="https://www.youtube.com/embed/FcK5HvGr9do"
+                                        src="https://www.youtube.com/embed/as7kOARuJZg"
                                         frameborder="0"
                                         allowfullscreen
                                         width="100%"
@@ -858,16 +882,16 @@ const listCampoOcupacional = ref([
                                 class="row py-3 info_seccion wow animate__animated animate__slideInRight"
                                 id="ana_aspectos9"
                             >
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <iframe
-                                        src="https://www.youtube.com/embed/FcK5HvGr9do"
+                                        src="https://www.youtube.com/embed/as7kOARuJZg"
                                         frameborder="0"
                                         allowfullscreen
                                         width="100%"
                                         height="400px"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     ></iframe>
-                                </div>
+                                </div> -->
                                 <div class="col-md-6 offset-md-3">
                                     <h5 class="subtitulo-seccion text-center">
                                         Himno a la Academia Nacional de Policías
