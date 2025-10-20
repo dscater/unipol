@@ -48,8 +48,8 @@ class PostulanteStoreRequest extends FormRequest
             "unidad" => "required",
             "fecha_nac" => ["required", "date"],
             "cel" => "required",
-            "correo" => "required|email",
-            // "correo" => "required|email|unique:postulantes,correo", //DESCOMENTAR
+            // "correo" => "required|email",
+            "correo" => "required|email|unique:postulantes,correo", //DESCOMENTAR
             "nro_cuenta" => "required",
             "lugar_preins" => "required",
             "observacion" => "nullable|string",

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
@@ -28,21 +29,30 @@ class RequisitoController extends Controller
     /**
      * Store requisito
      *
-     * @param RequisitoStoreRequest $request
+     * @param Request $request
      * @return RedirectResponse|Response
      */
-    public function store(RequisitoStoreRequest $request): RedirectResponse|Response
+    public function store(Request $request): RedirectResponse|Response
     {
-        DB::beginTransaction();
         try {
-            $requisito = $this->requisitoService->crear($request->validated());
-            DB::commit();
-            return redirect()->route("inicio")->with("bien", "Registro realizado")->with("codigoInsc", $requisito->postulante->codigoInsc);
+            return Cache::lock("requisitoStore")->block(10, function () use ($request) {
+                // sleep(5);
+                $request = app(RequisitoStoreRequest::class);
+                DB::beginTransaction();
+                try {
+                    $requisito = $this->requisitoService->crear($request->validated());
+                    DB::commit();
+                    return redirect()->route("inicio")->with("bien", "Registro realizado")->with("codigoInsc", $requisito->postulante->codigoInsc);
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    return back()->withErrors(["error" => $e->getMessage()]);
+                }
+            });
+        } catch (ValidationException $ve) {
+            // Si falla la validación fuera del lock
+            return back()->withErrors($ve->errors());
         } catch (\Exception $e) {
-            DB::rollBack();
-            throw ValidationException::withMessages([
-                'error' =>  $e->getMessage(),
-            ]);
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 

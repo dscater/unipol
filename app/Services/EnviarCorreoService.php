@@ -2,6 +2,10 @@
 
 namespace App\Services;
 
+use App\Jobs\EnviaCodigoerificacionJob;
+use App\Jobs\EnviaFinalizaInscripcionJob;
+use App\Jobs\EnviaInscripcionJob;
+use App\Jobs\EnviaPreinscripcionJob;
 use App\Mail\CodigoVerificacionMail;
 use App\Mail\FinalizaInscripcionMail;
 use App\Mail\InscripcionMail;
@@ -16,11 +20,8 @@ use Illuminate\Support\Facades\Log;
 class EnviarCorreoService
 {
 
-    private $configuracion;
     public function __construct()
     {
-        $this->configuracion = null;
-        $this->abrev_moneda = "";
         $configuracion = Configuracion::first();
         $servidor_correo = $configuracion->envio_email;
         if ($configuracion) {
@@ -36,10 +37,6 @@ class EnviarCorreoService
                     'mail.from.name' => $servidor_correo["nombre"] ?? 'GOIRDROP',
                 ]
             );
-        }
-        $this->configuracion = $configuracion;
-        if ($configuracion && $configuracion->conf_moneda) {
-            $this->abrev_moneda = $configuracion->conf_moneda["abrev"];
         }
     }
 
@@ -61,8 +58,9 @@ class EnviarCorreoService
             "mensaje" => $mensaje
         ];
 
-        Mail::to($postulante->correo)
-            ->send(new PreinscripcionMail($datos));
+        // Mail::to($postulante->correo)
+        //     ->send(new PreinscripcionMail($datos));
+        EnviaPreinscripcionJob::dispatch($datos, $postulante);
     }
 
     /**
@@ -83,19 +81,20 @@ class EnviarCorreoService
             "mensaje" => $mensaje,
         ];
 
-        Mail::to($postulante->correo)
-            ->send(new InscripcionMail($datos));
+        // Mail::to($postulante->correo)
+        //     ->send(new InscripcionMail($datos));
+
+        EnviaInscripcionJob::dispatch($datos, $postulante);
     }
 
     /**
-     * Enviar correo de nueva preinscripcion
+     * Enviar correo de finalizacion de inscripcion
      *
      * @param Postulante $postulante
      * @return void
      */
     public function mailFinalizaInscripcion(Postulante $postulante): void
     {
-
         $mensaje = "Hola " . $postulante->full_name . '<br/>';
         $mensaje .= 'Tus documentos de la inscripción con código <span style="font-size:1.2em";>' . $postulante->codigoInsc . '</span> fueron verificados y no se tienen observaciones<br/>';
         $mensaje .= '<p style="font-size:1.2em;font-weight:bold;">TU INSCRIPCIÓN ESTA COMPLETA, ahora puedes ver tus evaluaciones y notas</p>
@@ -106,8 +105,9 @@ class EnviarCorreoService
             "mensaje" => $mensaje,
         ];
 
-        Mail::to($postulante->correo)
-            ->send(new FinalizaInscripcionMail($datos));
+        // Mail::to($postulante->correo)
+        //     ->send(new FinalizaInscripcionMail($datos));
+        EnviaFinalizaInscripcionJob::dispatch($datos, $postulante);
     }
 
     /**
@@ -126,7 +126,9 @@ class EnviarCorreoService
             "mensaje" => $mensaje
         ];
 
-        Mail::to($user->correo)
-            ->send(new CodigoVerificacionMail($datos));
+        // Mail::to($user->correo)
+        //     ->send(new CodigoVerificacionMail($datos));
+
+        EnviaCodigoerificacionJob::dispatch($datos, $user);
     }
 }

@@ -72,7 +72,10 @@ onUnmounted(() => {
                         </div>
                         <div
                             class="col-2"
-                            v-if="user?.postulante.estado == 'INSCRITO'"
+                            v-if="
+                                user?.postulante.estado == 'INSCRITO' &&
+                                user?.postulante.validDocs == 1
+                            "
                         >
                             <Link
                                 class="rounded-0 btn btn-info w-100"
@@ -84,7 +87,10 @@ onUnmounted(() => {
                         </div>
                         <div
                             class="col-2"
-                            v-if="user?.postulante.estado == 'INSCRITO'"
+                            v-if="
+                                user?.postulante.estado == 'INSCRITO' &&
+                                user?.postulante.validDocs == 1
+                            "
                         >
                             <Link
                                 class="rounded-0 btn btn-success w-100"

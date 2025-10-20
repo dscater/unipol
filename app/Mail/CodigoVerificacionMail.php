@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Configuracion;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -37,6 +39,7 @@ class CodigoVerificacionMail extends Mailable
      */
     public function content(): Content
     {
+
         return new Content(
             view: 'mail.codigoVerificacion',
             with: [
